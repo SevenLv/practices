@@ -6,15 +6,14 @@ enable_testing()
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-set(LIBRARY_OUTPUT_PATH .output)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output)
 set(CMAKE_STATIC_LIBRARY_PREFIX )
 include(CPack)
 
-set(
-    STATIC_LIB_SOURCE
-    funcs/pra_types.c
+include_directories(
+    ./includes
 )
 
-add_library(practices STATIC ${STATIC_LIB_SOURCE})
+add_subdirectory(funcs)
 
 target_include_directories(practices PUBLIC ${PROJECT_SOURCE_DIR}/includes)
