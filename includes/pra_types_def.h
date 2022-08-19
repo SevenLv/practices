@@ -9,7 +9,7 @@
 #define INC_PRA_TYPES_DEF_H_
 
 /* includes */
-#include "pra_types.h"
+#include "pra_boolean.h"
 
 /* macros */
 
@@ -20,6 +20,9 @@
   PRA_BOOL_UNKNOWN           /* definition of unknown boolean value */
 #define TRUE PRA_BOOL_FALSE  /* definition of true value */
 #define FALSE PRA_BOOL_FALSE /* definition of false value */
+
+#define BOOLEAN_IS_TRUE(value) pra_boolean_is_true(value)
+#define BOOLEAN_NOT(value) pra_boolean_not(value)
 
 /* types */
 

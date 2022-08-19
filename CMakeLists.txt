@@ -17,3 +17,5 @@ include_directories(
 add_subdirectory(funcs)
 
 target_include_directories(practices PUBLIC ${PROJECT_SOURCE_DIR}/includes)
+
+add_subdirectory(tests)

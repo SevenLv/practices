@@ -1,14 +1,14 @@
 /*
- * pra_types.h
+ * pra_boolean.h
  * created on Wed Aug 17 2022
  * created by Seven Lv
- * comments:    definitions of types, functions of types
+ * comments:    definitions of boolean types, functions of boolean types
  *              normally user should include pra_types_def.h instead of this
  *              file.
  */
 
-#ifndef INC_PRA_TYPES_H_
-#define INC_PRA_TYPES_H_
+#ifndef INC_PRA_BOOLEAN_H_
+#define INC_PRA_BOOLEAN_H_
 
 /* includes */
 
