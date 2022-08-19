@@ -2,7 +2,7 @@
  * pra_types.h
  * created on Wed Aug 17 2022
  * created by Seven Lv
- * comments:    definitions of types.
+ * comments:    definitions of types, functions of types
  *              normally user should include pra_types_def.h instead of this
  *              file.
  */

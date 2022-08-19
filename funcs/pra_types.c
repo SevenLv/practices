@@ -2,7 +2,7 @@
  * pra_types.c
  * created on Wed Aug 17 2022
  * created by Seven Lv
- * comments:
+ * comments:    definitions of types, functions of types
  */
 
 /* includes */
