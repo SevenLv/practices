@@ -6,17 +6,18 @@ int main(void);
 
 int main(void)
 {
+    const char err_none = 0U;
+    const char err_error1 = 1U;
+
     BOOLEAN expected = TRUE;
     BOOLEAN value = TRUE;
 
     if (expected == BOOLEAN_IS_TRUE(value))
     {
-        printf("success\r\n");
-        return 1;
+        return err_none;
     }
     else
     {
-        printf("failed\r\n");
-        return 0;
+        return err_error1;
     }
 }
