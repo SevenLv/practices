@@ -4,11 +4,10 @@ include_directories(
     ./includes
 )
 
-target_link_libraries(practices)
-
 add_executable(
     test_boolean_is_true
-    test_boolean_is_true.c
-    ../funcs/pra_boolean.c)
+    test_boolean_is_true.c)
+
+target_link_libraries(test_boolean_is_true practices)
 
 add_test(NAME test_boolean_is_true COMMAND test_boolean_is_true)
