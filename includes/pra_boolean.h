@@ -44,4 +44,13 @@ pra_boolean pra_boolean_is_true(pra_boolean value);
  */
 pra_boolean pra_boolean_not(pra_boolean value);
 
+/**
+ * @brief           the AND operation for pra_boolean
+ * @note
+ * @param  value1:  the first pra_boolean value
+ * @param  value2:  the second pra_boolean value
+ * @retval          PRA_BOOL_TRUE - if both of values equal to PRA_BOOL_TRUE; PRA_BOOL_FALSE - others
+ */
+pra_boolean pra_boolean_and(pra_boolean value1, pra_boolean value2);
+
 #endif

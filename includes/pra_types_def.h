@@ -16,13 +16,14 @@
 /* for boolean boolean */
 
 #define BOOLEAN pra_boolean /* definition of boolean type */
-#define BOOLEAN_UNKNOWN                                                        \
-  PRA_BOOL_UNKNOWN           /* definition of unknown boolean value */
-#define TRUE PRA_BOOL_TRUE  /* definition of true value */
+#define BOOLEAN_UNKNOWN \
+    PRA_BOOL_UNKNOWN         /* definition of unknown boolean value */
+#define TRUE PRA_BOOL_TRUE   /* definition of true value */
 #define FALSE PRA_BOOL_FALSE /* definition of false value */
 
 #define BOOLEAN_IS_TRUE(value) pra_boolean_is_true(value)
 #define BOOLEAN_NOT(value) pra_boolean_not(value)
+#define BOOLEAN_AND(value1, value2) pra_boolean_and(value1, value2)
 
 /* types */
 
