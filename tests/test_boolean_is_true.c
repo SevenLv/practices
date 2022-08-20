@@ -6,18 +6,27 @@ int main(void);
 
 int main(void)
 {
-    const char err_none = 0U;
-    const char err_error1 = 1U;
+    const int err_none = 0x0U;
+    const int err_error1 = 0x1;
+    const int err_error2 = 0x2;
+
+    int result = err_none;
 
     BOOLEAN expected = TRUE;
     BOOLEAN value = TRUE;
 
-    if (expected == BOOLEAN_IS_TRUE(value))
+    if (expected != BOOLEAN_IS_TRUE(value))
     {
-        return err_none;
+        result |= err_error1;
     }
-    else
+
+    expected = FALSE;
+    value = FALSE;
+
+    if (expected != BOOLEAN_IS_TRUE(value))
     {
-        return err_error1;
+        result |= err_error2;
     }
+
+    return result;
 }
