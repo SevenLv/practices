@@ -77,3 +77,25 @@ pra_boolean pra_boolean_or(pra_boolean value1, pra_boolean value2)
 
     return result;
 }
+
+pra_boolean pra_boolean_xor(pra_boolean value1, pra_boolean value2)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    pra_boolean temp1 = PRA_BOOL_UNKNOWN;
+    pra_boolean temp2 = PRA_BOOL_UNKNOWN;
+
+    temp1 = pra_boolean_is_true(value1);
+    temp2 = pra_boolean_is_true(value2);
+
+    if (temp1 == temp2)
+    {
+        result = PRA_BOOL_TRUE;
+    }
+    else
+    {
+        result = PRA_BOOL_FALSE;
+    }
+
+    return result;
+}
