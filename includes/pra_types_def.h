@@ -24,6 +24,7 @@
 #define BOOLEAN_IS_TRUE(value) pra_boolean_is_true(value)
 #define BOOLEAN_NOT(value) pra_boolean_not(value)
 #define BOOLEAN_AND(value1, value2) pra_boolean_and(value1, value2)
+#define BOOLEAN_OR(value1, value2) pra_boolean_or(value1, value2)
 
 /* types */
 

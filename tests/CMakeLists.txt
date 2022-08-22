@@ -15,3 +15,7 @@ add_test(NAME test_boolean_not COMMAND test_boolean_not)
 add_executable(test_boolean_and test_boolean_and.c)
 target_link_libraries(test_boolean_and practices)
 add_test(NAME test_boolean_and COMMAND test_boolean_and)
+
+add_executable(test_boolean_or test_boolean_or.c)
+target_link_libraries(test_boolean_or practices)
+add_test(NAME test_boolean_or COMMAND test_boolean_or)

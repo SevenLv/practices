@@ -60,3 +60,20 @@ pra_boolean pra_boolean_and(pra_boolean value1, pra_boolean value2)
 
     return result;
 }
+
+pra_boolean pra_boolean_or(pra_boolean value1, pra_boolean value2)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_BOOL_TRUE == pra_boolean_is_true(value1) ||
+        PRA_BOOL_TRUE == pra_boolean_is_true(value2))
+    {
+        result = PRA_BOOL_TRUE;
+    }
+    else
+    {
+        result = PRA_BOOL_FALSE;
+    }
+
+    return result;
+}
