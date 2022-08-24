@@ -23,3 +23,7 @@ add_test(NAME test_boolean_or COMMAND test_boolean_or)
 add_executable(test_boolean_xor test_boolean_xor.c)
 target_link_libraries(test_boolean_xor practices)
 add_test(NAME test_boolean_xor COMMAND test_boolean_xor)
+
+add_executable(test_bytes_not_null_ptr test_bytes_not_null_ptr.c)
+target_link_libraries(test_bytes_not_null_ptr practices)
+add_test(NAME test_bytes_not_null_ptr COMMAND test_bytes_not_null_ptr)
