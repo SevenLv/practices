@@ -23,8 +23,8 @@ int main(void)
     pra_bytes_ec expected_ec = PRA_BYTES_EC_NULL_PTR;
     pra_boolean expected = PRA_BOOL_FALSE;
 
-    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) &&
-        expected_ec == actual_ec)
+    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec)||
+        expected_ec != actual_ec)
     {
         result |= err_error1;
     }
@@ -33,8 +33,8 @@ int main(void)
     actual_ec = PRA_BYTES_EC_NONE;
     expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
     expected = PRA_BOOL_FALSE;
-    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) &&
-        expected_ec == actual_ec)
+    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) ||
+        expected_ec != actual_ec)
     {
         result |= err_error2;
     }
@@ -43,8 +43,8 @@ int main(void)
     actual_ec = PRA_BYTES_EC_NONE;
     expected_ec = PRA_BYTES_EC_NONE;
     expected = PRA_BOOL_TRUE;
-    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) &&
-        expected_ec == actual_ec)
+    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) ||
+        expected_ec != actual_ec)
     {
         result |= err_error3;
     }

@@ -1,4 +1,5 @@
 #include "pra_bytes.h"
+#include "pra_defs.h"
 
 int main(void);
 
@@ -8,6 +9,8 @@ int main(void)
     const int err_error1 = 0x1;
     const int err_error2 = 0x2;
     const int err_error3 = 0x4;
+    const int err_error4 = 0x8;
+    const int err_error5 = 0x10;
 
     int result = err_none;
 
@@ -23,18 +26,18 @@ int main(void)
     pra_bytes_ec expected_ec = PRA_BYTES_EC_NULL_PTR;
     pra_boolean expected = PRA_BOOL_FALSE;
 
-    if (expected != pra_bytes_init(p_bytes, &actual_ec) &&
-        expected_ec == actual_ec)
+    if (expected != pra_bytes_init(p_bytes, &actual_ec) ||
+        expected_ec != actual_ec)
     {
         result |= err_error1;
     }
 
     p_bytes = &bytes;
     actual_ec = PRA_BYTES_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
+    expected_ec = PRA_BYTES_EC_NONE;
     expected = PRA_BOOL_TRUE;
-    if (expected != pra_bytes_init(p_bytes, &actual_ec) &&
-        expected_ec == actual_ec)
+    if (expected != pra_bytes_init(p_bytes, &actual_ec) ||
+        expected_ec != actual_ec)
     {
         result |= err_error2;
     }
@@ -48,6 +51,26 @@ int main(void)
                 break;
             }
         }
+    }
+
+    bytes.length = 0U;
+    actual_ec = PRA_BYTES_EC_NONE;
+    expected_ec = PRA_BYTES_EC_DATA_LENGTH_ZERO;
+    expected = PRA_BOOL_FALSE;
+    if (expected != pra_bytes_init(p_bytes, &actual_ec) ||
+        expected_ec != actual_ec)
+    {
+        result |= err_error4;
+    }
+
+    bytes.data = PRA_UINT8_NULL;
+    actual_ec = PRA_BYTES_EC_NONE;
+    expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
+    expected = PRA_BOOL_FALSE;
+    if (expected != pra_bytes_init(p_bytes, &actual_ec) ||
+        expected_ec != actual_ec)
+    {
+        result |= err_error5;
     }
 
     return result;
