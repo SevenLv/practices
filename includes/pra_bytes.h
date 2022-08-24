@@ -15,6 +15,10 @@
 /* macros */
 
 #define PRA_BYTES_NULL ((pra_bytes *)0)
+#define PRA_BYTES_EC_NONE 0x0U             /* no error */
+#define PRA_BYTES_EC_NULL_PTR 0x1U         /* null pointer */
+#define PRA_BYTES_EC_NULL_DATA_PTR 0x2U    /* null data pointer */
+#define PRA_BYTES_EC_DATA_LENGTH_ZERO 0x4U /* the length of data is zero */
 
 /* types */
 
@@ -25,15 +29,6 @@ typedef struct _pra_bytes
     uint16_t used_length; /*有效数据长度*/
     uint8_t *data;        /* 字节数组指针 */
 } pra_bytes;
-
-/* the error codes of pra_bytes_x functions */
-typedef enum _pra_bytes_ec
-{
-    PRA_BYTES_EC_NONE = 0x0U,             /* no error */
-    PRA_BYTES_EC_NULL_PTR = 0x1U,         /* null pointer */
-    PRA_BYTES_EC_NULL_DATA_PTR = 0x2U,    /* null data pointer */
-    PRA_BYTES_EC_DATA_LENGTH_ZERO = 0x4U, /* the length of data is zero */
-} pra_bytes_ec;
 
 /* variables */
 
@@ -50,7 +45,7 @@ typedef enum _pra_bytes_ec
  * @retval              PRA_BOOL_TRUE - the bytes pointer is not null and
  * bytes->bytes is not null; PRA_BOOL_FALSE - others
  */
-pra_boolean pra_bytes_not_null_ptr(pra_bytes *p_bytes, pra_bytes_ec *error_code);
+pra_boolean pra_bytes_not_null_ptr(pra_bytes *p_bytes, uint32_t *error_code);
 
 /**
  * @brief               initialize a bytes value
@@ -62,6 +57,6 @@ pra_boolean pra_bytes_not_null_ptr(pra_bytes *p_bytes, pra_bytes_ec *error_code)
  *                      PRA_BYTES_EC_DATA_LENGTH_ZERO;
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
-pra_boolean pra_bytes_init(pra_bytes *p_bytes, pra_bytes_ec *error_code);
+pra_boolean pra_bytes_init(pra_bytes *p_bytes, uint32_t *error_code);
 
 #endif

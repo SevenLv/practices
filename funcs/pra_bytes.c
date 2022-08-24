@@ -13,7 +13,7 @@
 
 /* functions */
 
-pra_boolean pra_bytes_not_null_ptr(pra_bytes *p_bytes, pra_bytes_ec *error_code)
+pra_boolean pra_bytes_not_null_ptr(pra_bytes *p_bytes, uint32_t *error_code)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -36,7 +36,7 @@ pra_boolean pra_bytes_not_null_ptr(pra_bytes *p_bytes, pra_bytes_ec *error_code)
     return result;
 }
 
-pra_boolean pra_bytes_init(pra_bytes *p_bytes, pra_bytes_ec *error_code)
+pra_boolean pra_bytes_init(pra_bytes *p_bytes, uint32_t *error_code)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
     u_int16_t i = 0U;

@@ -19,11 +19,11 @@ int main(void)
         .data = PRA_UINT8_NULL};
 
     pra_bytes *p_bytes = PRA_BYTES_NULL;
-    pra_bytes_ec actual_ec = PRA_BYTES_EC_NONE;
-    pra_bytes_ec expected_ec = PRA_BYTES_EC_NULL_PTR;
+    uint32_t actual_ec = PRA_BYTES_EC_NONE;
+    uint32_t expected_ec = PRA_BYTES_EC_NULL_PTR;
     pra_boolean expected = PRA_BOOL_FALSE;
 
-    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec)||
+    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) ||
         expected_ec != actual_ec)
     {
         result |= err_error1;
