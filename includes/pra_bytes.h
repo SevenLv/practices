@@ -40,4 +40,12 @@ typedef struct _pra_bytes
  */
 pra_boolean pra_bytes_not_null_ptr(pra_bytes *bytes);
 
+/**
+ * @brief           initialize a bytes value
+ * @note
+ * @param  *bytes:  the bytes pointer
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_bytes_init(pra_bytes *bytes);
+
 #endif

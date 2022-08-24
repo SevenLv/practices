@@ -32,3 +32,26 @@ pra_boolean pra_bytes_not_null_ptr(pra_bytes *bytes)
 
     return result;
 }
+
+pra_boolean pra_bytes_init(pra_bytes *bytes)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+    u_int16_t i = 0U;
+
+    if (PRA_BOOL_FALSE == pra_bytes_not_null_ptr(bytes))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        bytes->used_length = 0U;
+        for (i = 0U; i < bytes->length; i++)
+        {
+            bytes->bytes[i] = 0U;
+        }
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
