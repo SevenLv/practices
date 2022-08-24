@@ -19,6 +19,7 @@
 #define PRA_BYTES_EC_NULL_PTR 0x1U         /* null pointer */
 #define PRA_BYTES_EC_NULL_DATA_PTR 0x2U    /* null data pointer */
 #define PRA_BYTES_EC_DATA_LENGTH_ZERO 0x4U /* the length of data is zero */
+#define PRA_BYTES_EC_DIFFERENT_LENGTH 0x8U /* different length */
 
 /* types */
 
@@ -61,6 +62,23 @@ pra_boolean pra_bytes_not_null_ptr(
  */
 pra_boolean pra_bytes_init(
     pra_bytes *const p_bytes,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           copy the data and used length of bytes
+ * @note
+ * @param  p_src:   the source bytes
+ * @param  p_dst:   the destination bytes
+ * @param  p_ec:    output error codes:
+ *                  PRA_BYTES_EC_NULL_PTR;
+ *                  PRA_BYTES_EC_NULL_DATA_PTR;
+ *                  PRA_BYTES_EC_DATA_LENGTH_ZERO;
+ *                  PRA_BYTES_EC_DIFFERENT_LENGTH;
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_bytes_copy(
+    const pra_bytes *const p_src,
+    pra_bytes *const p_dst,
     uint32_t *const p_ec);
 
 #endif

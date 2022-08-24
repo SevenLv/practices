@@ -31,3 +31,7 @@ add_test(NAME test_bytes_not_null_ptr COMMAND test_bytes_not_null_ptr)
 add_executable(test_bytes_init test_bytes_init.c)
 target_link_libraries(test_bytes_init practices)
 add_test(NAME test_bytes_init COMMAND test_bytes_init)
+
+add_executable(test_bytes_copy test_bytes_copy.c)
+target_link_libraries(test_bytes_copy practices)
+add_test(NAME test_bytes_copy COMMAND test_bytes_copy)
