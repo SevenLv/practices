@@ -1,4 +1,4 @@
-#include "pra_types_def.h"
+#include "pra_boolean.h"
 
 int main(void);
 
@@ -11,26 +11,26 @@ int main(void)
 
     int result = err_none;
 
-    BOOLEAN expected = FALSE;
-    BOOLEAN value = TRUE;
+    pra_boolean expected = PRA_BOOL_FALSE;
+    pra_boolean value = PRA_BOOL_TRUE;
 
-    if (expected != BOOLEAN_NOT(value))
+    if (expected != pra_boolean_not(value))
     {
         result |= err_error1;
     }
 
-    expected = TRUE;
-    value = FALSE;
+    expected = PRA_BOOL_TRUE;
+    value = PRA_BOOL_FALSE;
 
-    if (expected != BOOLEAN_NOT(value))
+    if (expected != pra_boolean_not(value))
     {
         result |= err_error2;
     }
 
-    expected = TRUE;
-    value = BOOLEAN_UNKNOWN;
+    expected = PRA_BOOL_TRUE;
+    value = PRA_BOOL_UNKNOWN;
 
-    if (expected != BOOLEAN_NOT(value))
+    if (expected != pra_boolean_not(value))
     {
         result |= err_error3;
     }

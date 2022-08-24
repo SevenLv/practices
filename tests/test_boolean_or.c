@@ -1,4 +1,4 @@
-#include "pra_types_def.h"
+#include "pra_boolean.h"
 
 int main(void);
 
@@ -17,83 +17,83 @@ int main(void)
 
     int result = err_none;
 
-    BOOLEAN expected = TRUE;
-    BOOLEAN value1 = TRUE;
-    BOOLEAN value2 = TRUE;
+    pra_boolean expected = PRA_BOOL_TRUE;
+    pra_boolean value1 = PRA_BOOL_TRUE;
+    pra_boolean value2 = PRA_BOOL_TRUE;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error1;
     }
 
-    expected = TRUE;
-    value1 = TRUE;
-    value2 = FALSE;
+    expected = PRA_BOOL_TRUE;
+    value1 = PRA_BOOL_TRUE;
+    value2 = PRA_BOOL_FALSE;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error2;
     }
 
-    expected = TRUE;
-    value1 = TRUE;
-    value2 = BOOLEAN_UNKNOWN;
+    expected = PRA_BOOL_TRUE;
+    value1 = PRA_BOOL_TRUE;
+    value2 = PRA_BOOL_UNKNOWN;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error3;
     }
 
-    expected = TRUE;
-    value1 = FALSE;
-    value2 = TRUE;
+    expected = PRA_BOOL_TRUE;
+    value1 = PRA_BOOL_FALSE;
+    value2 = PRA_BOOL_TRUE;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error4;
     }
 
-    expected = FALSE;
-    value1 = FALSE;
-    value2 = FALSE;
+    expected = PRA_BOOL_FALSE;
+    value1 = PRA_BOOL_FALSE;
+    value2 = PRA_BOOL_FALSE;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error5;
     }
 
-    expected = FALSE;
-    value1 = FALSE;
-    value2 = BOOLEAN_UNKNOWN;
+    expected = PRA_BOOL_FALSE;
+    value1 = PRA_BOOL_FALSE;
+    value2 = PRA_BOOL_UNKNOWN;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error6;
     }
 
-    expected = TRUE;
-    value1 = BOOLEAN_UNKNOWN;
-    value2 = TRUE;
+    expected = PRA_BOOL_TRUE;
+    value1 = PRA_BOOL_UNKNOWN;
+    value2 = PRA_BOOL_TRUE;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error7;
     }
 
-    expected = FALSE;
-    value1 = BOOLEAN_UNKNOWN;
-    value2 = FALSE;
+    expected = PRA_BOOL_FALSE;
+    value1 = PRA_BOOL_UNKNOWN;
+    value2 = PRA_BOOL_FALSE;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error8;
     }
 
-    expected = FALSE;
-    value1 = BOOLEAN_UNKNOWN;
-    value2 = BOOLEAN_UNKNOWN;
+    expected = PRA_BOOL_FALSE;
+    value1 = PRA_BOOL_UNKNOWN;
+    value2 = PRA_BOOL_UNKNOWN;
 
-    if (expected != BOOLEAN_OR(value1, value2))
+    if (expected != pra_boolean_or(value1, value2))
     {
         result |= err_error9;
     }
