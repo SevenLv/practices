@@ -39,24 +39,24 @@ typedef struct _pra_bytes
  * not null
  * @note
  * @param  *p_bytes:    the bytes pointer
- * @param  *error_code: output error codes:
+ * @param  *p_ec:       output error codes:
  *                      PRA_BYTES_EC_NULL_PTR;
  *                      PRA_BYTES_EC_NULL_DATA_PTR;
  * @retval              PRA_BOOL_TRUE - the bytes pointer is not null and
  * bytes->bytes is not null; PRA_BOOL_FALSE - others
  */
-pra_boolean pra_bytes_not_null_ptr(pra_bytes *p_bytes, uint32_t *error_code);
+pra_boolean pra_bytes_not_null_ptr(pra_bytes *p_bytes, uint32_t *p_ec);
 
 /**
  * @brief               initialize a bytes value
  * @note
  * @param  *p_bytes:    the bytes pointer
- * @param  *error_code: output error codes:
+ * @param  *p_ec:       output error codes:
  *                      PRA_BYTES_EC_NULL_PTR;
  *                      PRA_BYTES_EC_NULL_DATA_PTR;
  *                      PRA_BYTES_EC_DATA_LENGTH_ZERO;
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
-pra_boolean pra_bytes_init(pra_bytes *p_bytes, uint32_t *error_code);
+pra_boolean pra_bytes_init(pra_bytes *p_bytes, uint32_t *p_ec);
 
 #endif
