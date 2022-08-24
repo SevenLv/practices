@@ -16,26 +16,35 @@ int main(void)
     pra_bytes bytes = {
         .length = 1,
         .used_length = 0,
-        .bytes = PRA_UINT8_NULL};
+        .data = PRA_UINT8_NULL};
 
     pra_bytes *p_bytes = PRA_BYTES_NULL;
+    pra_bytes_ec actual_ec = PRA_BYTES_EC_NONE;
+    pra_bytes_ec expected_ec = PRA_BYTES_EC_NULL_PTR;
     pra_boolean expected = PRA_BOOL_FALSE;
 
-    if (expected != pra_bytes_not_null_ptr(p_bytes))
+    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) &&
+        expected_ec == actual_ec)
     {
         result |= err_error1;
     }
 
     p_bytes = &bytes;
+    actual_ec = PRA_BYTES_EC_NONE;
+    expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
     expected = PRA_BOOL_FALSE;
-    if (expected != pra_bytes_not_null_ptr(p_bytes))
+    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) &&
+        expected_ec == actual_ec)
     {
         result |= err_error2;
     }
 
-    bytes.bytes = data;
+    bytes.data = data;
+    actual_ec = PRA_BYTES_EC_NONE;
+    expected_ec = PRA_BYTES_EC_NONE;
     expected = PRA_BOOL_TRUE;
-    if (expected != pra_bytes_not_null_ptr(p_bytes))
+    if (expected != pra_bytes_not_null_ptr(p_bytes, &actual_ec) &&
+        expected_ec == actual_ec)
     {
         result |= err_error3;
     }
