@@ -15,11 +15,12 @@
 /* macros */
 
 #define PRA_BYTES_NULL ((pra_bytes *)0)
-#define PRA_BYTES_EC_NONE 0x0U             /* no error */
-#define PRA_BYTES_EC_NULL_PTR 0x1U         /* null pointer */
-#define PRA_BYTES_EC_NULL_DATA_PTR 0x2U    /* null data pointer */
-#define PRA_BYTES_EC_DATA_LENGTH_ZERO 0x4U /* the length of data is zero */
-#define PRA_BYTES_EC_DIFFERENT_LENGTH 0x8U /* different length */
+#define PRA_BYTES_EC_NONE 0x0U               /* no error */
+#define PRA_BYTES_EC_NULL_PTR 0x1U           /* null pointer */
+#define PRA_BYTES_EC_NULL_DATA_PTR 0x2U      /* null data pointer */
+#define PRA_BYTES_EC_DATA_LENGTH_ZERO 0x4U   /* the length of data is zero */
+#define PRA_BYTES_EC_DIFFERENT_LENGTH 0x8U   /* different length */
+#define PRA_BYTES_EC_NOT_ENOUGH_LENGTH 0x10U /* not enough length */
 
 /* types */
 
@@ -79,6 +80,24 @@ pra_boolean pra_bytes_init(
 pra_boolean pra_bytes_copy(
     const pra_bytes *const p_src,
     pra_bytes *const p_dst,
+    uint32_t *const p_ec);
+
+/**
+ * @brief               append some bytes to a bytes struct
+ * @note
+ * @param  p_bytes:     the bytes
+ * @param  data[]:      the new bytes
+ * @param  data_length: the length of new bytes
+ * @param  *p_ec:       output error codes:
+ *                      PRA_BYTES_EC_NULL_PTR;
+ *                      PRA_BYTES_EC_NULL_DATA_PTR;
+ *                      PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_bytes_append_u8_array(
+    pra_bytes *const p_bytes,
+    uint8_t data[],
+    uint16_t data_length,
     uint32_t *const p_ec);
 
 #endif

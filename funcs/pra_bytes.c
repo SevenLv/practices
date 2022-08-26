@@ -117,3 +117,47 @@ pra_boolean pra_bytes_copy(
 
     return result;
 }
+
+pra_boolean pra_bytes_append_u8_array(
+    pra_bytes *const p_bytes,
+    uint8_t data[],
+    uint16_t data_length,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+    uint16_t i = 0U;
+
+    if (PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_bytes, p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_UINT8_NULL == data)
+    {
+        *p_ec |= PRA_BYTES_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        if (0U == data_length)
+        {
+            result = PRA_BOOL_TRUE;
+        }
+        else if (p_bytes->length < p_bytes->used_length + data_length)
+        {
+            *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+            result = PRA_BOOL_FALSE;
+        }
+        else
+        {
+            for (i = 0U; i < data_length; i++)
+            {
+                p_bytes->data[p_bytes->used_length] = data[i];
+                p_bytes->used_length++;
+            }
+
+            result = PRA_BOOL_TRUE;
+        }
+    }
+
+    return result;
+}
