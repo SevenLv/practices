@@ -89,6 +89,22 @@ int main(void)
     {
         result |= err_error5;
     }
+    else
+    {
+        if (10 != bytes.used_length)
+        {
+            result |= err_error6;
+        }
+
+        for (uint16_t i = 5U; i < 10U; i++)
+        {
+            if (data_to_append[i - 5U] != data[i])
+            {
+                result |= err_error7;
+                break;
+            }
+        }
+    }
 
     return result;
 }
