@@ -47,7 +47,7 @@ pra_boolean pra_bytes_init(
     uint32_t *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
-    u_int16_t i = 0U;
+    uint16_t i = 0U;
 
     if (PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_bytes, p_ec))
     {
