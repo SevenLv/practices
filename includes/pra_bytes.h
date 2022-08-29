@@ -164,4 +164,36 @@ pra_boolean pra_bytes_append_u16_le(
     const uint16_t data,
     uint32_t *const p_ec);
 
+/**
+ * @brief           append a 32-bits value to a bytes struct
+ * @note            big endianness
+ * @param  p_bytes: the bytes
+ * @param  data:    the 32-bits value
+ * @param  p_ec:    output error codes:
+ *                  PRA_BYTES_EC_NULL_PTR;
+ *                  PRA_BYTES_EC_NULL_DATA_PTR;
+ *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_bytes_append_u32_be(
+    pra_bytes *const p_bytes,
+    const uint32_t data,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           append a 32-bits value to a bytes struct
+ * @note            little endianness
+ * @param  p_bytes: the bytes
+ * @param  data:    the 32-bits value
+ * @param  p_ec:    output error codes:
+ *                  PRA_BYTES_EC_NULL_PTR;
+ *                  PRA_BYTES_EC_NULL_DATA_PTR;
+ *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_bytes_append_u32_le(
+    pra_bytes *const p_bytes,
+    const uint32_t data,
+    uint32_t *const p_ec);
+
 #endif

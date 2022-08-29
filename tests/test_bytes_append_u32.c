@@ -5,10 +5,10 @@
 uint32_t main(void);
 
 static uint32_t test_func(
-    uint16_t data_to_append,
+    uint32_t data_to_append,
     pra_boolean (*func)(
         pra_bytes *const,
-        const uint16_t,
+        const uint32_t,
         uint32_t *const));
 
 uint32_t main(void)
@@ -16,28 +16,28 @@ uint32_t main(void)
     uint32_t result = err_none;
 
     result = test_func(
-                 0x090AU,
-                 pra_bytes_append_u16_be) ||
+                 0x0708090AU,
+                 pra_bytes_append_u32_be) ||
              test_func(
-                 0x0A09U,
-                 pra_bytes_append_u16_le);
+                 0x0A090807U,
+                 pra_bytes_append_u32_le);
 
     return result;
 }
 
 static uint32_t test_func(
-    uint16_t data_to_append,
+    uint32_t data_to_append,
     pra_boolean (*func)(
         pra_bytes *const,
-        const uint16_t,
+        const uint32_t,
         uint32_t *const))
 {
     uint32_t result = err_none;
 
-    uint8_t data[10] = {1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U};
+    uint8_t data[10] = {1U, 2U, 3U, 4U, 5U, 6U};
     pra_bytes bytes = {
         .length = 10,
-        .used_length = 8,
+        .used_length = 6,
         .data = data};
     pra_bytes *p_bytes = &bytes;
     uint32_t actual_ec = PRA_BYTES_EC_NONE;
@@ -71,7 +71,7 @@ static uint32_t test_func(
     }
 
     bytes.data = data;
-    bytes.used_length = 9;
+    bytes.used_length = 7;
     actual_ec = PRA_BYTES_EC_NONE;
     expected_ec = PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
     expected_result = PRA_BOOL_FALSE;
@@ -84,7 +84,7 @@ static uint32_t test_func(
         result |= err_error3;
     }
 
-    bytes.used_length = 8;
+    bytes.used_length = 6;
     actual_ec = PRA_BYTES_EC_NONE;
     expected_ec = PRA_BYTES_EC_NONE;
     expected_result = PRA_BOOL_TRUE;
@@ -94,20 +94,20 @@ static uint32_t test_func(
                                &actual_ec) ||
         expected_ec != actual_ec)
     {
-        result |= err_error4;
-    }
-    else
-    {
         if (10 != bytes.used_length)
         {
             result |= err_error5;
         }
-        else if (0x09 != bytes.data[8] ||
-                 0x0A != bytes.data[9])
+        else if (0x07U != bytes.data[6U] ||
+                 0x08U != bytes.data[7U] ||
+                 0x09U != bytes.data[8U] ||
+                 0x0AU != bytes.data[9U])
         {
             result |= err_error6;
         }
     }
+
+    // TODO:
 
     return result;
 }
