@@ -6,7 +6,7 @@ uint32_t main(void);
 
 uint32_t main(void)
 {
-    int result = err_none;
+    uint32_t result =err_none;
 
     uint8_t src[10] = {1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U};
     uint8_t dst[10] = {0U};

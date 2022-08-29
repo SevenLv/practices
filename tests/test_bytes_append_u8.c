@@ -6,7 +6,7 @@ uint32_t main(void);
 
 uint32_t main(void)
 {
-    int result = err_none;
+    uint32_t result =err_none;
 
     uint8_t data[10] = {1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U};
     uint8_t data_to_append = 10U;
@@ -75,11 +75,11 @@ uint32_t main(void)
     {
         if (10 != bytes.used_length)
         {
-            result |= err_error7;
+            result |= err_error5;
         }
         else if (data_to_append != bytes.data[9])
         {
-            result |= err_error8;
+            result |= err_error6;
         }
     }
 

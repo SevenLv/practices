@@ -6,7 +6,7 @@ uint32_t main(void);
 
 uint32_t main(void)
 {
-    int result = err_none;
+    uint32_t result =err_none;
 
     uint8_t data[10] = {0xFF};
 
