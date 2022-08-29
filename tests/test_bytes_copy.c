@@ -2,9 +2,9 @@
 #include "pra_bytes.h"
 #include "pra_defs.h"
 
-int main(void);
+uint32_t main(void);
 
-int main(void)
+uint32_t main(void)
 {
     int result = err_none;
 

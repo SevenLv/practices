@@ -1,9 +1,10 @@
 #include "test.h"
 #include "pra_boolean.h"
+#include "stdint.h"
 
-int main(void);
+uint32_t main(void);
 
-int main(void)
+uint32_t main(void)
 {
     int result = err_none;
 

@@ -2,9 +2,9 @@
 #include "pra_defs.h"
 #include "test.h"
 
-int main(void);
+uint32_t main(void);
 
-int main(void)
+uint32_t main(void)
 {
     int result = err_none;
 
