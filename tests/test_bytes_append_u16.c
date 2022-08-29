@@ -2,7 +2,7 @@
 #include "pra_defs.h"
 #include "test.h"
 
-uint32_t main(void);
+int main(void);
 
 static uint32_t test_func(
     uint16_t data_to_append,
@@ -11,9 +11,9 @@ static uint32_t test_func(
         const uint16_t,
         uint32_t *const));
 
-uint32_t main(void)
+int main(void)
 {
-    uint32_t result = err_none;
+    int result = err_none;
 
     result = test_func(
                  0x090AU,
@@ -32,7 +32,7 @@ static uint32_t test_func(
         const uint16_t,
         uint32_t *const))
 {
-    uint32_t result = err_none;
+    int result = err_none;
 
     uint8_t data[10] = {1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U};
     pra_bytes bytes = {

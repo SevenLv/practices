@@ -2,11 +2,11 @@
 #include "pra_boolean.h"
 #include "stdint.h"
 
-uint32_t main(void);
+int main(void);
 
-uint32_t main(void)
+int main(void)
 {
-    uint32_t result =err_none;
+    int result = err_none;
 
     pra_boolean expected = PRA_BOOL_TRUE;
     pra_boolean value1 = PRA_BOOL_TRUE;

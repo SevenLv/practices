@@ -2,11 +2,11 @@
 #include "pra_bytes.h"
 #include "pra_defs.h"
 
-uint32_t main(void);
+int main(void);
 
-uint32_t main(void)
+int main(void)
 {
-    uint32_t result =err_none;
+    int result = err_none;
 
     uint8_t data[1] = {0};
     pra_bytes bytes = {
