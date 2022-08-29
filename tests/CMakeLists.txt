@@ -43,3 +43,7 @@ add_test(NAME test_bytes_append_u8_array COMMAND test_bytes_append_u8_array)
 add_executable(test_bytes_append test_bytes_append.c)
 target_link_libraries(test_bytes_append practices)
 add_test(NAME test_bytes_append COMMAND test_bytes_append)
+
+add_executable(test_bytes_append_u8 test_bytes_append_u8.c)
+target_link_libraries(test_bytes_append_u8 practices)
+add_test(NAME test_bytes_append_u8 COMMAND test_bytes_append_u8)

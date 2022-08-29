@@ -116,4 +116,20 @@ pra_boolean pra_bytes_append(
     const pra_bytes *const p_data,
     uint32_t *const p_ec);
 
+/**
+ * @brief           append a byte to a bytes struct
+ * @note
+ * @param  p_bytes: the bytes
+ * @param  data:    the byte to append
+ * @param  p_ec:    output error codes:
+ *                  PRA_BYTES_EC_NULL_PTR;
+ *                  PRA_BYTES_EC_NULL_DATA_PTR;
+ *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_bytes_append_u8(
+    pra_bytes *const p_bytes,
+    const uint8_t data,
+    uint32_t *const p_ec);
+
 #endif

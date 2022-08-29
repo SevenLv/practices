@@ -193,3 +193,30 @@ pra_boolean pra_bytes_append(
 
     return result;
 }
+
+pra_boolean pra_bytes_append_u8(
+    pra_bytes *const p_bytes,
+    const uint8_t data,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_bytes, p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (p_bytes->length < (p_bytes->used_length + 1))
+    {
+        *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_bytes->data[p_bytes->used_length] = data;
+        p_bytes->used_length++;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}

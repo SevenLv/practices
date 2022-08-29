@@ -8,12 +8,11 @@ int main(void)
 {
     int result = err_none;
 
-    uint8_t data[10] = {1U, 2U, 3U, 4U, 5U};
-    uint8_t data_to_append[5] = {6U, 7U, 8U, 9U, 10U};
-    uint16_t data_to_append_length = 5;
+    uint8_t data[10] = {1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U};
+    uint8_t data_to_append = 10U;
     pra_bytes bytes = {
         .length = 10,
-        .used_length = 5,
+        .used_length = 9,
         .data = data};
     pra_bytes *p_bytes = PRA_BYTES_NULL;
     uint32_t actual_ec = PRA_BYTES_EC_NONE;
@@ -23,10 +22,9 @@ int main(void)
     actual_ec = PRA_BYTES_EC_NONE;
     expected_ec = PRA_BYTES_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
-    if (expected_result != pra_bytes_append_u8_array(
+    if (expected_result != pra_bytes_append_u8(
                                PRA_BYTES_NULL,
                                data_to_append,
-                               data_to_append_length,
                                &actual_ec) ||
         expected_ec != actual_ec)
     {
@@ -38,10 +36,9 @@ int main(void)
     actual_ec = PRA_BYTES_EC_NONE;
     expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
     expected_result = PRA_BOOL_FALSE;
-    if (expected_result != pra_bytes_append_u8_array(
+    if (expected_result != pra_bytes_append_u8(
                                p_bytes,
                                data_to_append,
-                               data_to_append_length,
                                &actual_ec) ||
         expected_ec != actual_ec)
     {
@@ -49,62 +46,40 @@ int main(void)
     }
 
     bytes.data = data;
+    bytes.used_length = 10;
     actual_ec = PRA_BYTES_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_PTR;
+    expected_ec = PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
     expected_result = PRA_BOOL_FALSE;
-    if (expected_result != pra_bytes_append_u8_array(
+    if (expected_result != pra_bytes_append_u8(
                                p_bytes,
-                               PRA_UINT8_NULL,
-                               data_to_append_length,
+                               data_to_append,
                                &actual_ec) ||
         expected_ec != actual_ec)
     {
         result |= err_error3;
     }
 
-    data_to_append_length = 6;
+    bytes.used_length = 9;
     actual_ec = PRA_BYTES_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
-    expected_result = PRA_BOOL_FALSE;
-    if (expected_result != pra_bytes_append_u8_array(
+    expected_ec = PRA_BYTES_EC_NONE;
+    expected_result = PRA_BOOL_TRUE;
+    if (expected_result != pra_bytes_append_u8(
                                p_bytes,
                                data_to_append,
-                               data_to_append_length,
                                &actual_ec) ||
         expected_ec != actual_ec)
     {
         result |= err_error4;
     }
-
-    data_to_append_length = 5;
-    actual_ec = PRA_BYTES_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NONE;
-    expected_result = PRA_BOOL_TRUE;
-    if (expected_result != pra_bytes_append_u8_array(
-                               p_bytes,
-                               data_to_append,
-                               data_to_append_length,
-                               &actual_ec) ||
-        expected_ec != actual_ec)
-    {
-        result |= err_error5;
-    }
     else
     {
         if (10 != bytes.used_length)
         {
-            result |= err_error6;
+            result |= err_error7;
         }
-        else
+        else if (data_to_append != bytes.data[9])
         {
-            for (uint16_t i = 5U; i < 10U; i++)
-            {
-                if (data_to_append[i - 5U] != data[i])
-                {
-                    result |= err_error7;
-                    break;
-                }
-            }
+            result |= err_error8;
         }
     }
 
