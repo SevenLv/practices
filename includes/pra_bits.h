@@ -10,28 +10,33 @@
 
 /* includes */
 #include "pra_boolean.h"
+#include "stdint.h"
 
 /* macros */
 
-/* types */
+#define PRA_BITS_EC_NONE 0x0U        /* no error */
+#define PRA_BITS_EC_NULL_PTR 0x1U    /* null pointer */
+#define PRA_BITS_INVALID_OFFSET 0x2U /* invalid bit offset */
 
-/* the bit value */
-typedef enum _pra_bit {
-  PRA_BIT_UNKNOWN = PRA_BOOL_UNKNOWN, /* unknown bit value */
-  PRA_BIT_INACTIVED = PRA_BOOL_FALSE, /* inactived */
-  PRA_BIT_ACTIVED = PRA_BOOL_TRUE     /* actived */
-} pra_bit;
+/* types */
 
 /* variables */
 
 /* functions */
 
 /**
- * @brief           determins a pra_bit value equals to PRA_BIT_ACTIVED
+ * @brief               get the bit state of a 8-bit value
  * @note
- * @param  value:   the pra_bit vlaue
- * @retval          PRA_BIT_ACTIVED - if the value equals to PRA_BIT_ACTIVED; PRA_BIT_INACTIVED - others
+ * @param  value:       the 8-bit value
+ * @param  bit_offset:  the offset of the bit
+ * @param  p_actived:   output the bit is actived or not
+ * @param  p_ec:        output error code:
+ * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
-pra_bit pra_bit_is_actived(pra_bit value);
+pra_boolean pra_bits_u8_get(
+    uint8_t value,
+    uint8_t bit_offset,
+    pra_boolean *const p_actived,
+    uint32_t *const p_ec);
 
 #endif

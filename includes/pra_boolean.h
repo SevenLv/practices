@@ -14,6 +14,8 @@
 
 /* macros */
 
+#define PRA_BOOL_NULL ((pra_boolean *)0)
+
 /* the boolean enum type */
 typedef enum _pra_boolean
 {
@@ -55,7 +57,7 @@ pra_boolean pra_boolean_and(pra_boolean value1, pra_boolean value2);
 
 /**
  * @brief           the OR operation for pra_boolean
- * @note   
+ * @note
  * @param  value1:  the first pra_boolean value
  * @param  value2:  the second pra_boolean value
  * @retval          PRA_BOOL_TRUE - if any value equals to PRA_BOOL_TRUE; PRA_BOOL_FALSE - others;
@@ -64,7 +66,7 @@ pra_boolean pra_boolean_or(pra_boolean value1, pra_boolean value2);
 
 /**
  * @brief           the XOR operation for pra_boolean
- * @note   
+ * @note
  * @param  value1:  the first pra_boolean value
  * @param  value2:  the second pra_boolean value
  * @retval          PRA_BOOL_TRUE - if value1 equals to value2; PRA_BOOL_FALSE - others
