@@ -40,7 +40,7 @@ pra_boolean pra_bits_u8_get(
     }
     else if (MAX_U8_OFFSET < bit_offset)
     {
-        *p_ec |= PRA_BITS_INVALID_OFFSET;
+        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else

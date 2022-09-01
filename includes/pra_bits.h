@@ -14,9 +14,9 @@
 
 /* macros */
 
-#define PRA_BITS_EC_NONE 0x0U        /* no error */
-#define PRA_BITS_EC_NULL_PTR 0x1U    /* null pointer */
-#define PRA_BITS_INVALID_OFFSET 0x2U /* invalid bit offset */
+#define PRA_BITS_EC_NONE 0x0U           /* no error */
+#define PRA_BITS_EC_NULL_PTR 0x1U       /* null pointer */
+#define PRA_BITS_EC_INVALID_OFFSET 0x2U /* invalid bit offset */
 
 /* types */
 
