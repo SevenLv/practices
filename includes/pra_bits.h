@@ -92,4 +92,21 @@ pra_boolean pra_bits_u16_set(
     pra_boolean actived,
     uint32_t *const p_ec);
 
+/**
+ * @brief               get the bit state of a 32-bit value
+ * @note
+ * @param  value:       the 32-bit value
+ * @param  bit_offset:  the offset of the bit
+ * @param  p_actived:   output the bit is actived or not
+ * @param  p_ec:        output error code:
+ *                      PRA_BITS_EC_NULL_PTR
+ *                      PRA_BITS_EC_INVALID_OFFSET
+ * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_bits_u32_get(
+    uint32_t value,
+    uint8_t bit_offset,
+    pra_boolean *const p_actived,
+    uint32_t *const p_ec);
+
 #endif
