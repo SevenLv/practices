@@ -31,12 +31,31 @@
  * @param  bit_offset:  the offset of the bit
  * @param  p_actived:   output the bit is actived or not
  * @param  p_ec:        output error code:
+ *                      PRA_BITS_EC_NULL_PTR
+ *                      PRA_BITS_EC_INVALID_OFFSET
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u8_get(
     uint8_t value,
     uint8_t bit_offset,
     pra_boolean *const p_actived,
+    uint32_t *const p_ec);
+
+/**
+ * @brief               set the bit state of a 8-bit value
+ * @note   
+ * @param  *p_value:    the pointer of the 8-bit value
+ * @param  bit_offset:  the offset of the bit
+ * @param  actived:     the bit state
+ * @param  p_ec:        output error code:
+ *                      PRA_BITS_EC_NULL_PTR
+ *                      PRA_BITS_EC_INVALID_OFFSET
+ * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_bits_u8_set(
+    uint8_t *const p_value,
+    uint8_t bit_offset,
+    pra_boolean actived,
     uint32_t *const p_ec);
 
 #endif

@@ -18,6 +18,10 @@ static uint8_t u8_masks[8] = {
     0x01U, 0x02U, 0x04U, 0x08U,
     0x10U, 0x20U, 0x40U, 0x80U};
 
+static uint8_t u8_reversed_masks[8] = {
+    0xFEU, 0xFDU, 0xFBU, 0xF7U,
+    0xEFU, 0xDFU, 0xBFU, 0x7FU};
+
 /* functions */
 
 pra_boolean pra_bits_u8_get(
@@ -55,6 +59,44 @@ pra_boolean pra_bits_u8_get(
             *p_actived = PRA_BOOL_FALSE;
         }
 
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_bits_u8_set(
+    uint8_t *const p_value,
+    uint8_t bit_offset,
+    pra_boolean actived,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_UINT8_NULL == p_value)
+    {
+        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (MAX_U8_OFFSET < bit_offset)
+    {
+        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        if (PRA_BOOL_TRUE == pra_boolean_is_true(actived))
+        {
+            *p_value |= u8_masks[bit_offset];
+        }
+        else
+        {
+            *p_value &= u8_reversed_masks[bit_offset];
+        }
         result = PRA_BOOL_TRUE;
     }
 

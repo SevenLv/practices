@@ -59,3 +59,7 @@ add_test(NAME test_bytes_append_u32 COMMAND test_bytes_append_u32)
 add_executable(test_bits_u8_get test_bits_u8_get.c)
 target_link_libraries(test_bits_u8_get practices)
 add_test(NAME test_bits_u8_get COMMAND test_bits_u8_get)
+
+add_executable(test_bits_u8_set test_bits_u8_set.c)
+target_link_libraries(test_bits_u8_set practices)
+add_test(NAME test_bits_u8_set COMMAND test_bits_u8_set)
