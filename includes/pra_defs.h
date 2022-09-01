@@ -14,6 +14,7 @@
 /* macros */
 
 #define PRA_UINT8_NULL ((uint8_t *)0)
+#define PRA_UINT16_NULL ((uint16_t *)0)
 #define PRA_UINT32_NULL ((uint32_t *)0)
 
 /* types */

@@ -67,3 +67,7 @@ add_test(NAME test_bits_u8_set COMMAND test_bits_u8_set)
 add_executable(test_bits_u16_get test_bits_u16_get.c)
 target_link_libraries(test_bits_u16_get practices)
 add_test(NAME test_bits_u16_get COMMAND test_bits_u16_get)
+
+add_executable(test_bits_u16_set test_bits_u16_set.c)
+target_link_libraries(test_bits_u16_set practices)
+add_test(NAME test_bits_u16_set COMMAND test_bits_u16_set)
