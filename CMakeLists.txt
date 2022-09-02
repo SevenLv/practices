@@ -6,7 +6,13 @@ enable_testing()
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output)
+
+if(CMAKE_BUILD_TYPE MATCHES "Debug")
+    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/debug)
+else()
+    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/release)
+endif()
+
 set(CMAKE_STATIC_LIBRARY_PREFIX)
 include(CPack)
 
