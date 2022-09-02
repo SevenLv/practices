@@ -7,8 +7,8 @@ int test_get(get_func get)
     int result = err_none;
 
     pra_crc16 crc = {0};
-    uint32_t expected_ec = PRA_CRC16_EC_NONE;
-    uint32_t actual_ec = PRA_CRC16_EC_NONE;
+    uint32_t expected_ec = PRA_CRC_EC_NONE;
+    uint32_t actual_ec = PRA_CRC_EC_NONE;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     expected_result = PRA_BOOL_FALSE;
@@ -18,8 +18,8 @@ int test_get(get_func get)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC16_EC_NULL_PTR;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_NULL_PTR;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != get(PRA_CRC16_NULL, &actual_ec) ||
         expected_ec != actual_ec)
     {
@@ -27,8 +27,8 @@ int test_get(get_func get)
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_CRC16_EC_NONE;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_NONE;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != get(&crc, &actual_ec) ||
         expected_ec != actual_ec)
     {
@@ -43,8 +43,8 @@ int test_init(get_func get)
     int result = err_none;
 
     pra_crc16 crc = {0};
-    uint32_t expected_ec = PRA_CRC16_EC_NONE;
-    uint32_t actual_ec = PRA_CRC16_EC_NONE;
+    uint32_t expected_ec = PRA_CRC_EC_NONE;
+    uint32_t actual_ec = PRA_CRC_EC_NONE;
 
     pra_boolean expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_crc16_init(
@@ -55,8 +55,8 @@ int test_init(get_func get)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC16_EC_NULL_PTR;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_NULL_PTR;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != pra_crc16_init(
                                PRA_CRC16_NULL,
                                &actual_ec) ||
@@ -72,8 +72,8 @@ int test_init(get_func get)
     else
     {
         expected_result = PRA_BOOL_TRUE;
-        expected_ec = PRA_CRC16_EC_NONE;
-        actual_ec = PRA_CRC16_EC_NONE;
+        expected_ec = PRA_CRC_EC_NONE;
+        actual_ec = PRA_CRC_EC_NONE;
         if (expected_result != pra_crc16_init(
                                    &crc,
                                    &actual_ec) ||
@@ -99,8 +99,8 @@ int test_compute(
     uint32_t length = 9U;
     uint16_t actual_crc_result = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    uint32_t expected_ec = PRA_CRC16_EC_NONE;
-    uint32_t actual_ec = PRA_CRC16_EC_NONE;
+    uint32_t expected_ec = PRA_CRC_EC_NONE;
+    uint32_t actual_ec = PRA_CRC_EC_NONE;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_crc16_compute(
@@ -115,8 +115,8 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC16_EC_NULL_PTR;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_NULL_PTR;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != pra_crc16_compute(
                                PRA_CRC16_NULL,
                                bytes,
@@ -140,8 +140,8 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC16_EC_NULL_PTR;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_NULL_PTR;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != pra_crc16_compute(
                                &crc,
                                PRA_UINT8_NULL,
@@ -155,8 +155,8 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC16_EC_NULL_PTR;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_NULL_PTR;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != pra_crc16_compute(
                                &crc,
                                bytes,
@@ -171,8 +171,8 @@ int test_compute(
 
     crc.initialized = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC16_EC_NOT_INIT;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_NOT_INIT;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != pra_crc16_compute(
                                &crc,
                                bytes,
@@ -188,8 +188,8 @@ int test_compute(
     crc.initialized = PRA_BOOL_TRUE;
     offset = length;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC16_EC_INVALID_OFFSET;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_INVALID_OFFSET;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != pra_crc16_compute(
                                &crc,
                                bytes,
@@ -205,8 +205,8 @@ int test_compute(
     offset = 0;
     length = 0;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC16_EC_INVALID_LENGTH;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_INVALID_LENGTH;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != pra_crc16_compute(
                                &crc,
                                bytes,
@@ -222,8 +222,8 @@ int test_compute(
     offset = 0;
     length = 9;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_CRC16_EC_NONE;
-    actual_ec = PRA_CRC16_EC_NONE;
+    expected_ec = PRA_CRC_EC_NONE;
+    actual_ec = PRA_CRC_EC_NONE;
     if (expected_result != pra_crc16_compute(
                                &crc,
                                bytes,

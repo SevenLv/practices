@@ -10,19 +10,11 @@
 
 /* includes */
 #include "pra_boolean.h"
+#include "pra_crc.h"
 #include "stdint.h"
 
 /* macros */
-
 #define PRA_CRC8_NULL ((pra_crc8 *)0)
-
-#define PRA_CRC8_TABLE_SIZE 0x100U
-
-#define PRA_CRC8_EC_NONE 0x0U           /* no error */
-#define PRA_CRC8_EC_NULL_PTR 0x1U       /* null pointer */
-#define PRA_CRC8_EC_NOT_INIT 0x2U       /* not initialized */
-#define PRA_CRC8_EC_INVALID_OFFSET 0x4U /* invalid offset */
-#define PRA_CRC8_EC_INVALID_LENGTH 0x8U /* invalid length */
 
 /* types */
 
@@ -30,7 +22,7 @@
 typedef struct _pra_crc8
 {
     pra_boolean initialized;             /* initialized flag */
-    uint8_t table[PRA_CRC8_TABLE_SIZE]; /* the crc8 table */
+    uint8_t table[PRA_CRC_TABLE_SIZE]; /* the crc8 table */
     uint8_t polynomial;                 /* polynomial */
     uint8_t initial_value;               /* initial value */
     uint8_t xor_out;                    /* xor out*/
@@ -47,7 +39,7 @@ typedef struct _pra_crc8
  * @note
  * @param  p_crc:   the crc struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC8_EC_NULL_PTR
+ *                  PRA_CRC_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_init(
@@ -63,10 +55,10 @@ pra_boolean pra_crc8_init(
  * @param  length:      length of the bytes
  * @param  p_result:    the crc result
  * @param  p_ec:        output error code:
- *                      PRA_CRC8_EC_NULL_PTR
- *                      PRA_CRC8_EC_NOT_INIT
- *                      PRA_CRC8_EC_INVALID_OFFSET
- *                      PRA_CRC8_EC_INVALID_LENGTH
+ *                      PRA_CRC_EC_NULL_PTR
+ *                      PRA_CRC_EC_NOT_INIT
+ *                      PRA_CRC_EC_INVALID_OFFSET
+ *                      PRA_CRC_EC_INVALID_LENGTH
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_compute(
@@ -78,11 +70,33 @@ pra_boolean pra_crc8_compute(
     uint32_t *const p_ec);
 
 /**
+ * @brief                   get new crc-8 struct
+ * @note
+ * @param  p_crc:           the crc-8 struct pointer
+ * @param  polynomial:      polynomial
+ * @param  initial_value:   initial value
+ * @param  xor_out:         xor out
+ * @param  ref_in:          ref in
+ * @param  ref_out:         ref out
+ * @param  p_ec:            output error code:
+ *                          PRA_CRC_EC_NULL_PTR
+ * @retval                  PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc8_get(
+    pra_crc8 *const p_crc,
+    uint8_t polynomial,
+    uint8_t initial_value,
+    uint8_t xor_out,
+    pra_boolean ref_in,
+    pra_boolean ref_out,
+    uint32_t *const p_ec);
+
+/**
  * @brief           get new crc-8 struct
  * @note
  * @param  p_crc:   the crc-8 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC8_EC_NULL_PTR
+ *                  PRA_CRC_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_get_default(
@@ -94,7 +108,7 @@ pra_boolean pra_crc8_get_default(
  * @note
  * @param  p_crc:   the crc-8 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC8_EC_NULL_PTR
+ *                  PRA_CRC_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_get_itu(
@@ -106,7 +120,7 @@ pra_boolean pra_crc8_get_itu(
  * @note
  * @param  p_crc:   the crc-8 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC8_EC_NULL_PTR
+ *                  PRA_CRC_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_get_rohc(
@@ -118,7 +132,7 @@ pra_boolean pra_crc8_get_rohc(
  * @note
  * @param  p_crc:   the crc-8 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC8_EC_NULL_PTR
+ *                  PRA_CRC_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_get_maxim(
@@ -130,7 +144,7 @@ pra_boolean pra_crc8_get_maxim(
  * @note
  * @param  p_crc:   the crc-8 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC8_EC_NULL_PTR
+ *                  PRA_CRC_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_get_cdma2000(
@@ -142,7 +156,7 @@ pra_boolean pra_crc8_get_cdma2000(
  * @note
  * @param  p_crc:   the crc-8 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC8_EC_NULL_PTR
+ *                  PRA_CRC_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_get_wcdma(
