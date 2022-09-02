@@ -236,3 +236,59 @@ pra_boolean pra_crc32_get_default(
         PRA_BOOL_TRUE,
         p_ec);
 }
+
+pra_boolean pra_crc32_get_mpeg2(
+    pra_crc32 *const p_crc,
+    uint32_t *const p_ec)
+{
+    return pra_crc32_get(
+        p_crc,
+        0x04C11DB7,
+        0xFFFFFFFF,
+        0x00000000,
+        PRA_BOOL_FALSE,
+        PRA_BOOL_FALSE,
+        p_ec);
+}
+
+pra_boolean pra_crc32_get_bzip2(
+    pra_crc32 *const p_crc,
+    uint32_t *const p_ec)
+{
+    return pra_crc32_get(
+        p_crc,
+        0x04C11DB7,
+        0xFFFFFFFF,
+        0xFFFFFFFF,
+        PRA_BOOL_FALSE,
+        PRA_BOOL_FALSE,
+        p_ec);
+}
+
+pra_boolean pra_crc32_get_posix(
+    pra_crc32 *const p_crc,
+    uint32_t *const p_ec)
+{
+    return pra_crc32_get(
+        p_crc,
+        0x04C11DB7,
+        0x00000000,
+        0xFFFFFFFF,
+        PRA_BOOL_FALSE,
+        PRA_BOOL_FALSE,
+        p_ec);
+}
+
+pra_boolean pra_crc32_get_jamcrc(
+    pra_crc32 *const p_crc,
+    uint32_t *const p_ec)
+{
+    return pra_crc32_get(
+        p_crc,
+        0x04C11DB7,
+        0xFFFFFFFF,
+        0x00000000,
+        PRA_BOOL_TRUE,
+        PRA_BOOL_TRUE,
+        p_ec);
+}

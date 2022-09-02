@@ -103,4 +103,52 @@ pra_boolean pra_crc32_get_default(
     pra_crc32 *const p_crc,
     uint32_t *const p_ec);
 
+/**
+ * @brief           get new crc-32/mpeg2 struct
+ * @note
+ * @param  p_crc:   the crc-32 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc32_get_mpeg2(
+    pra_crc32 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-32/bzip2 struct
+ * @note
+ * @param  p_crc:   the crc-32 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc32_get_bzip2(
+    pra_crc32 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-32/posix struct
+ * @note
+ * @param  p_crc:   the crc-32 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc32_get_posix(
+    pra_crc32 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-32/jamcrc struct
+ * @note
+ * @param  p_crc:   the crc-32 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc32_get_jamcrc(
+    pra_crc32 *const p_crc,
+    uint32_t *const p_ec);
+
 #endif
