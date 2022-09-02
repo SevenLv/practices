@@ -89,4 +89,88 @@ pra_boolean pra_crc16_get_arc(
     pra_crc16 *const p_crc,
     uint32_t *const p_ec);
 
+/**
+ * @brief           get new crc-16/maxim struct
+ * @note
+ * @param  p_crc:   the crc-16 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC16_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc16_get_maxim(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-16/usb struct
+ * @note
+ * @param  p_crc:   the crc-16 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC16_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc16_get_usb(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-16/modbus struct
+ * @note
+ * @param  p_crc:   the crc-16 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC16_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc16_get_modbus(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-16/ccitt-false struct
+ * @note
+ * @param  p_crc:   the crc-16 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC16_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc16_get_ccitt_false(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-16/x25 struct
+ * @note
+ * @param  p_crc:   the crc-16 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC16_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc16_get_x25(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-16/xmodem struct
+ * @note
+ * @param  p_crc:   the crc-16 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC16_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc16_get_xmodem(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-16/dnp struct
+ * @note
+ * @param  p_crc:   the crc-16 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC16_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc16_get_dnp(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec);
+
 #endif

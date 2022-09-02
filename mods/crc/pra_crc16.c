@@ -203,3 +203,213 @@ pra_boolean pra_crc16_get_arc(
 
     return result;
 }
+
+pra_boolean pra_crc16_get_maxim(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC16_NULL == p_crc)
+    {
+        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->initialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x8005U;
+        p_crc->initial_value = 0x0000U;
+        p_crc->xor_out = 0xFFFFU;
+        p_crc->ref_in = PRA_BOOL_TRUE;
+        p_crc->ref_out = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_get_usb(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC16_NULL == p_crc)
+    {
+        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->initialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x8005U;
+        p_crc->initial_value = 0xFFFFU;
+        p_crc->xor_out = 0xFFFFU;
+        p_crc->ref_in = PRA_BOOL_TRUE;
+        p_crc->ref_out = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_get_modbus(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC16_NULL == p_crc)
+    {
+        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->initialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x8005U;
+        p_crc->initial_value = 0xFFFFU;
+        p_crc->xor_out = 0x0000U;
+        p_crc->ref_in = PRA_BOOL_TRUE;
+        p_crc->ref_out = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_get_ccitt_false(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC16_NULL == p_crc)
+    {
+        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->initialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x1021U;
+        p_crc->initial_value = 0xFFFFU;
+        p_crc->xor_out = 0x0000U;
+        p_crc->ref_in = PRA_BOOL_FALSE;
+        p_crc->ref_out = PRA_BOOL_FALSE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_get_x25(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC16_NULL == p_crc)
+    {
+        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->initialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x1021U;
+        p_crc->initial_value = 0xFFFFU;
+        p_crc->xor_out = 0xFFFFU;
+        p_crc->ref_in = PRA_BOOL_TRUE;
+        p_crc->ref_out = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_get_xmodem(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC16_NULL == p_crc)
+    {
+        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->initialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x1021U;
+        p_crc->initial_value = 0x0000U;
+        p_crc->xor_out = 0x0000U;
+        p_crc->ref_in = PRA_BOOL_FALSE;
+        p_crc->ref_out = PRA_BOOL_FALSE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_get_dnp(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC16_NULL == p_crc)
+    {
+        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->initialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x3D65U;
+        p_crc->initial_value = 0x0000U;
+        p_crc->xor_out = 0xFFFFU;
+        p_crc->ref_in = PRA_BOOL_TRUE;
+        p_crc->ref_out = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
