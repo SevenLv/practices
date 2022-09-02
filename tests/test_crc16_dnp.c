@@ -9,7 +9,7 @@ int main(void)
 
     result |= test_get(&pra_crc16_get_dnp);
     result |= test_init(&pra_crc16_get_dnp);
-    result |= test_compute(&pra_crc16_get_dnp, 0x31C3U);
+    result |= test_compute(&pra_crc16_get_dnp, 0xEA82U);
 
     return result;
 }
