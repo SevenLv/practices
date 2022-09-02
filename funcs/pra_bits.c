@@ -382,3 +382,48 @@ pra_boolean pra_bits_u16_reverse(
 
     return result;
 }
+
+pra_boolean pra_bits_u32_reverse(
+    uint32_t value,
+    uint32_t *const p_new_value)
+{
+    pra_boolean result;
+    uint8_t i;
+    pra_boolean actived;
+    uint32_t error_code = PRA_BITS_EC_NONE;
+    pra_boolean failed = PRA_BOOL_FALSE;
+
+    if (PRA_UINT32_NULL != p_new_value)
+    {
+        *p_new_value = 0U;
+        for (i = 0U; i < 32U; i++)
+        {
+            if (PRA_BOOL_FALSE == failed)
+            {
+                if (PRA_BOOL_TRUE == pra_bits_u32_get(value, i, &actived, &error_code))
+                {
+                    if (PRA_BOOL_TRUE != pra_bits_u32_set(p_new_value, 32U - i - 1, actived, &error_code))
+                    {
+                        failed = PRA_BOOL_TRUE;
+                    }
+                }
+                else
+                {
+                    failed = PRA_BOOL_TRUE;
+                }
+            }
+            else
+            {
+                /* NOTE do nothing */
+            }
+        }
+
+        result = pra_boolean_not(failed);
+    }
+    else
+    {
+        result = PRA_BOOL_FALSE;
+    }
+
+    return result;
+}

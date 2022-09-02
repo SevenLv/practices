@@ -177,3 +177,10 @@ add_executable(
     test_crc16.c)
 target_link_libraries(test_crc16_dnp practices)
 add_test(NAME test_crc16_dnp COMMAND test_crc16_dnp)
+
+add_executable(
+    test_crc32_default
+    test_crc32_default.c
+    test_crc32.c)
+target_link_libraries(test_crc32_default practices)
+add_test(NAME test_crc32_default COMMAND test_crc32_default)
