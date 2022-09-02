@@ -13,7 +13,7 @@ int main(void)
 
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
     pra_boolean expected_actived = PRA_BOOL_UNKNOWN;
-    pra_boolean acutal_actived = PRA_BOOL_UNKNOWN;
+    pra_boolean actual_actived = PRA_BOOL_UNKNOWN;
     uint32_t expected_ec = PRA_BITS_EC_NONE;
     uint32_t actual_ec = PRA_BITS_EC_NONE;
     uint8_t value = 0U;
@@ -23,7 +23,7 @@ int main(void)
     if (expected_result != pra_bits_u8_get(
                                value,
                                bit_offset,
-                               &acutal_actived,
+                               &actual_actived,
                                PRA_UINT32_NULL))
     {
         result |= err_error1;
@@ -48,7 +48,7 @@ int main(void)
     if (expected_result != pra_bits_u8_get(
                                value,
                                bit_offset,
-                               &acutal_actived,
+                               &actual_actived,
                                &actual_ec) ||
         expected_ec != actual_ec)
     {
@@ -66,9 +66,10 @@ int main(void)
         if (expected_result != pra_bits_u8_get(
                                    value,
                                    bit_offset,
-                                   &acutal_actived,
+                                   &actual_actived,
                                    &actual_ec) ||
-            expected_ec != actual_ec)
+            expected_ec != actual_ec ||
+            expected_actived != actual_actived)
         {
             result |= err_error4;
             break;
@@ -86,9 +87,10 @@ int main(void)
         if (expected_result != pra_bits_u8_get(
                                    value,
                                    bit_offset,
-                                   &acutal_actived,
+                                   &actual_actived,
                                    &actual_ec) ||
-            expected_ec != actual_ec)
+            expected_ec != actual_ec ||
+            expected_actived != actual_actived)
         {
             result |= err_error5;
             break;

@@ -67,7 +67,8 @@ int main(void)
                                    bit_offset,
                                    &actual_actived,
                                    &actual_ec) ||
-            expected_ec != actual_ec)
+            expected_ec != actual_ec ||
+            expected_actived != actual_actived)
         {
             result |= err_error4;
             break;
@@ -88,7 +89,8 @@ int main(void)
                                    bit_offset,
                                    &actual_actived,
                                    &actual_ec) ||
-            expected_ec != actual_ec)
+            expected_ec != actual_ec ||
+            expected_actived != actual_actived)
         {
             result |= err_error4;
             break;
