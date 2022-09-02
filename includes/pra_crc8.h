@@ -18,10 +18,10 @@
 
 #define PRA_CRC8_TABLE_SIZE 0x100U
 
-#define PRA_CRC8_EC_NONE 0x0U            /* no error */
-#define PRA_CRC8_EC_NULL_PTR 0x1U        /* null pointer */
-#define PRA_CRC8_EC_NOT_INIT 0x2U        /* not initialized */
-#define PRA_CRC8_EC_INVALID_OFFSET 0x4U  /* invalid offset */
+#define PRA_CRC8_EC_NONE 0x0U           /* no error */
+#define PRA_CRC8_EC_NULL_PTR 0x1U       /* null pointer */
+#define PRA_CRC8_EC_NOT_INIT 0x2U       /* not initialized */
+#define PRA_CRC8_EC_INVALID_OFFSET 0x4U /* invalid offset */
 #define PRA_CRC8_EC_INVALID_LENGTH 0x8U /* invalid length */
 
 /* types */
@@ -86,6 +86,66 @@ pra_boolean pra_crc8_compute(
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc8_get_default(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-8/itu struct
+ * @note
+ * @param  p_crc:   the crc-8 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC8_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc8_get_itu(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-8/rohc struct
+ * @note
+ * @param  p_crc:   the crc-8 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC8_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc8_get_rohc(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-8/maxim struct
+ * @note
+ * @param  p_crc:   the crc-8 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC8_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc8_get_maxim(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-8/cdma2000 struct
+ * @note
+ * @param  p_crc:   the crc-8 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC8_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc8_get_cdma2000(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief           get new crc-8/wcdma struct
+ * @note
+ * @param  p_crc:   the crc-8 struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC8_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_crc8_get_wcdma(
     pra_crc8 *const p_crc,
     uint32_t *const p_ec);
 #endif

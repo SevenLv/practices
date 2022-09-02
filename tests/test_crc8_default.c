@@ -9,7 +9,7 @@ int main(void)
 
     result |= test_get(&pra_crc8_get_default);
     result |= test_init(&pra_crc8_get_default);
-    result |= test_compute(&pra_crc8_get_default);
+    result |= test_compute(&pra_crc8_get_default, 0xF4U);
 
     return result;
 }

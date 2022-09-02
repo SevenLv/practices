@@ -88,7 +88,9 @@ int test_init(get_func get)
     return result;
 }
 
-int test_compute(get_func get)
+int test_compute(
+    get_func get,
+    uint8_t expected_crc_result)
 {
     int result = err_none;
 
@@ -96,7 +98,6 @@ int test_compute(get_func get)
     uint8_t bytes[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     uint32_t offset = 0U;
     uint32_t length = 9U;
-    uint8_t expected_crc_result = 0xF4U;
     uint8_t actual_crc_result = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
     uint32_t expected_ec = PRA_CRC8_EC_NONE;

@@ -264,3 +264,153 @@ pra_boolean pra_crc8_get_default(
 
     return result;
 }
+
+pra_boolean pra_crc8_get_itu(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC8_NULL == p_crc)
+    {
+        *p_ec |= PRA_CRC8_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x07U;
+        p_crc->intial_value = 0x00U,
+        p_crc->xor_out = 0x55U;
+        p_crc->ref_in = PRA_BOOL_FALSE;
+        p_crc->ref_out = PRA_BOOL_FALSE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc8_get_rohc(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC8_NULL == p_crc)
+    {
+        *p_ec |= PRA_CRC8_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x07U;
+        p_crc->intial_value = 0xFFU,
+        p_crc->xor_out = 0x00U;
+        p_crc->ref_in = PRA_BOOL_TRUE;
+        p_crc->ref_out = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc8_get_maxim(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC8_NULL == p_crc)
+    {
+        *p_ec |= PRA_CRC8_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x31U;
+        p_crc->intial_value = 0x00U,
+        p_crc->xor_out = 0x00U;
+        p_crc->ref_in = PRA_BOOL_TRUE;
+        p_crc->ref_out = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc8_get_cdma2000(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC8_NULL == p_crc)
+    {
+        *p_ec |= PRA_CRC8_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x9BU;
+        p_crc->intial_value = 0xFFU,
+        p_crc->xor_out = 0x00U;
+        p_crc->ref_in = PRA_BOOL_FALSE;
+        p_crc->ref_out = PRA_BOOL_FALSE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc8_get_wcdma(
+    pra_crc8 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_UINT32_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_CRC8_NULL == p_crc)
+    {
+        *p_ec |= PRA_CRC8_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->polynomial = 0x9BU;
+        p_crc->intial_value = 0x00U,
+        p_crc->xor_out = 0x00U;
+        p_crc->ref_in = PRA_BOOL_TRUE;
+        p_crc->ref_out = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
