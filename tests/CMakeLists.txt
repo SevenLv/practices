@@ -79,3 +79,7 @@ add_test(NAME test_bits_u32_get COMMAND test_bits_u32_get)
 add_executable(test_bits_u32_set test_bits_u32_set.c)
 target_link_libraries(test_bits_u32_set practices)
 add_test(NAME test_bits_u32_set COMMAND test_bits_u32_set)
+
+add_executable(test_crc8_default test_crc8_default.c)
+target_link_libraries(test_crc8_default practices)
+add_test(NAME test_crc8_default COMMAND test_crc8_default)
