@@ -29,11 +29,11 @@
 /* crc8 struct */
 typedef struct _pra_crc8
 {
-    pra_boolean intialized;             /* initialized flag */
+    pra_boolean initialized;             /* initialized flag */
     uint8_t table[PRA_CRC8_TABLE_SIZE]; /* the crc8 table */
     uint8_t polynomial;                 /* polynomial */
-    uint8_t intial_value;               /* initial value */
-    uint8_t xor_out;                    /*xor out*/
+    uint8_t initial_value;               /* initial value */
+    uint8_t xor_out;                    /* xor out*/
     pra_boolean ref_in;                 /* ref in */
     pra_boolean ref_out;                /* ref out */
 } pra_crc8;
@@ -43,7 +43,7 @@ typedef struct _pra_crc8
 /* functions */
 
 /**
- * @brief           initialize the crc8 module
+ * @brief           initialize the crc8 struct
  * @note
  * @param  p_crc:   the crc struct pointer
  * @param  p_ec:    output error code:

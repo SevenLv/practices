@@ -121,3 +121,10 @@ add_executable(
     test_crc8.c)
 target_link_libraries(test_crc8_wcdma practices)
 add_test(NAME test_crc8_wcdma COMMAND test_crc8_wcdma)
+
+add_executable(
+    test_crc16_arc
+    test_crc16_arc.c
+    test_crc16.c)
+target_link_libraries(test_crc16_arc practices)
+add_test(NAME test_crc16_arc COMMAND test_crc16_arc)

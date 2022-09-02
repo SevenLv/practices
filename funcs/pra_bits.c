@@ -64,8 +64,8 @@ pra_boolean pra_bits_u8_get(
     pra_boolean *const p_actived,
     uint32_t *const p_ec)
 {
-    pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint8_t mask = 0U;
+    pra_boolean result;
+    uint8_t mask;
 
     if (PRA_UINT32_NULL == p_ec)
     {
@@ -143,8 +143,8 @@ pra_boolean pra_bits_u16_get(
     pra_boolean *const p_actived,
     uint32_t *const p_ec)
 {
-    pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint16_t mask = 0U;
+    pra_boolean result;
+    uint16_t mask;
 
     if (PRA_UINT32_NULL == p_ec)
     {
@@ -221,8 +221,8 @@ pra_boolean pra_bits_u32_get(
     pra_boolean *const p_actived,
     uint32_t *const p_ec)
 {
-    pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint32_t mask = 0U;
+    pra_boolean result;
+    uint32_t mask;
 
     if (PRA_UINT32_NULL == p_ec)
     {
@@ -288,6 +288,96 @@ pra_boolean pra_bits_u32_set(
             *p_value &= u32_reversed_masks[bit_offset];
         }
         result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_bits_u8_reverse(
+    uint8_t value,
+    uint8_t *const p_new_value)
+{
+    pra_boolean result;
+    uint8_t i;
+    pra_boolean actived;
+    uint32_t error_code = PRA_BITS_EC_NONE;
+    pra_boolean failed = PRA_BOOL_FALSE;
+
+    if (PRA_UINT8_NULL != p_new_value)
+    {
+        *p_new_value = 0U;
+        for (i = 0U; i < 8U; i++)
+        {
+            if (PRA_BOOL_FALSE == failed)
+            {
+                if (PRA_BOOL_TRUE == pra_bits_u8_get(value, i, &actived, &error_code))
+                {
+                    if (PRA_BOOL_TRUE != pra_bits_u8_set(p_new_value, 8U - i - 1, actived, &error_code))
+                    {
+                        failed = PRA_BOOL_TRUE;
+                    }
+                }
+                else
+                {
+                    failed = PRA_BOOL_TRUE;
+                }
+            }
+            else
+            {
+                /* NOTE do nothing */
+            }
+        }
+
+        result = pra_boolean_not(failed);
+    }
+    else
+    {
+        result = PRA_BOOL_FALSE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_bits_u16_reverse(
+    uint16_t value,
+    uint16_t *const p_new_value)
+{
+    pra_boolean result;
+    uint8_t i;
+    pra_boolean actived;
+    uint32_t error_code = PRA_BITS_EC_NONE;
+    pra_boolean failed = PRA_BOOL_FALSE;
+
+    if (PRA_UINT16_NULL != p_new_value)
+    {
+        *p_new_value = 0U;
+        for (i = 0U; i < 16U; i++)
+        {
+            if (PRA_BOOL_FALSE == failed)
+            {
+                if (PRA_BOOL_TRUE == pra_bits_u16_get(value, i, &actived, &error_code))
+                {
+                    if (PRA_BOOL_TRUE != pra_bits_u16_set(p_new_value, 16U - i - 1, actived, &error_code))
+                    {
+                        failed = PRA_BOOL_TRUE;
+                    }
+                }
+                else
+                {
+                    failed = PRA_BOOL_TRUE;
+                }
+            }
+            else
+            {
+                /* NOTE do nothing */
+            }
+        }
+
+        result = pra_boolean_not(failed);
+    }
+    else
+    {
+        result = PRA_BOOL_FALSE;
     }
 
     return result;

@@ -17,74 +17,16 @@
 
 /* variables */
 
-/* function declarations */
-
-/**
- * @brief               reverse bits
- * @note
- * @param  value:       the 8-bit value
- * @param  p_new_value: the new 8-bit value
- * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
- */
-static pra_boolean pra_crc8_bit_reverse(
-    uint8_t value,
-    uint8_t *const p_new_value);
-
 /* functions */
-
-static pra_boolean pra_crc8_bit_reverse(
-    uint8_t value,
-    uint8_t *const p_new_value)
-{
-    pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint8_t i = 0U;
-    pra_boolean actived = PRA_BOOL_UNKNOWN;
-    uint32_t error_code = PRA_BITS_EC_NONE;
-    pra_boolean failed = PRA_BOOL_FALSE;
-
-    if (PRA_UINT8_NULL != p_new_value)
-    {
-        *p_new_value = 0U;
-        for (i = 0U; i < BIT_SIZE; i++)
-        {
-            if (PRA_BOOL_FALSE == failed)
-            {
-                if (PRA_BOOL_TRUE == pra_bits_u8_get(value, i, &actived, &error_code))
-                {
-                    if (PRA_BOOL_TRUE != pra_bits_u8_set(p_new_value, BIT_SIZE - i - 1, actived, &error_code))
-                    {
-                        failed = PRA_BOOL_TRUE;
-                    }
-                }
-                else
-                {
-                    failed = PRA_BOOL_TRUE;
-                }
-            }
-            else
-            {
-                /* NOTE do nothing */
-            }
-        }
-
-        result = pra_boolean_not(failed);
-    }
-    else
-    {
-        result = PRA_BOOL_FALSE;
-    }
-
-    return result;
-}
 
 pra_boolean pra_crc8_init(
     pra_crc8 *const p_crc,
     uint32_t *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint8_t current_value = 0U;
-    uint16_t i = 0U;
-    uint8_t j = 0U;
+    uint8_t current_value;
+    uint16_t i;
+    uint8_t j;
 
     if (PRA_UINT32_NULL == p_ec)
     {
@@ -95,7 +37,7 @@ pra_boolean pra_crc8_init(
         *p_ec |= PRA_CRC8_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BOOL_TRUE == pra_boolean_is_true(p_crc->intial_value))
+    else if (PRA_BOOL_TRUE == pra_boolean_is_true(p_crc->initialized))
     {
         result = PRA_BOOL_TRUE;
     }
@@ -117,7 +59,7 @@ pra_boolean pra_crc8_init(
                 p_crc->table[i] = (current_value & MASK_MAX);
             }
         }
-        p_crc->intialized = PRA_BOOL_TRUE;
+        p_crc->initialized = PRA_BOOL_TRUE;
         result = PRA_BOOL_TRUE;
     }
 
@@ -134,10 +76,10 @@ pra_boolean pra_crc8_compute(
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
     pra_boolean failed = PRA_BOOL_FALSE;
-    uint8_t tmp_crc = 0U;
+    uint8_t tmp_crc;
     uint8_t current_value = 0U;
-    uint8_t tmp_value = 0U;
-    uint32_t i = 0U;
+    uint8_t tmp_value;
+    uint32_t i;
 
     if (PRA_UINT32_NULL == p_ec)
     {
@@ -158,7 +100,7 @@ pra_boolean pra_crc8_compute(
         *p_ec |= PRA_CRC8_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BOOL_TRUE != pra_boolean_is_true(p_crc->intialized))
+    else if (PRA_BOOL_TRUE != pra_boolean_is_true(p_crc->initialized))
     {
         *p_ec |= PRA_CRC8_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
@@ -175,7 +117,7 @@ pra_boolean pra_crc8_compute(
     }
     else
     {
-        tmp_crc = p_crc->intial_value;
+        tmp_crc = p_crc->initial_value;
         for (i = offset; i < length; i++)
         {
             if (PRA_BOOL_TRUE != failed)
@@ -183,7 +125,7 @@ pra_boolean pra_crc8_compute(
                 if (PRA_BOOL_TRUE == p_crc->ref_in)
                 {
                     tmp_value = 0U;
-                    if (PRA_BOOL_TRUE == pra_crc8_bit_reverse(bytes[i], &tmp_value))
+                    if (PRA_BOOL_TRUE == pra_bits_u8_reverse(bytes[i], &tmp_value))
                     {
                         current_value = tmp_value;
                     }
@@ -205,31 +147,27 @@ pra_boolean pra_crc8_compute(
             }
         }
 
-        if (PRA_BOOL_FALSE == failed)
+        if (PRA_BOOL_TRUE != failed)
         {
             if (PRA_BOOL_TRUE == p_crc->ref_out)
             {
                 tmp_value = 0U;
-                if (PRA_BOOL_TRUE == pra_crc8_bit_reverse(tmp_crc, &tmp_value))
+                if (PRA_BOOL_TRUE == pra_bits_u8_reverse(tmp_crc, &tmp_value))
                 {
                     tmp_crc = tmp_value;
                 }
                 else
                 {
-                    result = PRA_BOOL_FALSE;
+                    failed = PRA_BOOL_TRUE;
                 }
             }
 
             tmp_crc = (tmp_crc ^ p_crc->xor_out & MASK_MAX);
 
             *p_result = tmp_crc;
+        }
 
-            result = PRA_BOOL_TRUE;
-        }
-        else
-        {
-            result = PRA_BOOL_FALSE;
-        }
+        result = pra_boolean_not(failed);
     }
 
     return result;
@@ -252,9 +190,9 @@ pra_boolean pra_crc8_get_default(
     }
     else
     {
-        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->initialized = PRA_BOOL_FALSE;
         p_crc->polynomial = 0x07U;
-        p_crc->intial_value = 0x00U,
+        p_crc->initial_value = 0x00U,
         p_crc->xor_out = 0x00U;
         p_crc->ref_in = PRA_BOOL_FALSE;
         p_crc->ref_out = PRA_BOOL_FALSE;
@@ -282,9 +220,9 @@ pra_boolean pra_crc8_get_itu(
     }
     else
     {
-        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->initialized = PRA_BOOL_FALSE;
         p_crc->polynomial = 0x07U;
-        p_crc->intial_value = 0x00U,
+        p_crc->initial_value = 0x00U,
         p_crc->xor_out = 0x55U;
         p_crc->ref_in = PRA_BOOL_FALSE;
         p_crc->ref_out = PRA_BOOL_FALSE;
@@ -312,9 +250,9 @@ pra_boolean pra_crc8_get_rohc(
     }
     else
     {
-        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->initialized = PRA_BOOL_FALSE;
         p_crc->polynomial = 0x07U;
-        p_crc->intial_value = 0xFFU,
+        p_crc->initial_value = 0xFFU,
         p_crc->xor_out = 0x00U;
         p_crc->ref_in = PRA_BOOL_TRUE;
         p_crc->ref_out = PRA_BOOL_TRUE;
@@ -342,9 +280,9 @@ pra_boolean pra_crc8_get_maxim(
     }
     else
     {
-        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->initialized = PRA_BOOL_FALSE;
         p_crc->polynomial = 0x31U;
-        p_crc->intial_value = 0x00U,
+        p_crc->initial_value = 0x00U,
         p_crc->xor_out = 0x00U;
         p_crc->ref_in = PRA_BOOL_TRUE;
         p_crc->ref_out = PRA_BOOL_TRUE;
@@ -372,9 +310,9 @@ pra_boolean pra_crc8_get_cdma2000(
     }
     else
     {
-        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->initialized = PRA_BOOL_FALSE;
         p_crc->polynomial = 0x9BU;
-        p_crc->intial_value = 0xFFU,
+        p_crc->initial_value = 0xFFU,
         p_crc->xor_out = 0x00U;
         p_crc->ref_in = PRA_BOOL_FALSE;
         p_crc->ref_out = PRA_BOOL_FALSE;
@@ -402,9 +340,9 @@ pra_boolean pra_crc8_get_wcdma(
     }
     else
     {
-        p_crc->intialized = PRA_BOOL_FALSE;
+        p_crc->initialized = PRA_BOOL_FALSE;
         p_crc->polynomial = 0x9BU;
-        p_crc->intial_value = 0x00U,
+        p_crc->initial_value = 0x00U,
         p_crc->xor_out = 0x00U;
         p_crc->ref_in = PRA_BOOL_TRUE;
         p_crc->ref_out = PRA_BOOL_TRUE;
