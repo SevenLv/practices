@@ -11,22 +11,68 @@
 #include "pra_bits.h"
 
 /* variables */
-#define U8_BIT_SIZE 8U
-#define BIT_SIZE 16U
-#define U8_MASK_MAX 0xFFU
 #define MASK_H1 0x8000U
-#define MASK_MAX 0xFFFFU
+
+/* function declarations */
+
+/**
+ * @brief           arguments validation for pra_crc16_init function
+ * @note
+ * @param  p_crc:   the crc struct pointer
+ * @param  p_ec:    output error code:
+ *                  PRA_CRC_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+static pra_boolean pra_crc16_init_args_check(
+    const pra_crc16 *const p_crc,
+    uint32_t *const p_ec);
+
+/**
+ * @brief               arguments validation for pra_crc16_compute function
+ * @note
+ * @param  p_crc:       the crc struct pointer
+ * @param  bytes:       the bytes to compute
+ * @param  offset:      the start position, base zero
+ * @param  length:      length of the bytes
+ * @param  p_result:    the crc result
+ * @param  p_ec:        output error code:
+ *                      PRA_CRC_EC_NULL_PTR
+ *                      PRA_CRC_EC_NOT_INIT
+ *                      PRA_CRC_EC_INVALID_OFFSET
+ *                      PRA_CRC_EC_INVALID_LENGTH
+ * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+static pra_boolean pra_crc16_compute_args_check(
+    const pra_crc16 *const p_crc,
+    const uint8_t *const bytes,
+    uint32_t offset,
+    uint32_t length,
+    const uint16_t *const p_result,
+    uint32_t *const p_ec);
+
+/**
+ * @brief                   arguments validation for pra_crc16_get function
+ * @note
+ * @param  p_crc:           the crc-16 struct pointer
+ * @param  ref_in:          ref in
+ * @param  ref_out:         ref out
+ * @param  p_ec:            output error code:
+ *                          PRA_CRC_EC_NULL_PTR
+ * @retval                  PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+static pra_boolean pra_crc16_get_args_check(
+    const pra_crc16 *const p_crc,
+    pra_boolean ref_in,
+    pra_boolean ref_out,
+    uint32_t *const p_ec);
 
 /* functions */
 
-pra_boolean pra_crc16_init(
-    pra_crc16 *const p_crc,
+static pra_boolean pra_crc16_init_args_check(
+    const pra_crc16 *const p_crc,
     uint32_t *const p_ec)
 {
-    pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint16_t current_value;
-    uint16_t i;
-    uint8_t j;
+    pra_boolean result;
 
     if (PRA_UINT32_NULL == p_ec)
     {
@@ -37,16 +83,35 @@ pra_boolean pra_crc16_init(
         *p_ec |= PRA_CRC_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
+    else
+    {
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_init(
+    pra_crc16 *const p_crc,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+    if (PRA_BOOL_TRUE != pra_crc16_init_args_check(
+                             p_crc,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
     else if (PRA_BOOL_TRUE == pra_boolean_is_true(p_crc->initialized))
     {
         result = PRA_BOOL_TRUE;
     }
     else
     {
-        for (i = 0U; i < PRA_CRC_TABLE_SIZE; i++)
+        for (uint16_t i = 0U; i < PRA_CRC_TABLE_SIZE; i++)
         {
-            current_value = i;
-            for (j = 0U; j < BIT_SIZE; j++)
+            uint16_t current_value = i;
+            for (uint8_t j = 0U; j < PRA_BITS_U16_WITDH; j++)
             {
                 if (MASK_H1 == (current_value & MASK_H1))
                 {
@@ -56,7 +121,7 @@ pra_boolean pra_crc16_init(
                 {
                     current_value <<= 1U;
                 }
-                p_crc->table[i] = (current_value & MASK_MAX);
+                p_crc->table[i] = current_value;
             }
         }
         p_crc->initialized = PRA_BOOL_TRUE;
@@ -66,21 +131,15 @@ pra_boolean pra_crc16_init(
     return result;
 }
 
-pra_boolean pra_crc16_compute(
+static pra_boolean pra_crc16_compute_args_check(
     const pra_crc16 *const p_crc,
     const uint8_t *const bytes,
     uint32_t offset,
     uint32_t length,
-    uint16_t *const p_result,
+    const uint16_t *const p_result,
     uint32_t *const p_ec)
 {
-    pra_boolean result = PRA_BOOL_UNKNOWN;
-    pra_boolean failed = PRA_BOOL_FALSE;
-    uint16_t tmp_crc;
-    uint8_t current_value;
-    uint16_t tmp_u16_value;
-    uint8_t tmp_u8_value;
-    uint32_t i;
+    pra_boolean result;
 
     if (PRA_UINT32_NULL == p_ec)
     {
@@ -118,8 +177,40 @@ pra_boolean pra_crc16_compute(
     }
     else
     {
-        tmp_crc = p_crc->initial_value;
-        for (i = offset; i < length; i++)
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_compute(
+    const pra_crc16 *const p_crc,
+    const uint8_t *const bytes,
+    uint32_t offset,
+    uint32_t length,
+    uint16_t *const p_result,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+    pra_boolean failed = PRA_BOOL_FALSE;
+    uint16_t tmp_u16_value;
+    uint8_t tmp_u8_value;
+
+    if (PRA_BOOL_TRUE != pra_crc16_compute_args_check(
+                             p_crc,
+                             bytes,
+                             offset,
+                             length,
+                             p_result,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        uint16_t tmp_crc = p_crc->initial_value;
+        uint8_t current_value;
+        for (uint32_t i = offset; i < length; i++)
         {
             if (PRA_BOOL_TRUE != failed)
             {
@@ -140,8 +231,7 @@ pra_boolean pra_crc16_compute(
                 {
                     current_value = bytes[i];
                 }
-                tmp_crc = (tmp_crc << U8_BIT_SIZE) ^ p_crc->table[((tmp_crc >> U8_BIT_SIZE) ^ current_value) & U8_MASK_MAX];
-                tmp_crc &= MASK_MAX;
+                tmp_crc = (tmp_crc << PRA_BITS_U8_WIDTH) ^ p_crc->table[((tmp_crc >> PRA_BITS_U8_WIDTH) ^ current_value) & PRA_BITS_U8_MAX_VALUE];
             }
             else
             {
@@ -165,7 +255,7 @@ pra_boolean pra_crc16_compute(
                 }
             }
 
-            tmp_crc = (tmp_crc ^ p_crc->xor_out & MASK_MAX);
+            tmp_crc = (tmp_crc ^ p_crc->xor_out);
 
             *p_result = tmp_crc;
         }
@@ -176,16 +266,13 @@ pra_boolean pra_crc16_compute(
     return result;
 }
 
-pra_boolean pra_crc16_get(
-    pra_crc16 *const p_crc,
-    uint16_t polynomial,
-    uint16_t initial_value,
-    uint16_t xor_out,
+static pra_boolean pra_crc16_get_args_check(
+    const pra_crc16 *const p_crc,
     pra_boolean ref_in,
     pra_boolean ref_out,
     uint32_t *const p_ec)
 {
-    pra_boolean result = PRA_BOOL_UNKNOWN;
+    pra_boolean result;
 
     if (PRA_UINT32_NULL == p_ec)
     {
@@ -206,6 +293,33 @@ pra_boolean pra_crc16_get(
              PRA_BOOL_FALSE != ref_out)
     {
         *p_ec |= PRA_CRC_EC_INVALID_REF_OUT;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_crc16_get(
+    pra_crc16 *const p_crc,
+    uint16_t polynomial,
+    uint16_t initial_value,
+    uint16_t xor_out,
+    pra_boolean ref_in,
+    pra_boolean ref_out,
+    uint32_t *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_UNKNOWN;
+
+    if (PRA_BOOL_TRUE != pra_crc16_get_args_check(
+                             p_crc,
+                             ref_in,
+                             ref_out,
+                             p_ec))
+    {
         result = PRA_BOOL_FALSE;
     }
     else

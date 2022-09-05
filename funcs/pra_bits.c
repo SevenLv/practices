@@ -10,10 +10,6 @@
 #include "pra_defs.h"
 
 /* macros */
-#define MIN_OFFSET 0U
-#define MAX_U8_OFFSET 7U
-#define MAX_U16_OFFSET 15U
-#define MAX_U32_OFFSET 31U
 
 /* variables */
 static uint8_t u8_masks[8] = {
@@ -174,7 +170,7 @@ static pra_boolean pra_bits_u8_get_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (MAX_U8_OFFSET < bit_offset)
+    else if (PRA_BITS_U8_MAX_OFFSET < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -237,7 +233,7 @@ static pra_boolean pra_bits_u8_set_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (MAX_U8_OFFSET < bit_offset)
+    else if (PRA_BITS_U8_MAX_OFFSET < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -297,7 +293,7 @@ static pra_boolean pra_bits_u16_get_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (MAX_U16_OFFSET < bit_offset)
+    else if (PRA_BITS_U16_MAX_OFFSET < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -359,7 +355,7 @@ static pra_boolean pra_bits_u16_set_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (MAX_U16_OFFSET < bit_offset)
+    else if (PRA_BITS_U16_MAX_OFFSET < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -385,16 +381,6 @@ pra_boolean pra_bits_u16_set(
                              bit_offset,
                              p_ec))
     {
-        result = PRA_BOOL_FALSE;
-    }
-    else if (PRA_UINT16_NULL == p_value)
-    {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
-        result = PRA_BOOL_FALSE;
-    }
-    else if (MAX_U16_OFFSET < bit_offset)
-    {
-        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -429,7 +415,7 @@ static pra_boolean pra_bits_u32_get_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (MAX_U32_OFFSET < bit_offset)
+    else if (PRA_BITS_U32_MAX_OFFSET < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -490,7 +476,7 @@ static pra_boolean pra_bits_u32_set_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (MAX_U32_OFFSET < bit_offset)
+    else if (PRA_BITS_U32_MAX_OFFSET < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -568,13 +554,21 @@ pra_boolean pra_bits_u8_reverse(
     else
     {
         *p_new_value = 0U;
-        for (uint8_t i = 0U; i < 8U; i++)
+        for (uint8_t i = 0U; i < PRA_BITS_U8_WIDTH; i++)
         {
             if (PRA_BOOL_FALSE == failed)
             {
-                if (PRA_BOOL_TRUE == pra_bits_u8_get(value, i, &actived, &error_code))
+                if (PRA_BOOL_TRUE == pra_bits_u8_get(
+                                         value,
+                                         i,
+                                         &actived,
+                                         &error_code))
                 {
-                    if (PRA_BOOL_TRUE != pra_bits_u8_set(p_new_value, 8U - i - 1, actived, &error_code))
+                    if (PRA_BOOL_TRUE != pra_bits_u8_set(
+                                             p_new_value,
+                                             PRA_BITS_U8_MAX_OFFSET - i,
+                                             actived,
+                                             &error_code))
                     {
                         failed = PRA_BOOL_TRUE;
                     }
@@ -608,13 +602,21 @@ pra_boolean pra_bits_u16_reverse(
     if (PRA_UINT16_NULL != p_new_value)
     {
         *p_new_value = 0U;
-        for (uint8_t i = 0U; i < 16U; i++)
+        for (uint8_t i = 0U; i < PRA_BITS_U16_WITDH; i++)
         {
             if (PRA_BOOL_FALSE == failed)
             {
-                if (PRA_BOOL_TRUE == pra_bits_u16_get(value, i, &actived, &error_code))
+                if (PRA_BOOL_TRUE == pra_bits_u16_get(
+                                         value,
+                                         i,
+                                         &actived,
+                                         &error_code))
                 {
-                    if (PRA_BOOL_TRUE != pra_bits_u16_set(p_new_value, 16U - i - 1, actived, &error_code))
+                    if (PRA_BOOL_TRUE != pra_bits_u16_set(
+                                             p_new_value,
+                                             PRA_BITS_U16_MAX_OFFSET - i,
+                                             actived,
+                                             &error_code))
                     {
                         failed = PRA_BOOL_TRUE;
                     }
@@ -652,13 +654,21 @@ pra_boolean pra_bits_u32_reverse(
     if (PRA_UINT32_NULL != p_new_value)
     {
         *p_new_value = 0U;
-        for (uint8_t i = 0U; i < 32U; i++)
+        for (uint8_t i = 0U; i < PRA_BITS_U32_WITDH; i++)
         {
             if (PRA_BOOL_FALSE == failed)
             {
-                if (PRA_BOOL_TRUE == pra_bits_u32_get(value, i, &actived, &error_code))
+                if (PRA_BOOL_TRUE == pra_bits_u32_get(
+                                         value,
+                                         i,
+                                         &actived,
+                                         &error_code))
                 {
-                    if (PRA_BOOL_TRUE != pra_bits_u32_set(p_new_value, 32U - i - 1, actived, &error_code))
+                    if (PRA_BOOL_TRUE != pra_bits_u32_set(
+                                             p_new_value,
+                                             PRA_BITS_U32_MAX_OFFSET - i,
+                                             actived,
+                                             &error_code))
                     {
                         failed = PRA_BOOL_TRUE;
                     }

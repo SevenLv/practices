@@ -14,6 +14,18 @@
 
 /* macros */
 
+#define PRA_BITS_U8_WIDTH 8U
+#define PRA_BITS_U16_WITDH 16U
+#define PRA_BITS_U32_WITDH 32U
+
+#define PRA_BITS_U8_MAX_OFFSET 7U
+#define PRA_BITS_U16_MAX_OFFSET 15U
+#define PRA_BITS_U32_MAX_OFFSET 31U
+
+#define PRA_BITS_U8_MAX_VALUE 0xFFU
+#define PRA_BITS_U16_MAX_VALUE 0xFFFFU
+#define PRA_BITS_U32_MAX_VALUE 0xFFFFFFFFU
+
 #define PRA_BITS_EC_NONE 0x0U           /* no error */
 #define PRA_BITS_EC_NULL_PTR 0x1U       /* null pointer */
 #define PRA_BITS_EC_INVALID_OFFSET 0x2U /* invalid bit offset */
