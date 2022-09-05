@@ -20,6 +20,7 @@
 #define PRA_CRC_EC_INVALID_LENGTH 0x8U   /* invalid length */
 #define PRA_CRC_EC_INVALID_REF_IN 0x10U  /* invalid ref in */
 #define PRA_CRC_EC_INVALID_REF_OUT 0x20U /* invalid ref out */
+#define PRA_CRC_EC_REVERSE_FAILED 0x40U  /* reverse bits failed */
 
 /* types */
 

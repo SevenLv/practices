@@ -134,6 +134,7 @@ pra_boolean pra_crc32_compute(
                     }
                     else
                     {
+                        *p_ec |= PRA_CRC_EC_REVERSE_FAILED;
                         failed = PRA_BOOL_TRUE;
                     }
                 }
@@ -161,6 +162,7 @@ pra_boolean pra_crc32_compute(
                 }
                 else
                 {
+                    *p_ec |= PRA_CRC_EC_REVERSE_FAILED;
                     failed = PRA_BOOL_TRUE;
                 }
             }

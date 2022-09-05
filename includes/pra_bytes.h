@@ -96,7 +96,7 @@ pra_boolean pra_bytes_copy(
  */
 pra_boolean pra_bytes_append_u8_array(
     pra_bytes *const p_bytes,
-    uint8_t data[],
+    const uint8_t data[],
     uint16_t data_length,
     uint32_t *const p_ec);
 

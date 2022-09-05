@@ -47,7 +47,6 @@ pra_boolean pra_bytes_init(
     uint32_t *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint16_t i = 0U;
 
     if (PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_bytes, p_ec))
     {
@@ -61,7 +60,7 @@ pra_boolean pra_bytes_init(
     else
     {
         p_bytes->used_length = 0U;
-        for (i = 0U; i < p_bytes->length; i++)
+        for (uint16_t i = 0U; i < p_bytes->length; i++)
         {
             p_bytes->data[i] = 0U;
         }
@@ -78,7 +77,6 @@ pra_boolean pra_bytes_copy(
     uint32_t *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint16_t i = 0U;
 
     if (PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_src, p_ec) ||
         PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_dst, p_ec))
@@ -98,7 +96,7 @@ pra_boolean pra_bytes_copy(
     }
     else
     {
-        for (i = 0U; i < p_src->length; i++)
+        for (uint16_t i = 0U; i < p_src->length; i++)
         {
             if (i < p_src->used_length - 1)
             {
@@ -120,12 +118,11 @@ pra_boolean pra_bytes_copy(
 
 pra_boolean pra_bytes_append_u8_array(
     pra_bytes *const p_bytes,
-    uint8_t data[],
+    const uint8_t data[],
     uint16_t data_length,
     uint32_t *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint16_t i = 0U;
 
     if (PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_bytes, p_ec))
     {
@@ -149,7 +146,7 @@ pra_boolean pra_bytes_append_u8_array(
         }
         else
         {
-            for (i = 0U; i < data_length; i++)
+            for (uint16_t i = 0U; i < data_length; i++)
             {
                 p_bytes->data[p_bytes->used_length] = data[i];
                 p_bytes->used_length++;
@@ -168,7 +165,6 @@ pra_boolean pra_bytes_append(
     uint32_t *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint16_t i = 0U;
 
     if (PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_bytes, p_ec) ||
         PRA_BOOL_FALSE == pra_bytes_not_null_ptr(p_data, p_ec))
@@ -182,7 +178,7 @@ pra_boolean pra_bytes_append(
     }
     else
     {
-        for (i = 0U; i < p_data->used_length; i++)
+        for (uint16_t i = 0U; i < p_data->used_length; i++)
         {
             p_bytes->data[p_bytes->used_length] = p_data->data[i];
             p_bytes->used_length++;

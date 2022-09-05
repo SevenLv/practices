@@ -88,17 +88,17 @@ pra_boolean pra_crc16_compute(
     }
     else if (PRA_CRC16_NULL == p_crc)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_CRC_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == bytes)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_CRC_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT16_NULL == p_result)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_CRC_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != pra_boolean_is_true(p_crc->initialized))
@@ -132,6 +132,7 @@ pra_boolean pra_crc16_compute(
                     }
                     else
                     {
+                        *p_ec |= PRA_CRC_EC_REVERSE_FAILED;
                         failed = PRA_BOOL_TRUE;
                     }
                 }
@@ -159,6 +160,7 @@ pra_boolean pra_crc16_compute(
                 }
                 else
                 {
+                    *p_ec |= PRA_CRC_EC_REVERSE_FAILED;
                     failed = PRA_BOOL_TRUE;
                 }
             }
@@ -191,7 +193,7 @@ pra_boolean pra_crc16_get(
     }
     else if (PRA_CRC16_NULL == p_crc)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_CRC_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != ref_in &&
