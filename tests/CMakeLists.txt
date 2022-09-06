@@ -220,3 +220,7 @@ add_test(NAME test_fifo_init COMMAND test_fifo_init)
 add_executable(test_fifo_append_u8 test_fifo_append_u8.c)
 target_link_libraries(test_fifo_append_u8 practices)
 add_test(NAME test_fifo_append_u8 COMMAND test_fifo_append_u8)
+
+add_executable(test_fifo_take_u8 test_fifo_take_u8.c)
+target_link_libraries(test_fifo_take_u8 practices)
+add_test(NAME test_fifo_take_u8 COMMAND test_fifo_take_u8)

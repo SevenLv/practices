@@ -17,11 +17,12 @@
 
 #define PRA_FIFO_NULL ((pra_fifo *)0)
 
-#define PRA_FIFO_EC_NONE 0x0U           /* no error */
-#define PRA_FIFO_EC_NULL_PTR 0x1U       /* null pointer */
-#define PRA_FIFO_EC_NOT_INIT 0x2U       /* not initialized */
-#define PRA_FIFO_EC_INVALID_LENGTH 0x4U /* invalid length */
-#define PRA_FIFO_EC_DATA_FULL 0x8U      /* the fifo struct is full */
+#define PRA_FIFO_EC_NONE 0x0U             /* no error */
+#define PRA_FIFO_EC_NULL_PTR 0x1U         /* null pointer */
+#define PRA_FIFO_EC_NOT_INIT 0x2U         /* not initialized */
+#define PRA_FIFO_EC_INVALID_LENGTH 0x4U   /* invalid length */
+#define PRA_FIFO_EC_DATA_FULL 0x8U        /* the fifo struct is full */
+#define PRA_FIFO_EC_DATA_NOT_ENOUGH 0x10U /* the fifo struct data is not enough */
 
 /* types */
 
@@ -70,6 +71,22 @@ pra_boolean pra_fifo_init(
 pra_boolean pra_fifo_append_u8(
     pra_fifo *const p_fifo,
     uint8_t data,
+    PRA_EC_T *const p_ec);
+
+/**
+ * @brief           take a byte from the fifo struct
+ * @note
+ * @param  p_fifo:  pra_fifo struct pointer
+ * @param  p_data:  output data
+ * @param  p_ec:    output error code:
+ *                  PRA_FIFO_EC_NULL_PTR
+ *                  PRA_FIFO_EC_NOT_INIT
+ *                  PRA_FIFO_EC_DATA_NOT_ENOUGH
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_fifo_take_u8(
+    pra_fifo *const p_fifo,
+    uint8_t *const p_data,
     PRA_EC_T *const p_ec);
 
 #endif

@@ -52,6 +52,19 @@ static void pra_fifo_position_move(
     uint16_t data_length,
     uint16_t *const p_position);
 
+/**
+ * @brief           arguments validation for pra_fifo_take_u8 function
+ * @note
+ * @param  p_fifo:
+ * @param  p_data:
+ * @param  p_ec:
+ * @retval
+ */
+static pra_boolean pra_fifo_take_u8_args_check(
+    const pra_fifo *const p_fifo,
+    const uint8_t *const p_data,
+    PRA_EC_T *const p_ec);
+
 /* functions */
 
 static pra_boolean pra_fifo_init_args_check(
@@ -202,6 +215,78 @@ pra_boolean pra_fifo_append_u8(
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_w_pos);
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+static pra_boolean pra_fifo_take_u8_args_check(
+    const pra_fifo *const p_fifo,
+    const uint8_t *const p_data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_EC_T_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_FIFO_NULL == p_fifo)
+    {
+        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_UINT8_NULL == p_fifo->p_data)
+    {
+        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_UINT8_NULL == p_data)
+    {
+        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_BOOL_TRUE != p_fifo->initialized)
+    {
+        *p_ec |= PRA_FIFO_EC_NOT_INIT;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (1U > p_fifo->used_length)
+    {
+        *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_fifo_take_u8(
+    pra_fifo *const p_fifo,
+    uint8_t *const p_data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_BOOL_TRUE != pra_fifo_take_u8_args_check(
+                             p_fifo,
+                             p_data,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        *p_data = p_fifo->p_data[p_fifo->next_r_pos];
+        pra_fifo_position_move(
+            p_fifo->data_length,
+            &p_fifo->next_r_pos);
+        p_fifo->used_length--;
 
         result = PRA_BOOL_TRUE;
     }
