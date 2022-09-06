@@ -216,3 +216,7 @@ add_test(NAME test_crc32_jamcrc COMMAND test_crc32_jamcrc)
 add_executable(test_fifo_init test_fifo_init.c)
 target_link_libraries(test_fifo_init practices)
 add_test(NAME test_fifo_init COMMAND test_fifo_init)
+
+add_executable(test_fifo_append_u8 test_fifo_append_u8.c)
+target_link_libraries(test_fifo_append_u8 practices)
+add_test(NAME test_fifo_append_u8 COMMAND test_fifo_append_u8)
