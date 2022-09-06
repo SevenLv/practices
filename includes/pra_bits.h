@@ -10,6 +10,7 @@
 
 /* includes */
 #include "pra_boolean.h"
+#include "pra_defs.h"
 #include "stdint.h"
 
 /* macros */
@@ -51,7 +52,7 @@ pra_boolean pra_bits_u8_get(
     uint8_t value,
     uint8_t bit_offset,
     pra_boolean *const p_actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               set the bit state of a 8-bit value
@@ -68,7 +69,7 @@ pra_boolean pra_bits_u8_set(
     uint8_t *const p_value,
     uint8_t bit_offset,
     pra_boolean actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               get the bit state of a 16-bit value
@@ -85,7 +86,7 @@ pra_boolean pra_bits_u16_get(
     uint16_t value,
     uint8_t bit_offset,
     pra_boolean *const p_actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               set the bit state of a 16-bit value
@@ -102,7 +103,7 @@ pra_boolean pra_bits_u16_set(
     uint16_t *const p_value,
     uint8_t bit_offset,
     pra_boolean actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               get the bit state of a 32-bit value
@@ -119,7 +120,7 @@ pra_boolean pra_bits_u32_get(
     uint32_t value,
     uint8_t bit_offset,
     pra_boolean *const p_actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               set the bit state of a 32-bit value
@@ -136,7 +137,7 @@ pra_boolean pra_bits_u32_set(
     uint32_t *const p_value,
     uint8_t bit_offset,
     pra_boolean actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               reverse bits

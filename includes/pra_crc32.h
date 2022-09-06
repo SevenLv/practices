@@ -11,6 +11,7 @@
 /* includes */
 #include "pra_boolean.h"
 #include "pra_crc.h"
+#include "pra_defs.h"
 #include "stdint.h"
 
 /* macros */
@@ -44,7 +45,7 @@ typedef struct _pra_crc32
  */
 pra_boolean pra_crc32_init(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               compute crc32
@@ -67,7 +68,7 @@ pra_boolean pra_crc32_compute(
     uint32_t offset,
     uint32_t length,
     uint32_t *const p_result,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief                   get new crc-32 struct
@@ -89,7 +90,7 @@ pra_boolean pra_crc32_get(
     uint32_t xor_out,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-32/default struct
@@ -101,7 +102,7 @@ pra_boolean pra_crc32_get(
  */
 pra_boolean pra_crc32_get_default(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-32/mpeg2 struct
@@ -113,7 +114,7 @@ pra_boolean pra_crc32_get_default(
  */
 pra_boolean pra_crc32_get_mpeg2(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-32/bzip2 struct
@@ -125,7 +126,7 @@ pra_boolean pra_crc32_get_mpeg2(
  */
 pra_boolean pra_crc32_get_bzip2(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-32/posix struct
@@ -137,7 +138,7 @@ pra_boolean pra_crc32_get_bzip2(
  */
 pra_boolean pra_crc32_get_posix(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-32/jamcrc struct
@@ -149,6 +150,6 @@ pra_boolean pra_crc32_get_posix(
  */
 pra_boolean pra_crc32_get_jamcrc(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 #endif

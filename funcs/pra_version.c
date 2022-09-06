@@ -9,7 +9,7 @@
 #include "pra_version.h"
 
 /* variables */
-static pra_version version = {
+static pra_version const version = {
     .major = 0U,
     .minor = 1U,
     .reversion = 1U};

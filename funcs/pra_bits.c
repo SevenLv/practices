@@ -67,7 +67,7 @@ static uint32_t u32_reversed_masks[32] = {
 static pra_boolean pra_bits_u8_get_args_check(
     uint8_t bit_offset,
     const pra_boolean *const p_actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               arguments validation for pra_bits_u8_set function
@@ -82,7 +82,7 @@ static pra_boolean pra_bits_u8_get_args_check(
 static pra_boolean pra_bits_u8_set_args_check(
     const uint8_t *const p_value,
     uint8_t bit_offset,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               arguments validation for pra_bits_u16_get function
@@ -96,7 +96,7 @@ static pra_boolean pra_bits_u8_set_args_check(
 static pra_boolean pra_bits_u16_get_args_check(
     uint8_t bit_offset,
     const pra_boolean *const p_actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               arguments validation for pra_bits_u16_set function
@@ -111,7 +111,7 @@ static pra_boolean pra_bits_u16_get_args_check(
 static pra_boolean pra_bits_u16_set_args_check(
     const uint16_t *const p_value,
     uint8_t bit_offset,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               arguments validation for pra_bits_u32_get function
@@ -126,7 +126,7 @@ static pra_boolean pra_bits_u16_set_args_check(
 static pra_boolean pra_bits_u32_get_args_check(
     uint8_t bit_offset,
     const pra_boolean *const p_actived,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               arguments validation for pra_bits_u32_set function
@@ -141,7 +141,7 @@ static pra_boolean pra_bits_u32_get_args_check(
 static pra_boolean pra_bits_u32_set_args_check(
     const uint32_t *const p_value,
     uint8_t bit_offset,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               arguments validation for pra_bits_u8_reverse function
@@ -157,7 +157,7 @@ static pra_boolean pra_bits_u8_reverse_args_check(
 static pra_boolean pra_bits_u8_get_args_check(
     uint8_t bit_offset,
     const pra_boolean *const p_actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -187,7 +187,7 @@ pra_boolean pra_bits_u8_get(
     uint8_t value,
     uint8_t bit_offset,
     pra_boolean *const p_actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
     uint8_t mask;
@@ -220,7 +220,7 @@ pra_boolean pra_bits_u8_get(
 static pra_boolean pra_bits_u8_set_args_check(
     const uint8_t *const p_value,
     uint8_t bit_offset,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -250,7 +250,7 @@ pra_boolean pra_bits_u8_set(
     uint8_t *const p_value,
     uint8_t bit_offset,
     pra_boolean actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -280,7 +280,7 @@ pra_boolean pra_bits_u8_set(
 static pra_boolean pra_bits_u16_get_args_check(
     uint8_t bit_offset,
     const pra_boolean *const p_actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -310,7 +310,7 @@ pra_boolean pra_bits_u16_get(
     uint16_t value,
     uint8_t bit_offset,
     pra_boolean *const p_actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
     uint16_t mask;
@@ -342,7 +342,7 @@ pra_boolean pra_bits_u16_get(
 static pra_boolean pra_bits_u16_set_args_check(
     const uint16_t *const p_value,
     uint8_t bit_offset,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -372,7 +372,7 @@ pra_boolean pra_bits_u16_set(
     uint16_t *const p_value,
     uint8_t bit_offset,
     pra_boolean actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -402,7 +402,7 @@ pra_boolean pra_bits_u16_set(
 static pra_boolean pra_bits_u32_get_args_check(
     uint8_t bit_offset,
     const pra_boolean *const p_actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -432,7 +432,7 @@ pra_boolean pra_bits_u32_get(
     uint32_t value,
     uint8_t bit_offset,
     pra_boolean *const p_actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -463,7 +463,7 @@ pra_boolean pra_bits_u32_get(
 static pra_boolean pra_bits_u32_set_args_check(
     const uint32_t *const p_value,
     uint8_t bit_offset,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -493,7 +493,7 @@ pra_boolean pra_bits_u32_set(
     uint32_t *const p_value,
     uint8_t bit_offset,
     pra_boolean actived,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 

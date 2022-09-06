@@ -27,7 +27,7 @@
  */
 static pra_boolean pra_crc32_init_args_check(
     const pra_crc32 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               arguments validation for pra_crc32_compute function
@@ -50,7 +50,7 @@ static pra_boolean pra_crc32_compute_args_check(
     uint32_t offset,
     uint32_t length,
     const uint32_t *const p_result,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief                   arguments declaration for pra_crc32_get function
@@ -66,13 +66,13 @@ static pra_boolean pra_crc32_get_args_check(
     const pra_crc32 *const p_crc,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /* functions */
 
 static pra_boolean pra_crc32_init_args_check(
     const pra_crc32 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -95,7 +95,7 @@ static pra_boolean pra_crc32_init_args_check(
 
 pra_boolean pra_crc32_init(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
     uint32_t current_value;
@@ -143,7 +143,7 @@ static pra_boolean pra_crc32_compute_args_check(
     uint32_t offset,
     uint32_t length,
     const uint32_t *const p_result,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -195,7 +195,7 @@ pra_boolean pra_crc32_compute(
     uint32_t offset,
     uint32_t length,
     uint32_t *const p_result,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
     pra_boolean failed = PRA_BOOL_FALSE;
@@ -276,7 +276,7 @@ static pra_boolean pra_crc32_get_args_check(
     const pra_crc32 *const p_crc,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -316,7 +316,7 @@ pra_boolean pra_crc32_get(
     uint32_t xor_out,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -345,7 +345,7 @@ pra_boolean pra_crc32_get(
 
 pra_boolean pra_crc32_get_default(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc32_get(
         p_crc,
@@ -359,7 +359,7 @@ pra_boolean pra_crc32_get_default(
 
 pra_boolean pra_crc32_get_mpeg2(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc32_get(
         p_crc,
@@ -373,7 +373,7 @@ pra_boolean pra_crc32_get_mpeg2(
 
 pra_boolean pra_crc32_get_bzip2(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc32_get(
         p_crc,
@@ -387,7 +387,7 @@ pra_boolean pra_crc32_get_bzip2(
 
 pra_boolean pra_crc32_get_posix(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc32_get(
         p_crc,
@@ -401,7 +401,7 @@ pra_boolean pra_crc32_get_posix(
 
 pra_boolean pra_crc32_get_jamcrc(
     pra_crc32 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc32_get(
         p_crc,

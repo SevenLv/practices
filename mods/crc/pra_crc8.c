@@ -27,7 +27,7 @@
  */
 static pra_boolean pra_crc8_init_args_check(
     const pra_crc8 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               arguments validation for pra_crc8_compute function
@@ -50,7 +50,7 @@ static pra_boolean pra_crc8_compute_args_check(
     uint32_t offset,
     uint32_t length,
     const uint8_t *const p_result,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 /**
  * @brief                   arguments validation for pra_crc8_get function
  * @note
@@ -65,13 +65,13 @@ static pra_boolean pra_crc8_get_args_check(
     const pra_crc8 *const p_crc,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /* functions */
 
 static pra_boolean pra_crc8_init_args_check(
     const pra_crc8 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -94,7 +94,7 @@ static pra_boolean pra_crc8_init_args_check(
 
 pra_boolean pra_crc8_init(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
     uint8_t current_value;
@@ -142,7 +142,7 @@ static pra_boolean pra_crc8_compute_args_check(
     uint32_t offset,
     uint32_t length,
     const uint8_t *const p_result,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -194,7 +194,7 @@ pra_boolean pra_crc8_compute(
     uint32_t offset,
     uint32_t length,
     uint8_t *const p_result,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
     pra_boolean failed = PRA_BOOL_FALSE;
@@ -274,7 +274,7 @@ static pra_boolean pra_crc8_get_args_check(
     const pra_crc8 *const p_crc,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result;
 
@@ -314,7 +314,7 @@ pra_boolean pra_crc8_get(
     uint8_t xor_out,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -343,7 +343,7 @@ pra_boolean pra_crc8_get(
 
 pra_boolean pra_crc8_get_default(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc8_get(
         p_crc,
@@ -357,7 +357,7 @@ pra_boolean pra_crc8_get_default(
 
 pra_boolean pra_crc8_get_itu(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc8_get(
         p_crc,
@@ -371,7 +371,7 @@ pra_boolean pra_crc8_get_itu(
 
 pra_boolean pra_crc8_get_rohc(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc8_get(
         p_crc,
@@ -385,7 +385,7 @@ pra_boolean pra_crc8_get_rohc(
 
 pra_boolean pra_crc8_get_maxim(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc8_get(
         p_crc,
@@ -399,7 +399,7 @@ pra_boolean pra_crc8_get_maxim(
 
 pra_boolean pra_crc8_get_cdma2000(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc8_get(
         p_crc,
@@ -413,7 +413,7 @@ pra_boolean pra_crc8_get_cdma2000(
 
 pra_boolean pra_crc8_get_wcdma(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec)
+    PRA_EC_T *const p_ec)
 {
     return pra_crc8_get(
         p_crc,

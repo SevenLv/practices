@@ -11,6 +11,7 @@
 /* includes */
 #include "pra_boolean.h"
 #include "pra_crc.h"
+#include "pra_defs.h"
 #include "stdint.h"
 
 /* macros */
@@ -44,7 +45,7 @@ typedef struct _pra_crc8
  */
 pra_boolean pra_crc8_init(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               compute crc8
@@ -67,7 +68,7 @@ pra_boolean pra_crc8_compute(
     uint32_t offset,
     uint32_t length,
     uint8_t *const p_result,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief                   get new crc-8 struct
@@ -89,7 +90,7 @@ pra_boolean pra_crc8_get(
     uint8_t xor_out,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-8 struct
@@ -101,7 +102,7 @@ pra_boolean pra_crc8_get(
  */
 pra_boolean pra_crc8_get_default(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-8/itu struct
@@ -113,7 +114,7 @@ pra_boolean pra_crc8_get_default(
  */
 pra_boolean pra_crc8_get_itu(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-8/rohc struct
@@ -125,7 +126,7 @@ pra_boolean pra_crc8_get_itu(
  */
 pra_boolean pra_crc8_get_rohc(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-8/maxim struct
@@ -137,7 +138,7 @@ pra_boolean pra_crc8_get_rohc(
  */
 pra_boolean pra_crc8_get_maxim(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-8/cdma2000 struct
@@ -149,7 +150,7 @@ pra_boolean pra_crc8_get_maxim(
  */
 pra_boolean pra_crc8_get_cdma2000(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-8/wcdma struct
@@ -161,5 +162,5 @@ pra_boolean pra_crc8_get_cdma2000(
  */
 pra_boolean pra_crc8_get_wcdma(
     pra_crc8 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 #endif

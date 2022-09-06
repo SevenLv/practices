@@ -11,6 +11,7 @@
 /* includes */
 #include "pra_boolean.h"
 #include "pra_crc.h"
+#include "pra_defs.h"
 #include "stdint.h"
 
 /* macros */
@@ -44,7 +45,7 @@ typedef struct _pra_crc16
  */
 pra_boolean pra_crc16_init(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               compute crc16
@@ -67,7 +68,7 @@ pra_boolean pra_crc16_compute(
     uint32_t offset,
     uint32_t length,
     uint16_t *const p_result,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief                   get new crc-16 struct
@@ -89,7 +90,7 @@ pra_boolean pra_crc16_get(
     uint16_t xor_out,
     pra_boolean ref_in,
     pra_boolean ref_out,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-16/arc struct
@@ -101,7 +102,7 @@ pra_boolean pra_crc16_get(
  */
 pra_boolean pra_crc16_get_arc(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-16/maxim struct
@@ -113,7 +114,7 @@ pra_boolean pra_crc16_get_arc(
  */
 pra_boolean pra_crc16_get_maxim(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-16/usb struct
@@ -125,7 +126,7 @@ pra_boolean pra_crc16_get_maxim(
  */
 pra_boolean pra_crc16_get_usb(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-16/modbus struct
@@ -137,7 +138,7 @@ pra_boolean pra_crc16_get_usb(
  */
 pra_boolean pra_crc16_get_modbus(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-16/ccitt-false struct
@@ -149,7 +150,7 @@ pra_boolean pra_crc16_get_modbus(
  */
 pra_boolean pra_crc16_get_ccitt_false(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-16/x25 struct
@@ -161,7 +162,7 @@ pra_boolean pra_crc16_get_ccitt_false(
  */
 pra_boolean pra_crc16_get_x25(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-16/xmodem struct
@@ -173,7 +174,7 @@ pra_boolean pra_crc16_get_x25(
  */
 pra_boolean pra_crc16_get_xmodem(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           get new crc-16/dnp struct
@@ -185,6 +186,6 @@ pra_boolean pra_crc16_get_xmodem(
  */
 pra_boolean pra_crc16_get_dnp(
     pra_crc16 *const p_crc,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 #endif

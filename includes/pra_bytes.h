@@ -10,6 +10,7 @@
 
 /* includes */
 #include "pra_boolean.h"
+#include "pra_defs.h"
 #include "stdint.h"
 
 /* macros */
@@ -49,7 +50,7 @@ typedef struct _pra_bytes
  */
 pra_boolean pra_bytes_not_null_ptr(
     const pra_bytes *const p_bytes,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               initialize a bytes value
@@ -63,7 +64,7 @@ pra_boolean pra_bytes_not_null_ptr(
  */
 pra_boolean pra_bytes_init(
     pra_bytes *const p_bytes,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           copy the data and used length of bytes
@@ -80,7 +81,7 @@ pra_boolean pra_bytes_init(
 pra_boolean pra_bytes_copy(
     const pra_bytes *const p_src,
     pra_bytes *const p_dst,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief               append some bytes to a bytes struct
@@ -98,7 +99,7 @@ pra_boolean pra_bytes_append_u8_array(
     pra_bytes *const p_bytes,
     const uint8_t data[],
     uint16_t data_length,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           append some bytes to a bytes struct
@@ -114,7 +115,7 @@ pra_boolean pra_bytes_append_u8_array(
 pra_boolean pra_bytes_append(
     pra_bytes *const p_bytes,
     const pra_bytes *const p_data,
-    uint32_t *const p_ec);
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           append a byte to a bytes struct
@@ -129,8 +130,8 @@ pra_boolean pra_bytes_append(
  */
 pra_boolean pra_bytes_append_u8(
     pra_bytes *const p_bytes,
-    const uint8_t data,
-    uint32_t *const p_ec);
+    uint8_t data,
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           append a 16-bits value to a bytes struct
@@ -145,8 +146,8 @@ pra_boolean pra_bytes_append_u8(
  */
 pra_boolean pra_bytes_append_u16_be(
     pra_bytes *const p_bytes,
-    const uint16_t data,
-    uint32_t *const p_ec);
+    uint16_t data,
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           append a 16-bits value to a bytes struct
@@ -161,8 +162,8 @@ pra_boolean pra_bytes_append_u16_be(
  */
 pra_boolean pra_bytes_append_u16_le(
     pra_bytes *const p_bytes,
-    const uint16_t data,
-    uint32_t *const p_ec);
+    uint16_t data,
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           append a 32-bits value to a bytes struct
@@ -177,8 +178,8 @@ pra_boolean pra_bytes_append_u16_le(
  */
 pra_boolean pra_bytes_append_u32_be(
     pra_bytes *const p_bytes,
-    const uint32_t data,
-    uint32_t *const p_ec);
+    uint32_t data,
+    PRA_EC_T *const p_ec);
 
 /**
  * @brief           append a 32-bits value to a bytes struct
@@ -193,7 +194,7 @@ pra_boolean pra_bytes_append_u32_be(
  */
 pra_boolean pra_bytes_append_u32_le(
     pra_bytes *const p_bytes,
-    const uint32_t data,
-    uint32_t *const p_ec);
+    uint32_t data,
+    PRA_EC_T *const p_ec);
 
 #endif
