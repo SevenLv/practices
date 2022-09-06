@@ -18,6 +18,7 @@
 #define PRA_UINT32_NULL ((uint32_t *)0)
 
 #define PRA_EC_T uint32_t
+#define PRA_EC_T_NULL ((PRA_EC_T *)0)
 
 /* types */
 

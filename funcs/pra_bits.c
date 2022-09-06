@@ -161,7 +161,7 @@ static pra_boolean pra_bits_u8_get_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }
@@ -224,7 +224,7 @@ static pra_boolean pra_bits_u8_set_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }
@@ -284,7 +284,7 @@ static pra_boolean pra_bits_u16_get_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }
@@ -346,7 +346,7 @@ static pra_boolean pra_bits_u16_set_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }
@@ -406,7 +406,7 @@ static pra_boolean pra_bits_u32_get_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }
@@ -467,7 +467,7 @@ static pra_boolean pra_bits_u32_set_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }

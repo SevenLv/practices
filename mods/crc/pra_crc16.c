@@ -74,7 +74,7 @@ static pra_boolean pra_crc16_init_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }
@@ -141,7 +141,7 @@ static pra_boolean pra_crc16_compute_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }
@@ -274,7 +274,7 @@ static pra_boolean pra_crc16_get_args_check(
 {
     pra_boolean result;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }

@@ -19,7 +19,7 @@ pra_boolean pra_bytes_not_null_ptr(
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
-    if (PRA_UINT32_NULL == p_ec)
+    if (PRA_EC_T_NULL == p_ec)
     {
         result = PRA_BOOL_FALSE;
     }
