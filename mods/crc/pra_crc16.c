@@ -9,6 +9,7 @@
 #include "pra_crc16.h"
 #include "pra_defs.h"
 #include "pra_bits.h"
+#include "pra_num_defs.h"
 
 /* variables */
 #define MASK_H1 0x8000U
@@ -111,7 +112,7 @@ pra_boolean pra_crc16_init(
         for (uint16_t i = 0U; i < PRA_CRC_TABLE_SIZE; i++)
         {
             uint16_t current_value = i;
-            for (uint8_t j = 0U; j < PRA_BITS_U16_WITDH; j++)
+            for (uint8_t j = 0U; j < PRA_NUM_BIT_WIDTH_U16; j++)
             {
                 if (MASK_H1 == (current_value & MASK_H1))
                 {
@@ -231,7 +232,7 @@ pra_boolean pra_crc16_compute(
                 {
                     current_value = bytes[i];
                 }
-                tmp_crc = (tmp_crc << PRA_BITS_U8_WIDTH) ^ p_crc->table[((tmp_crc >> PRA_BITS_U8_WIDTH) ^ current_value) & PRA_BITS_U8_MAX_VALUE];
+                tmp_crc = (tmp_crc << PRA_NUM_BIT_WIDTH_U8) ^ p_crc->table[((tmp_crc >> PRA_NUM_BIT_WIDTH_U8) ^ current_value) & PRA_NUM_MAX_VALUE_U8];
             }
             else
             {

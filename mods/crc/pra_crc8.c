@@ -7,8 +7,9 @@
 
 /* includes */
 #include "pra_crc8.h"
-#include "pra_defs.h"
 #include "pra_bits.h"
+#include "pra_defs.h"
+#include "pra_num_defs.h"
 
 /* macros */
 #define MASK_H1 0x80U
@@ -116,7 +117,7 @@ pra_boolean pra_crc8_init(
         for (i = 0U; i < PRA_CRC_TABLE_SIZE; i++)
         {
             current_value = i;
-            for (j = 0U; j < PRA_BITS_U8_WIDTH; j++)
+            for (j = 0U; j < PRA_NUM_BIT_WIDTH_U8; j++)
             {
                 if (MASK_H1 == (current_value & MASK_H1))
                 {

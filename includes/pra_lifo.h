@@ -11,18 +11,19 @@
 /* includes */
 #include "pra_boolean.h"
 #include "pra_defs.h"
+#include "pra_num_defs.h"
 #include "stdint.h"
 
 /* macros */
 
 #define PRA_LIFO_NULL ((pra_lifo *)0)
 
-#define PRA_LIFO_EC_NONE 0x0U             /* no error */
-#define PRA_LIFO_EC_NULL_PTR 0x1U         /* null pointer */
-#define PRA_LIFO_EC_NOT_INIT 0x2U         /* not initialized */
-#define PRA_LIFO_EC_INVALID_LENGTH 0x4U   /* invalid length */
-#define PRA_LIFO_EC_DATA_FULL 0x8U        /* the lifo struct is full */
-#define PRA_LIFO_EC_DATA_NOT_ENOUGH 0x10U /* the lifo struct data is not enough */
+#define PRA_LIFO_EC_NONE PRA_NUM_ZERO_U                 /* no error */
+#define PRA_LIFO_EC_NULL_PTR PRA_NUM_BIT_MASK_00        /* null pointer */
+#define PRA_LIFO_EC_NOT_INIT PRA_NUM_BIT_MASK_01        /* not initialized */
+#define PRA_LIFO_EC_INVALID_LENGTH PRA_NUM_BIT_MASK_02  /* invalid length */
+#define PRA_LIFO_EC_DATA_FULL PRA_NUM_BIT_MASK_03       /* the lifo struct is full */
+#define PRA_LIFO_EC_DATA_NOT_ENOUGH PRA_NUM_BIT_MASK_04 /* the lifo struct data is not enough */
 
 /* types */
 

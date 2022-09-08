@@ -11,17 +11,19 @@
 /* includes */
 #include "pra_boolean.h"
 #include "pra_defs.h"
+#include "pra_num_defs.h"
 #include "stdint.h"
 
 /* macros */
 
 #define PRA_BYTES_NULL ((pra_bytes *)0)
-#define PRA_BYTES_EC_NONE 0x0U               /* no error */
-#define PRA_BYTES_EC_NULL_PTR 0x1U           /* null pointer */
-#define PRA_BYTES_EC_NULL_DATA_PTR 0x2U      /* null data pointer */
-#define PRA_BYTES_EC_DATA_LENGTH_ZERO 0x4U   /* the length of data is zero */
-#define PRA_BYTES_EC_DIFFERENT_LENGTH 0x8U   /* different length */
-#define PRA_BYTES_EC_NOT_ENOUGH_LENGTH 0x10U /* not enough length */
+
+#define PRA_BYTES_EC_NONE PRA_NUM_ZERO_U                   /* no error */
+#define PRA_BYTES_EC_NULL_PTR PRA_NUM_BIT_MASK_00          /* null pointer */
+#define PRA_BYTES_EC_NULL_DATA_PTR PRA_NUM_BIT_MASK_01     /* null data pointer */
+#define PRA_BYTES_EC_DATA_LENGTH_ZERO PRA_NUM_BIT_MASK_02  /* the length of data is zero */
+#define PRA_BYTES_EC_DIFFERENT_LENGTH PRA_NUM_BIT_MASK_03  /* different length */
+#define PRA_BYTES_EC_NOT_ENOUGH_LENGTH PRA_NUM_BIT_MASK_04 /* not enough length */
 
 /* types */
 

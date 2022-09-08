@@ -8,23 +8,34 @@
 /* includes */
 #include "pra_bits.h"
 #include "pra_defs.h"
+#include "pra_num_defs.h"
 
 /* macros */
 
 /* variables */
 static uint8_t u8_masks[8] = {
-    0x01U, 0x02U, 0x04U, 0x08U,
-    0x10U, 0x20U, 0x40U, 0x80U};
+    PRA_NUM_BIT_MASK_00,
+    PRA_NUM_BIT_MASK_01,
+    PRA_NUM_BIT_MASK_02,
+    PRA_NUM_BIT_MASK_03,
+    PRA_NUM_BIT_MASK_04,
+    PRA_NUM_BIT_MASK_05,
+    PRA_NUM_BIT_MASK_06,
+    PRA_NUM_BIT_MASK_07};
 
 static uint8_t u8_reversed_masks[8] = {
     0xFEU, 0xFDU, 0xFBU, 0xF7U,
     0xEFU, 0xDFU, 0xBFU, 0x7FU};
 
 static uint16_t u16_masks[16] = {
-    0x0001U, 0x0002U, 0x0004U, 0x0008U,
-    0x0010U, 0x0020U, 0x0040U, 0x0080U,
-    0x0100U, 0x0200U, 0x0400U, 0x0800U,
-    0x1000U, 0x2000U, 0x4000U, 0x8000U};
+    PRA_NUM_BIT_MASK_00, PRA_NUM_BIT_MASK_01,
+    PRA_NUM_BIT_MASK_02, PRA_NUM_BIT_MASK_03,
+    PRA_NUM_BIT_MASK_04, PRA_NUM_BIT_MASK_05,
+    PRA_NUM_BIT_MASK_06, PRA_NUM_BIT_MASK_07,
+    PRA_NUM_BIT_MASK_08, PRA_NUM_BIT_MASK_09,
+    PRA_NUM_BIT_MASK_10, PRA_NUM_BIT_MASK_11,
+    PRA_NUM_BIT_MASK_12, PRA_NUM_BIT_MASK_13,
+    PRA_NUM_BIT_MASK_14, PRA_NUM_BIT_MASK_15};
 
 static uint16_t u16_reversed_masks[16] = {
     0xFFFEU, 0xFFFDU, 0xFFFBU, 0xFFF7U,
@@ -33,14 +44,22 @@ static uint16_t u16_reversed_masks[16] = {
     0xEFFFU, 0xDFFFU, 0xBFFFU, 0x7FFFU};
 
 static uint32_t u32_masks[32] = {
-    0x00000001U, 0x00000002U, 0x00000004U, 0x00000008U,
-    0x00000010U, 0x00000020U, 0x00000040U, 0x00000080U,
-    0x00000100U, 0x00000200U, 0x00000400U, 0x00000800U,
-    0x00001000U, 0x00002000U, 0x00004000U, 0x00008000U,
-    0x00010000U, 0x00020000U, 0x00040000U, 0x00080000U,
-    0x00100000U, 0x00200000U, 0x00400000U, 0x00800000U,
-    0x01000000U, 0x02000000U, 0x04000000U, 0x08000000U,
-    0x10000000U, 0x20000000U, 0x40000000U, 0x80000000U};
+    PRA_NUM_BIT_MASK_00, PRA_NUM_BIT_MASK_01,
+    PRA_NUM_BIT_MASK_02, PRA_NUM_BIT_MASK_03,
+    PRA_NUM_BIT_MASK_04, PRA_NUM_BIT_MASK_05,
+    PRA_NUM_BIT_MASK_06, PRA_NUM_BIT_MASK_07,
+    PRA_NUM_BIT_MASK_08, PRA_NUM_BIT_MASK_09,
+    PRA_NUM_BIT_MASK_10, PRA_NUM_BIT_MASK_11,
+    PRA_NUM_BIT_MASK_12, PRA_NUM_BIT_MASK_13,
+    PRA_NUM_BIT_MASK_14, PRA_NUM_BIT_MASK_15,
+    PRA_NUM_BIT_MASK_16, PRA_NUM_BIT_MASK_17,
+    PRA_NUM_BIT_MASK_18, PRA_NUM_BIT_MASK_19,
+    PRA_NUM_BIT_MASK_20, PRA_NUM_BIT_MASK_21,
+    PRA_NUM_BIT_MASK_22, PRA_NUM_BIT_MASK_23,
+    PRA_NUM_BIT_MASK_24, PRA_NUM_BIT_MASK_25,
+    PRA_NUM_BIT_MASK_26, PRA_NUM_BIT_MASK_27,
+    PRA_NUM_BIT_MASK_28, PRA_NUM_BIT_MASK_29,
+    PRA_NUM_BIT_MASK_30, PRA_NUM_BIT_MASK_31};
 
 static uint32_t u32_reversed_masks[32] = {
     0xFFFFFFFEU, 0xFFFFFFFDU, 0xFFFFFFFBU, 0xFFFFFFF7U,
@@ -170,7 +189,7 @@ static pra_boolean pra_bits_u8_get_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BITS_U8_MAX_OFFSET < bit_offset)
+    else if (PRA_NUM_BIT_MAX_OFFSET_U8 < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -202,6 +221,7 @@ pra_boolean pra_bits_u8_get(
     else
     {
         mask = u8_masks[bit_offset];
+
         if (mask == (value & mask))
         {
             *p_actived = PRA_BOOL_TRUE;
@@ -233,7 +253,7 @@ static pra_boolean pra_bits_u8_set_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BITS_U8_MAX_OFFSET < bit_offset)
+    else if (PRA_NUM_BIT_MAX_OFFSET_U8 < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -271,6 +291,7 @@ pra_boolean pra_bits_u8_set(
         {
             *p_value &= u8_reversed_masks[bit_offset];
         }
+
         result = PRA_BOOL_TRUE;
     }
 
@@ -293,7 +314,7 @@ static pra_boolean pra_bits_u16_get_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BITS_U16_MAX_OFFSET < bit_offset)
+    else if (PRA_NUM_BIT_MAX_OFFSET_U16 < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -325,6 +346,7 @@ pra_boolean pra_bits_u16_get(
     else
     {
         mask = u16_masks[bit_offset];
+
         if (mask == (value & mask))
         {
             *p_actived = PRA_BOOL_TRUE;
@@ -333,6 +355,7 @@ pra_boolean pra_bits_u16_get(
         {
             *p_actived = PRA_BOOL_FALSE;
         }
+
         result = PRA_BOOL_TRUE;
     }
 
@@ -355,7 +378,7 @@ static pra_boolean pra_bits_u16_set_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BITS_U16_MAX_OFFSET < bit_offset)
+    else if (PRA_NUM_BIT_MAX_OFFSET_U16 < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -393,6 +416,7 @@ pra_boolean pra_bits_u16_set(
         {
             *p_value &= u16_reversed_masks[bit_offset];
         }
+
         result = PRA_BOOL_TRUE;
     }
 
@@ -415,7 +439,7 @@ static pra_boolean pra_bits_u32_get_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BITS_U32_MAX_OFFSET < bit_offset)
+    else if (PRA_NUM_BIT_MAX_OFFSET_U32 < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -446,6 +470,7 @@ pra_boolean pra_bits_u32_get(
     else
     {
         uint32_t mask = u32_masks[bit_offset];
+
         if (mask == (mask & value))
         {
             *p_actived = PRA_BOOL_TRUE;
@@ -454,6 +479,7 @@ pra_boolean pra_bits_u32_get(
         {
             *p_actived = PRA_BOOL_FALSE;
         }
+
         result = PRA_BOOL_TRUE;
     }
 
@@ -476,7 +502,7 @@ static pra_boolean pra_bits_u32_set_args_check(
         *p_ec |= PRA_BITS_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BITS_U32_MAX_OFFSET < bit_offset)
+    else if (PRA_NUM_BIT_MAX_OFFSET_U32 < bit_offset)
     {
         *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
@@ -514,6 +540,7 @@ pra_boolean pra_bits_u32_set(
         {
             *p_value &= u32_reversed_masks[bit_offset];
         }
+
         result = PRA_BOOL_TRUE;
     }
 
@@ -553,8 +580,9 @@ pra_boolean pra_bits_u8_reverse(
     }
     else
     {
-        *p_new_value = 0U;
-        for (uint8_t i = 0U; i < PRA_BITS_U8_WIDTH; i++)
+        *p_new_value = PRA_NUM_ZERO_U;
+
+        for (uint8_t i = PRA_NUM_ZERO_U; i < PRA_NUM_BIT_WIDTH_U8; i++)
         {
             if (PRA_BOOL_FALSE == failed)
             {
@@ -566,7 +594,7 @@ pra_boolean pra_bits_u8_reverse(
                 {
                     if (PRA_BOOL_TRUE != pra_bits_u8_set(
                                              p_new_value,
-                                             PRA_BITS_U8_MAX_OFFSET - i,
+                                             PRA_NUM_BIT_MAX_OFFSET_U8 - i,
                                              actived,
                                              &error_code))
                     {
@@ -601,8 +629,9 @@ pra_boolean pra_bits_u16_reverse(
 
     if (PRA_UINT16_NULL != p_new_value)
     {
-        *p_new_value = 0U;
-        for (uint8_t i = 0U; i < PRA_BITS_U16_WITDH; i++)
+        *p_new_value = PRA_NUM_ZERO_U;
+
+        for (uint8_t i = PRA_NUM_ZERO_U; i < PRA_NUM_BIT_WIDTH_U16; i++)
         {
             if (PRA_BOOL_FALSE == failed)
             {
@@ -614,7 +643,7 @@ pra_boolean pra_bits_u16_reverse(
                 {
                     if (PRA_BOOL_TRUE != pra_bits_u16_set(
                                              p_new_value,
-                                             PRA_BITS_U16_MAX_OFFSET - i,
+                                             PRA_NUM_BIT_MAX_OFFSET_U16 - i,
                                              actived,
                                              &error_code))
                     {
@@ -653,8 +682,9 @@ pra_boolean pra_bits_u32_reverse(
 
     if (PRA_UINT32_NULL != p_new_value)
     {
-        *p_new_value = 0U;
-        for (uint8_t i = 0U; i < PRA_BITS_U32_WITDH; i++)
+        *p_new_value = PRA_NUM_ZERO_U;
+
+        for (uint8_t i = PRA_NUM_ZERO_U; i < PRA_NUM_BIT_WIDTH_U32; i++)
         {
             if (PRA_BOOL_FALSE == failed)
             {
@@ -666,7 +696,7 @@ pra_boolean pra_bits_u32_reverse(
                 {
                     if (PRA_BOOL_TRUE != pra_bits_u32_set(
                                              p_new_value,
-                                             PRA_BITS_U32_MAX_OFFSET - i,
+                                             PRA_NUM_BIT_MAX_OFFSET_U32 - i,
                                              actived,
                                              &error_code))
                     {

@@ -9,6 +9,7 @@
 #include "pra_crc32.h"
 #include "pra_defs.h"
 #include "pra_bits.h"
+#include "pra_num_defs.h"
 
 /* macros */
 #define MASK_H1 0x80000000U
@@ -117,7 +118,7 @@ pra_boolean pra_crc32_init(
         for (i = 0U; i < PRA_CRC_TABLE_SIZE; i++)
         {
             current_value = i;
-            for (j = 0U; j < PRA_BITS_U32_WITDH; j++)
+            for (j = 0U; j < PRA_NUM_BIT_WIDTH_U32; j++)
             {
                 if (MASK_H1 == (current_value & MASK_H1))
                 {
@@ -127,7 +128,7 @@ pra_boolean pra_crc32_init(
                 {
                     current_value <<= 1U;
                 }
-                p_crc->table[i] = (current_value & PRA_BITS_U32_MAX_VALUE);
+                p_crc->table[i] = (current_value & PRA_NUM_MAX_VALUE_U32);
             }
         }
         p_crc->initialized = PRA_BOOL_TRUE;
@@ -237,7 +238,7 @@ pra_boolean pra_crc32_compute(
                 {
                     current_value = bytes[i];
                 }
-                tmp_crc = (tmp_crc << PRA_BITS_U8_WIDTH) ^ p_crc->table[((tmp_crc >> (PRA_BITS_U8_WIDTH * 3)) ^ current_value) & PRA_BITS_U8_MAX_VALUE];
+                tmp_crc = (tmp_crc << PRA_NUM_BIT_WIDTH_U8) ^ p_crc->table[((tmp_crc >> (PRA_NUM_BIT_WIDTH_U8 * 3)) ^ current_value) & PRA_NUM_MAX_VALUE_U8];
             }
             else
             {
@@ -286,7 +287,7 @@ static pra_boolean pra_crc32_get_args_check(
     }
     else if (PRA_CRC32_NULL == p_crc)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_CRC_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != ref_in &&

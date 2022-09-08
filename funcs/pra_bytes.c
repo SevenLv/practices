@@ -8,6 +8,7 @@
 /* includes */
 #include "pra_bytes.h"
 #include "pra_defs.h"
+#include "pra_num_defs.h"
 
 /* variables */
 
@@ -52,17 +53,18 @@ pra_boolean pra_bytes_init(
     {
         result = PRA_BOOL_FALSE;
     }
-    else if (0U == p_bytes->length)
+    else if (PRA_NUM_ZERO_U == p_bytes->length)
     {
         *p_ec |= PRA_BYTES_EC_DATA_LENGTH_ZERO;
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        p_bytes->used_length = 0U;
-        for (uint16_t i = 0U; i < p_bytes->length; i++)
+        p_bytes->used_length = PRA_NUM_ZERO_U;
+
+        for (uint16_t i = PRA_NUM_ZERO_U; i < p_bytes->length; i++)
         {
-            p_bytes->data[i] = 0U;
+            p_bytes->data[i] = PRA_NUM_ZERO_U;
         }
 
         result = PRA_BOOL_TRUE;
@@ -83,8 +85,8 @@ pra_boolean pra_bytes_copy(
     {
         result = PRA_BOOL_FALSE;
     }
-    else if (0U == p_src->length ||
-             0U == p_dst->length)
+    else if (PRA_NUM_ZERO_U == p_src->length ||
+             PRA_NUM_ZERO_U == p_dst->length)
     {
         *p_ec = PRA_BYTES_EC_DATA_LENGTH_ZERO;
         result = PRA_BOOL_FALSE;
@@ -96,7 +98,7 @@ pra_boolean pra_bytes_copy(
     }
     else
     {
-        for (uint16_t i = 0U; i < p_src->length; i++)
+        for (uint16_t i = PRA_NUM_ZERO_U; i < p_src->length; i++)
         {
             if (i < p_src->used_length - 1)
             {
@@ -104,7 +106,7 @@ pra_boolean pra_bytes_copy(
             }
             else
             {
-                p_dst->data[i] = 0U;
+                p_dst->data[i] = PRA_NUM_ZERO_U;
             }
         }
 
@@ -135,7 +137,7 @@ pra_boolean pra_bytes_append_u8_array(
     }
     else
     {
-        if (0U == data_length)
+        if (PRA_NUM_ZERO_U == data_length)
         {
             result = PRA_BOOL_TRUE;
         }
@@ -146,7 +148,7 @@ pra_boolean pra_bytes_append_u8_array(
         }
         else
         {
-            for (uint16_t i = 0U; i < data_length; i++)
+            for (uint16_t i = PRA_NUM_ZERO_U; i < data_length; i++)
             {
                 p_bytes->data[p_bytes->used_length] = data[i];
                 p_bytes->used_length++;
@@ -178,10 +180,10 @@ pra_boolean pra_bytes_append(
     }
     else
     {
-        for (uint16_t i = 0U; i < p_data->used_length; i++)
+        for (uint16_t i = PRA_NUM_ZERO_U; i < p_data->used_length; i++)
         {
             p_bytes->data[p_bytes->used_length] = p_data->data[i];
-            p_bytes->used_length++;
+            p_bytes->used_length += PRA_NUM_BYTE_SIZE_U8;
         }
 
         result = PRA_BOOL_TRUE;
@@ -201,7 +203,7 @@ pra_boolean pra_bytes_append_u8(
     {
         result = PRA_BOOL_FALSE;
     }
-    else if (p_bytes->length < (p_bytes->used_length + 1))
+    else if (p_bytes->length < (p_bytes->used_length + PRA_NUM_BYTE_SIZE_U8))
     {
         *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
@@ -209,7 +211,7 @@ pra_boolean pra_bytes_append_u8(
     else
     {
         p_bytes->data[p_bytes->used_length] = data;
-        p_bytes->used_length++;
+        p_bytes->used_length += PRA_NUM_BYTE_SIZE_U8;
 
         result = PRA_BOOL_TRUE;
     }
@@ -228,16 +230,16 @@ pra_boolean pra_bytes_append_u16_be(
     {
         result = PRA_BOOL_FALSE;
     }
-    else if (p_bytes->length < (p_bytes->used_length + 2))
+    else if (p_bytes->length < (p_bytes->used_length + PRA_NUM_BYTE_SIZE_U16))
     {
         *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        p_bytes->data[p_bytes->used_length] = (uint8_t)((data >> 8U) & 0xFFU);
-        p_bytes->data[p_bytes->used_length + 1] = (uint8_t)(data & 0xFFU);
-        p_bytes->used_length += 2;
+        p_bytes->data[p_bytes->used_length] = (uint8_t)((data >> PRA_NUM_BIT_WIDTH_U8) & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->data[p_bytes->used_length + 1] = (uint8_t)(data & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->used_length += PRA_NUM_BYTE_SIZE_U16;
 
         result = PRA_BOOL_TRUE;
     }
@@ -256,16 +258,16 @@ pra_boolean pra_bytes_append_u16_le(
     {
         result = PRA_BOOL_FALSE;
     }
-    else if (p_bytes->length < (p_bytes->used_length + 2))
+    else if (p_bytes->length < (p_bytes->used_length + PRA_NUM_BYTE_SIZE_U16))
     {
         *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        p_bytes->data[p_bytes->used_length] = (uint8_t)(data & 0xFFU);
-        p_bytes->data[p_bytes->used_length + 1] = (uint8_t)((data >> 8U) & 0xFFU);
-        p_bytes->used_length += 2;
+        p_bytes->data[p_bytes->used_length] = (uint8_t)(data & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->data[p_bytes->used_length + 1] = (uint8_t)((data >> PRA_NUM_BIT_WIDTH_U8) & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->used_length += PRA_NUM_BYTE_SIZE_U16;
 
         result = PRA_BOOL_TRUE;
     }
@@ -284,18 +286,18 @@ pra_boolean pra_bytes_append_u32_be(
     {
         result = PRA_BOOL_FALSE;
     }
-    else if (p_bytes->length < (p_bytes->used_length + 4))
+    else if (p_bytes->length < (p_bytes->used_length + PRA_NUM_BYTE_SIZE_U32))
     {
         *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        p_bytes->data[p_bytes->used_length] = (uint8_t)((data >> 24U) & 0xFFU);
-        p_bytes->data[p_bytes->used_length + 1] = (uint8_t)((data >> 16U) & 0xFFU);
-        p_bytes->data[p_bytes->used_length + 2] = (uint8_t)((data >> 8U) & 0xFFU);
-        p_bytes->data[p_bytes->used_length + 3] = (uint8_t)(data & 0xFFU);
-        p_bytes->used_length += 4;
+        p_bytes->data[p_bytes->used_length] = (uint8_t)((data >> (PRA_NUM_BIT_WIDTH_U8 * 3U)) & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->data[p_bytes->used_length + 1] = (uint8_t)((data >> (PRA_NUM_BIT_WIDTH_U8 * 2U)) & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->data[p_bytes->used_length + 2] = (uint8_t)((data >> PRA_NUM_BIT_WIDTH_U8) & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->data[p_bytes->used_length + 3] = (uint8_t)(data & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->used_length += PRA_NUM_BYTE_SIZE_U32;
 
         result = PRA_BOOL_TRUE;
     }
@@ -314,18 +316,18 @@ pra_boolean pra_bytes_append_u32_le(
     {
         result = PRA_BOOL_FALSE;
     }
-    else if (p_bytes->length < (p_bytes->used_length + 4))
+    else if (p_bytes->length < (p_bytes->used_length + PRA_NUM_BYTE_SIZE_U32))
     {
         *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        p_bytes->data[p_bytes->used_length] = (uint8_t)(data & 0xFFU);
-        p_bytes->data[p_bytes->used_length + 1] = (uint8_t)((data >> 8U) & 0xFFU);
-        p_bytes->data[p_bytes->used_length + 2] = (uint8_t)((data >> 16U) & 0xFFU);
-        p_bytes->data[p_bytes->used_length + 3] = (uint8_t)((data >> 24U) & 0xFFU);
-        p_bytes->used_length += 4;
+        p_bytes->data[p_bytes->used_length] = (uint8_t)(data & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->data[p_bytes->used_length + 1] = (uint8_t)((data >> PRA_NUM_BIT_WIDTH_U8) & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->data[p_bytes->used_length + 2] = (uint8_t)((data >> (PRA_NUM_BIT_WIDTH_U8 * 2U)) & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->data[p_bytes->used_length + 3] = (uint8_t)((data >> (PRA_NUM_BIT_WIDTH_U8 * 3U)) & PRA_NUM_MAX_VALUE_U8);
+        p_bytes->used_length += PRA_NUM_BYTE_SIZE_U32;
 
         result = PRA_BOOL_TRUE;
     }

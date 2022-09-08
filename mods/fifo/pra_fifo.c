@@ -7,7 +7,7 @@
 
 /* includes */
 #include "pra_fifo.h"
-#include "pra_bits.h"
+#include "pra_num_defs.h"
 
 /* variables */
 
@@ -151,15 +151,15 @@ pra_boolean pra_fifo_init(
     }
     else
     {
-        for (uint16_t i = 0U; i < data_length; i++)
+        for (uint16_t i = PRA_NUM_ZERO_U; i < data_length; i++)
         {
-            data[i] = 0U;
+            data[i] = PRA_NUM_ZERO_U;
         }
         p_fifo->p_data = data;
         p_fifo->data_length = data_length;
-        p_fifo->used_length = 0U;
-        p_fifo->next_r_pos = 0U;
-        p_fifo->next_w_pos = 0U;
+        p_fifo->used_length = PRA_NUM_ZERO_U;
+        p_fifo->next_r_pos = PRA_NUM_ZERO_U;
+        p_fifo->next_w_pos = PRA_NUM_ZERO_U;
         p_fifo->initialized = PRA_BOOL_TRUE;
 
         result = PRA_BOOL_TRUE;
@@ -176,13 +176,13 @@ static void pra_fifo_position_move(
     {
         /* NOTE do nothing */
     }
-    if ((UINT16_MAX - 1U) == *p_position)
+    if ((PRA_NUM_MAX_VALUE_U16 - 1U) == *p_position)
     {
-        *p_position = 0U;
+        *p_position = PRA_NUM_ZERO_U;
     }
     else if ((data_length - 1U) == *p_position)
     {
-        *p_position = 0U;
+        *p_position = PRA_NUM_ZERO_U;
     }
     else
     {
@@ -216,7 +216,7 @@ static pra_boolean pra_fifo_append_args_check(
         *p_ec |= PRA_FIFO_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
-    else if (UINT16_MAX == p_fifo->used_length)
+    else if (PRA_NUM_MAX_VALUE_U16 == p_fifo->used_length)
     {
         *p_ec |= PRA_FIFO_EC_DATA_FULL;
         result = PRA_BOOL_FALSE;
@@ -243,7 +243,7 @@ pra_boolean pra_fifo_append_u8(
 
     if (PRA_BOOL_TRUE != pra_fifo_append_args_check(
                              p_fifo,
-                             1U,
+                             PRA_NUM_BYTE_SIZE_U8,
                              p_ec))
     {
         result = PRA_BOOL_FALSE;
@@ -251,7 +251,7 @@ pra_boolean pra_fifo_append_u8(
     else
     {
         p_fifo->p_data[p_fifo->next_w_pos] = data;
-        p_fifo->used_length++;
+        p_fifo->used_length += PRA_NUM_BYTE_SIZE_U8;
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_w_pos);
@@ -293,7 +293,7 @@ static pra_boolean pra_fifo_take_u8_args_check(
         *p_ec |= PRA_FIFO_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
-    else if (1U > p_fifo->used_length)
+    else if (PRA_NUM_BYTE_SIZE_U8 > p_fifo->used_length)
     {
         *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
         result = PRA_BOOL_FALSE;
@@ -326,7 +326,7 @@ pra_boolean pra_fifo_take_u8(
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
+        p_fifo->used_length -= PRA_NUM_BYTE_SIZE_U8;
 
         result = PRA_BOOL_TRUE;
     }
@@ -343,15 +343,15 @@ pra_boolean pra_fifo_append_u16_be(
 
     if (PRA_BOOL_TRUE != pra_fifo_append_args_check(
                              p_fifo,
-                             2U,
+                             PRA_NUM_BYTE_SIZE_U16,
                              p_ec))
     {
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        uint8_t data_h = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
-        uint8_t data_l = (uint8_t)(data & UINT8_MAX);
+        uint8_t data_h = (uint8_t)((data >> PRA_NUM_BIT_WIDTH_U8) & PRA_NUM_MAX_VALUE_U8);
+        uint8_t data_l = (uint8_t)(data & PRA_NUM_MAX_VALUE_U8);
         p_fifo->p_data[p_fifo->next_w_pos] = data_h;
         pra_fifo_position_move(
             p_fifo->data_length,
@@ -360,7 +360,7 @@ pra_boolean pra_fifo_append_u16_be(
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_w_pos);
-        p_fifo->used_length += 2U;
+        p_fifo->used_length += PRA_NUM_BYTE_SIZE_U16;
 
         result = PRA_BOOL_TRUE;
     }
@@ -377,15 +377,15 @@ pra_boolean pra_fifo_append_u16_le(
 
     if (PRA_BOOL_TRUE != pra_fifo_append_args_check(
                              p_fifo,
-                             2U,
+                             PRA_NUM_BYTE_SIZE_U16,
                              p_ec))
     {
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        uint8_t data_h = (uint8_t)(data & UINT8_MAX);
-        uint8_t data_l = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
+        uint8_t data_h = (uint8_t)(data & PRA_NUM_MAX_VALUE_U8);
+        uint8_t data_l = (uint8_t)((data >> PRA_NUM_BIT_WIDTH_U8) & PRA_NUM_MAX_VALUE_U8);
         p_fifo->p_data[p_fifo->next_w_pos] = data_h;
         pra_fifo_position_move(
             p_fifo->data_length,
@@ -394,7 +394,7 @@ pra_boolean pra_fifo_append_u16_le(
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_w_pos);
-        p_fifo->used_length += 2U;
+        p_fifo->used_length += PRA_NUM_BYTE_SIZE_U16;
 
         result = PRA_BOOL_TRUE;
     }
@@ -433,7 +433,7 @@ static pra_boolean pra_fifo_take_u16_args_check(
         *p_ec |= PRA_FIFO_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
-    else if (2U > p_fifo->used_length)
+    else if (PRA_NUM_BYTE_SIZE_U16 > p_fifo->used_length)
     {
         *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
         result = PRA_BOOL_FALSE;
@@ -462,19 +462,18 @@ pra_boolean pra_fifo_take_u16_be(
     }
     else
     {
-        uint16_t tmp_data = 0U;
+        uint16_t tmp_data = PRA_NUM_ZERO_U;
 
-        tmp_data |= (((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_BITS_U8_WIDTH);
+        tmp_data |= (((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_NUM_BIT_WIDTH_U8);
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
 
         tmp_data |= ((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]);
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
+        p_fifo->used_length -= PRA_NUM_BYTE_SIZE_U16;
 
         *p_data = tmp_data;
 
@@ -500,19 +499,18 @@ pra_boolean pra_fifo_take_u16_le(
     }
     else
     {
-        uint16_t tmp_data = 0U;
+        uint16_t tmp_data = PRA_NUM_ZERO_U;
 
         tmp_data |= ((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]);
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
 
-        tmp_data |= (((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_BITS_U8_WIDTH);
+        tmp_data |= (((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_NUM_BIT_WIDTH_U8);
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
+        p_fifo->used_length -= PRA_NUM_BYTE_SIZE_U16;
 
         *p_data = tmp_data;
 
@@ -531,17 +529,17 @@ pra_boolean pra_fifo_append_u32_be(
 
     if (PRA_BOOL_TRUE != pra_fifo_append_args_check(
                              p_fifo,
-                             4U,
+                             PRA_NUM_BYTE_SIZE_U32,
                              p_ec))
     {
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        uint8_t data_h = (uint8_t)((data >> (PRA_BITS_U8_WIDTH * 3)) & UINT8_MAX);
-        uint8_t data_m_h = (uint8_t)((data >> (PRA_BITS_U8_WIDTH * 2)) & UINT8_MAX);
-        uint8_t data_m_l = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
-        uint8_t data_l = (uint8_t)(data & UINT8_MAX);
+        uint8_t data_h = (uint8_t)((data >> (PRA_NUM_BIT_WIDTH_U8 * 3)) & PRA_NUM_MAX_VALUE_U8);
+        uint8_t data_m_h = (uint8_t)((data >> (PRA_NUM_BIT_WIDTH_U8 * 2)) & PRA_NUM_MAX_VALUE_U8);
+        uint8_t data_m_l = (uint8_t)((data >> PRA_NUM_BIT_WIDTH_U8) & PRA_NUM_MAX_VALUE_U8);
+        uint8_t data_l = (uint8_t)(data & PRA_NUM_MAX_VALUE_U8);
         p_fifo->p_data[p_fifo->next_w_pos] = data_h;
         pra_fifo_position_move(
             p_fifo->data_length,
@@ -558,7 +556,7 @@ pra_boolean pra_fifo_append_u32_be(
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_w_pos);
-        p_fifo->used_length += 4U;
+        p_fifo->used_length += PRA_NUM_BYTE_SIZE_U32;
 
         result = PRA_BOOL_TRUE;
     }
@@ -575,17 +573,17 @@ pra_boolean pra_fifo_append_u32_le(
 
     if (PRA_BOOL_TRUE != pra_fifo_append_args_check(
                              p_fifo,
-                             4U,
+                             PRA_NUM_BYTE_SIZE_U32,
                              p_ec))
     {
         result = PRA_BOOL_FALSE;
     }
     else
     {
-        uint8_t data_h = (uint8_t)(data & UINT8_MAX);
-        uint8_t data_m_h = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
-        uint8_t data_m_l = (uint8_t)((data >> (PRA_BITS_U8_WIDTH * 2)) & UINT8_MAX);
-        uint8_t data_l = (uint8_t)((data >> (PRA_BITS_U8_WIDTH * 3)) & UINT8_MAX);
+        uint8_t data_h = (uint8_t)(data & PRA_NUM_MAX_VALUE_U8);
+        uint8_t data_m_h = (uint8_t)((data >> PRA_NUM_BIT_WIDTH_U8) & PRA_NUM_MAX_VALUE_U8);
+        uint8_t data_m_l = (uint8_t)((data >> (PRA_NUM_BIT_WIDTH_U8 * 2)) & PRA_NUM_MAX_VALUE_U8);
+        uint8_t data_l = (uint8_t)((data >> (PRA_NUM_BIT_WIDTH_U8 * 3)) & PRA_NUM_MAX_VALUE_U8);
         p_fifo->p_data[p_fifo->next_w_pos] = data_h;
         pra_fifo_position_move(
             p_fifo->data_length,
@@ -602,7 +600,7 @@ pra_boolean pra_fifo_append_u32_le(
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_w_pos);
-        p_fifo->used_length += 4U;
+        p_fifo->used_length += PRA_NUM_BYTE_SIZE_U32;
 
         result = PRA_BOOL_TRUE;
     }
@@ -641,7 +639,7 @@ static pra_boolean pra_fifo_take_u32_args_check(
         *p_ec |= PRA_FIFO_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
-    else if (4U > p_fifo->used_length)
+    else if (PRA_NUM_BYTE_SIZE_U32 > p_fifo->used_length)
     {
         *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
         result = PRA_BOOL_FALSE;
@@ -670,31 +668,28 @@ pra_boolean pra_fifo_take_u32_be(
     }
     else
     {
-        uint32_t tmp_data = 0U;
+        uint32_t tmp_data = PRA_NUM_ZERO_U;
 
-        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << (PRA_BITS_U8_WIDTH * 3));
+        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << (PRA_NUM_BIT_WIDTH_U8 * 3));
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
 
-        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << (PRA_BITS_U8_WIDTH * 2));
+        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << (PRA_NUM_BIT_WIDTH_U8 * 2));
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
 
-        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_BITS_U8_WIDTH);
+        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_NUM_BIT_WIDTH_U8);
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
 
         tmp_data |= ((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]);
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
+        p_fifo->used_length -= PRA_NUM_BYTE_SIZE_U32;
 
         *p_data = tmp_data;
 
@@ -720,31 +715,28 @@ pra_boolean pra_fifo_take_u32_le(
     }
     else
     {
-        uint32_t tmp_data = 0U;
+        uint32_t tmp_data = PRA_NUM_ZERO_U;
 
         tmp_data |= ((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]);
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
 
-        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_BITS_U8_WIDTH);
+        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_NUM_BIT_WIDTH_U8);
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
 
-        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << (PRA_BITS_U8_WIDTH * 2));
+        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << (PRA_NUM_BIT_WIDTH_U8 * 2));
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
 
-        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << (PRA_BITS_U8_WIDTH * 3));
+        tmp_data |= (((uint32_t)p_fifo->p_data[p_fifo->next_r_pos]) << (PRA_NUM_BIT_WIDTH_U8 * 3));
         pra_fifo_position_move(
             p_fifo->data_length,
             &p_fifo->next_r_pos);
-        p_fifo->used_length--;
+        p_fifo->used_length -= PRA_NUM_BYTE_SIZE_U32;
 
         *p_data = tmp_data;
 
