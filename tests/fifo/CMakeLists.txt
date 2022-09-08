@@ -1,0 +1,49 @@
+project(practices_test VERSION 0.1.0)
+
+include_directories(
+    ../
+)
+
+add_executable(test_fifo_init test_fifo_init.c)
+target_link_libraries(test_fifo_init practices)
+add_test(NAME test_fifo_init COMMAND test_fifo_init)
+
+add_executable(test_fifo_append_u8 test_fifo_append_u8.c)
+target_link_libraries(test_fifo_append_u8 practices)
+add_test(NAME test_fifo_append_u8 COMMAND test_fifo_append_u8)
+
+add_executable(test_fifo_take_u8 test_fifo_take_u8.c)
+target_link_libraries(test_fifo_take_u8 practices)
+add_test(NAME test_fifo_take_u8 COMMAND test_fifo_take_u8)
+
+add_executable(test_fifo_append_u16_be test_fifo_append_u16_be.c test_fifo_append_u16.c)
+target_link_libraries(test_fifo_append_u16_be practices)
+add_test(NAME test_fifo_append_u16_be COMMAND test_fifo_append_u16_be)
+
+add_executable(test_fifo_append_u16_le test_fifo_append_u16_le.c test_fifo_append_u16.c)
+target_link_libraries(test_fifo_append_u16_le practices)
+add_test(NAME test_fifo_append_u16_le COMMAND test_fifo_append_u16_le)
+
+add_executable(test_fifo_take_u16_be test_fifo_take_u16_be.c test_fifo_take_u16.c)
+target_link_libraries(test_fifo_take_u16_be practices)
+add_test(NAME test_fifo_take_u16_be COMMAND test_fifo_take_u16_be)
+
+add_executable(test_fifo_take_u16_le test_fifo_take_u16_le.c test_fifo_take_u16.c)
+target_link_libraries(test_fifo_take_u16_le practices)
+add_test(NAME test_fifo_take_u16_le COMMAND test_fifo_take_u16_le)
+
+add_executable(test_fifo_append_u32_be test_fifo_append_u32_be.c test_fifo_append_u32.c)
+target_link_libraries(test_fifo_append_u32_be practices)
+add_test(NAME test_fifo_append_u32_be COMMAND test_fifo_append_u32_be)
+
+add_executable(test_fifo_append_u32_le test_fifo_append_u32_le.c test_fifo_append_u32.c)
+target_link_libraries(test_fifo_append_u32_le practices)
+add_test(NAME test_fifo_append_u32_le COMMAND test_fifo_append_u32_le)
+
+add_executable(test_fifo_take_u32_be test_fifo_take_u32_be.c test_fifo_take_u32.c)
+target_link_libraries(test_fifo_take_u32_be practices)
+add_test(NAME test_fifo_take_u32_be COMMAND test_fifo_take_u32_be)
+
+add_executable(test_fifo_take_u32_le test_fifo_take_u32_le.c test_fifo_take_u32.c)
+target_link_libraries(test_fifo_take_u32_le practices)
+add_test(NAME test_fifo_take_u32_le COMMAND test_fifo_take_u32_le)

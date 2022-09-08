@@ -1,0 +1,37 @@
+project(practices_test VERSION 0.1.0)
+
+include_directories(
+    ../
+)
+
+add_executable(test_bytes_not_null_ptr test_bytes_not_null_ptr.c)
+target_link_libraries(test_bytes_not_null_ptr practices)
+add_test(NAME test_bytes_not_null_ptr COMMAND test_bytes_not_null_ptr)
+
+add_executable(test_bytes_init test_bytes_init.c)
+target_link_libraries(test_bytes_init practices)
+add_test(NAME test_bytes_init COMMAND test_bytes_init)
+
+add_executable(test_bytes_copy test_bytes_copy.c)
+target_link_libraries(test_bytes_copy practices)
+add_test(NAME test_bytes_copy COMMAND test_bytes_copy)
+
+add_executable(test_bytes_append_u8_array test_bytes_append_u8_array.c)
+target_link_libraries(test_bytes_append_u8_array practices)
+add_test(NAME test_bytes_append_u8_array COMMAND test_bytes_append_u8_array)
+
+add_executable(test_bytes_append test_bytes_append.c)
+target_link_libraries(test_bytes_append practices)
+add_test(NAME test_bytes_append COMMAND test_bytes_append)
+
+add_executable(test_bytes_append_u8 test_bytes_append_u8.c)
+target_link_libraries(test_bytes_append_u8 practices)
+add_test(NAME test_bytes_append_u8 COMMAND test_bytes_append_u8)
+
+add_executable(test_bytes_append_u16 test_bytes_append_u16.c)
+target_link_libraries(test_bytes_append_u16 practices)
+add_test(NAME test_bytes_append_u16 COMMAND test_bytes_append_u16)
+
+add_executable(test_bytes_append_u32 test_bytes_append_u32.c)
+target_link_libraries(test_bytes_append_u32 practices)
+add_test(NAME test_bytes_append_u32 COMMAND test_bytes_append_u32)
