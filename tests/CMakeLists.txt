@@ -256,3 +256,7 @@ add_test(NAME test_fifo_take_u32_be COMMAND test_fifo_take_u32_be)
 add_executable(test_fifo_take_u32_le test_fifo_take_u32_le.c test_fifo_take_u32.c)
 target_link_libraries(test_fifo_take_u32_le practices)
 add_test(NAME test_fifo_take_u32_le COMMAND test_fifo_take_u32_le)
+
+add_executable(test_lifo_init test_lifo_init.c)
+target_link_libraries(test_lifo_init practices)
+add_test(NAME test_lifo_init COMMAND test_lifo_init)

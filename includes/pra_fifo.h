@@ -26,6 +26,7 @@
 
 /* types */
 
+/* fifo struct */
 typedef struct _pra_fifo
 {
     pra_boolean initialized; /* initialized flag */
