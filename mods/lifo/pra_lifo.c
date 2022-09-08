@@ -7,6 +7,7 @@
 
 /* includes */
 #include "pra_lifo.h"
+#include "pra_bits.h"
 
 /* variables */
 
@@ -327,6 +328,84 @@ pra_boolean pra_lifo_pop_u8(
             p_lifo->data_length,
             &p_lifo->next_r_pos);
         p_lifo->used_length--;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_lifo_push_u16_be(
+    pra_lifo *const p_lifo,
+    uint16_t data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_FALSE;
+
+    if (PRA_BOOL_TRUE != pra_lifo_push_args_check(
+                             p_lifo,
+                             2U,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        uint8_t data_h = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
+        uint8_t data_l = (uint8_t)(data & UINT8_MAX);
+
+        p_lifo->p_data[p_lifo->next_w_pos] = data_h;
+        p_lifo->next_r_pos = p_lifo->next_w_pos;
+        pra_lifo_position_move(
+            p_lifo->data_length,
+            &p_lifo->next_w_pos);
+
+        p_lifo->p_data[p_lifo->next_w_pos] = data_l;
+        p_lifo->next_r_pos = p_lifo->next_w_pos;
+        pra_lifo_position_move(
+            p_lifo->data_length,
+            &p_lifo->next_w_pos);
+
+        p_lifo->used_length += 2U;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_lifo_push_u16_le(
+    pra_lifo *const p_lifo,
+    uint16_t data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_FALSE;
+
+    if (PRA_BOOL_TRUE != pra_lifo_push_args_check(
+                             p_lifo,
+                             2U,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        uint8_t data_h = (uint8_t)(data & UINT8_MAX);
+        uint8_t data_l = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
+
+        p_lifo->p_data[p_lifo->next_w_pos] = data_h;
+        p_lifo->next_r_pos = p_lifo->next_w_pos;
+        pra_lifo_position_move(
+            p_lifo->data_length,
+            &p_lifo->next_w_pos);
+
+        p_lifo->p_data[p_lifo->next_w_pos] = data_l;
+        p_lifo->next_r_pos = p_lifo->next_w_pos;
+        pra_lifo_position_move(
+            p_lifo->data_length,
+            &p_lifo->next_w_pos);
+
+        p_lifo->used_length += 2U;
 
         result = PRA_BOOL_TRUE;
     }

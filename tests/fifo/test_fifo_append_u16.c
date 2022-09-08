@@ -10,7 +10,7 @@ int test_fifo_append_u16(
 {
     int result = err_none;
 
-    pra_fifo fifo = {0U};
+    pra_fifo fifo;
     uint8_t data[DATA_LENGTH] = {0U};
     uint16_t data_length = DATA_LENGTH;
     uint16_t data_to_append = 0U;
@@ -129,7 +129,7 @@ int test_fifo_append_u16(
         expected_used_length != fifo.used_length ||
         0U != fifo.next_w_pos)
     {
-        result != err_error8;
+        result |= err_error8;
     }
 
     return result;
