@@ -605,3 +605,56 @@ pra_boolean pra_lifo_push_u32_be(
 
     return result;
 }
+
+pra_boolean pra_lifo_push_u32_le(
+    pra_lifo *const p_lifo,
+    uint32_t data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result = PRA_BOOL_FALSE;
+
+    if (PRA_BOOL_TRUE != pra_lifo_push_args_check(
+                             p_lifo,
+                             4U,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        uint8_t data_h = (uint8_t)(data & UINT8_MAX);
+        uint8_t data_m_h = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
+        uint8_t data_m_l = (uint8_t)((data >> (PRA_BITS_U8_WIDTH * 2)) & UINT8_MAX);
+        uint8_t data_l = (uint8_t)((data >> (PRA_BITS_U8_WIDTH * 3)) & UINT8_MAX);
+
+        p_lifo->p_data[p_lifo->next_w_pos] = data_h;
+        p_lifo->next_r_pos = p_lifo->next_w_pos;
+        pra_lifo_position_move(
+            p_lifo->data_length,
+            &p_lifo->next_w_pos);
+
+        p_lifo->p_data[p_lifo->next_w_pos] = data_m_h;
+        p_lifo->next_r_pos = p_lifo->next_w_pos;
+        pra_lifo_position_move(
+            p_lifo->data_length,
+            &p_lifo->next_w_pos);
+
+        p_lifo->p_data[p_lifo->next_w_pos] = data_m_l;
+        p_lifo->next_r_pos = p_lifo->next_w_pos;
+        pra_lifo_position_move(
+            p_lifo->data_length,
+            &p_lifo->next_w_pos);
+
+        p_lifo->p_data[p_lifo->next_w_pos] = data_l;
+        p_lifo->next_r_pos = p_lifo->next_w_pos;
+        pra_lifo_position_move(
+            p_lifo->data_length,
+            &p_lifo->next_w_pos);
+
+        p_lifo->used_length += 4U;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
