@@ -105,4 +105,20 @@ pra_boolean pra_fifo_append_u16_be(
     uint16_t data,
     PRA_EC_T *const p_ec);
 
+/**
+ * @brief           append 2 bytes to the fifo struct
+ * @note            little endianness
+ * @param  p_fifo:  pra_fifo struct pointer
+ * @param  data:    data to append
+ * @param  p_ec:    output error code:
+ *                  PRA_FIFO_EC_NULL_PTR
+ *                  PRA_FIFO_EC_NOT_INIT
+ *                  PRA_FIFO_EC_DATA_FULL
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_fifo_append_u16_le(
+    pra_fifo *const p_fifo,
+    uint16_t data,
+    PRA_EC_T *const p_ec);
+
 #endif

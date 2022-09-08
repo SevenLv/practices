@@ -16,10 +16,10 @@ int main(void)
 
 static uint8_t get_u8_h_be(uint16_t data)
 {
-    return ((uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX));
+    return ((uint8_t)(data & UINT8_MAX));
 }
 
 static uint8_t get_u8_l_be(uint16_t data)
 {
-    return ((uint8_t)(data & UINT8_MAX));
+    return ((uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX));
 }

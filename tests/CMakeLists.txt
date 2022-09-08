@@ -225,6 +225,10 @@ add_executable(test_fifo_take_u8 test_fifo_take_u8.c)
 target_link_libraries(test_fifo_take_u8 practices)
 add_test(NAME test_fifo_take_u8 COMMAND test_fifo_take_u8)
 
-add_executable(test_fifo_append_u16_be test_fifo_append_u16_be.c)
+add_executable(test_fifo_append_u16_be test_fifo_append_u16_be.c test_fifo_append_u16.c)
 target_link_libraries(test_fifo_append_u16_be practices)
 add_test(NAME test_fifo_append_u16_be COMMAND test_fifo_append_u16_be)
+
+add_executable(test_fifo_append_u16_le test_fifo_append_u16_le.c test_fifo_append_u16.c)
+target_link_libraries(test_fifo_append_u16_le practices)
+add_test(NAME test_fifo_append_u16_le COMMAND test_fifo_append_u16_le)

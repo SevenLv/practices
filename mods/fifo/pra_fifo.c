@@ -67,7 +67,7 @@ static pra_boolean pra_fifo_take_u8_args_check(
     PRA_EC_T *const p_ec);
 
 /**
- * @brief           arguments validation for pra_fifo_append_u16_be function
+ * @brief           arguments validation for pra_fifo_append_u16_xx function
  * @note
  * @param  p_fifo:  pra_fifo struct pointer
  * @param  p_ec:    output error code:
@@ -76,7 +76,7 @@ static pra_boolean pra_fifo_take_u8_args_check(
  *                  PRA_FIFO_EC_DATA_FULL
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
-static pra_boolean pra_fifo_append_u16_be_args_check(
+static pra_boolean pra_fifo_append_u16_args_check(
     const pra_fifo *const p_fifo,
     PRA_EC_T *const p_ec);
 
@@ -309,7 +309,7 @@ pra_boolean pra_fifo_take_u8(
     return result;
 }
 
-static pra_boolean pra_fifo_append_u16_be_args_check(
+static pra_boolean pra_fifo_append_u16_args_check(
     const pra_fifo *const p_fifo,
     PRA_EC_T *const p_ec)
 {
@@ -359,7 +359,7 @@ pra_boolean pra_fifo_append_u16_be(
 {
     pra_boolean result;
 
-    if (PRA_BOOL_TRUE != pra_fifo_append_u16_be_args_check(
+    if (PRA_BOOL_TRUE != pra_fifo_append_u16_args_check(
                              p_fifo,
                              p_ec))
     {
@@ -369,6 +369,39 @@ pra_boolean pra_fifo_append_u16_be(
     {
         uint8_t data_h = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
         uint8_t data_l = (uint8_t)(data & UINT8_MAX);
+        p_fifo->p_data[p_fifo->next_w_pos] = data_h;
+        pra_fifo_position_move(
+            p_fifo->data_length,
+            &p_fifo->next_w_pos);
+        p_fifo->p_data[p_fifo->next_w_pos] = data_l;
+        pra_fifo_position_move(
+            p_fifo->data_length,
+            &p_fifo->next_w_pos);
+        p_fifo->used_length += 2U;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_fifo_append_u16_le(
+    pra_fifo *const p_fifo,
+    uint16_t data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_BOOL_TRUE != pra_fifo_append_u16_args_check(
+                             p_fifo,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        uint8_t data_h = (uint8_t)(data & UINT8_MAX);
+        uint8_t data_l = (uint8_t)((data >> PRA_BITS_U8_WIDTH) & UINT8_MAX);
         p_fifo->p_data[p_fifo->next_w_pos] = data_h;
         pra_fifo_position_move(
             p_fifo->data_length,
