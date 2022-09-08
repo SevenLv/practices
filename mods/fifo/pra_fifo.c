@@ -30,17 +30,19 @@ static pra_boolean pra_fifo_init_args_check(
     PRA_EC_T *const p_ec);
 
 /**
- * @brief           arguments validation for pra_fifo_append_u8 function
+ * @brief               arguments validation for pra_fifo_append_xx function
  * @note
- * @param  p_fifo:  pra_fifo struct pointer
- * @param  p_ec:    output error code:
- *                  PRA_FIFO_EC_NULL_PTR
- *                  PRA_FIFO_EC_NOT_INIT
- *                  PRA_FIFO_EC_DATA_FULL
- * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ * @param  p_fifo:      pra_fifo struct pointer
+ * @param  data_length: length of the data to append
+ * @param  p_ec:        output error code:
+ *                      PRA_FIFO_EC_NULL_PTR
+ *                      PRA_FIFO_EC_NOT_INIT
+ *                      PRA_FIFO_EC_DATA_FULL
+ * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
-static pra_boolean pra_fifo_append_u8_args_check(
+static pra_boolean pra_fifo_append_args_check(
     const pra_fifo *const p_fifo,
+    uint16_t data_length,
     PRA_EC_T *const p_ec);
 
 /**
@@ -54,16 +56,39 @@ static void pra_fifo_position_move(
     uint16_t *const p_position);
 
 /**
- * @brief           arguments validation for pra_fifo_take_u8 function
+ * @brief               arguments validation for pra_fifo_take_u8 function
  * @note
- * @param  p_fifo:
- * @param  p_data:
- * @param  p_ec:
- * @retval
+ * @param  p_fifo:      pra_fifo struct pointer
+ * @param  data_length: length of data to take
+ * @param  p_data:      output data
+ * @param  p_ec:        output error code:
+ *                      PRA_FIFO_EC_NULL_PTR
+ *                      PRA_FIFO_EC_NOT_INIT
+ *                      PRA_FIFO_EC_DATA_FULL
+ * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 static pra_boolean pra_fifo_take_u8_args_check(
     const pra_fifo *const p_fifo,
+    uint16_t data_length,
     const uint8_t *const p_data,
+    PRA_EC_T *const p_ec);
+
+/**
+ * @brief               arguments validation for pra_fifo_take_u16_xx function
+ * @note
+ * @param  p_fifo:      pra_fifo struct pointer
+ * @param  data_length: length of data to take
+ * @param  p_data:      output data
+ * @param  p_ec:        output error code:
+ *                      PRA_FIFO_EC_NULL_PTR
+ *                      PRA_FIFO_EC_NOT_INIT
+ *                      PRA_FIFO_EC_DATA_FULL
+ * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+static pra_boolean pra_fifo_take_u16_args_check(
+    const pra_fifo *const p_fifo,
+    uint16_t data_length,
+    const uint16_t *const p_data,
     PRA_EC_T *const p_ec);
 
 /**
@@ -167,8 +192,9 @@ static void pra_fifo_position_move(
     }
 }
 
-static pra_boolean pra_fifo_append_u8_args_check(
+static pra_boolean pra_fifo_append_args_check(
     const pra_fifo *const p_fifo,
+    uint16_t data_length,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -197,7 +223,7 @@ static pra_boolean pra_fifo_append_u8_args_check(
         *p_ec |= PRA_FIFO_EC_DATA_FULL;
         result = PRA_BOOL_FALSE;
     }
-    else if (p_fifo->data_length < p_fifo->used_length + 1U)
+    else if (p_fifo->data_length < p_fifo->used_length + data_length)
     {
         *p_ec |= PRA_FIFO_EC_DATA_FULL;
         result = PRA_BOOL_FALSE;
@@ -217,8 +243,9 @@ pra_boolean pra_fifo_append_u8(
 {
     pra_boolean result = PRA_BOOL_FALSE;
 
-    if (PRA_BOOL_TRUE != pra_fifo_append_u8_args_check(
+    if (PRA_BOOL_TRUE != pra_fifo_append_args_check(
                              p_fifo,
+                             1U,
                              p_ec))
     {
         result = PRA_BOOL_FALSE;
@@ -239,6 +266,7 @@ pra_boolean pra_fifo_append_u8(
 
 static pra_boolean pra_fifo_take_u8_args_check(
     const pra_fifo *const p_fifo,
+    uint16_t data_length,
     const uint8_t *const p_data,
     PRA_EC_T *const p_ec)
 {
@@ -268,7 +296,7 @@ static pra_boolean pra_fifo_take_u8_args_check(
         *p_ec |= PRA_FIFO_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
-    else if (1U > p_fifo->used_length)
+    else if (data_length > p_fifo->used_length)
     {
         *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
         result = PRA_BOOL_FALSE;
@@ -290,6 +318,7 @@ pra_boolean pra_fifo_take_u8(
 
     if (PRA_BOOL_TRUE != pra_fifo_take_u8_args_check(
                              p_fifo,
+                             1U,
                              p_data,
                              p_ec))
     {
@@ -309,49 +338,6 @@ pra_boolean pra_fifo_take_u8(
     return result;
 }
 
-static pra_boolean pra_fifo_append_u16_args_check(
-    const pra_fifo *const p_fifo,
-    PRA_EC_T *const p_ec)
-{
-    pra_boolean result;
-
-    if (PRA_EC_T_NULL == p_ec)
-    {
-        result = PRA_BOOL_FALSE;
-    }
-    else if (PRA_FIFO_NULL == p_fifo)
-    {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
-        result = PRA_BOOL_FALSE;
-    }
-    else if (PRA_UINT8_NULL == p_fifo->p_data)
-    {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
-        result = PRA_BOOL_FALSE;
-    }
-    else if (PRA_BOOL_TRUE != p_fifo->initialized)
-    {
-        *p_ec |= PRA_FIFO_EC_NOT_INIT;
-        result = PRA_BOOL_FALSE;
-    }
-    else if ((UINT16_MAX - 1U) == p_fifo->used_length)
-    {
-        *p_ec |= PRA_FIFO_EC_DATA_FULL;
-        result = PRA_BOOL_FALSE;
-    }
-    else if (p_fifo->data_length < (p_fifo->used_length + 2U))
-    {
-        *p_ec |= PRA_FIFO_EC_DATA_FULL;
-        result = PRA_BOOL_FALSE;
-    }
-    else
-    {
-        result = PRA_BOOL_TRUE;
-    }
-
-    return result;
-}
-
 pra_boolean pra_fifo_append_u16_be(
     pra_fifo *const p_fifo,
     uint16_t data,
@@ -359,8 +345,9 @@ pra_boolean pra_fifo_append_u16_be(
 {
     pra_boolean result;
 
-    if (PRA_BOOL_TRUE != pra_fifo_append_u16_args_check(
+    if (PRA_BOOL_TRUE != pra_fifo_append_args_check(
                              p_fifo,
+                             2U,
                              p_ec))
     {
         result = PRA_BOOL_FALSE;
@@ -392,8 +379,9 @@ pra_boolean pra_fifo_append_u16_le(
 {
     pra_boolean result;
 
-    if (PRA_BOOL_TRUE != pra_fifo_append_u16_args_check(
+    if (PRA_BOOL_TRUE != pra_fifo_append_args_check(
                              p_fifo,
+                             2U,
                              p_ec))
     {
         result = PRA_BOOL_FALSE;
@@ -411,6 +399,129 @@ pra_boolean pra_fifo_append_u16_le(
             p_fifo->data_length,
             &p_fifo->next_w_pos);
         p_fifo->used_length += 2U;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+static pra_boolean pra_fifo_take_u16_args_check(
+    const pra_fifo *const p_fifo,
+    uint16_t data_length,
+    const uint16_t *const p_data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_EC_T_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_FIFO_NULL == p_fifo)
+    {
+        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_UINT8_NULL == p_fifo->p_data)
+    {
+        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_UINT16_NULL == p_data)
+    {
+        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_BOOL_TRUE != p_fifo->initialized)
+    {
+        *p_ec |= PRA_FIFO_EC_NOT_INIT;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (data_length > p_fifo->used_length)
+    {
+        *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_fifo_take_u16_be(
+    pra_fifo *const p_fifo,
+    uint16_t *const p_data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_BOOL_TRUE != pra_fifo_take_u16_args_check(
+                             p_fifo,
+                             2U,
+                             p_data,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        uint16_t tmp_data = 0U;
+
+        tmp_data |= (((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_BITS_U8_WIDTH);
+        pra_fifo_position_move(
+            p_fifo->data_length,
+            &p_fifo->next_r_pos);
+        p_fifo->used_length--;
+
+        tmp_data |= ((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]);
+        pra_fifo_position_move(
+            p_fifo->data_length,
+            &p_fifo->next_r_pos);
+        p_fifo->used_length--;
+
+        *p_data = tmp_data;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_fifo_take_u16_le(
+    pra_fifo *const p_fifo,
+    uint16_t *const p_data,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_BOOL_TRUE != pra_fifo_take_u16_args_check(
+                             p_fifo,
+                             2U,
+                             p_data,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        uint16_t tmp_data = 0U;
+
+        tmp_data |= ((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]);
+        pra_fifo_position_move(
+            p_fifo->data_length,
+            &p_fifo->next_r_pos);
+        p_fifo->used_length--;
+
+        tmp_data |= (((uint16_t)p_fifo->p_data[p_fifo->next_r_pos]) << PRA_BITS_U8_WIDTH);
+        pra_fifo_position_move(
+            p_fifo->data_length,
+            &p_fifo->next_r_pos);
+        p_fifo->used_length--;
+
+        *p_data = tmp_data;
 
         result = PRA_BOOL_TRUE;
     }

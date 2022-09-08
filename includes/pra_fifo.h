@@ -121,4 +121,36 @@ pra_boolean pra_fifo_append_u16_le(
     uint16_t data,
     PRA_EC_T *const p_ec);
 
+/**
+ * @brief           take 2 byte from the fifo struct
+ * @note            big endianness
+ * @param  p_fifo:  pra_fifo struct pointer
+ * @param  p_data:  output data
+ * @param  p_ec:    output error code:
+ *                  PRA_FIFO_EC_NULL_PTR
+ *                  PRA_FIFO_EC_NOT_INIT
+ *                  PRA_FIFO_EC_DATA_NOT_ENOUGH
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_fifo_take_u16_be(
+    pra_fifo *const p_fifo,
+    uint16_t *const p_data,
+    PRA_EC_T *const p_ec);
+
+/**
+ * @brief           take 2 byte from the fifo struct
+ * @note            little endianness
+ * @param  p_fifo:  pra_fifo struct pointer
+ * @param  p_data:  output data
+ * @param  p_ec:    output error code:
+ *                  PRA_FIFO_EC_NULL_PTR
+ *                  PRA_FIFO_EC_NOT_INIT
+ *                  PRA_FIFO_EC_DATA_NOT_ENOUGH
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_fifo_take_u16_le(
+    pra_fifo *const p_fifo,
+    uint16_t *const p_data,
+    PRA_EC_T *const p_ec);
+
 #endif

@@ -92,8 +92,8 @@ int test_fifo_append_u16(
     }
 
     fifo.used_length = 0U;
-    data_to_append = 0xFFFFU;
-    expected_data = 0xFFFFU;
+    data_to_append = 0xEEFFU;
+    expected_data = 0xEEFFU;
     expected_used_length = 2U;
     expected_result = PRA_BOOL_TRUE;
     expected_ec = PRA_FIFO_EC_NONE;
@@ -113,8 +113,8 @@ int test_fifo_append_u16(
     fifo.p_data[0U] = 0U;
     fifo.used_length = 0U;
     fifo.next_w_pos = 8U;
-    data_to_append = 0xFFFFU;
-    expected_data = 0xFFFFU;
+    data_to_append = 0xEEFFU;
+    expected_data = 0xEEFFU;
     expected_used_length = 2U;
     expected_result = PRA_BOOL_TRUE;
     expected_ec = PRA_BITS_EC_NONE;

@@ -9,7 +9,7 @@ static uint8_t get_u8_l_be(uint16_t data);
 int main(void)
 {
     return test_fifo_append_u16(
-        &pra_fifo_append_u16_be,
+        &pra_fifo_append_u16_le,
         &get_u8_h_be,
         &get_u8_l_be);
 }
