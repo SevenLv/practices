@@ -202,4 +202,20 @@ pra_boolean pra_lifo_pop_u32_be(
     uint32_t *const p_data,
     PRA_EC_T *const p_ec);
 
+/**
+ * @brief           pop 4 bytes from the lifo struct
+ * @note            little endianness
+ * @param  p_lifo:  pra_lifo struct pointer
+ * @param  p_data:  ouput data
+ * @param  p_ec:    output error code:
+ *                  PRA_LIFO_EC_NULL_PTR
+ *                  PRA_LIFO_EC_NOT_INIT
+ *                  PRA_LIFO_EC_DATA_NOT_ENOUGH
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_lifo_pop_u32_le(
+    pra_lifo *const p_lifo,
+    uint32_t *const p_data,
+    PRA_EC_T *const p_ec);
+
 #endif
