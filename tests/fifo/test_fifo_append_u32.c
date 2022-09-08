@@ -12,7 +12,7 @@ int test_fifo_append_u32(
 {
     int result = err_none;
 
-    pra_fifo fifo = {0U};
+    pra_fifo fifo;
     uint8_t data[DATA_LENGTH] = {0U};
     uint16_t data_length = DATA_LENGTH;
     uint32_t data_to_append = 0U;
@@ -116,13 +116,13 @@ int test_fifo_append_u32(
 
     fifo.p_data[0U] = 0U;
     fifo.used_length = 0U;
-    fifo.next_w_pos = 8U;
+    fifo.next_w_pos = 6U;
     data_to_append = 0xCCDDEEFFU;
     expected_data = 0xCCDDEEFFU;
     expected_used_length = 4U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_BITS_EC_NONE;
-    actual_ec = PRA_BITS_EC_NONE;
+    expected_ec = PRA_FIFO_EC_NONE;
+    actual_ec = PRA_FIFO_EC_NONE;
     if (expected_result != append(
                                &fifo,
                                data_to_append,
@@ -135,7 +135,7 @@ int test_fifo_append_u32(
         expected_used_length != fifo.used_length ||
         0U != fifo.next_w_pos)
     {
-        result != err_error8;
+        result |= err_error8;
     }
 
     return result;

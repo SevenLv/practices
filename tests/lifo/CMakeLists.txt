@@ -43,3 +43,10 @@ add_executable(
     test_lifo_pop_u16.c)
 target_link_libraries(test_lifo_pop_u16_le practices)
 add_test(NAME test_lifo_pop_u16_le COMMAND test_lifo_pop_u16_le)
+
+add_executable(
+    test_lifo_push_u32_be 
+    test_lifo_push_u32_be.c 
+    test_lifo_push_u32.c)
+target_link_libraries(test_lifo_push_u32_be practices)
+add_test(NAME test_lifo_push_u32_be COMMAND test_lifo_push_u32_be)
