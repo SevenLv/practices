@@ -29,3 +29,17 @@ add_executable(
     test_lifo_push_u16.c)
 target_link_libraries(test_lifo_push_u16_le practices)
 add_test(NAME test_lifo_push_u16_le COMMAND test_lifo_push_u16_le)
+
+add_executable(
+    test_lifo_pop_u16_be 
+    test_lifo_pop_u16_be.c 
+    test_lifo_pop_u16.c)
+target_link_libraries(test_lifo_pop_u16_be practices)
+add_test(NAME test_lifo_pop_u16_be COMMAND test_lifo_pop_u16_be)
+
+add_executable(
+    test_lifo_pop_u16_le 
+    test_lifo_pop_u16_le.c 
+    test_lifo_pop_u16.c)
+target_link_libraries(test_lifo_pop_u16_le practices)
+add_test(NAME test_lifo_pop_u16_le COMMAND test_lifo_pop_u16_le)
