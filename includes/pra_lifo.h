@@ -43,7 +43,7 @@ typedef struct _pra_lifo
 
 /**
  * @brief               initialize a pra_lifo struct
- * @note   
+ * @note
  * @param  p_lifo:      pra_lifo struct pointer
  * @param  data[]:      data array
  * @param  data_length: data array length
@@ -56,6 +56,22 @@ pra_boolean pra_lifo_init(
     pra_lifo *const p_lifo,
     uint8_t data[],
     uint16_t data_length,
+    PRA_EC_T *const p_ec);
+
+/**
+ * @brief           push a byte to the lifo struct
+ * @note
+ * @param  p_lifo:  pra_lifo struct pointer
+ * @param  data:    data to push
+ * @param  p_ec:    output error code:
+ *                  PRA_LIFO_EC_NULL_PTR
+ *                  PRA_LIFO_EC_NOT_INIT
+ *                  PRA_LIFO_EC_DATA_FULL
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_lifo_push_u8(
+    pra_lifo *const p_lifo,
+    uint8_t data,
     PRA_EC_T *const p_ec);
 
 #endif

@@ -7,3 +7,7 @@ include_directories(
 add_executable(test_lifo_init test_lifo_init.c)
 target_link_libraries(test_lifo_init practices)
 add_test(NAME test_lifo_init COMMAND test_lifo_init)
+
+add_executable(test_lifo_push_u8 test_lifo_push_u8.c)
+target_link_libraries(test_lifo_push_u8 practices)
+add_test(NAME test_lifo_push_u8 COMMAND test_lifo_push_u8)
