@@ -85,5 +85,47 @@ int main(void)
         result |= err_error6;
     }
 
+    expected_result = PRA_BOOL_TRUE;
+    if (expected_result != pra_lifo_init(
+                               &lifo,
+                               data,
+                               data_length,
+                               &actual_ec))
+    {
+        result |= err_error7;
+    }
+
+    expected_result = PRA_BOOL_TRUE;
+    expected_ec = PRA_LIFO_EC_NONE;
+    for (uint8_t i = PRA_NUM_ZERO_U; i < DATA_LENGTH; i++)
+    {
+        actual_ec = PRA_LIFO_EC_NONE;
+        if (expected_result != pra_lifo_push_u8(
+                                   &lifo,
+                                   i,
+                                   &actual_ec) ||
+            expected_ec != actual_ec)
+        {
+            result |= err_error8;
+        }
+    }
+
+    expected_result = PRA_BOOL_TRUE;
+    expected_ec = PRA_LIFO_EC_NONE;
+    for (uint8_t i = DATA_LENGTH; i > PRA_NUM_ZERO_U; i--)
+    {
+        expected_data_value = i - 1;
+        actual_ec = PRA_LIFO_EC_NONE;
+        if (expected_result != pra_lifo_pop_u8(
+                                   &lifo,
+                                   &actual_data_value,
+                                   &actual_ec) ||
+            expected_ec != actual_ec ||
+            expected_data_value != actual_data_value)
+        {
+            result |= err_error9;
+        }
+    }
+
     return result;
 }
