@@ -11,3 +11,7 @@ add_test(NAME test_lifo_init COMMAND test_lifo_init)
 add_executable(test_lifo_push_u8 test_lifo_push_u8.c)
 target_link_libraries(test_lifo_push_u8 practices)
 add_test(NAME test_lifo_push_u8 COMMAND test_lifo_push_u8)
+
+add_executable(test_lifo_pop_u8 test_lifo_pop_u8.c)
+target_link_libraries(test_lifo_pop_u8 practices)
+add_test(NAME test_lifo_pop_u8 COMMAND test_lifo_pop_u8)
