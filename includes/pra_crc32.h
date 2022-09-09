@@ -22,13 +22,13 @@
 /* crc16 struct */
 typedef struct _pra_crc32
 {
-    pra_boolean initialized;            /* initialized flag */
-    uint32_t table[PRA_CRC_TABLE_SIZE]; /* the crc32 table */
-    uint32_t polynomial;                /* polynomial */
-    uint32_t initial_value;             /* initial value */
-    uint32_t xor_out;                   /* xor out */
-    pra_boolean ref_in;                 /* ref in */
-    pra_boolean ref_out;                /* ref out */
+    pra_boolean initialized;               /* initialized flag */
+    uint32_t    table[PRA_CRC_TABLE_SIZE]; /* the crc32 table */
+    uint32_t    polynomial;                /* polynomial */
+    uint32_t    initial_value;             /* initial value */
+    uint32_t    xor_out;                   /* xor out */
+    pra_boolean ref_in;                    /* ref in */
+    pra_boolean ref_out;                   /* ref out */
 } pra_crc32;
 
 /* variables */
@@ -45,7 +45,7 @@ typedef struct _pra_crc32
  */
 pra_boolean pra_crc32_init(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief               compute crc32
@@ -64,11 +64,11 @@ pra_boolean pra_crc32_init(
  */
 pra_boolean pra_crc32_compute(
     const pra_crc32 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    uint32_t *const p_result,
-    PRA_EC_T *const p_ec);
+    const uint8_t *const   bytes,
+    uint32_t               offset,
+    uint32_t               length,
+    uint32_t *const        p_result,
+    PRA_EC_T *const        p_ec);
 
 /**
  * @brief                   get new crc-32 struct
@@ -85,12 +85,12 @@ pra_boolean pra_crc32_compute(
  */
 pra_boolean pra_crc32_get(
     pra_crc32 *const p_crc,
-    uint32_t polynomial,
-    uint32_t initial_value,
-    uint32_t xor_out,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
-    PRA_EC_T *const p_ec);
+    uint32_t         polynomial,
+    uint32_t         initial_value,
+    uint32_t         xor_out,
+    pra_boolean      ref_in,
+    pra_boolean      ref_out,
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-32/default struct
@@ -102,7 +102,7 @@ pra_boolean pra_crc32_get(
  */
 pra_boolean pra_crc32_get_default(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-32/mpeg2 struct
@@ -114,7 +114,7 @@ pra_boolean pra_crc32_get_default(
  */
 pra_boolean pra_crc32_get_mpeg2(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-32/bzip2 struct
@@ -126,7 +126,7 @@ pra_boolean pra_crc32_get_mpeg2(
  */
 pra_boolean pra_crc32_get_bzip2(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-32/posix struct
@@ -138,7 +138,7 @@ pra_boolean pra_crc32_get_bzip2(
  */
 pra_boolean pra_crc32_get_posix(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-32/jamcrc struct
@@ -150,6 +150,6 @@ pra_boolean pra_crc32_get_posix(
  */
 pra_boolean pra_crc32_get_jamcrc(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 #endif

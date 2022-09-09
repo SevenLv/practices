@@ -1,6 +1,7 @@
-#include "test.h"
 #include "pra_bytes.h"
 #include "pra_defs.h"
+#include "test.h"
+
 
 int main(void);
 
@@ -8,18 +9,20 @@ int main(void)
 {
     int result = err_none;
 
-    uint8_t src[10] = {1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U};
-    uint8_t dst[10] = {0U};
+    uint8_t   src[10] = { 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U };
+    uint8_t   dst[10] = { 0U };
     pra_bytes src_bytes = {
         .length = 10,
         .used_length = 10,
-        .data = src};
+        .data = src
+    };
     pra_bytes dst_bytes = {
         .length = 10,
         .used_length = 0,
-        .data = dst};
-    uint32_t actual_ec = PRA_BYTES_EC_NONE;
-    uint32_t expected_ec = PRA_BYTES_EC_NONE;
+        .data = dst
+    };
+    uint32_t    actual_ec = PRA_BYTES_EC_NONE;
+    uint32_t    expected_ec = PRA_BYTES_EC_NONE;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     actual_ec = PRA_BYTES_EC_NONE;

@@ -1,6 +1,7 @@
-#include "test_lifo_push_u32.h"
 #include "pra_bits.h"
 #include "pra_num_defs.h"
+#include "test_lifo_push_u32.h"
+
 
 int main(void);
 

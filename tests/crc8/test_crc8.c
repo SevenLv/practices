@@ -1,14 +1,15 @@
-#include "test_crc8.h"
 #include "pra_defs.h"
 #include "test.h"
+#include "test_crc8.h"
+
 
 int test_get(get_func get)
 {
     int result = err_none;
 
-    pra_crc8 crc = {0};
-    uint32_t expected_ec = PRA_CRC_EC_NONE;
-    uint32_t actual_ec = PRA_CRC_EC_NONE;
+    pra_crc8    crc = { 0 };
+    uint32_t    expected_ec = PRA_CRC_EC_NONE;
+    uint32_t    actual_ec = PRA_CRC_EC_NONE;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     expected_result = PRA_BOOL_FALSE;
@@ -42,7 +43,7 @@ int test_init(get_func get)
 {
     int result = err_none;
 
-    pra_crc8 crc = {0};
+    pra_crc8 crc = { 0 };
     uint32_t expected_ec = PRA_CRC_EC_NONE;
     uint32_t actual_ec = PRA_CRC_EC_NONE;
 
@@ -89,18 +90,18 @@ int test_init(get_func get)
 
 int test_compute(
     get_func get,
-    uint8_t expected_crc_result)
+    uint8_t  expected_crc_result)
 {
     int result = err_none;
 
-    pra_crc8 crc = {0};
-    uint8_t bytes[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-    uint32_t offset = 0U;
-    uint32_t length = 9U;
-    uint8_t actual_crc_result = 0U;
+    pra_crc8    crc = { 0 };
+    uint8_t     bytes[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+    uint32_t    offset = 0U;
+    uint32_t    length = 9U;
+    uint8_t     actual_crc_result = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    uint32_t expected_ec = PRA_CRC_EC_NONE;
-    uint32_t actual_ec = PRA_CRC_EC_NONE;
+    uint32_t    expected_ec = PRA_CRC_EC_NONE;
+    uint32_t    actual_ec = PRA_CRC_EC_NONE;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_crc8_compute(

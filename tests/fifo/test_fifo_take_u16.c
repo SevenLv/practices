@@ -1,21 +1,22 @@
-#include "test_fifo_take_u16.h"
 #include "test.h"
+#include "test_fifo_take_u16.h"
+
 
 int test_fifo_take_u16(
-    take_func take,
+    take_func   take,
     append_func append)
 {
     int result = err_none;
 
-    pra_fifo fifo;
-    uint8_t data[DATA_LENGTH] = {0};
-    uint16_t data_length = DATA_LENGTH;
-    uint16_t expected_data_value = 0U;
-    uint16_t actual_data_value = 0U;
-    uint16_t expected_used_length = 0U;
+    pra_fifo    fifo;
+    uint8_t     data[DATA_LENGTH] = { 0 };
+    uint16_t    data_length = DATA_LENGTH;
+    uint16_t    expected_data_value = 0U;
+    uint16_t    actual_data_value = 0U;
+    uint16_t    expected_used_length = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T expected_ec = PRA_FIFO_EC_NONE;
-    PRA_EC_T actual_ec = PRA_FIFO_EC_NONE;
+    PRA_EC_T    expected_ec = PRA_FIFO_EC_NONE;
+    PRA_EC_T    actual_ec = PRA_FIFO_EC_NONE;
 
     expected_result = PRA_BOOL_TRUE;
     if (expected_result != pra_fifo_init(

@@ -8,16 +8,17 @@ int main(void)
 {
     int result = err_none;
 
-    uint8_t data[10] = {1U, 2U, 3U, 4U, 5U};
-    uint8_t data_to_append[5] = {6U, 7U, 8U, 9U, 10U};
-    uint16_t data_to_append_length = 5;
+    uint8_t   data[10] = { 1U, 2U, 3U, 4U, 5U };
+    uint8_t   data_to_append[5] = { 6U, 7U, 8U, 9U, 10U };
+    uint16_t  data_to_append_length = 5;
     pra_bytes bytes = {
         .length = 10,
         .used_length = 5,
-        .data = data};
-    pra_bytes *p_bytes = PRA_BYTES_NULL;
-    uint32_t actual_ec = PRA_BYTES_EC_NONE;
-    uint32_t expected_ec = PRA_BYTES_EC_NONE;
+        .data = data
+    };
+    pra_bytes  *p_bytes = PRA_BYTES_NULL;
+    uint32_t    actual_ec = PRA_BYTES_EC_NONE;
+    uint32_t    expected_ec = PRA_BYTES_EC_NONE;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     actual_ec = PRA_BYTES_EC_NONE;

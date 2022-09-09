@@ -1,5 +1,6 @@
-#include "test_crc8.h"
 #include "test.h"
+#include "test_crc8.h"
+
 
 int main(void);
 

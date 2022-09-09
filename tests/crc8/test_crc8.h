@@ -21,6 +21,6 @@ int test_init(get_func get);
 
 int test_compute(
     get_func get,
-    uint8_t expected_crc_result);
+    uint8_t  expected_crc_result);
 
 #endif

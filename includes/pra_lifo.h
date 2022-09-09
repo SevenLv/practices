@@ -18,11 +18,11 @@
 
 #define PRA_LIFO_NULL ((pra_lifo *)0)
 
-#define PRA_LIFO_EC_NONE PRA_NUM_ZERO_U                 /* no error */
-#define PRA_LIFO_EC_NULL_PTR PRA_NUM_BIT_MASK_00        /* null pointer */
-#define PRA_LIFO_EC_NOT_INIT PRA_NUM_BIT_MASK_01        /* not initialized */
-#define PRA_LIFO_EC_INVALID_LENGTH PRA_NUM_BIT_MASK_02  /* invalid length */
-#define PRA_LIFO_EC_DATA_FULL PRA_NUM_BIT_MASK_03       /* the lifo struct is full */
+#define PRA_LIFO_EC_NONE            PRA_NUM_ZERO_U      /* no error */
+#define PRA_LIFO_EC_NULL_PTR        PRA_NUM_BIT_MASK_00 /* null pointer */
+#define PRA_LIFO_EC_NOT_INIT        PRA_NUM_BIT_MASK_01 /* not initialized */
+#define PRA_LIFO_EC_INVALID_LENGTH  PRA_NUM_BIT_MASK_02 /* invalid length */
+#define PRA_LIFO_EC_DATA_FULL       PRA_NUM_BIT_MASK_03 /* the lifo struct is full */
 #define PRA_LIFO_EC_DATA_NOT_ENOUGH PRA_NUM_BIT_MASK_04 /* the lifo struct data is not enough */
 
 /* types */
@@ -31,11 +31,11 @@
 typedef struct _pra_lifo
 {
     pra_boolean initialized; /* initialized flag */
-    uint8_t *p_data;         /* data pointer */
-    uint16_t data_length;    /* data length */
-    uint16_t used_length;    /* used data length */
-    uint16_t next_r_pos;     /* next read position */
-    uint16_t next_w_pos;     /* next write position */
+    uint8_t    *p_data;      /* data pointer */
+    uint16_t    data_length; /* data length */
+    uint16_t    used_length; /* used data length */
+    uint16_t    next_r_pos;  /* next read position */
+    uint16_t    next_w_pos;  /* next write position */
 } pra_lifo;
 
 /* variables */
@@ -55,8 +55,8 @@ typedef struct _pra_lifo
  */
 pra_boolean pra_lifo_init(
     pra_lifo *const p_lifo,
-    uint8_t data[],
-    uint16_t data_length,
+    uint8_t         data[],
+    uint16_t        data_length,
     PRA_EC_T *const p_ec);
 
 /**
@@ -72,7 +72,7 @@ pra_boolean pra_lifo_init(
  */
 pra_boolean pra_lifo_push_u8(
     pra_lifo *const p_lifo,
-    uint8_t data,
+    uint8_t         data,
     PRA_EC_T *const p_ec);
 
 /**
@@ -88,7 +88,7 @@ pra_boolean pra_lifo_push_u8(
  */
 pra_boolean pra_lifo_pop_u8(
     pra_lifo *const p_lifo,
-    uint8_t *const p_data,
+    uint8_t *const  p_data,
     PRA_EC_T *const p_ec);
 
 /**
@@ -104,7 +104,7 @@ pra_boolean pra_lifo_pop_u8(
  */
 pra_boolean pra_lifo_push_u16_be(
     pra_lifo *const p_lifo,
-    uint16_t data,
+    uint16_t        data,
     PRA_EC_T *const p_ec);
 
 /**
@@ -120,7 +120,7 @@ pra_boolean pra_lifo_push_u16_be(
  */
 pra_boolean pra_lifo_push_u16_le(
     pra_lifo *const p_lifo,
-    uint16_t data,
+    uint16_t        data,
     PRA_EC_T *const p_ec);
 
 /**
@@ -168,7 +168,7 @@ pra_boolean pra_lifo_pop_u16_le(
  */
 pra_boolean pra_lifo_push_u32_be(
     pra_lifo *const p_lifo,
-    uint32_t data,
+    uint32_t        data,
     PRA_EC_T *const p_ec);
 
 /**
@@ -184,7 +184,7 @@ pra_boolean pra_lifo_push_u32_be(
  */
 pra_boolean pra_lifo_push_u32_le(
     pra_lifo *const p_lifo,
-    uint32_t data,
+    uint32_t        data,
     PRA_EC_T *const p_ec);
 
 /**

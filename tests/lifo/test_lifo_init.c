@@ -1,6 +1,7 @@
-#include "pra_lifo.h"
 #include "pra_defs.h"
+#include "pra_lifo.h"
 #include "test.h"
+
 
 #define DATA_LENGTH 10U
 
@@ -10,17 +11,17 @@ int main(void)
 {
     int result = err_none;
 
-    pra_lifo lifo = {0};
-    uint8_t data[DATA_LENGTH] = {1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U};
-    uint16_t data_length = DATA_LENGTH;
-    pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T expected_ec = PRA_LIFO_EC_NONE;
-    PRA_EC_T actual_ec = PRA_LIFO_EC_NONE;
+    pra_lifo      lifo = { 0 };
+    uint8_t       data[DATA_LENGTH] = { 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U };
+    uint16_t      data_length = DATA_LENGTH;
+    pra_boolean   expected_result = PRA_BOOL_UNKNOWN;
+    PRA_EC_T      expected_ec = PRA_LIFO_EC_NONE;
+    PRA_EC_T      actual_ec = PRA_LIFO_EC_NONE;
     const uint8_t expected_data_value = 0U;
-    uint16_t expected_data_length = DATA_LENGTH;
-    uint16_t expected_used_length = 0U;
-    uint16_t expected_next_r_pos = 0U;
-    uint16_t expected_next_W_pos = 0U;
+    uint16_t      expected_data_length = DATA_LENGTH;
+    uint16_t      expected_used_length = 0U;
+    uint16_t      expected_next_r_pos = 0U;
+    uint16_t      expected_next_W_pos = 0U;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_lifo_init(

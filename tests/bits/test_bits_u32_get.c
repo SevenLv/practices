@@ -8,13 +8,13 @@ int main(void)
 {
     int result = err_none;
 
-    uint32_t value = 0U;
-    uint8_t bit_offset = 0U;
+    uint32_t    value = 0U;
+    uint8_t     bit_offset = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
     pra_boolean expected_actived = PRA_BOOL_UNKNOWN;
     pra_boolean actual_actived = PRA_BOOL_UNKNOWN;
-    uint32_t expected_ec = PRA_BITS_EC_NONE;
-    uint32_t actual_ec = PRA_BITS_EC_NONE;
+    uint32_t    expected_ec = PRA_BITS_EC_NONE;
+    uint32_t    actual_ec = PRA_BITS_EC_NONE;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bits_u32_get(

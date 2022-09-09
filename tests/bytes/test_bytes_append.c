@@ -8,20 +8,22 @@ int main(void)
 {
     int result = err_none;
 
-    uint8_t data1[10] = {1U, 2U, 3U, 4U, 5U};
-    uint8_t data2[10] = {6U, 7U, 8U, 9U, 10U};
+    uint8_t   data1[10] = { 1U, 2U, 3U, 4U, 5U };
+    uint8_t   data2[10] = { 6U, 7U, 8U, 9U, 10U };
     pra_bytes bytes1 = {
         .length = 10,
         .used_length = 5,
-        .data = data1};
+        .data = data1
+    };
     pra_bytes bytes2 = {
         .length = 10,
         .used_length = 5,
-        .data = data2};
-    pra_bytes *p_bytes1 = &bytes1;
-    pra_bytes *p_bytes2 = &bytes2;
-    uint32_t actual_ec = PRA_BYTES_EC_NONE;
-    uint32_t expected_ec = PRA_BYTES_EC_NONE;
+        .data = data2
+    };
+    pra_bytes  *p_bytes1 = &bytes1;
+    pra_bytes  *p_bytes2 = &bytes2;
+    uint32_t    actual_ec = PRA_BYTES_EC_NONE;
+    uint32_t    expected_ec = PRA_BYTES_EC_NONE;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     actual_ec = PRA_BYTES_EC_NONE;

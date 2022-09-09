@@ -6,10 +6,11 @@
  */
 
 /* includes */
-#include "pra_crc8.h"
 #include "pra_bits.h"
+#include "pra_crc8.h"
 #include "pra_defs.h"
 #include "pra_num_defs.h"
+
 
 /* macros */
 #define MASK_H1 0x80U
@@ -28,7 +29,7 @@
  */
 static pra_boolean pra_crc8_init_args_check(
     const pra_crc8 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief               arguments validation for pra_crc8_compute function
@@ -47,11 +48,11 @@ static pra_boolean pra_crc8_init_args_check(
  */
 static pra_boolean pra_crc8_compute_args_check(
     const pra_crc8 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    const uint8_t *const p_result,
-    PRA_EC_T *const p_ec);
+    const uint8_t *const  bytes,
+    uint32_t              offset,
+    uint32_t              length,
+    const uint8_t *const  p_result,
+    PRA_EC_T *const       p_ec);
 /**
  * @brief                   arguments validation for pra_crc8_get function
  * @note
@@ -64,15 +65,15 @@ static pra_boolean pra_crc8_compute_args_check(
  */
 static pra_boolean pra_crc8_get_args_check(
     const pra_crc8 *const p_crc,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
-    PRA_EC_T *const p_ec);
+    pra_boolean           ref_in,
+    pra_boolean           ref_out,
+    PRA_EC_T *const       p_ec);
 
 /* functions */
 
 static pra_boolean pra_crc8_init_args_check(
     const pra_crc8 *const p_crc,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -98,9 +99,9 @@ pra_boolean pra_crc8_init(
     PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint8_t current_value;
-    uint16_t i;
-    uint8_t j;
+    uint8_t     current_value;
+    uint16_t    i;
+    uint8_t     j;
 
     if (PRA_BOOL_TRUE != pra_crc8_init_args_check(
                              p_crc,
@@ -139,11 +140,11 @@ pra_boolean pra_crc8_init(
 
 static pra_boolean pra_crc8_compute_args_check(
     const pra_crc8 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    const uint8_t *const p_result,
-    PRA_EC_T *const p_ec)
+    const uint8_t *const  bytes,
+    uint32_t              offset,
+    uint32_t              length,
+    const uint8_t *const  p_result,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -191,15 +192,15 @@ static pra_boolean pra_crc8_compute_args_check(
 
 pra_boolean pra_crc8_compute(
     const pra_crc8 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    uint8_t *const p_result,
-    PRA_EC_T *const p_ec)
+    const uint8_t *const  bytes,
+    uint32_t              offset,
+    uint32_t              length,
+    uint8_t *const        p_result,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
     pra_boolean failed = PRA_BOOL_FALSE;
-    uint8_t tmp_value;
+    uint8_t     tmp_value;
 
     if (PRA_BOOL_TRUE != pra_crc8_compute_args_check(
                              p_crc,
@@ -273,9 +274,9 @@ pra_boolean pra_crc8_compute(
 
 static pra_boolean pra_crc8_get_args_check(
     const pra_crc8 *const p_crc,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
-    PRA_EC_T *const p_ec)
+    pra_boolean           ref_in,
+    pra_boolean           ref_out,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -310,11 +311,11 @@ static pra_boolean pra_crc8_get_args_check(
 
 pra_boolean pra_crc8_get(
     pra_crc8 *const p_crc,
-    uint8_t polynomial,
-    uint8_t initial_value,
-    uint8_t xor_out,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
+    uint8_t         polynomial,
+    uint8_t         initial_value,
+    uint8_t         xor_out,
+    pra_boolean     ref_in,
+    pra_boolean     ref_out,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;

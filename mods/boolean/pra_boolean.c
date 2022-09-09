@@ -44,7 +44,9 @@ pra_boolean pra_boolean_not(pra_boolean value)
     return result;
 }
 
-pra_boolean pra_boolean_and(pra_boolean value1, pra_boolean value2)
+pra_boolean pra_boolean_and(
+    pra_boolean value1,
+    pra_boolean value2)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -61,7 +63,9 @@ pra_boolean pra_boolean_and(pra_boolean value1, pra_boolean value2)
     return result;
 }
 
-pra_boolean pra_boolean_or(pra_boolean value1, pra_boolean value2)
+pra_boolean pra_boolean_or(
+    pra_boolean value1,
+    pra_boolean value2)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -78,7 +82,9 @@ pra_boolean pra_boolean_or(pra_boolean value1, pra_boolean value2)
     return result;
 }
 
-pra_boolean pra_boolean_xor(pra_boolean value1, pra_boolean value2)
+pra_boolean pra_boolean_xor(
+    pra_boolean value1,
+    pra_boolean value2)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 

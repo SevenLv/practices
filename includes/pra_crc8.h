@@ -22,13 +22,13 @@
 /* crc8 struct */
 typedef struct _pra_crc8
 {
-    pra_boolean initialized;             /* initialized flag */
-    uint8_t table[PRA_CRC_TABLE_SIZE]; /* the crc8 table */
-    uint8_t polynomial;                 /* polynomial */
-    uint8_t initial_value;               /* initial value */
-    uint8_t xor_out;                    /* xor out*/
-    pra_boolean ref_in;                 /* ref in */
-    pra_boolean ref_out;                /* ref out */
+    pra_boolean initialized;               /* initialized flag */
+    uint8_t     table[PRA_CRC_TABLE_SIZE]; /* the crc8 table */
+    uint8_t     polynomial;                /* polynomial */
+    uint8_t     initial_value;             /* initial value */
+    uint8_t     xor_out;                   /* xor out*/
+    pra_boolean ref_in;                    /* ref in */
+    pra_boolean ref_out;                   /* ref out */
 } pra_crc8;
 
 /* variables */
@@ -64,11 +64,11 @@ pra_boolean pra_crc8_init(
  */
 pra_boolean pra_crc8_compute(
     const pra_crc8 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    uint8_t *const p_result,
-    PRA_EC_T *const p_ec);
+    const uint8_t *const  bytes,
+    uint32_t              offset,
+    uint32_t              length,
+    uint8_t *const        p_result,
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief                   get new crc-8 struct
@@ -85,11 +85,11 @@ pra_boolean pra_crc8_compute(
  */
 pra_boolean pra_crc8_get(
     pra_crc8 *const p_crc,
-    uint8_t polynomial,
-    uint8_t initial_value,
-    uint8_t xor_out,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
+    uint8_t         polynomial,
+    uint8_t         initial_value,
+    uint8_t         xor_out,
+    pra_boolean     ref_in,
+    pra_boolean     ref_out,
     PRA_EC_T *const p_ec);
 
 /**

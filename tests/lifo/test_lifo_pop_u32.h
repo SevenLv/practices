@@ -9,7 +9,7 @@ typedef pra_boolean (*pop_func)(pra_lifo *const, uint32_t *const, PRA_EC_T *cons
 typedef pra_boolean (*push_func)(pra_lifo *const, uint32_t, PRA_EC_T *const);
 
 int test_lifo_pop_u32(
-    pop_func pop,
+    pop_func  pop,
     push_func push);
 
 #endif

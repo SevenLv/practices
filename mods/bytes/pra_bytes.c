@@ -16,7 +16,7 @@
 
 pra_boolean pra_bytes_not_null_ptr(
     const pra_bytes *const p_bytes,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const        p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -45,7 +45,7 @@ pra_boolean pra_bytes_not_null_ptr(
 
 pra_boolean pra_bytes_init(
     pra_bytes *const p_bytes,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -75,8 +75,8 @@ pra_boolean pra_bytes_init(
 
 pra_boolean pra_bytes_copy(
     const pra_bytes *const p_src,
-    pra_bytes *const p_dst,
-    PRA_EC_T *const p_ec)
+    pra_bytes *const       p_dst,
+    PRA_EC_T *const        p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -120,9 +120,9 @@ pra_boolean pra_bytes_copy(
 
 pra_boolean pra_bytes_append_u8_array(
     pra_bytes *const p_bytes,
-    const uint8_t data[],
-    uint16_t data_length,
-    PRA_EC_T *const p_ec)
+    const uint8_t    data[],
+    uint16_t         data_length,
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -162,9 +162,9 @@ pra_boolean pra_bytes_append_u8_array(
 }
 
 pra_boolean pra_bytes_append(
-    pra_bytes *const p_bytes,
+    pra_bytes *const       p_bytes,
     const pra_bytes *const p_data,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const        p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -194,8 +194,8 @@ pra_boolean pra_bytes_append(
 
 pra_boolean pra_bytes_append_u8(
     pra_bytes *const p_bytes,
-    uint8_t data,
-    PRA_EC_T *const p_ec)
+    uint8_t          data,
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -221,8 +221,8 @@ pra_boolean pra_bytes_append_u8(
 
 pra_boolean pra_bytes_append_u16_be(
     pra_bytes *const p_bytes,
-    uint16_t data,
-    PRA_EC_T *const p_ec)
+    uint16_t         data,
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -249,8 +249,8 @@ pra_boolean pra_bytes_append_u16_be(
 
 pra_boolean pra_bytes_append_u16_le(
     pra_bytes *const p_bytes,
-    uint16_t data,
-    PRA_EC_T *const p_ec)
+    uint16_t         data,
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -277,8 +277,8 @@ pra_boolean pra_bytes_append_u16_le(
 
 pra_boolean pra_bytes_append_u32_be(
     pra_bytes *const p_bytes,
-    uint32_t data,
-    PRA_EC_T *const p_ec)
+    uint32_t         data,
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -307,8 +307,8 @@ pra_boolean pra_bytes_append_u32_be(
 
 pra_boolean pra_bytes_append_u32_le(
     pra_bytes *const p_bytes,
-    uint32_t data,
-    PRA_EC_T *const p_ec)
+    uint32_t         data,
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 

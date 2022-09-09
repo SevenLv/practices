@@ -6,10 +6,11 @@
  */
 
 /* includes */
+#include "pra_bits.h"
 #include "pra_crc32.h"
 #include "pra_defs.h"
-#include "pra_bits.h"
 #include "pra_num_defs.h"
+
 
 /* macros */
 #define MASK_H1 0x80000000U
@@ -28,7 +29,7 @@
  */
 static pra_boolean pra_crc32_init_args_check(
     const pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const        p_ec);
 
 /**
  * @brief               arguments validation for pra_crc32_compute function
@@ -47,11 +48,11 @@ static pra_boolean pra_crc32_init_args_check(
  */
 static pra_boolean pra_crc32_compute_args_check(
     const pra_crc32 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    const uint32_t *const p_result,
-    PRA_EC_T *const p_ec);
+    const uint8_t *const   bytes,
+    uint32_t               offset,
+    uint32_t               length,
+    const uint32_t *const  p_result,
+    PRA_EC_T *const        p_ec);
 
 /**
  * @brief                   arguments declaration for pra_crc32_get function
@@ -65,15 +66,15 @@ static pra_boolean pra_crc32_compute_args_check(
  */
 static pra_boolean pra_crc32_get_args_check(
     const pra_crc32 *const p_crc,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
-    PRA_EC_T *const p_ec);
+    pra_boolean            ref_in,
+    pra_boolean            ref_out,
+    PRA_EC_T *const        p_ec);
 
 /* functions */
 
 static pra_boolean pra_crc32_init_args_check(
     const pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const        p_ec)
 {
     pra_boolean result;
 
@@ -96,12 +97,12 @@ static pra_boolean pra_crc32_init_args_check(
 
 pra_boolean pra_crc32_init(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
-    uint32_t current_value;
-    uint16_t i;
-    uint8_t j;
+    uint32_t    current_value;
+    uint16_t    i;
+    uint8_t     j;
 
     if (PRA_BOOL_TRUE != pra_crc32_init_args_check(
                              p_crc,
@@ -140,11 +141,11 @@ pra_boolean pra_crc32_init(
 
 static pra_boolean pra_crc32_compute_args_check(
     const pra_crc32 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    const uint32_t *const p_result,
-    PRA_EC_T *const p_ec)
+    const uint8_t *const   bytes,
+    uint32_t               offset,
+    uint32_t               length,
+    const uint32_t *const  p_result,
+    PRA_EC_T *const        p_ec)
 {
     pra_boolean result;
 
@@ -192,16 +193,16 @@ static pra_boolean pra_crc32_compute_args_check(
 
 pra_boolean pra_crc32_compute(
     const pra_crc32 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    uint32_t *const p_result,
-    PRA_EC_T *const p_ec)
+    const uint8_t *const   bytes,
+    uint32_t               offset,
+    uint32_t               length,
+    uint32_t *const        p_result,
+    PRA_EC_T *const        p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
     pra_boolean failed = PRA_BOOL_FALSE;
-    uint32_t tmp_u32_value;
-    uint8_t tmp_u8_value;
+    uint32_t    tmp_u32_value;
+    uint8_t     tmp_u8_value;
 
     if (PRA_BOOL_TRUE != pra_crc32_compute_args_check(
                              p_crc,
@@ -216,7 +217,7 @@ pra_boolean pra_crc32_compute(
     else
     {
         uint32_t tmp_crc = p_crc->initial_value;
-        uint8_t current_value;
+        uint8_t  current_value;
         for (uint32_t i = offset; i < length; i++)
         {
             if (PRA_BOOL_TRUE != failed)
@@ -275,9 +276,9 @@ pra_boolean pra_crc32_compute(
 
 static pra_boolean pra_crc32_get_args_check(
     const pra_crc32 *const p_crc,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
-    PRA_EC_T *const p_ec)
+    pra_boolean            ref_in,
+    pra_boolean            ref_out,
+    PRA_EC_T *const        p_ec)
 {
     pra_boolean result;
 
@@ -312,12 +313,12 @@ static pra_boolean pra_crc32_get_args_check(
 
 pra_boolean pra_crc32_get(
     pra_crc32 *const p_crc,
-    uint32_t polynomial,
-    uint32_t initial_value,
-    uint32_t xor_out,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
-    PRA_EC_T *const p_ec)
+    uint32_t         polynomial,
+    uint32_t         initial_value,
+    uint32_t         xor_out,
+    pra_boolean      ref_in,
+    pra_boolean      ref_out,
+    PRA_EC_T *const  p_ec)
 {
     pra_boolean result = PRA_BOOL_UNKNOWN;
 
@@ -346,7 +347,7 @@ pra_boolean pra_crc32_get(
 
 pra_boolean pra_crc32_get_default(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const  p_ec)
 {
     return pra_crc32_get(
         p_crc,
@@ -360,7 +361,7 @@ pra_boolean pra_crc32_get_default(
 
 pra_boolean pra_crc32_get_mpeg2(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const  p_ec)
 {
     return pra_crc32_get(
         p_crc,
@@ -374,7 +375,7 @@ pra_boolean pra_crc32_get_mpeg2(
 
 pra_boolean pra_crc32_get_bzip2(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const  p_ec)
 {
     return pra_crc32_get(
         p_crc,
@@ -388,7 +389,7 @@ pra_boolean pra_crc32_get_bzip2(
 
 pra_boolean pra_crc32_get_posix(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const  p_ec)
 {
     return pra_crc32_get(
         p_crc,
@@ -402,7 +403,7 @@ pra_boolean pra_crc32_get_posix(
 
 pra_boolean pra_crc32_get_jamcrc(
     pra_crc32 *const p_crc,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const  p_ec)
 {
     return pra_crc32_get(
         p_crc,

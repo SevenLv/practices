@@ -14,10 +14,10 @@ int main(void)
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
     pra_boolean expected_actived = PRA_BOOL_UNKNOWN;
     pra_boolean actual_actived = PRA_BOOL_UNKNOWN;
-    uint32_t expected_ec = PRA_BITS_EC_NONE;
-    uint32_t actual_ec = PRA_BITS_EC_NONE;
-    uint8_t value = PRA_NUM_ZERO_U;
-    uint8_t bit_offset = PRA_NUM_ZERO_U;
+    uint32_t    expected_ec = PRA_BITS_EC_NONE;
+    uint32_t    actual_ec = PRA_BITS_EC_NONE;
+    uint8_t     value = PRA_NUM_ZERO_U;
+    uint8_t     bit_offset = PRA_NUM_ZERO_U;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bits_u8_get(

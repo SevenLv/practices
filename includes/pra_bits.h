@@ -16,8 +16,8 @@
 
 /* macros */
 
-#define PRA_BITS_EC_NONE PRA_NUM_ZERO_U                /* no error */
-#define PRA_BITS_EC_NULL_PTR PRA_NUM_BIT_MASK_00       /* null pointer */
+#define PRA_BITS_EC_NONE           PRA_NUM_ZERO_U      /* no error */
+#define PRA_BITS_EC_NULL_PTR       PRA_NUM_BIT_MASK_00 /* null pointer */
 #define PRA_BITS_EC_INVALID_OFFSET PRA_NUM_BIT_MASK_01 /* invalid bit offset */
 
 /* types */
@@ -38,10 +38,10 @@
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u8_get(
-    uint8_t value,
-    uint8_t bit_offset,
+    uint8_t            value,
+    uint8_t            bit_offset,
     pra_boolean *const p_actived,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const    p_ec);
 
 /**
  * @brief               set the bit state of a 8-bit value
@@ -55,9 +55,9 @@ pra_boolean pra_bits_u8_get(
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u8_set(
-    uint8_t *const p_value,
-    uint8_t bit_offset,
-    pra_boolean actived,
+    uint8_t *const  p_value,
+    uint8_t         bit_offset,
+    pra_boolean     actived,
     PRA_EC_T *const p_ec);
 
 /**
@@ -72,10 +72,10 @@ pra_boolean pra_bits_u8_set(
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u16_get(
-    uint16_t value,
-    uint8_t bit_offset,
+    uint16_t           value,
+    uint8_t            bit_offset,
     pra_boolean *const p_actived,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const    p_ec);
 
 /**
  * @brief               set the bit state of a 16-bit value
@@ -90,8 +90,8 @@ pra_boolean pra_bits_u16_get(
  */
 pra_boolean pra_bits_u16_set(
     uint16_t *const p_value,
-    uint8_t bit_offset,
-    pra_boolean actived,
+    uint8_t         bit_offset,
+    pra_boolean     actived,
     PRA_EC_T *const p_ec);
 
 /**
@@ -106,10 +106,10 @@ pra_boolean pra_bits_u16_set(
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u32_get(
-    uint32_t value,
-    uint8_t bit_offset,
+    uint32_t           value,
+    uint8_t            bit_offset,
     pra_boolean *const p_actived,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const    p_ec);
 
 /**
  * @brief               set the bit state of a 32-bit value
@@ -124,8 +124,8 @@ pra_boolean pra_bits_u32_get(
  */
 pra_boolean pra_bits_u32_set(
     uint32_t *const p_value,
-    uint8_t bit_offset,
-    pra_boolean actived,
+    uint8_t         bit_offset,
+    pra_boolean     actived,
     PRA_EC_T *const p_ec);
 
 /**
@@ -136,7 +136,7 @@ pra_boolean pra_bits_u32_set(
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u8_reverse(
-    uint8_t value,
+    uint8_t        value,
     uint8_t *const p_new_value);
 
 /**
@@ -147,7 +147,7 @@ pra_boolean pra_bits_u8_reverse(
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u16_reverse(
-    uint16_t value,
+    uint16_t        value,
     uint16_t *const p_new_value);
 
 /**
@@ -158,7 +158,7 @@ pra_boolean pra_bits_u16_reverse(
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u32_reverse(
-    uint32_t value,
+    uint32_t        value,
     uint32_t *const p_new_value);
 
 #endif

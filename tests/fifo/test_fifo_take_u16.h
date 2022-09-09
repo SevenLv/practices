@@ -9,7 +9,7 @@ typedef pra_boolean (*take_func)(pra_fifo *const, uint16_t *const, PRA_EC_T *con
 typedef pra_boolean (*append_func)(pra_fifo *const, uint16_t, PRA_EC_T *const);
 
 int test_fifo_take_u16(
-    take_func take,
+    take_func   take,
     append_func append);
 
 #endif

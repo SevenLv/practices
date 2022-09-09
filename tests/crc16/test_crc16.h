@@ -20,7 +20,6 @@ int test_init(get_func get);
 
 int test_compute(
     get_func get,
-    uint16_t expected_crc_result
-);
+    uint16_t expected_crc_result);
 
 #endif

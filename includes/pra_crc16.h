@@ -22,13 +22,13 @@
 /* crc16 struct */
 typedef struct _pra_crc16
 {
-    pra_boolean initialized;            /* initialized flag */
-    uint16_t table[PRA_CRC_TABLE_SIZE]; /* the crc16 table */
-    uint16_t polynomial;                /* polynomial */
-    uint16_t initial_value;             /* initial value */
-    uint16_t xor_out;                   /* xor out */
-    pra_boolean ref_in;                 /* ref in */
-    pra_boolean ref_out;                /* ref out */
+    pra_boolean initialized;               /* initialized flag */
+    uint16_t    table[PRA_CRC_TABLE_SIZE]; /* the crc16 table */
+    uint16_t    polynomial;                /* polynomial */
+    uint16_t    initial_value;             /* initial value */
+    uint16_t    xor_out;                   /* xor out */
+    pra_boolean ref_in;                    /* ref in */
+    pra_boolean ref_out;                   /* ref out */
 } pra_crc16;
 
 /* variables */
@@ -45,7 +45,7 @@ typedef struct _pra_crc16
  */
 pra_boolean pra_crc16_init(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief               compute crc16
@@ -64,11 +64,11 @@ pra_boolean pra_crc16_init(
  */
 pra_boolean pra_crc16_compute(
     const pra_crc16 *const p_crc,
-    const uint8_t *const bytes,
-    uint32_t offset,
-    uint32_t length,
-    uint16_t *const p_result,
-    PRA_EC_T *const p_ec);
+    const uint8_t *const   bytes,
+    uint32_t               offset,
+    uint32_t               length,
+    uint16_t *const        p_result,
+    PRA_EC_T *const        p_ec);
 
 /**
  * @brief                   get new crc-16 struct
@@ -85,12 +85,12 @@ pra_boolean pra_crc16_compute(
  */
 pra_boolean pra_crc16_get(
     pra_crc16 *const p_crc,
-    uint16_t polynomial,
-    uint16_t initial_value,
-    uint16_t xor_out,
-    pra_boolean ref_in,
-    pra_boolean ref_out,
-    PRA_EC_T *const p_ec);
+    uint16_t         polynomial,
+    uint16_t         initial_value,
+    uint16_t         xor_out,
+    pra_boolean      ref_in,
+    pra_boolean      ref_out,
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-16/arc struct
@@ -102,7 +102,7 @@ pra_boolean pra_crc16_get(
  */
 pra_boolean pra_crc16_get_arc(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-16/maxim struct
@@ -114,7 +114,7 @@ pra_boolean pra_crc16_get_arc(
  */
 pra_boolean pra_crc16_get_maxim(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-16/usb struct
@@ -126,7 +126,7 @@ pra_boolean pra_crc16_get_maxim(
  */
 pra_boolean pra_crc16_get_usb(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-16/modbus struct
@@ -138,7 +138,7 @@ pra_boolean pra_crc16_get_usb(
  */
 pra_boolean pra_crc16_get_modbus(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-16/ccitt-false struct
@@ -150,7 +150,7 @@ pra_boolean pra_crc16_get_modbus(
  */
 pra_boolean pra_crc16_get_ccitt_false(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-16/x25 struct
@@ -162,7 +162,7 @@ pra_boolean pra_crc16_get_ccitt_false(
  */
 pra_boolean pra_crc16_get_x25(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-16/xmodem struct
@@ -174,7 +174,7 @@ pra_boolean pra_crc16_get_x25(
  */
 pra_boolean pra_crc16_get_xmodem(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 /**
  * @brief           get new crc-16/dnp struct
@@ -186,6 +186,6 @@ pra_boolean pra_crc16_get_xmodem(
  */
 pra_boolean pra_crc16_get_dnp(
     pra_crc16 *const p_crc,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const  p_ec);
 
 #endif

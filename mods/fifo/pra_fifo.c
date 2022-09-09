@@ -26,8 +26,8 @@
  */
 static pra_boolean pra_fifo_init_args_check(
     const pra_fifo *const p_fifo,
-    uint16_t data_length,
-    PRA_EC_T *const p_ec);
+    uint16_t              data_length,
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief               arguments validation for pra_fifo_append_xx function
@@ -42,8 +42,8 @@ static pra_boolean pra_fifo_init_args_check(
  */
 static pra_boolean pra_fifo_append_args_check(
     const pra_fifo *const p_fifo,
-    uint16_t data_length,
-    PRA_EC_T *const p_ec);
+    uint16_t              data_length,
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief               increase the position
@@ -52,7 +52,7 @@ static pra_boolean pra_fifo_append_args_check(
  * @retval None
  */
 static void pra_fifo_position_move(
-    uint16_t data_length,
+    uint16_t        data_length,
     uint16_t *const p_position);
 
 /**
@@ -68,8 +68,8 @@ static void pra_fifo_position_move(
  */
 static pra_boolean pra_fifo_take_u8_args_check(
     const pra_fifo *const p_fifo,
-    const uint8_t *const p_data,
-    PRA_EC_T *const p_ec);
+    const uint8_t *const  p_data,
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief           arguments validation for pra_fifo_take_u16_xx function
@@ -85,7 +85,7 @@ static pra_boolean pra_fifo_take_u8_args_check(
 static pra_boolean pra_fifo_take_u16_args_check(
     const pra_fifo *const p_fifo,
     const uint16_t *const p_data,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief           arguments validation for pra_fifo_take_u32_xx function
@@ -101,14 +101,14 @@ static pra_boolean pra_fifo_take_u16_args_check(
 static pra_boolean pra_fifo_take_u32_args_check(
     const pra_fifo *const p_fifo,
     const uint32_t *const p_data,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const       p_ec);
 
 /* functions */
 
 static pra_boolean pra_fifo_init_args_check(
     const pra_fifo *const p_fifo,
-    uint16_t data_length,
-    PRA_EC_T *const p_ec)
+    uint16_t              data_length,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -136,8 +136,8 @@ static pra_boolean pra_fifo_init_args_check(
 
 pra_boolean pra_fifo_init(
     pra_fifo *const p_fifo,
-    uint8_t data[],
-    uint16_t data_length,
+    uint8_t         data[],
+    uint16_t        data_length,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -169,7 +169,7 @@ pra_boolean pra_fifo_init(
 }
 
 static void pra_fifo_position_move(
-    uint16_t data_length,
+    uint16_t        data_length,
     uint16_t *const p_position)
 {
     if (PRA_NUM_ZERO_U == data_length)
@@ -192,8 +192,8 @@ static void pra_fifo_position_move(
 
 static pra_boolean pra_fifo_append_args_check(
     const pra_fifo *const p_fifo,
-    uint16_t data_length,
-    PRA_EC_T *const p_ec)
+    uint16_t              data_length,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -236,7 +236,7 @@ static pra_boolean pra_fifo_append_args_check(
 
 pra_boolean pra_fifo_append_u8(
     pra_fifo *const p_fifo,
-    uint8_t data,
+    uint8_t         data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_FALSE;
@@ -264,8 +264,8 @@ pra_boolean pra_fifo_append_u8(
 
 static pra_boolean pra_fifo_take_u8_args_check(
     const pra_fifo *const p_fifo,
-    const uint8_t *const p_data,
-    PRA_EC_T *const p_ec)
+    const uint8_t *const  p_data,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -308,7 +308,7 @@ static pra_boolean pra_fifo_take_u8_args_check(
 
 pra_boolean pra_fifo_take_u8(
     pra_fifo *const p_fifo,
-    uint8_t *const p_data,
+    uint8_t *const  p_data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -336,7 +336,7 @@ pra_boolean pra_fifo_take_u8(
 
 pra_boolean pra_fifo_append_u16_be(
     pra_fifo *const p_fifo,
-    uint16_t data,
+    uint16_t        data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -370,7 +370,7 @@ pra_boolean pra_fifo_append_u16_be(
 
 pra_boolean pra_fifo_append_u16_le(
     pra_fifo *const p_fifo,
-    uint16_t data,
+    uint16_t        data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -405,7 +405,7 @@ pra_boolean pra_fifo_append_u16_le(
 static pra_boolean pra_fifo_take_u16_args_check(
     const pra_fifo *const p_fifo,
     const uint16_t *const p_data,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -522,7 +522,7 @@ pra_boolean pra_fifo_take_u16_le(
 
 pra_boolean pra_fifo_append_u32_be(
     pra_fifo *const p_fifo,
-    uint32_t data,
+    uint32_t        data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -566,7 +566,7 @@ pra_boolean pra_fifo_append_u32_be(
 
 pra_boolean pra_fifo_append_u32_le(
     pra_fifo *const p_fifo,
-    uint32_t data,
+    uint32_t        data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -611,7 +611,7 @@ pra_boolean pra_fifo_append_u32_le(
 static pra_boolean pra_fifo_take_u32_args_check(
     const pra_fifo *const p_fifo,
     const uint32_t *const p_data,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 

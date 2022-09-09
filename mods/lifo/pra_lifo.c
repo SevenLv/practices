@@ -26,8 +26,8 @@
  */
 static pra_boolean pra_lifo_init_args_check(
     const pra_lifo *const p_lifo,
-    uint16_t data_length,
-    PRA_EC_T *const p_ec);
+    uint16_t              data_length,
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief               arguments validation for pra_lifo_push_xx function
@@ -42,8 +42,8 @@ static pra_boolean pra_lifo_init_args_check(
  */
 static pra_boolean pra_lifo_push_args_check(
     const pra_lifo *const p_lifo,
-    uint16_t data_length,
-    PRA_EC_T *const p_ec);
+    uint16_t              data_length,
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief               increase the position
@@ -53,7 +53,7 @@ static pra_boolean pra_lifo_push_args_check(
  * @retval None
  */
 static void pra_lifo_position_move(
-    uint16_t data_length,
+    uint16_t        data_length,
     uint16_t *const p_position);
 
 /**
@@ -64,7 +64,7 @@ static void pra_lifo_position_move(
  * @retval None
  */
 static void pra_lifo_position_back(
-    uint16_t data_length,
+    uint16_t        data_length,
     uint16_t *const p_position);
 
 /**
@@ -80,8 +80,8 @@ static void pra_lifo_position_back(
  */
 static pra_boolean pra_lifo_pop_u8_args_check(
     const pra_lifo *const p_lifo,
-    const uint8_t *const p_data,
-    PRA_EC_T *const p_ec);
+    const uint8_t *const  p_data,
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief           arguments validation for pra_lifo_po_u16_xx function
@@ -97,7 +97,7 @@ static pra_boolean pra_lifo_pop_u8_args_check(
 static pra_boolean pra_lifo_pop_u16_args_check(
     const pra_lifo *const p_lifo,
     const uint16_t *const p_data,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const       p_ec);
 
 /**
  * @brief           arguments validation for pra_lifo_po_u32_xx function
@@ -113,14 +113,14 @@ static pra_boolean pra_lifo_pop_u16_args_check(
 static pra_boolean pra_lifo_pop_u32_args_check(
     const pra_lifo *const p_lifo,
     const uint32_t *const p_data,
-    PRA_EC_T *const p_ec);
+    PRA_EC_T *const       p_ec);
 
 /* functions */
 
 static pra_boolean pra_lifo_init_args_check(
     const pra_lifo *const p_lifo,
-    uint16_t data_length,
-    PRA_EC_T *const p_ec)
+    uint16_t              data_length,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -148,8 +148,8 @@ static pra_boolean pra_lifo_init_args_check(
 
 static pra_boolean pra_lifo_push_args_check(
     const pra_lifo *const p_lifo,
-    uint16_t data_length,
-    PRA_EC_T *const p_ec)
+    uint16_t              data_length,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -191,7 +191,7 @@ static pra_boolean pra_lifo_push_args_check(
 }
 
 static void pra_lifo_position_move(
-    uint16_t data_length,
+    uint16_t        data_length,
     uint16_t *const p_position)
 {
     if (PRA_NUM_ZERO_U == data_length)
@@ -213,7 +213,7 @@ static void pra_lifo_position_move(
 }
 
 static void pra_lifo_position_back(
-    uint16_t data_length,
+    uint16_t        data_length,
     uint16_t *const p_position)
 {
     if (PRA_NUM_ZERO_U == data_length)
@@ -232,8 +232,8 @@ static void pra_lifo_position_back(
 
 static pra_boolean pra_lifo_pop_u8_args_check(
     const pra_lifo *const p_lifo,
-    const uint8_t *const p_data,
-    PRA_EC_T *const p_ec)
+    const uint8_t *const  p_data,
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -277,7 +277,7 @@ static pra_boolean pra_lifo_pop_u8_args_check(
 static pra_boolean pra_lifo_pop_u16_args_check(
     const pra_lifo *const p_lifo,
     const uint16_t *const p_data,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -321,7 +321,7 @@ static pra_boolean pra_lifo_pop_u16_args_check(
 static pra_boolean pra_lifo_pop_u32_args_check(
     const pra_lifo *const p_lifo,
     const uint32_t *const p_data,
-    PRA_EC_T *const p_ec)
+    PRA_EC_T *const       p_ec)
 {
     pra_boolean result;
 
@@ -364,8 +364,8 @@ static pra_boolean pra_lifo_pop_u32_args_check(
 
 pra_boolean pra_lifo_init(
     pra_lifo *const p_lifo,
-    uint8_t data[],
-    uint16_t data_length,
+    uint8_t         data[],
+    uint16_t        data_length,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -399,7 +399,7 @@ pra_boolean pra_lifo_init(
 
 pra_boolean pra_lifo_push_u8(
     pra_lifo *const p_lifo,
-    uint8_t data,
+    uint8_t         data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result;
@@ -428,7 +428,7 @@ pra_boolean pra_lifo_push_u8(
 
 pra_boolean pra_lifo_pop_u8(
     pra_lifo *const p_lifo,
-    uint8_t *const p_data,
+    uint8_t *const  p_data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_FALSE;
@@ -457,7 +457,7 @@ pra_boolean pra_lifo_pop_u8(
 
 pra_boolean pra_lifo_push_u16_be(
     pra_lifo *const p_lifo,
-    uint16_t data,
+    uint16_t        data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_FALSE;
@@ -496,7 +496,7 @@ pra_boolean pra_lifo_push_u16_be(
 
 pra_boolean pra_lifo_push_u16_le(
     pra_lifo *const p_lifo,
-    uint16_t data,
+    uint16_t        data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_FALSE;
@@ -613,7 +613,7 @@ pra_boolean pra_lifo_pop_u16_le(
 
 pra_boolean pra_lifo_push_u32_be(
     pra_lifo *const p_lifo,
-    uint32_t data,
+    uint32_t        data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_FALSE;
@@ -666,7 +666,7 @@ pra_boolean pra_lifo_push_u32_be(
 
 pra_boolean pra_lifo_push_u32_le(
     pra_lifo *const p_lifo,
-    uint32_t data,
+    uint32_t        data,
     PRA_EC_T *const p_ec)
 {
     pra_boolean result = PRA_BOOL_FALSE;

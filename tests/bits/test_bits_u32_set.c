@@ -10,7 +10,8 @@ static uint32_t u32_masks[32] = {
     0x00010000U, 0x00020000U, 0x00040000U, 0x00080000U,
     0x00100000U, 0x00200000U, 0x00400000U, 0x00800000U,
     0x01000000U, 0x02000000U, 0x04000000U, 0x08000000U,
-    0x10000000U, 0x20000000U, 0x40000000U, 0x80000000U};
+    0x10000000U, 0x20000000U, 0x40000000U, 0x80000000U
+};
 
 static uint32_t u32_reversed_masks[32] = {
     0xFFFFFFFEU, 0xFFFFFFFDU, 0xFFFFFFFBU, 0xFFFFFFF7U,
@@ -20,7 +21,8 @@ static uint32_t u32_reversed_masks[32] = {
     0xFFFEFFFFU, 0xFFFDFFFFU, 0xFFFBFFFFU, 0xFFF7FFFFU,
     0xFFEFFFFFU, 0xFFDFFFFFU, 0xFFBFFFFFU, 0xFF7FFFFFU,
     0xFEFFFFFFU, 0xFDFFFFFFU, 0xFBFFFFFFU, 0xF7FFFFFFU,
-    0xEFFFFFFFU, 0xDFFFFFFFU, 0xBFFFFFFFU, 0x7FFFFFFFU};
+    0xEFFFFFFFU, 0xDFFFFFFFU, 0xBFFFFFFFU, 0x7FFFFFFFU
+};
 
 int main(void);
 
@@ -28,12 +30,12 @@ int main(void)
 {
     int result = err_none;
 
-    uint32_t expected_value = 0U;
-    uint32_t actual_value = 0U;
-    uint8_t bit_offset = 0U;
+    uint32_t    expected_value = 0U;
+    uint32_t    actual_value = 0U;
+    uint8_t     bit_offset = 0U;
     pra_boolean actived = PRA_BOOL_UNKNOWN;
-    uint32_t expected_ec = PRA_BITS_EC_NONE;
-    uint32_t actual_ec = PRA_BITS_EC_NONE;
+    uint32_t    expected_ec = PRA_BITS_EC_NONE;
+    uint32_t    actual_ec = PRA_BITS_EC_NONE;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     expected_result = PRA_BOOL_FALSE;

@@ -4,11 +4,13 @@
 
 static uint8_t u8_masks[8] = {
     0x01U, 0x02U, 0x04U, 0x08U,
-    0x10U, 0x20U, 0x40U, 0x80U};
+    0x10U, 0x20U, 0x40U, 0x80U
+};
 
 static uint8_t u8_reversed_masks[8] = {
     0xFEU, 0xFDU, 0xFBU, 0xF7U,
-    0xEFU, 0xDFU, 0xBFU, 0x7FU};
+    0xEFU, 0xDFU, 0xBFU, 0x7FU
+};
 
 int main(void);
 
@@ -16,13 +18,13 @@ int main(void)
 {
     int result = err_none;
 
-    uint8_t expected_value = 0U;
-    uint8_t actual_value = 0U;
-    uint8_t bit_offset = 0U;
+    uint8_t     expected_value = 0U;
+    uint8_t     actual_value = 0U;
+    uint8_t     bit_offset = 0U;
     pra_boolean actived = PRA_BOOL_UNKNOWN;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    uint32_t expected_ec = PRA_BITS_EC_NONE;
-    uint32_t actual_ec = PRA_BITS_EC_NONE;
+    uint32_t    expected_ec = PRA_BITS_EC_NONE;
+    uint32_t    actual_ec = PRA_BITS_EC_NONE;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bits_u8_set(

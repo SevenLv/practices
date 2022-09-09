@@ -1,6 +1,7 @@
-#include "test_fifo_append_u16.h"
 #include "pra_bits.h"
 #include "pra_num_defs.h"
+#include "test_fifo_append_u16.h"
+
 
 int main(void);
 

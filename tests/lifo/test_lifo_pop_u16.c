@@ -1,21 +1,22 @@
-#include "test_lifo_pop_u16.h"
 #include "test.h"
+#include "test_lifo_pop_u16.h"
+
 
 int test_lifo_pop_u16(
-    pop_func pop,
+    pop_func  pop,
     push_func push)
 {
     int result = err_none;
 
-    pra_lifo lifo;
-    uint8_t data[DATA_LENGTH] = {0};
-    uint16_t data_length = DATA_LENGTH;
-    uint16_t expected_data_value = 0U;
-    uint16_t actual_data_value = 0U;
-    uint16_t expected_used_length = 0U;
+    pra_lifo    lifo;
+    uint8_t     data[DATA_LENGTH] = { 0 };
+    uint16_t    data_length = DATA_LENGTH;
+    uint16_t    expected_data_value = 0U;
+    uint16_t    actual_data_value = 0U;
+    uint16_t    expected_used_length = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T expected_ec = PRA_LIFO_EC_NONE;
-    PRA_EC_T actual_ec = PRA_LIFO_EC_NONE;
+    PRA_EC_T    expected_ec = PRA_LIFO_EC_NONE;
+    PRA_EC_T    actual_ec = PRA_LIFO_EC_NONE;
 
     expected_result = PRA_BOOL_TRUE;
     if (expected_result != pra_lifo_init(

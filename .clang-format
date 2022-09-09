@@ -1,0 +1,45 @@
+AccessModifierOffset: -4
+AlignAfterOpenBracket: DontAlign
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: All
+BasedOnStyle: LLVM
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: true
+  AfterUnion: false
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+BreakBeforeBraces: Custom
+ColumnLimit: 0
+Cpp11BracedListStyle: false
+FixNamespaceComments: false
+IndentCaseLabels: false
+IndentPPDirectives: None
+IndentWidth: 4
+MaxEmptyLinesToKeep: 2
+NamespaceIndentation: All
+PointerAlignment: Right
+SortIncludes: true
+SortUsingDeclarations: false
+SpaceAfterCStyleCast: false
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+TabWidth: 4
+UseTab: false
+SpacesBeforeTrailingComments: 1
+AlignConsecutiveMacros: true
+AlignConsecutiveDeclarations: true
+AlignTrailingComments: true
+CommentPragmas: '^\\.+'
+ReflowComments: false
