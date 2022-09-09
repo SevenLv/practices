@@ -114,10 +114,10 @@ pra_boolean pra_crc8_init(
     }
     else
     {
-        for (i = 0U; i < PRA_CRC_TABLE_SIZE; i++)
+        for (i = PRA_NUM_ZERO_U; i < PRA_CRC_TABLE_SIZE; i++)
         {
             current_value = i;
-            for (j = 0U; j < PRA_NUM_BIT_WIDTH_U8; j++)
+            for (j = PRA_NUM_ZERO_U; j < PRA_NUM_BIT_WIDTH_U8; j++)
             {
                 if (MASK_H1 == (current_value & MASK_H1))
                 {
@@ -171,7 +171,7 @@ static pra_boolean pra_crc8_compute_args_check(
         *p_ec |= PRA_CRC_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
-    else if (0U == length)
+    else if (PRA_NUM_ZERO_U == length)
     {
         *p_ec |= PRA_CRC_EC_INVALID_LENGTH;
         result = PRA_BOOL_FALSE;
@@ -213,7 +213,7 @@ pra_boolean pra_crc8_compute(
     }
     else
     {
-        uint8_t current_value = 0U;
+        uint8_t current_value = PRA_NUM_ZERO_U;
         uint8_t tmp_crc = p_crc->initial_value;
         for (uint32_t i = offset; i < length; i++)
         {
@@ -221,7 +221,7 @@ pra_boolean pra_crc8_compute(
             {
                 if (PRA_BOOL_TRUE == p_crc->ref_in)
                 {
-                    tmp_value = 0U;
+                    tmp_value = PRA_NUM_ZERO_U;
                     if (PRA_BOOL_TRUE == pra_bits_u8_reverse(bytes[i], &tmp_value))
                     {
                         current_value = tmp_value;
@@ -248,7 +248,7 @@ pra_boolean pra_crc8_compute(
         {
             if (PRA_BOOL_TRUE == p_crc->ref_out)
             {
-                tmp_value = 0U;
+                tmp_value = PRA_NUM_ZERO_U;
                 if (PRA_BOOL_TRUE == pra_bits_u8_reverse(tmp_crc, &tmp_value))
                 {
                     tmp_crc = tmp_value;

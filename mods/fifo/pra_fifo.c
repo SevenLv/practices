@@ -121,7 +121,7 @@ static pra_boolean pra_fifo_init_args_check(
         *p_ec |= PRA_FIFO_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (0U == data_length)
+    else if (PRA_NUM_ZERO_U == data_length)
     {
         *p_ec |= PRA_FIFO_EC_INVALID_LENGTH;
         result = PRA_BOOL_FALSE;
@@ -172,7 +172,7 @@ static void pra_fifo_position_move(
     uint16_t data_length,
     uint16_t *const p_position)
 {
-    if (0U == data_length)
+    if (PRA_NUM_ZERO_U == data_length)
     {
         /* NOTE do nothing */
     }

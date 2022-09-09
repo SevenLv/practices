@@ -16,8 +16,8 @@ int main(void)
     pra_boolean actual_actived = PRA_BOOL_UNKNOWN;
     uint32_t expected_ec = PRA_BITS_EC_NONE;
     uint32_t actual_ec = PRA_BITS_EC_NONE;
-    uint8_t value = 0U;
-    uint8_t bit_offset = 0U;
+    uint8_t value = PRA_NUM_ZERO_U;
+    uint8_t bit_offset = PRA_NUM_ZERO_U;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bits_u8_get(
@@ -56,12 +56,12 @@ int main(void)
     }
 
     value = min_value;
-    bit_offset = 0U;
+    bit_offset = PRA_NUM_ZERO_U;
     expected_result = PRA_BOOL_TRUE;
     expected_actived = PRA_BOOL_FALSE;
     expected_ec = PRA_BITS_EC_NONE;
     actual_ec = PRA_BITS_EC_NONE;
-    for (bit_offset = 0U; bit_offset < 8; bit_offset++)
+    for (bit_offset = PRA_NUM_ZERO_U; bit_offset < 8; bit_offset++)
     {
         if (expected_result != pra_bits_u8_get(
                                    value,
@@ -77,12 +77,12 @@ int main(void)
     }
 
     value = max_value;
-    bit_offset = 0U;
+    bit_offset = PRA_NUM_ZERO_U;
     expected_result = PRA_BOOL_TRUE;
     expected_actived = PRA_BOOL_TRUE;
     expected_ec = PRA_BITS_EC_NONE;
     actual_ec = PRA_BITS_EC_NONE;
-    for (bit_offset = 0U; bit_offset < 8; bit_offset++)
+    for (bit_offset = PRA_NUM_ZERO_U; bit_offset < 8; bit_offset++)
     {
         if (expected_result != pra_bits_u8_get(
                                    value,

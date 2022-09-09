@@ -216,11 +216,11 @@ static void pra_lifo_position_back(
     uint16_t data_length,
     uint16_t *const p_position)
 {
-    if (0U == data_length)
+    if (PRA_NUM_ZERO_U == data_length)
     {
         /* NOTE do nothing */
     }
-    else if (0U == *p_position)
+    else if (PRA_NUM_ZERO_U == *p_position)
     {
         *p_position = (data_length - 1U);
     }

@@ -109,10 +109,10 @@ pra_boolean pra_crc16_init(
     }
     else
     {
-        for (uint16_t i = 0U; i < PRA_CRC_TABLE_SIZE; i++)
+        for (uint16_t i = PRA_NUM_ZERO_U; i < PRA_CRC_TABLE_SIZE; i++)
         {
             uint16_t current_value = i;
-            for (uint8_t j = 0U; j < PRA_NUM_BIT_WIDTH_U16; j++)
+            for (uint8_t j = PRA_NUM_ZERO_U; j < PRA_NUM_BIT_WIDTH_U16; j++)
             {
                 if (MASK_H1 == (current_value & MASK_H1))
                 {
@@ -166,7 +166,7 @@ static pra_boolean pra_crc16_compute_args_check(
         *p_ec |= PRA_CRC_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
-    else if (0U == length)
+    else if (PRA_NUM_ZERO_U == length)
     {
         *p_ec |= PRA_CRC_EC_INVALID_LENGTH;
         result = PRA_BOOL_FALSE;
@@ -217,7 +217,7 @@ pra_boolean pra_crc16_compute(
             {
                 if (PRA_BOOL_TRUE == p_crc->ref_in)
                 {
-                    tmp_u8_value = 0U;
+                    tmp_u8_value = PRA_NUM_ZERO_U;
                     if (PRA_BOOL_TRUE == pra_bits_u8_reverse(bytes[i], &tmp_u8_value))
                     {
                         current_value = tmp_u8_value;
@@ -244,7 +244,7 @@ pra_boolean pra_crc16_compute(
         {
             if (PRA_BOOL_TRUE == p_crc->ref_out)
             {
-                tmp_u16_value = 0U;
+                tmp_u16_value = PRA_NUM_ZERO_U;
                 if (PRA_BOOL_TRUE == pra_bits_u16_reverse(tmp_crc, &tmp_u16_value))
                 {
                     tmp_crc = tmp_u16_value;
