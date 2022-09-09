@@ -21,6 +21,10 @@ include_directories(
 )
 
 aux_source_directory(./funcs ALL_SOURCE)
+aux_source_directory(./mods ALL_SOURCE)
+aux_source_directory(./mods/bits ALL_SOURCE)
+aux_source_directory(./mods/boolean ALL_SOURCE)
+aux_source_directory(./mods/bytes ALL_SOURCE)
 aux_source_directory(./mods/crc ALL_SOURCE)
 aux_source_directory(./mods/fifo ALL_SOURCE)
 aux_source_directory(./mods/lifo ALL_SOURCE)
