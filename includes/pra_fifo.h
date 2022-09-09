@@ -16,7 +16,7 @@
 
 /* macros */
 
-#define PRA_FIFO_NULL ((pra_fifo *)0)
+#define PRA_FIFO_NULL PRA_NULL_PTR(pra_fifo)
 
 #define PRA_FIFO_EC_NONE            PRA_NUM_ZERO_U      /* no error */
 #define PRA_FIFO_EC_NULL_PTR        PRA_NUM_BIT_MASK_00 /* null pointer */

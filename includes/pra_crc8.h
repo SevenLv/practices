@@ -15,7 +15,7 @@
 #include "stdint.h"
 
 /* macros */
-#define PRA_CRC8_NULL ((pra_crc8 *)0)
+#define PRA_CRC8_NULL PRA_NULL_PTR(pra_crc8)
 
 /* types */
 

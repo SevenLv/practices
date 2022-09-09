@@ -16,7 +16,7 @@
 
 /* macros */
 
-#define PRA_BYTES_NULL ((pra_bytes *)0)
+#define PRA_BYTES_NULL PRA_NULL_PTR(pra_bytes)
 
 #define PRA_BYTES_EC_NONE              PRA_NUM_ZERO_U      /* no error */
 #define PRA_BYTES_EC_NULL_PTR          PRA_NUM_BIT_MASK_00 /* null pointer */
