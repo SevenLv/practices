@@ -41,8 +41,8 @@ typedef struct _pra_list_node
 /**
  * @brief           initialize a pra_list_node struct
  * @note
- * @param  p_node: pointer of the node
- * @param  p_ec:   output error code:
+ * @param  p_node:  pointer of the node
+ * @param  p_ec:    output error code:
  *                  PRA_LIST_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
@@ -53,16 +53,16 @@ pra_boolean pra_list_init(
 /**
  * @brief               append a next node to current node
  * @note
- * @param  p_node:      pointer of current node
+ * @param  p_cur_node:  pointer of current node
  * @param  p_next_node: pointer of next node
- * @param  p_ec:       output error code:
+ * @param  p_ec:        output error code:
  *                      PRA_LIST_EC_NULL_PTR
- *                      PRA_LIST_EC_NEXT_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_node.p_next
+ *                      PRA_LIST_EC_NEXT_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_cur_node.p_next
  *                      PRA_LIST_EC_PREVIOUS_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_next_node.p_previous
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_list_append(
-    pra_list_node *const p_node,
+    pra_list_node *const p_cur_node,
     pra_list_node *const p_next_node,
     PRA_EC_T *const      p_ec);
 
