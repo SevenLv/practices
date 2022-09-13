@@ -14,9 +14,9 @@ int main(void)
     PRA_EC_T      expected_ec = PRA_LIST_EC_NONE;
     PRA_EC_T      actual_ec = PRA_LIST_EC_NONE;
 
-    const struct pra_list_node *const expected_current_next = (struct pra_list_node *)(&next_node);
-    const struct pra_list_node *const expected_next_previous = (struct pra_list_node *)(&current_node);
-    const struct pra_list_node *const expected_next_next = (struct pra_list_node *)(&temp_node);
+    const struct _pra_list_node *const expected_current_next = (struct _pra_list_node *)(&next_node);
+    const struct _pra_list_node *const expected_next_previous = (struct _pra_list_node *)(&current_node);
+    const struct _pra_list_node *const expected_next_next = (struct _pra_list_node *)(&temp_node);
 
     expected_result = PRA_BOOL_TRUE;
     expected_ec = PRA_LIST_EC_NONE;
@@ -74,7 +74,7 @@ int main(void)
     }
 
     current_node.p_next = PRA_LIST_ST_NODE_NULL;
-    next_node.p_previous = (struct pra_list_node *)(&temp_node);
+    next_node.p_previous = (struct _pra_list_node *)(&temp_node);
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIST_EC_PREVIOUS_NOT_NULL;
     actual_ec = PRA_LIST_EC_NONE;
@@ -87,7 +87,7 @@ int main(void)
         result |= err_error7;
     }
 
-    current_node.p_next = (struct pra_list_node *)(&temp_node);
+    current_node.p_next = (struct _pra_list_node *)(&temp_node);
     next_node.p_previous = PRA_LIST_ST_NODE_NULL;
     expected_result = PRA_BOOL_TRUE;
     expected_ec = PRA_LIST_EC_NONE;

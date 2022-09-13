@@ -19,7 +19,7 @@
 
 /* macros */
 
-#define PRA_LIST_ST_NODE_NULL PRA_NULL_PTR(struct pra_list_node)
+#define PRA_LIST_ST_NODE_NULL PRA_NULL_PTR(struct _pra_list_node)
 #define PRA_LIST_NODE_NULL    PRA_NULL_PTR(pra_list_node)
 
 #define PRA_LIST_EC_NONE              PRA_NUM_ZERO_U
@@ -32,10 +32,10 @@
 /* linked list node */
 typedef struct _pra_list_node
 {
-    struct pra_list_node *p_previous; /* pointer of previous node */
-    struct pra_list_node *p_next;     /* pointer of next node */
+    struct _pra_list_node *p_previous; /* pointer of previous node */
+    struct _pra_list_node *p_next;     /* pointer of next node */
     void                 *p_data;     /* pointer of current node data */
-} pra_list_node;
+} pra_list_node; /* linked list node */
 
 /* variables */
 

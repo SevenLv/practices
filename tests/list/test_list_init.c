@@ -11,8 +11,8 @@ int main(void)
     pra_boolean           expected_result = PRA_BOOL_UNKNOWN;
     PRA_EC_T              expected_ec = PRA_LIST_EC_NONE;
     PRA_EC_T              acctual_ec = PRA_LIST_EC_NONE;
-    struct pra_list_node *expected_next = PRA_LIST_ST_NODE_NULL;
-    struct pra_list_node *expected_previous = PRA_LIST_ST_NODE_NULL;
+    struct _pra_list_node *expected_next = PRA_LIST_ST_NODE_NULL;
+    struct _pra_list_node *expected_previous = PRA_LIST_ST_NODE_NULL;
     void                 *expected_data = PRA_VOID_NULL;
 
     expected_result = PRA_BOOL_FALSE;

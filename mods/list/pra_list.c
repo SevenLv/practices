@@ -191,8 +191,8 @@ pra_boolean pra_list_append(
     else
     {
         p_next_node->p_next = p_cur_node->p_next;
-        p_cur_node->p_next = (struct pra_list_node *)p_next_node;
-        p_next_node->p_previous = (struct pra_list_node *)p_cur_node;
+        p_cur_node->p_next = (struct _pra_list_node *)p_next_node;
+        p_next_node->p_previous = (struct _pra_list_node *)p_cur_node;
 
         result = PRA_BOOL_TRUE;
     }
@@ -217,8 +217,8 @@ pra_boolean pra_list_insert(
     else
     {
         p_pre_node->p_previous = p_cur_node->p_previous;
-        p_cur_node->p_previous = (struct pra_list_node *)p_pre_node;
-        p_pre_node->p_next = (struct pra_list_node *)p_cur_node;
+        p_cur_node->p_previous = (struct _pra_list_node *)p_pre_node;
+        p_pre_node->p_next = (struct _pra_list_node *)p_cur_node;
 
         result = PRA_BOOL_TRUE;
     }
