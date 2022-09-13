@@ -12,15 +12,39 @@
 
 /* function declarations */
 
+/**
+ * @brief           arguments validation for pra_list_init function
+ * @note
+ * @param  p_node: pointer of the node
+ * @param  p_ec:   output error code:
+ *                  PRA_LIST_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
 static pra_boolean pra_list_init_args_check(
     const pra_list_node *const p_node,
-    PRA_EC_T                  *p_ec);
+    PRA_EC_T *const            p_ec);
+
+/**
+ * @brief               arguments validation for pra_list_append function
+ * @note
+ * @param  p_node:      pointer of current node
+ * @param  p_next_node: pointer of next node
+ * @param  p_ec:       output error code:
+ *                      PRA_LIST_EC_NULL_PTR
+ *                      PRA_LIST_EC_NEXT_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_node.p_next
+ *                      PRA_LIST_EC_PREVIOUS_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_next_node.p_previous
+ * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+static pra_boolean pra_list_append_args_check(
+    const pra_list_node *const p_node,
+    const pra_list_node *const p_next_node,
+    PRA_EC_T *const            p_ec);
 
 /* functions */
 
 static pra_boolean pra_list_init_args_check(
     const pra_list_node *const p_node,
-    PRA_EC_T                  *p_ec)
+    PRA_EC_T *const            p_ec)
 {
     pra_boolean result;
 
@@ -41,9 +65,48 @@ static pra_boolean pra_list_init_args_check(
     return result;
 }
 
+static pra_boolean pra_list_append_args_check(
+    const pra_list_node *const p_node,
+    const pra_list_node *const p_next_node,
+    PRA_EC_T *const            p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_EC_T_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_LIST_NODE_NULL == p_node)
+    {
+        *p_ec |= PRA_LIST_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_LIST_NODE_NULL == p_next_node)
+    {
+        *p_ec |= PRA_LIST_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_LIST_ST_NODE_NULL != p_node->p_next)
+    {
+        *p_ec |= PRA_LIST_EC_NEXT_NOT_NULL;
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_LIST_ST_NODE_NULL != p_next_node->p_previous)
+    {
+        *p_ec |= PRA_LIST_EC_PREVIOUS_NOT_NULL;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
 pra_boolean pra_list_init(
     pra_list_node *const p_node,
-    PRA_EC_T            *p_ec)
+    PRA_EC_T *const      p_ec)
 {
     pra_boolean result;
 
@@ -58,6 +121,31 @@ pra_boolean pra_list_init(
         p_node->p_data = PRA_VOID_NULL;
         p_node->p_previous = PRA_LIST_ST_NODE_NULL;
         p_node->p_next = PRA_LIST_ST_NODE_NULL;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
+
+pra_boolean pra_list_append(
+    pra_list_node *const p_node,
+    pra_list_node *const p_next_node,
+    PRA_EC_T *const      p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_BOOL_TRUE != pra_list_append_args_check(
+                             p_node,
+                             p_next_node,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_node->p_next = (struct pra_list_node *)p_next_node;
+        p_next_node->p_previous = (struct pra_list_node *)p_node;
 
         result = PRA_BOOL_TRUE;
     }
