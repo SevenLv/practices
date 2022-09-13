@@ -3,6 +3,9 @@
  * created on Tue Sep 06 2022
  * created by Seven Lv
  * comments:    definitions and functions of fifo
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Tue Sep 06 2022    created
  */
 
 /* includes */

@@ -5,6 +5,9 @@
  * comments:    definitions and fucntions of boolean types
  *              normally user should include pra_types_def.h instead of this
  *              file.
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Wed Aug 17 2022    created
  */
 
 #ifndef INC_PRA_BOOLEAN_H_

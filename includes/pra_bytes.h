@@ -3,6 +3,9 @@
  * created on Wed Aug 24 2022
  * created by Seven Lv
  * comments:    definitions and functions of the bytes type
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Wed Aug 24 2022    created
  */
 
 #ifndef INC_PRA_BYTES_H_

@@ -3,6 +3,9 @@
  * created on Thu Sep 08 2022
  * created by Seven Lv
  * comments:    definitions of numbers
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Thu Sep 08 2022    created
  */
 
 #ifndef INC_PRA_NUM_DEFS_H_

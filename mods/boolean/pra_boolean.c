@@ -2,7 +2,10 @@
  * pra_boolean.c
  * created on Wed Aug 17 2022
  * created by Seven Lv
- * comments:    definitions of boolean types, functions of boolean types
+ * comments:    definitions and functions of boolean types
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Wed Aug 17 2022    created
  */
 
 /* includes */

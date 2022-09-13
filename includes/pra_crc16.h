@@ -3,6 +3,9 @@
  * created on Fri Sep 02 2022
  * created by Seven Lv
  * comments:    functions of crc16
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Fri Sep 02 2022    created
  */
 
 #ifndef INC_PRA_CRC16_H_

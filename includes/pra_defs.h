@@ -3,6 +3,9 @@
  * created on Wed Aug 24 2022
  * created by Seven Lv
  * comments:    some defintions
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Wed Aug 24 2022    created
  */
 
 #ifndef INC_PRA_DEFS_H_

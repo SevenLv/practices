@@ -3,6 +3,9 @@
  * created on Thu Sep 01 2022
  * created by Seven Lv
  * comments:    functions of crc8
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Thu Sep 01 2022    created
  */
 
 /* includes */

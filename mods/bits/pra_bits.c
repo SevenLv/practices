@@ -3,6 +3,9 @@
  * created on Mon Aug 29 2022
  * created by Seven Lv
  * comments:    functions of bit functions
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Mon Aug 29 2022    created
  */
 
 /* includes */

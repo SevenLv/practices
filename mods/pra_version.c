@@ -2,7 +2,10 @@
  * pra_version.c
  * created on Fri Sep 02 2022
  * created by Seven Lv
- * comments:
+ * comments:    version function of practices
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Fri Sep 02 2022    created
  */
 
 /* includes */
@@ -12,7 +15,7 @@
 static pra_version const version = {
     .major = 0U,
     .minor = 4U,
-    .reversion = 13U
+    .reversion = 14U
 };
 
 /* functions */

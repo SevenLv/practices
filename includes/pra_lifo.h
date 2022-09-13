@@ -3,6 +3,9 @@
  * created on Thu Sep 08 2022
  * created by Seven Lv
  * comments:    definitions and functions of lifo
+ * version: 0.1
+ * history: #       date               modification
+ *          0.1     Thu Sep 08 2022    created
  */
 
 #ifndef INC_PRA_LIFO_H_
