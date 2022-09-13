@@ -19,3 +19,5 @@ add_subdirectory(crc32)
 add_subdirectory(fifo)
 
 add_subdirectory(lifo)
+
+add_subdirectory(list)

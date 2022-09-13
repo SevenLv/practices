@@ -15,6 +15,7 @@
 
 #define PRA_NULL_PTR(type) ((type *)0)
 
+#define PRA_VOID_NULL   PRA_NULL_PTR(void)
 #define PRA_UINT8_NULL  PRA_NULL_PTR(uint8_t)
 #define PRA_UINT16_NULL PRA_NULL_PTR(uint16_t)
 #define PRA_UINT32_NULL PRA_NULL_PTR(uint32_t)
