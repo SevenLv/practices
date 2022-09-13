@@ -65,4 +65,19 @@ pra_boolean pra_list_append(
     pra_list_node *const p_next_node,
     PRA_EC_T *const      p_ec);
 
+/**
+ * @brief               insert a previous node to current node
+ * @note
+ * @param  p_cur_node:  pointer of current node
+ * @param  p_pre_node:  poitner of next node
+ * @param  p_ec:        output error code:
+ *                      PRA_LIST_EC_NULL_PTR
+ *                      PRA_LIST_EC_NEXT_NOT_NULL -- PRA_LIST_ST_NODE_NULL != p_pre_node.p_next
+ * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_list_insert(
+    pra_list_node *const p_cur_node,
+    pra_list_node *const p_pre_node,
+    PRA_EC_T *const      p_ec);
+
 #endif
