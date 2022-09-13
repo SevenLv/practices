@@ -20,8 +20,6 @@ include_directories(
     ./includes
 )
 
-add_subdirectory(./mods)
-
 aux_source_directory(./funcs ALL_SOURCE)
 aux_source_directory(./mods ALL_SOURCE)
 aux_source_directory(./mods/bits ALL_SOURCE)
