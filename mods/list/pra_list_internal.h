@@ -3,9 +3,10 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_list
- * version: 0.1
+ * version: 0.2
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
+ *          0.2     Tue Sep 13 2022     add pra_list_remove_ars_check function
  */
 
 #ifndef INC_PRA_LIST_INTERNAL_H_
@@ -62,6 +63,20 @@ pra_boolean pra_list_append_args_check(
 pra_boolean pra_list_insert_args_check(
     const pra_list_node *const p_cur_node,
     const pra_list_node *const p_pre_node,
+    PRA_EC_T *const            p_ec);
+
+/**
+ * @brief           arguments validation for pra_list_remove function
+ * @note
+ * @param  p_node:  pointer of node
+ * @param  p_ec:    output error code:
+ *                  PRA_LIST_EC_NULL_PTR
+ *                  PRA_LIST_EC_INVALID_NEXT - next node of previous node is not current node
+ *                  PRA_LIST_EC_INVALID_PREVIOUS - previous node of next node is not current node
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_list_remove_args_check(
+    const pra_list_node *const p_node,
     PRA_EC_T *const            p_ec);
 
 #endif
