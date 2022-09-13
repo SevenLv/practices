@@ -9,7 +9,7 @@ int main(void)
 
     const uint8_t expected_major = 0U;
     const uint8_t expected_minor = 4U;
-    const uint8_t expected_reversion = 15U;
+    const uint8_t expected_reversion = 16U;
 
     pra_version actual_version;
 
