@@ -4,6 +4,10 @@ include_directories(
     ./includes
 )
 
+add_executable(test_version test_version.c)
+target_link_libraries(test_version practices)
+add_test(NAME test_version COMMAND test_version)
+
 add_subdirectory(bits)
 
 add_subdirectory(boolean)
