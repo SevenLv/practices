@@ -31,7 +31,6 @@ static pra_boolean pra_list_init_args_check(
  * @param  p_next_node: pointer of next node
  * @param  p_ec:        output error code:
  *                      PRA_LIST_EC_NULL_PTR
- *                      PRA_LIST_EC_NEXT_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_cur_node.p_next
  *                      PRA_LIST_EC_PREVIOUS_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_next_node.p_previous
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
@@ -84,11 +83,6 @@ static pra_boolean pra_list_append_args_check(
     else if (PRA_LIST_NODE_NULL == p_next_node)
     {
         *p_ec |= PRA_LIST_EC_NULL_PTR;
-        result = PRA_BOOL_FALSE;
-    }
-    else if (PRA_LIST_ST_NODE_NULL != p_cur_node->p_next)
-    {
-        *p_ec |= PRA_LIST_EC_NEXT_NOT_NULL;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_LIST_ST_NODE_NULL != p_next_node->p_previous)
@@ -144,6 +138,7 @@ pra_boolean pra_list_append(
     }
     else
     {
+        p_next_node->p_next = p_cur_node->p_next;
         p_cur_node->p_next = (struct pra_list_node *)p_next_node;
         p_next_node->p_previous = (struct pra_list_node *)p_cur_node;
 

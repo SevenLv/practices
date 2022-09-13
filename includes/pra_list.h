@@ -57,7 +57,6 @@ pra_boolean pra_list_init(
  * @param  p_next_node: pointer of next node
  * @param  p_ec:        output error code:
  *                      PRA_LIST_EC_NULL_PTR
- *                      PRA_LIST_EC_NEXT_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_cur_node.p_next
  *                      PRA_LIST_EC_PREVIOUS_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_next_node.p_previous
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
