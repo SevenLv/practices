@@ -58,3 +58,26 @@ pra_boolean pra_timer_execute(void)
 
     return result;
 }
+
+pra_boolean pra_timer_start(
+    pra_timer *const p_timer,
+    PRA_EC_T *const  p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_BOOL_TRUE != pra_timer_start_args_check(
+                             p_timer,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        p_timer->start_time = current_time;
+        p_timer->actived = PRA_BOOL_TRUE;
+
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}

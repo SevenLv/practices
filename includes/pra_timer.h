@@ -41,4 +41,18 @@ pra_boolean pra_timer_get_time(
  */
 pra_boolean pra_timer_execute(void);
 
+/**
+ * @brief           start a timer
+ * @note
+ * @param  p_timer: pointer of the pra_timer struct
+ * @param  p_ec:    output error code:
+ *                  PRA_TIMER_EC_NULL_PTR
+ *                  PRA_TIMER_EC_INVALID_INTERVAL - 0U == interval
+ *                  PRA_TIMER_EC_ALREADY_STARTED - PRA_BOOL_TRUE == actived
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_timer_start(
+    pra_timer *const p_timer,
+    PRA_EC_T *const  p_ec);
+
 #endif

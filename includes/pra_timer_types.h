@@ -26,7 +26,6 @@
 typedef struct _pra_timer
 {
     pra_boolean actived;    /* the timer is actived or not */
-    pra_boolean done;       /* if interval reached or not */
     uint32_t    start_time; /* the start time of the timer */
     uint32_t    interval;   /* target interval time */
 } pra_timer;

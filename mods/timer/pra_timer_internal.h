@@ -14,6 +14,7 @@
 /* includes */
 #include "pra_boolean_types.h"
 #include "pra_defs.h"
+#include "pra_timer_types.h"
 #include "stdint.h"
 
 
@@ -31,6 +32,10 @@
 
 pra_boolean pra_timer_get_time_args_check(
     const uint32_t *const p_time,
-    uint32_t *const       p_ec);
+    PRA_EC_T *const       p_ec);
+
+pra_boolean pra_timer_start_args_check(
+    const pra_timer *const p_timer,
+    PRA_EC_T *const        p_ec);
 
 #endif

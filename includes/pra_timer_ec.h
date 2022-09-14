@@ -15,8 +15,10 @@
 #include "pra_num_defs.h"
 
 /* macros */
-#define PRA_TIMER_EC_NONE     PRA_NUM_ZERO_U
-#define PRA_TIMER_EC_NULL_PTR PRA_NUM_BIT_MASK_00
+#define PRA_TIMER_EC_NONE             PRA_NUM_ZERO_U
+#define PRA_TIMER_EC_NULL_PTR         PRA_NUM_BIT_MASK_00
+#define PRA_TIMER_EC_INVALID_INTERVAL PRA_NUM_BIT_MASK_01
+#define PRA_TIMER_EC_ALREADY_STARTED  PRA_NUM_BIT_MASK_02
 
 /* types */
 
