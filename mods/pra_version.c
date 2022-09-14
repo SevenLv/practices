@@ -15,7 +15,7 @@
 static pra_version const version = {
     .major = 0U,
     .minor = 5U,
-    .reversion = 18U
+    .reversion = 19U
 };
 
 /* functions */
