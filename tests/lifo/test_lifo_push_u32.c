@@ -33,7 +33,7 @@ int test_lifo_push_u32(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_BITS_EC_NULL_PTR;
+    expected_ec = PRA_LIFO_EC_NULL_PTR;
     actual_ec = PRA_LIFO_EC_NONE;
     if (expected_result != push(
                                PRA_LIFO_NULL,
@@ -55,7 +55,7 @@ int test_lifo_push_u32(
 
     lifo.p_data = PRA_UINT8_NULL;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_BITS_EC_NULL_PTR;
+    expected_ec = PRA_LIFO_EC_NULL_PTR;
     actual_ec = PRA_LIFO_EC_NONE;
     if (expected_result != push(
                                &lifo,

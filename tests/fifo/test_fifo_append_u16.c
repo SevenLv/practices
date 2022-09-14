@@ -118,8 +118,8 @@ int test_fifo_append_u16(
     expected_data = 0xEEFFU;
     expected_used_length = 2U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_BITS_EC_NONE;
-    actual_ec = PRA_BITS_EC_NONE;
+    expected_ec = PRA_FIFO_EC_NONE;
+    actual_ec = PRA_FIFO_EC_NONE;
     if (expected_result != append(
                                &fifo,
                                data_to_append,
