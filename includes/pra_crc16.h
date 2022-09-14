@@ -2,12 +2,13 @@
  * pra_crc16.h
  * created on Fri Sep 02 2022
  * created by Seven Lv
- * comments:    functions of crc16
- * version: 0.2
+ * comments:    function definitions of crc16
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Fri Sep 02 2022     created
  *          0.2     Wed Sep 14 2022     include pra_boolean_types.h
  *                                      move type definitions to pra_crc16_types.h
+ *          0.3     Wed Sep 14 2022     update file header comments
  */
 
 #ifndef INC_PRA_CRC16_H_

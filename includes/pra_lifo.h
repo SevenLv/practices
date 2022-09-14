@@ -2,13 +2,14 @@
  * pra_lifo.h
  * created on Thu Sep 08 2022
  * created by Seven Lv
- * comments:    definitions and functions of lifo
- * version: 0.2
+ * comments:    function definitions of lifo
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Thu Sep 08 2022     created
  *          0.2     Wed Sep 14 2022     include pra_boolean_types.h
  *                                      move type definitions to pra_lifo_types.h
  *                                      move error code definitions to pra_lifo_ec.h
+ *          0.3     Wed Sep 14 2022     update file header comments
  */
 
 #ifndef INC_PRA_LIFO_H_

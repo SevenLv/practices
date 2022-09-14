@@ -2,12 +2,13 @@
  * pra_crc8.h
  * created on Thu Sep 01 2022
  * created by Seven Lv
- * comments:    functions of crc8
- * version: 0.2
+ * comments:    function definitions of crc8
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Thu Sep 01 2022     created
  *          0.2     Wed Sep 14 2022     include pra_boolean_types.h
  *                                      move type definitions to pra_crc8_types.h
+ *          0.3     Wed Sep 14 2022     update file header comments
  */
 
 #ifndef INC_PRA_CRC8_H_

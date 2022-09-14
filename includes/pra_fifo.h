@@ -2,13 +2,14 @@
  * pra_fifo.h
  * created on Tue Sep 06 2022
  * created by Seven Lv
- * comments:    definitions and functions of fifo
- * version: 0.2
+ * comments:    function definitions of fifo
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 06 2022     created
  *          0.2     Wed Sep 14 2022     include pra_boolean_types.h
  *                                      move type definitions to pra_fifo_types.h
  *                                      move error code definitiosn to pra_fifo_ec.h
+ *          0.3     Wed Sep 14 2022     update file header comments
  */
 
 #ifndef INC_PRA_FIFO_H_
