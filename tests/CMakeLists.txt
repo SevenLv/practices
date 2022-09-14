@@ -25,3 +25,5 @@ add_subdirectory(fifo)
 add_subdirectory(lifo)
 
 add_subdirectory(list)
+
+add_subdirectory(timer)
