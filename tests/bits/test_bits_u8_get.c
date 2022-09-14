@@ -1,6 +1,8 @@
 #include "pra_bits.h"
+#include "pra_bits_ec.h"
 #include "pra_defs.h"
 #include "test.h"
+
 
 int main(void);
 

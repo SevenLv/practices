@@ -1,5 +1,6 @@
 #include "pra_bits.h"
 #include "pra_defs.h"
+#include "pra_lifo_ec.h"
 #include "test.h"
 #include "test_lifo_push_u32.h"
 

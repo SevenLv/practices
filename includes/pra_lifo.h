@@ -3,43 +3,26 @@
  * created on Thu Sep 08 2022
  * created by Seven Lv
  * comments:    definitions and functions of lifo
- * version: 0.1
- * history: #       date               modification
- *          0.1     Thu Sep 08 2022    created
+ * version: 0.2
+ * history: #       date                modification
+ *          0.1     Thu Sep 08 2022     created
+ *          0.2     Wed Sep 14 2022     include pra_boolean_types.h
+ *                                      move type definitions to pra_lifo_types.h
+ *                                      move error code definitions to pra_lifo_ec.h
  */
 
 #ifndef INC_PRA_LIFO_H_
 #define INC_PRA_LIFO_H_
 
 /* includes */
-#include "pra_boolean.h"
-#include "pra_defs.h"
-#include "pra_num_defs.h"
+#include "pra_boolean_types.h"
+#include "pra_lifo_types.h"
 #include "stdint.h"
+
 
 /* macros */
 
-#define PRA_LIFO_NULL PRA_NULL_PTR(pra_lifo)
-
-#define PRA_LIFO_EC_NONE            PRA_NUM_ZERO_U      /* no error */
-#define PRA_LIFO_EC_NULL_PTR        PRA_NUM_BIT_MASK_00 /* null pointer */
-#define PRA_LIFO_EC_NOT_INIT        PRA_NUM_BIT_MASK_01 /* not initialized */
-#define PRA_LIFO_EC_INVALID_LENGTH  PRA_NUM_BIT_MASK_02 /* invalid length */
-#define PRA_LIFO_EC_DATA_FULL       PRA_NUM_BIT_MASK_03 /* the lifo struct is full */
-#define PRA_LIFO_EC_DATA_NOT_ENOUGH PRA_NUM_BIT_MASK_04 /* the lifo struct data is not enough */
-
 /* types */
-
-/* lifo struct */
-typedef struct _pra_lifo
-{
-    pra_boolean initialized; /* initialized flag */
-    uint8_t    *p_data;      /* data pointer */
-    uint16_t    data_length; /* data length */
-    uint16_t    used_length; /* used data length */
-    uint16_t    next_r_pos;  /* next read position */
-    uint16_t    next_w_pos;  /* next write position */
-} pra_lifo;
 
 /* variables */
 

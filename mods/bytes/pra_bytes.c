@@ -3,15 +3,18 @@
  * created on Wed Aug 24 2022
  * created by Seven Lv
  * comments:    definitions and functions of the bytes type
- * version: 0.1
- * history: #       date               modification
- *          0.1     Wed Aug 24 2022    created
+ * version: 0.2
+ * history: #       date                modification
+ *          0.1     Wed Aug 24 2022     created
+ *          0.2     Wed Sep 14 2022     include pra_bytes_ec.h
  */
 
 /* includes */
 #include "pra_bytes.h"
+#include "pra_bytes_ec.h"
 #include "pra_defs.h"
 #include "pra_num_defs.h"
+
 
 /* variables */
 

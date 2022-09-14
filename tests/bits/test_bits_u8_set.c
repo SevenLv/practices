@@ -1,6 +1,8 @@
 #include "pra_bits.h"
+#include "pra_bits_ec.h"
 #include "pra_defs.h"
 #include "test.h"
+
 
 static uint8_t u8_masks[8] = {
     0x01U, 0x02U, 0x04U, 0x08U,

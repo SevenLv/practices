@@ -1,5 +1,7 @@
 #include "pra_list.h"
+#include "pra_list_ec.h"
 #include "test.h"
+
 
 int main(void);
 
@@ -7,13 +9,13 @@ int main(void)
 {
     int result = err_none;
 
-    pra_list_node         node;
-    pra_boolean           expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T              expected_ec = PRA_LIST_EC_NONE;
-    PRA_EC_T              acctual_ec = PRA_LIST_EC_NONE;
+    pra_list_node          node;
+    pra_boolean            expected_result = PRA_BOOL_UNKNOWN;
+    PRA_EC_T               expected_ec = PRA_LIST_EC_NONE;
+    PRA_EC_T               acctual_ec = PRA_LIST_EC_NONE;
     struct _pra_list_node *expected_next = PRA_LIST_ST_NODE_NULL;
     struct _pra_list_node *expected_previous = PRA_LIST_ST_NODE_NULL;
-    void                 *expected_data = PRA_VOID_NULL;
+    void                  *expected_data = PRA_VOID_NULL;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_list_init(

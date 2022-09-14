@@ -1,4 +1,5 @@
 #include "pra_bytes.h"
+#include "pra_bytes_ec.h"
 #include "pra_defs.h"
 #include "test.h"
 

@@ -3,29 +3,19 @@
  * created on Wed Aug 17 2022
  * created by Seven Lv
  * comments:    definitions and fucntions of boolean types
- *              normally user should include pra_types_def.h instead of this
- *              file.
- * version: 0.1
- * history: #       date               modification
- *          0.1     Wed Aug 17 2022    created
+ * version: 0.2
+ * history: #       date                modification
+ *          0.1     Wed Aug 17 2022     created
+ *          0.2     Wed Sep 14 2022     move type definitions to pra_boolean_types.h
  */
 
 #ifndef INC_PRA_BOOLEAN_H_
 #define INC_PRA_BOOLEAN_H_
 
 /* includes */
+#include "pra_boolean_types.h"
 
 /* macros */
-
-#define PRA_BOOL_NULL ((pra_boolean *)0)
-
-/* the boolean enum type */
-typedef enum _pra_boolean
-{
-    PRA_BOOL_UNKNOWN = 0x00, /* the unknown value of pra_boolean type */
-    PRA_BOOL_TRUE = 0x55,    /* the true value of pra_boolean */
-    PRA_BOOL_FALSE = 0xAA,   /* the false value of pra_boolean */
-} pra_boolean;
 
 /* types */
 

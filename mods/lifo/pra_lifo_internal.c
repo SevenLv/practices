@@ -3,13 +3,18 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_lifo
- * version: 0.1
+ * version: 0.2
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
+ *          0.2     Wed Sep 14 2022     include pra_lifo_ec.h
+ *                                      include pra_lifo.h
  */
 
 /* includes */
+#include "pra_lifo.h"
+#include "pra_lifo_ec.h"
 #include "pra_lifo_internal.h"
+
 
 /* variables */
 

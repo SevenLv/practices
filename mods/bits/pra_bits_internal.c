@@ -3,15 +3,18 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_bits
- * version: 0.1
- * history: #       date               modification
- *          0.1     Tue Sep 13 2022    created
+ * version: 0.2
+ * history: #       date                modification
+ *          0.1     Tue Sep 13 2022     created
+ *          02.     Wed Sep 14 2022     include pra_bits_ec.h
  */
 
 /* includes */
 
 #include "pra_bits.h"
+#include "pra_bits_ec.h"
 #include "pra_bits_internal.h"
+
 
 /* variables */
 

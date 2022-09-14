@@ -3,25 +3,22 @@
  * created on Mon Aug 29 2022
  * created by Seven Lv
  * comments:    functions of bit functions
- * version: 0.1
- * history: #       date               modification
- *          0.1     Mon Aug 29 2022    created
+ * version: 0.2
+ * history: #       date                modification
+ *          0.1     Mon Aug 29 2022     created
+ *          0.2     Wed Sep 14 2022     move error code definitions to pra_bits_ec.h
+ *                                      include pra_boolean_types.h
  */
 
 #ifndef INC_PRA_BITS_H_
 #define INC_PRA_BITS_H_
 
 /* includes */
-#include "pra_boolean.h"
+#include "pra_boolean_types.h"
 #include "pra_defs.h"
-#include "pra_num_defs.h"
 #include "stdint.h"
 
 /* macros */
-
-#define PRA_BITS_EC_NONE           PRA_NUM_ZERO_U      /* no error */
-#define PRA_BITS_EC_NULL_PTR       PRA_NUM_BIT_MASK_00 /* null pointer */
-#define PRA_BITS_EC_INVALID_OFFSET PRA_NUM_BIT_MASK_01 /* invalid bit offset */
 
 /* types */
 

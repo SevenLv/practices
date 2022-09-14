@@ -3,14 +3,17 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_list
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Tue Sep 13 2022     add pra_list_remove_ars_check function
+ *          0.3     Wed Sep 14 2022     include pra_list_ec.h
  */
 
 /* includes */
+#include "pra_list_ec.h"
 #include "pra_list_internal.h"
+
 
 /* variables */
 

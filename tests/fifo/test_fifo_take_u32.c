@@ -1,3 +1,4 @@
+#include "pra_fifo_ec.h"
 #include "test.h"
 #include "test_fifo_take_u32.h"
 

@@ -1,5 +1,6 @@
 #include "pra_bits.h"
 #include "pra_defs.h"
+#include "pra_fifo_ec.h"
 #include "test.h"
 #include "test_fifo_append_u32.h"
 

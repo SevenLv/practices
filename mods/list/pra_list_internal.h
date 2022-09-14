@@ -3,17 +3,21 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_list
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Tue Sep 13 2022     add pra_list_remove_ars_check function
+ *          0.3     Wed Sep 14 2022     include pra_list_types.h
+ *                                      include pra_boolean_types.h
  */
 
 #ifndef INC_PRA_LIST_INTERNAL_H_
 #define INC_PRA_LIST_INTERNAL_H_
 
 /* includes */
-#include "pra_list.h"
+#include "pra_boolean_types.h"
+#include "pra_list_types.h"
+
 
 /* macros */
 

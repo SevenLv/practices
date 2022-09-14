@@ -3,43 +3,27 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    definitions and functions of linked list
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Tue Sep 13 2022     add pra_list_remove function
+ *          0.3     Wed Sep 14 2022     include pra_boolean_types.h
+ *                                      move type definitiosn to pra_list_types.h
+ *                                      move error code definitions to pra_list_ec.h
  */
 
 #ifndef INC_PRA_LIST_H_
 #define INC_PRA_LIST_H_
 
 /* includes */
-#include "pra_boolean.h"
-#include "pra_defs.h"
-#include "pra_num_defs.h"
+#include "pra_boolean_types.h"
+#include "pra_list_types.h"
 #include "stdio.h"
+
 
 /* macros */
 
-#define PRA_LIST_ST_NODE_NULL PRA_NULL_PTR(struct _pra_list_node)
-#define PRA_LIST_NODE_NULL    PRA_NULL_PTR(pra_list_node)
-
-#define PRA_LIST_EC_NONE              PRA_NUM_ZERO_U
-#define PRA_LIST_EC_NULL_PTR          PRA_NUM_BIT_MASK_00
-#define PRA_LIST_EC_NEXT_NOT_NULL     PRA_NUM_BIT_MASK_01
-#define PRA_LIST_EC_PREVIOUS_NOT_NULL PRA_NUM_BIT_MASK_02
-#define PRA_LIST_EC_INVALID_NEXT      PRA_NUM_BIT_MASK_03
-#define PRA_LIST_EC_INVALID_PREVIOUS  PRA_NUM_BIT_MASK_04
-#define PRA_LIST_EC_INVALID_CURRENT   PRA_NUM_BIT_MASK_05
-
 /* types */
-
-/* linked list node */
-typedef struct _pra_list_node
-{
-    struct _pra_list_node *p_previous; /* pointer of previous node */
-    struct _pra_list_node *p_next;     /* pointer of next node */
-    void                  *p_data;     /* pointer of current node data */
-} pra_list_node;                       /* linked list node */
 
 /* variables */
 

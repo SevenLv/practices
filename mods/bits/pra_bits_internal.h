@@ -3,9 +3,10 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_bits
- * version: 0.1
- * history: #       date               modification
- *          0.1     Tue Sep 13 2022    created
+ * version: 0.2
+ * history: #       date                modification
+ *          0.1     Tue Sep 13 2022     created
+ *          0.2     Wed Sep 14 2022     change include file
  */
 
 #ifndef INC_PRA_BITS_INTERNAL_H_
@@ -13,7 +14,7 @@
 
 /* includes */
 
-#include "pra_boolean.h"
+#include "pra_boolean_types.h"
 #include "pra_defs.h"
 #include "stdint.h"
 

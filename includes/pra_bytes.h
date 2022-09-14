@@ -3,40 +3,27 @@
  * created on Wed Aug 24 2022
  * created by Seven Lv
  * comments:    definitions and functions of the bytes type
- * version: 0.1
- * history: #       date               modification
- *          0.1     Wed Aug 24 2022    created
+ * version: 0.2
+ * history: #       date                modification
+ *          0.1     Wed Aug 24 2022     created
+ *          0.2     Wed Sep 14 2022     move type definitions to pra_bytes_types.h
+ *                                      move error code definitions to pra_bytes_ec.h
+ *                                      include pra_boolean_types.h
  */
 
 #ifndef INC_PRA_BYTES_H_
 #define INC_PRA_BYTES_H_
 
 /* includes */
-#include "pra_boolean.h"
+#include "pra_boolean_types.h"
+#include "pra_bytes_types.h"
 #include "pra_defs.h"
-#include "pra_num_defs.h"
 #include "stdint.h"
+
 
 /* macros */
 
-#define PRA_BYTES_NULL PRA_NULL_PTR(pra_bytes)
-
-#define PRA_BYTES_EC_NONE              PRA_NUM_ZERO_U      /* no error */
-#define PRA_BYTES_EC_NULL_PTR          PRA_NUM_BIT_MASK_00 /* null pointer */
-#define PRA_BYTES_EC_NULL_DATA_PTR     PRA_NUM_BIT_MASK_01 /* null data pointer */
-#define PRA_BYTES_EC_DATA_LENGTH_ZERO  PRA_NUM_BIT_MASK_02 /* the length of data is zero */
-#define PRA_BYTES_EC_DIFFERENT_LENGTH  PRA_NUM_BIT_MASK_03 /* different length */
-#define PRA_BYTES_EC_NOT_ENOUGH_LENGTH PRA_NUM_BIT_MASK_04 /* not enough length */
-
 /* types */
-
-/* byte array */
-typedef struct _pra_bytes
-{
-    uint16_t length;      /* 字节数组长度 */
-    uint16_t used_length; /*有效数据长度*/
-    uint8_t *data;        /* 字节数组指针 */
-} pra_bytes;
 
 /* variables */
 

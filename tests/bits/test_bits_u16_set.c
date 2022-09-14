@@ -1,6 +1,8 @@
 #include "pra_bits.h"
+#include "pra_bits_ec.h"
 #include "pra_defs.h"
 #include "test.h"
+
 
 static uint16_t u16_masks[16] = {
     0x0001U, 0x0002U, 0x0004U, 0x0008U,

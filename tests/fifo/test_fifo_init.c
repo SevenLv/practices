@@ -1,5 +1,6 @@
 #include "pra_defs.h"
 #include "pra_fifo.h"
+#include "pra_fifo_ec.h"
 #include "test.h"
 
 

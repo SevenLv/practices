@@ -3,16 +3,17 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_crc16
- * version: 0.1
+ * version: 0.2
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
+ *          0.2     Wed Sep 14 2022     include pra_crc16_types.h
  */
 
 #ifndef INC_PRA_CRC16_INTERNAL_H_
 #define INC_PRA_CRC16_INTERNAL_H_
 
 /* includes */
-#include "pra_crc16.h"
+#include "pra_crc16_types.h"
 
 /* macros */
 #define MASK_H1 0x8000U

@@ -3,15 +3,19 @@
  * created on Thu Sep 01 2022
  * created by Seven Lv
  * comments:    functions of crc8
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Thu Sep 01 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
+ *          0.3     Wed Sep 14 2022     include pra_crc_ec.h
+ *                                      include pra_boolean.h
  */
 
 /* includes */
 #include "pra_bits.h"
+#include "pra_boolean.h"
 #include "pra_crc8_internal.h"
+#include "pra_crc_ec.h"
 
 /* macros */
 #define MASK_H1 0x80U
