@@ -3,9 +3,10 @@
  * created on Thu Sep 15 2022
  * created by Seven Lv
  * comments:    function definitions of pra_task
- * version: 0.
+ * version: 0.2
  * history: #       date                modification
  *          0.1     Thu Sep 15 2022     created
+ *          0.2     Thu Sep 15 2022     add new error code to pra_task_add
  */
 
 #ifndef INC_PRA_TASK_H_
@@ -50,6 +51,9 @@ pra_boolean pra_task_execute(void);
  *                  PRA_TASK_EC_INVALID_EXECUTE_FUNC
  *                  PRA_TASK_EC_TASK_LIST_FULL
  *                  PRA_TASK_EC_ALREADY_ADDED
+ *                  PRA_TASK_EC_FIND_UNUSED_NODE_FAILED
+ *                  PRA_TASK_EC_INSERT_NODE_FAILED
+ *                  PRA_TASK_EC_APPEND_NODE_FAILED
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_task_add(

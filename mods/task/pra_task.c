@@ -3,9 +3,12 @@
  * created on Thu Sep 15 2022
  * created by Seven Lv
  * comments:    functions of pra_task
- * version: 0.1
+ * version: 0.2
  * history: #       date                modification
  *          0.1     Thu Sep 15 2022     created
+ *          0.2     Thu Sep 15 2022     optimize pra_task_add function
+ *                                      add new error code to pra_task_add function
+ *                                      optimize pra_task_execute function
  */
 
 /* includes */
@@ -79,7 +82,7 @@ pra_boolean pra_task_execute(void)
         pra_task      *p_current_task = p_current_node->p_data;
         pra_boolean    failed = PRA_BOOL_FALSE;
 
-        for (uint32_t i = PRA_NUM_ZERO_U; i < task_list_used_count; i++)
+        for (uint32_t i = PRA_NUM_ZERO_U; i < task_list_used_count - 1U; i++)
         {
             if (PRA_TASK_NULL == p_current_task)
             {
@@ -127,20 +130,34 @@ pra_boolean pra_task_add(
         *p_ec |= PRA_TASK_EC_TASK_LIST_FULL;
         result = PRA_BOOL_FALSE;
     }
+    else if (PRA_BOOL_TRUE == pra_task_exists(
+                                  p_task_list,
+                                  task_list_used_count,
+                                  p_task))
+    {
+        *p_ec |= PRA_TASK_EC_ALREADY_ADDED;
+        result = PRA_BOOL_FALSE;
+    }
     else
     {
+        pra_boolean    find_unused_result = PRA_BOOL_UNKNOWN;
         pra_list_node *p_unused_node;
         uint32_t       unused_index = PRA_NUM_ZERO_U;
 
-        /* first task */
-        if (PRA_LIST_NODE_NULL == p_task_list)
-        {
-            /* find first unused node */
-            result = pra_task_find_first_unused_node(
-                task_nodes,
-                &unused_index);
+        /* find first unused node */
+        find_unused_result = pra_task_find_first_unused_node(
+            task_nodes,
+            &unused_index);
 
-            if (PRA_BOOL_TRUE == result)
+        if (PRA_BOOL_TRUE != find_unused_result)
+        {
+            *p_ec |= PRA_TASK_EC_FIND_UNUSED_NODE_FAILED;
+            result = PRA_BOOL_FALSE;
+        }
+        else
+        {
+            /* first task */
+            if (PRA_LIST_NODE_NULL == p_task_list)
             {
                 /* set the node to list */
                 p_unused_node = &task_nodes[unused_index];
@@ -148,90 +165,70 @@ pra_boolean pra_task_add(
                 p_task_list = p_unused_node;
 
                 task_list_used_count += 1U;
+
+                result = PRA_BOOL_TRUE;
             }
             else
             {
-                /* NOTE do nothing */
-            }
-        }
-        else
-        {
-            pra_boolean exists = PRA_BOOL_UNKNOWN;
-            /* check if exists */
-            exists = pra_task_exists(
-                p_task_list,
-                task_list_used_count,
-                p_task);
+                PRA_EC_T error_code = PRA_EC_NONE;
 
-            if (PRA_BOOL_TRUE == exists)
-            {
-                *p_ec = PRA_TASK_EC_ALREADY_ADDED;
-                result = PRA_BOOL_FALSE;
-            }
-            else
-            {
-                /* find first unused node */
-                result = pra_task_find_first_unused_node(
-                    task_nodes,
-                    &unused_index);
+                p_unused_node = &task_nodes[unused_index];
+                p_unused_node->p_data = p_task;
 
-                if (PRA_BOOL_TRUE == result)
+                pra_list_node *p_current_node = p_task_list;
+                pra_task      *p_current_task = p_current_node->p_data;
+
+                /* find the position to add node */
+                for (uint32_t i = PRA_NUM_ZERO_U; i < task_list_used_count; i++)
                 {
-                    PRA_EC_T error_code = PRA_EC_NONE;
-
-                    p_unused_node = &task_nodes[unused_index];
-                    p_unused_node->p_data = p_task;
-
-                    pra_list_node *p_current_node = p_task_list;
-                    pra_task      *p_current_task = p_current_node->p_data;
-
-                    /* find the position to add node */
-                    for (uint32_t i = PRA_NUM_ZERO_U; i < task_list_used_count; i++)
+                    /* insert before lower priority task */
+                    if (p_current_task->priority < p_task->priority)
                     {
-                        if (p_current_task->priority < p_task->priority)
-                        {
-                            /*add node*/
-                            result = pra_list_insert(
-                                p_current_node,
-                                p_unused_node,
-                                &error_code);
+                        /* insert node */
+                        result = pra_list_insert(
+                            p_current_node,
+                            p_unused_node,
+                            &error_code);
 
-                            if (PRA_BOOL_TRUE == result)
-                            {
-                                task_list_used_count += 1U;
-                            }
-                        }
-                        else if (PRA_LIST_ST_NODE_NULL == p_current_node->p_next)
+                        if (PRA_BOOL_TRUE == result)
                         {
-                            result = pra_list_append(
-                                p_current_node,
-                                p_unused_node,
-                                &error_code);
-
-                            if (PRA_BOOL_TRUE == result)
-                            {
-                                task_list_used_count += 1U;
-                            }
-                            break;
+                            task_list_used_count += 1U;
+                            result = PRA_BOOL_TRUE;
                         }
                         else
                         {
-                            p_current_node = p_current_node->p_next;
-
-                            if (PRA_LIST_NODE_NULL != p_current_node)
-                            {
-                                p_current_task = p_current_node->p_data;
-                            }
-                            else
-                            {
-                                p_current_task = PRA_TASK_NULL;
-                            }
+                            *p_ec |= PRA_TASK_EC_INSERT_NODE_FAILED;
+                            result = PRA_BOOL_FALSE;
                         }
+                        break;
                     }
-                }
-                else
-                {
-                    /* NOTE do nothing */
+                    /* append last */
+                    else if (PRA_LIST_ST_NODE_NULL == p_current_node->p_next)
+                    {
+                        /* append node */
+                        result = pra_list_append(
+                            p_current_node,
+                            p_unused_node,
+                            &error_code);
+
+                        if (PRA_BOOL_TRUE == result)
+                        {
+                            task_list_used_count += 1U;
+                            result = PRA_BOOL_TRUE;
+                        }
+                        else
+                        {
+                            *p_ec |= PRA_TASK_EC_APPEND_NODE_FAILED;
+                            result = PRA_BOOL_FALSE;
+                        }
+                        break;
+                    }
+                    /* move next */
+                    else
+                    {
+                        p_current_node = p_current_node->p_next;
+                        p_current_task = p_current_node->p_data;
+                    }
                 }
             }
         }
