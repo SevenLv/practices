@@ -3,12 +3,13 @@
  * created on Thu Sep 15 2022
  * created by Seven Lv
  * comments:    functions of pra_task
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Thu Sep 15 2022     created
  *          0.2     Thu Sep 15 2022     optimize pra_task_add function
  *                                      add new error code to pra_task_add function
  *                                      optimize pra_task_execute function
+ *          0.3     Thu Sep 15 2022     add pra_task_remove function
  */
 
 /* includes */
@@ -231,6 +232,49 @@ pra_boolean pra_task_add(
                     }
                 }
             }
+        }
+    }
+
+    return result;
+}
+
+pra_boolean pra_task_remove(
+    pra_task *const p_task,
+    PRA_EC_T *const p_ec)
+{
+    pra_boolean    result;
+    pra_list_node *p_node = PRA_LIST_NODE_NULL;
+
+    if (PRA_BOOL_TRUE != pra_task_remove_args_check(
+                             p_task,
+                             p_ec))
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_BOOL_TRUE != pra_task_find_node(
+                                  p_task_list,
+                                  task_list_used_count,
+                                  p_task,
+                                  p_node))
+    {
+        *p_ec |= PRA_TASK_EC_NEVER_ADDED;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        PRA_EC_T remove_ec = PRA_EC_NONE;
+
+        if (PRA_BOOL_TRUE != pra_list_remove(
+                                 p_node,
+                                 &remove_ec))
+        {
+            *p_ec |= PRA_TASK_EC_REMOVE_NODE_FAILED;
+            result = PRA_BOOL_FALSE;
+        }
+        else
+        {
+            task_list_used_count -= 1U;
+            result = PRA_BOOL_TRUE;
         }
     }
 

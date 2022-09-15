@@ -3,9 +3,11 @@
  * created on Thu Sep 15 2022
  * created by Seven Lv
  * comments:    internal function definitions of pra_task
- * version: 0.1
+ * version: 0.2
  * history: #       date                modification
  *          0.1     Thu Sep 15 2022     created
+ *          0.2     Thu Sep 15 2022     add pra_task_remove_args_check function declaration
+ *                                      add pra_task_find_node function declaration
  */
 
 #ifndef INC_PRA_TASK_INTERNAL_H_
@@ -51,6 +53,18 @@ pra_boolean pra_task_add_args_check(
     PRA_EC_T *const       p_ec);
 
 /**
+ * @brief           arguments validation for pra_task_remove
+ * @note
+ * @param  p_task:  pointer of the pra_task struct
+ * @param  p_ec:    output error code:
+ *                  PRA_TASK_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_task_remove_args_check(
+    const pra_task *const p_task,
+    PRA_EC_T *const       p_ec);
+
+/**
  * @brief               find first unused node
  * @note
  * @param  p_nodes[]:   all nodes
@@ -65,7 +79,7 @@ pra_boolean pra_task_find_first_unused_node(
  * @brief               determines whether a task exists
  * @note
  * @param  p_list:      pointer of task list
- * @param  used_count:  used count
+ * @param  used_count:  length of task list
  * @param  p_task:      pointer of pra_task struct
  * @retval              PRA_BOOL_TRUE - exists; PRA_BOOL_FALSE - not exist
  */
@@ -73,5 +87,20 @@ pra_boolean pra_task_exists(
     const pra_list_node *const p_list,
     const uint32_t             used_count,
     const pra_task *const      p_task);
+
+/**
+ * @brief               finde a node with the task
+ * @note
+ * @param  p_list:      pointer of task list
+ * @param  used_count:  length of task list
+ * @param  p_task:      pointer of pra_task struct
+ * @param  *p_node:     output the found node
+ * @retval              PRA_BOOL_TRUE - found; PRA_BOOL_FALSE - not found
+ */
+pra_boolean pra_task_find_node(
+    pra_list_node *const  p_list,
+    const uint32_t        used_count,
+    const pra_task *const p_task,
+    pra_list_node        *p_node);
 
 #endif

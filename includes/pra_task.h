@@ -3,10 +3,11 @@
  * created on Thu Sep 15 2022
  * created by Seven Lv
  * comments:    function definitions of pra_task
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Thu Sep 15 2022     created
  *          0.2     Thu Sep 15 2022     add new error code to pra_task_add
+ *          0.3     Thu Sep 15 2022     add pra_task_remove function declaration
  */
 
 #ifndef INC_PRA_TASK_H_
@@ -57,6 +58,20 @@ pra_boolean pra_task_execute(void);
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_task_add(
+    pra_task *const p_task,
+    PRA_EC_T *const p_ec);
+
+/**
+ * @brief           remove a task
+ * @note
+ * @param  p_task:  pointer of the pra_task struct
+ * @param  p_ec:    output error code:
+ *                  PRA_TASK_EC_NULL_PTR
+ *                  PRA_TASK_EC_NEVER_ADDED
+ *                  PRA_TASK_EC_REMOVE_NODE_FAILED
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_task_remove(
     pra_task *const p_task,
     PRA_EC_T *const p_ec);
 
