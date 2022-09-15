@@ -27,3 +27,5 @@ add_subdirectory(lifo)
 add_subdirectory(list)
 
 add_subdirectory(timer)
+
+add_subdirectory(task)

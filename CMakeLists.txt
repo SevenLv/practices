@@ -30,6 +30,7 @@ aux_source_directory(./mods/fifo ALL_SOURCE)
 aux_source_directory(./mods/lifo ALL_SOURCE)
 aux_source_directory(./mods/list ALL_SOURCE)
 aux_source_directory(./mods/timer ALL_SOURCE)
+aux_source_directory(./mods/task ALL_SOURCE)
 
 add_library(practices STATIC ${ALL_SOURCE})
 
