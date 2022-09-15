@@ -3,12 +3,13 @@
  * created on Mon Aug 29 2022
  * created by Seven Lv
  * comments:    functions of bit functions
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Mon Aug 29 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
  *          0.3     Wed Sep 14 2022     include pra_bits_ec.h
  *                                      include pra_boolean.h
+ *          0.4     Thu Sep 15 2022     replace PRA_BITS_EC_NONE with PRA_EC_NONE
  */
 
 /* includes */
@@ -294,7 +295,7 @@ pra_boolean pra_bits_u8_reverse(
 {
     pra_boolean result;
     pra_boolean actived;
-    uint32_t    error_code = PRA_BITS_EC_NONE;
+    uint32_t    error_code = PRA_EC_NONE;
     pra_boolean failed = PRA_BOOL_FALSE;
 
     if (PRA_BOOL_TRUE != pra_bits_u8_reverse_args_check(
@@ -348,7 +349,7 @@ pra_boolean pra_bits_u16_reverse(
 {
     pra_boolean result;
     pra_boolean actived;
-    uint32_t    error_code = PRA_BITS_EC_NONE;
+    uint32_t    error_code = PRA_EC_NONE;
     pra_boolean failed = PRA_BOOL_FALSE;
 
     if (PRA_UINT16_NULL != p_new_value)
@@ -401,7 +402,7 @@ pra_boolean pra_bits_u32_reverse(
 {
     pra_boolean result;
     pra_boolean actived;
-    uint32_t    error_code = PRA_BITS_EC_NONE;
+    uint32_t    error_code = PRA_EC_NONE;
     pra_boolean failed = PRA_BOOL_FALSE;
 
     if (PRA_UINT32_NULL != p_new_value)

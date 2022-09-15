@@ -25,8 +25,8 @@ int main(void)
     uint8_t     bit_offset = 0U;
     pra_boolean actived = PRA_BOOL_UNKNOWN;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    uint32_t    expected_ec = PRA_BITS_EC_NONE;
-    uint32_t    actual_ec = PRA_BITS_EC_NONE;
+    uint32_t    expected_ec = PRA_EC_NONE;
+    uint32_t    actual_ec = PRA_EC_NONE;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bits_u8_set(
@@ -40,7 +40,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_BITS_EC_NULL_PTR;
-    actual_ec = PRA_BITS_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_bits_u8_set(
                                PRA_UINT8_NULL,
                                bit_offset,
@@ -54,7 +54,7 @@ int main(void)
     bit_offset = 8U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_BITS_EC_INVALID_OFFSET;
-    actual_ec = PRA_BITS_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_bits_u8_set(
                                &actual_value,
                                bit_offset,
@@ -66,8 +66,8 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_BITS_EC_NONE;
-    actual_ec = PRA_BITS_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     actived = PRA_BOOL_TRUE;
     for (bit_offset = 0U; bit_offset < 8U; bit_offset++)
     {
@@ -87,8 +87,8 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_BITS_EC_NONE;
-    actual_ec = PRA_BITS_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     actived = PRA_BOOL_UNKNOWN;
     for (bit_offset = 0U; bit_offset < 8U; bit_offset++)
     {
@@ -108,8 +108,8 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_BITS_EC_NONE;
-    actual_ec = PRA_BITS_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     actived = PRA_BOOL_FALSE;
     for (bit_offset = 0U; bit_offset < 8U; bit_offset++)
     {

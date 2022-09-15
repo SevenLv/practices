@@ -29,8 +29,8 @@ int main(void)
     uint8_t     bit_offset = 0U;
     pra_boolean actived = PRA_BOOL_UNKNOWN;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    uint32_t    expected_ec = PRA_BITS_EC_NONE;
-    uint32_t    actual_ec = PRA_BITS_EC_NONE;
+    uint32_t    expected_ec = PRA_EC_NONE;
+    uint32_t    actual_ec = PRA_EC_NONE;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bits_u16_set(
@@ -44,7 +44,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_BITS_EC_NULL_PTR;
-    actual_ec = PRA_BITS_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_bits_u16_set(
                                PRA_UINT16_NULL,
                                bit_offset,
@@ -58,7 +58,7 @@ int main(void)
     bit_offset = 16U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_BITS_EC_INVALID_OFFSET;
-    actual_ec = PRA_BITS_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_bits_u16_set(
                                &actual_value,
                                bit_offset,
@@ -74,8 +74,8 @@ int main(void)
     expected_result = PRA_BOOL_TRUE;
     for (bit_offset = 0U; bit_offset < 16U; bit_offset++)
     {
-        expected_ec = PRA_BITS_EC_NONE;
-        actual_ec = PRA_BITS_EC_NONE;
+        expected_ec = PRA_EC_NONE;
+        actual_ec = PRA_EC_NONE;
         expected_value = u16_masks[bit_offset];
         actual_value = 0U;
         if (expected_result != pra_bits_u16_set(
@@ -96,8 +96,8 @@ int main(void)
     expected_result = PRA_BOOL_TRUE;
     for (bit_offset = 0U; bit_offset < 16U; bit_offset++)
     {
-        expected_ec = PRA_BITS_EC_NONE;
-        actual_ec = PRA_BITS_EC_NONE;
+        expected_ec = PRA_EC_NONE;
+        actual_ec = PRA_EC_NONE;
         expected_value = u16_reversed_masks[bit_offset];
         actual_value = 0xFFFFU;
         if (expected_result != pra_bits_u16_set(
@@ -118,8 +118,8 @@ int main(void)
     expected_result = PRA_BOOL_TRUE;
     for (bit_offset = 0U; bit_offset < 16U; bit_offset++)
     {
-        expected_ec = PRA_BITS_EC_NONE;
-        actual_ec = PRA_BITS_EC_NONE;
+        expected_ec = PRA_EC_NONE;
+        actual_ec = PRA_EC_NONE;
         expected_value = u16_reversed_masks[bit_offset];
         actual_value = 0xFFFFU;
         if (expected_result != pra_bits_u16_set(
