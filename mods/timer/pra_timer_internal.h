@@ -3,7 +3,7 @@
  * created on Wed Sep 14 2022
  * created by Seven Lv
  * comments:    internal function definitions of pra_timer
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Wed Sep 14 2022     created
  *          0.2     Wed Sep 14 2022     add pra_timer_is_done_args_check function declaration
@@ -11,6 +11,7 @@
  *                                      add pra_timer_increase function declaration
  *                                      add pra_timer_stop_args_check function declaration
  *                                      add pra_timer_init_args_check function declaration
+ *          0.3     Thu Sep 15 2022     include pra_ec.h
  */
 
 #ifndef INC_PRA_TIMER_INTERNAL_H_
@@ -19,6 +20,7 @@
 /* includes */
 #include "pra_boolean_types.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "pra_timer_types.h"
 #include "stdint.h"
 

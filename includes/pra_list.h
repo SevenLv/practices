@@ -3,7 +3,7 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    function definitions of linked list
- * version: 0.4
+ * version: 0.5
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Tue Sep 13 2022     add pra_list_remove function
@@ -11,6 +11,7 @@
  *                                      move type definitiosn to pra_list_types.h
  *                                      move error code definitions to pra_list_ec.h
  *          0.4     Wed Sep 14 2022     update file header comments
+ *          0.5     Thu Sep 15 2022     include pra_ec.h
  */
 
 #ifndef INC_PRA_LIST_H_
@@ -18,6 +19,7 @@
 
 /* includes */
 #include "pra_boolean_types.h"
+#include "pra_ec.h"
 #include "pra_list_types.h"
 #include "stdio.h"
 

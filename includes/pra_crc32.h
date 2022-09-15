@@ -3,12 +3,13 @@
  * created on Fri Sep 02 2022
  * created by Seven Lv
  * comments:    function definitions of crc32
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Fri Sep 02 2022     created
  *          0.2     Wed Sep 14 2022     include pra_boolean_types.h
  *                                      move type definitions to pra_crc32_types.h
  *          0.3     Wed Sep 14 2022     update file header comments
+ *          0.4     Thu Sep 15 2022     include pra_ec.h
  */
 
 #ifndef INC_PRA_CRC32_H_
@@ -19,6 +20,7 @@
 #include "pra_crc.h"
 #include "pra_crc32_types.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "stdint.h"
 
 

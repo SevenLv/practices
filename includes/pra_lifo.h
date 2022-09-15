@@ -3,13 +3,14 @@
  * created on Thu Sep 08 2022
  * created by Seven Lv
  * comments:    function definitions of lifo
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Thu Sep 08 2022     created
  *          0.2     Wed Sep 14 2022     include pra_boolean_types.h
  *                                      move type definitions to pra_lifo_types.h
  *                                      move error code definitions to pra_lifo_ec.h
  *          0.3     Wed Sep 14 2022     update file header comments
+ *          0.4     Thu Sep 15 2022     include pra_ec.h
  */
 
 #ifndef INC_PRA_LIFO_H_
@@ -17,6 +18,7 @@
 
 /* includes */
 #include "pra_boolean_types.h"
+#include "pra_ec.h"
 #include "pra_lifo_types.h"
 #include "stdint.h"
 

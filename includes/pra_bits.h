@@ -3,11 +3,12 @@
  * created on Mon Aug 29 2022
  * created by Seven Lv
  * comments:    functions of bit functions
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Mon Aug 29 2022     created
  *          0.2     Wed Sep 14 2022     move error code definitions to pra_bits_ec.h
  *                                      include pra_boolean_types.h
+ *          0.3     Thu Sep 15 2022     include pra_ec.h
  */
 
 #ifndef INC_PRA_BITS_H_
@@ -16,7 +17,9 @@
 /* includes */
 #include "pra_boolean_types.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "stdint.h"
+
 
 /* macros */
 

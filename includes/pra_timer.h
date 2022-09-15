@@ -3,18 +3,20 @@
  * created on Wed Sep 14 2022
  * created by Seven Lv
  * comments:    function definitions of pra_timer
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Wed Sep 14 2022     created
  *          0.2     Wed Sep 14 2022     add pra_timer_is_done function declaration
  *                                      add pra_timer_stop function declaration
  *                                      add pra_timer_init function declaration
+ *          0.3     Thu Sep 15 2022     include pra_ec.h
  */
 
 #ifndef INC_PRA_TIMER_H_
 #define INC_PRA_TIMER_H_
 
 /* includes */
+#include "pra_ec.h"
 #include "pra_timer_types.h"
 
 /* macros */

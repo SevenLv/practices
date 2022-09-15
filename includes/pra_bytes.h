@@ -3,13 +3,14 @@
  * created on Wed Aug 24 2022
  * created by Seven Lv
  * comments:    function definitions of the bytes type
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Wed Aug 24 2022     created
  *          0.2     Wed Sep 14 2022     move type definitions to pra_bytes_types.h
  *                                      move error code definitions to pra_bytes_ec.h
  *                                      include pra_boolean_types.h
  *          0.3     Wed Sep 14 2022     update file header comments
+ *          0.4     Thu Sep 15 2022     include pra_ec.h
  */
 
 #ifndef INC_PRA_BYTES_H_
@@ -19,6 +20,7 @@
 #include "pra_boolean_types.h"
 #include "pra_bytes_types.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "stdint.h"
 
 
