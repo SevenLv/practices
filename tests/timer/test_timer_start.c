@@ -10,8 +10,8 @@ int main(void)
 
     pra_timer         timer;
     pra_boolean       expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T          expected_ec = PRA_TIMER_EC_NONE;
-    PRA_EC_T          actual_ec = PRA_TIMER_EC_NONE;
+    PRA_EC_T          expected_ec = PRA_EC_NONE;
+    PRA_EC_T          actual_ec = PRA_EC_NONE;
     const pra_boolean expected_actived = PRA_BOOL_TRUE;
     const uint32_t    expected_start_time = 10U;
 
@@ -33,7 +33,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_TIMER_EC_NULL_PTR;
-    actual_ec = PRA_TIMER_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_start(
                                PRA_TIMER_NULL,
                                &actual_ec) ||
@@ -45,7 +45,7 @@ int main(void)
     timer.interval = PRA_NUM_ZERO_U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_TIMER_EC_INVALID_INTERVAL;
-    actual_ec = PRA_TIMER_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_start(
                                &timer,
                                &actual_ec) ||
@@ -58,7 +58,7 @@ int main(void)
     timer.actived = PRA_BOOL_TRUE;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_TIMER_EC_ALREADY_STARTED;
-    actual_ec = PRA_TIMER_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_start(
                                &timer,
                                &actual_ec) ||
@@ -79,8 +79,8 @@ int main(void)
 
     timer.actived = PRA_BOOL_UNKNOWN;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_TIMER_EC_NONE;
-    actual_ec = PRA_TIMER_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_start(
                                &timer,
                                &actual_ec) ||

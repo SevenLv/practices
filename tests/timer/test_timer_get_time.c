@@ -25,7 +25,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_TIMER_EC_NULL_PTR;
-    actual_ec = PRA_TIMER_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_get_time(
                                PRA_UINT32_NULL,
                                &actual_ec) ||
@@ -35,7 +35,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_TIMER_EC_NONE;
+    expected_ec = PRA_EC_NONE;
     for (uint32_t i = PRA_NUM_ZERO_U; i < PRA_NUM_MAX_VALUE_U32; i++)
     {
         expected_time = i;

@@ -10,8 +10,8 @@ int main(void)
 
     pra_timer      timer;
     pra_boolean    expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T       expected_ec = PRA_TIMER_EC_NONE;
-    PRA_EC_T       actual_ec = PRA_TIMER_EC_NONE;
+    PRA_EC_T       expected_ec = PRA_EC_NONE;
+    PRA_EC_T       actual_ec = PRA_EC_NONE;
     pra_boolean    expected_done = PRA_BOOL_UNKNOWN;
     pra_boolean    actual_done = PRA_BOOL_UNKNOWN;
     const uint32_t interval = PRA_NUM_MAX_VALUE_U32;
@@ -44,7 +44,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_TIMER_EC_NULL_PTR;
-    actual_ec = PRA_TIMER_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_is_done(
                                PRA_TIMER_NULL,
                                &actual_done,
@@ -56,7 +56,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_TIMER_EC_NULL_PTR;
-    actual_ec = PRA_TIMER_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_is_done(
                                &timer,
                                PRA_UINT32_NULL,
@@ -69,7 +69,7 @@ int main(void)
     timer.actived = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_TIMER_EC_NOT_STARTED;
-    actual_ec = PRA_TIMER_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_is_done(
                                &timer,
                                &actual_done,
@@ -82,7 +82,7 @@ int main(void)
     timer.actived = PRA_BOOL_TRUE;
     expected_result = PRA_BOOL_TRUE;
     expected_done = PRA_BOOL_FALSE;
-    expected_ec = PRA_TIMER_EC_NONE;
+    expected_ec = PRA_EC_NONE;
 
     for (uint32_t i = PRA_NUM_ZERO_U; i < interval - 1U; i++)
     {
@@ -95,8 +95,8 @@ int main(void)
 
     expected_result = PRA_BOOL_TRUE;
     expected_done = PRA_BOOL_FALSE;
-    expected_ec = PRA_TIMER_EC_NONE;
-    actual_ec = PRA_TIMER_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_is_done(
                                &timer,
                                &actual_done,
@@ -115,8 +115,8 @@ int main(void)
 
     expected_result = PRA_BOOL_TRUE;
     expected_done = PRA_BOOL_TRUE;
-    expected_ec = PRA_TIMER_EC_NONE;
-    actual_ec = PRA_TIMER_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_is_done(
                                &timer,
                                &actual_done,
