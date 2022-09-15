@@ -1,6 +1,6 @@
 #include "pra_task.h"
 #include "pra_task_ec.h"
-#include "pra_timer.h";
+#include "pra_timer.h"
 #include "test.h"
 
 static uint32_t current_time = PRA_NUM_ZERO_U;
