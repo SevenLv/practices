@@ -3,11 +3,13 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_crc8
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_crc8_types.h
  *          0.3     Thu Sep 15 2022     include pra_ec.h
+ *          0.4     Thu Sep 15 2022     add MASK_H1 macro
+ *                                      include pra_num_defs.h
  */
 
 #ifndef INC_PRA_CRC8_INTERNAL_H_
@@ -16,8 +18,10 @@
 /* includes */
 #include "pra_crc8_types.h"
 #include "pra_ec.h"
+#include "pra_num_defs.h"
 
 /* macros */
+#define MASK_H1 PRA_NUM_BIT_MASK_07
 
 /* types */
 

@@ -3,11 +3,12 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_crc32
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_crc32_types.h
  *          0.3     Thu Sep 15 2022     include pra_ec.h
+ *          0.4     Thu Sep 15 2022     include pra_num_defs.h
  */
 
 #ifndef INC_PRA_CRC32_INTERNAL_H_
@@ -16,9 +17,10 @@
 /* includes */
 #include "pra_crc32_types.h"
 #include "pra_ec.h"
+#include "pra_num_defs.h"
 
 /* macros */
-#define MASK_H1 0x80000000U
+#define MASK_H1 PRA_NUM_BIT_MASK_31
 
 /* types */
 
