@@ -17,8 +17,8 @@ int test_lifo_push_u16(
     uint16_t    expected_data = 0U;
     uint16_t    expected_used_length = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    uint32_t    expected_ec = PRA_LIFO_EC_NONE;
-    uint32_t    actual_ec = PRA_LIFO_EC_NONE;
+    uint32_t    expected_ec = PRA_EC_NONE;
+    uint32_t    actual_ec = PRA_EC_NONE;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != push(
@@ -31,7 +31,7 @@ int test_lifo_push_u16(
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_NULL_PTR;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                PRA_LIFO_NULL,
                                data_to_push,
@@ -54,7 +54,7 @@ int test_lifo_push_u16(
     lifo.p_data = PRA_UINT8_NULL;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_NULL_PTR;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                &lifo,
                                data_to_push,
@@ -68,7 +68,7 @@ int test_lifo_push_u16(
     lifo.initialized = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_NOT_INIT;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                &lifo,
                                data_to_push,
@@ -82,7 +82,7 @@ int test_lifo_push_u16(
     lifo.used_length = lifo.data_length - 1U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_DATA_FULL;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                &lifo,
                                data_to_push,
@@ -97,8 +97,8 @@ int test_lifo_push_u16(
     expected_data = 0xEEFFU;
     expected_used_length = 2U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIFO_EC_NONE;
-    actual_ec = PRA_LIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                &lifo,
                                data_to_push,
@@ -118,8 +118,8 @@ int test_lifo_push_u16(
     expected_data = 0xEEFFU;
     expected_used_length = 2U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIFO_EC_NONE;
-    actual_ec = PRA_LIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                &lifo,
                                data_to_push,

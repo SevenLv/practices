@@ -19,8 +19,8 @@ int main(void)
     uint8_t     actual_data_value = 0U;
     uint16_t    expected_used_length = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T    expected_ec = PRA_LIFO_EC_NONE;
-    PRA_EC_T    actual_ec = PRA_LIFO_EC_NONE;
+    PRA_EC_T    expected_ec = PRA_EC_NONE;
+    PRA_EC_T    actual_ec = PRA_EC_NONE;
 
     expected_result = PRA_BOOL_TRUE;
     if (expected_result != pra_lifo_init(
@@ -36,7 +36,7 @@ int main(void)
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_NULL_PTR;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_pop_u8(
                                &lifo,
                                &actual_data_value,
@@ -50,7 +50,7 @@ int main(void)
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_DATA_NOT_ENOUGH;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_pop_u8(
                                &lifo,
                                &actual_data_value,
@@ -74,8 +74,8 @@ int main(void)
     actual_data_value = 0U;
     expected_used_length = 0U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIFO_EC_NONE;
-    actual_ec = PRA_LIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_pop_u8(
                                &lifo,
                                &actual_data_value,
@@ -98,10 +98,10 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
     for (uint8_t i = PRA_NUM_ZERO_U; i < DATA_LENGTH; i++)
     {
-        actual_ec = PRA_LIFO_EC_NONE;
+        actual_ec = PRA_EC_NONE;
         if (expected_result != pra_lifo_push_u8(
                                    &lifo,
                                    i,
@@ -113,11 +113,11 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
     for (uint8_t i = DATA_LENGTH; i > PRA_NUM_ZERO_U; i--)
     {
         expected_data_value = i - 1;
-        actual_ec = PRA_LIFO_EC_NONE;
+        actual_ec = PRA_EC_NONE;
         if (expected_result != pra_lifo_pop_u8(
                                    &lifo,
                                    &actual_data_value,

@@ -16,8 +16,8 @@ int test_lifo_pop_u32(
     uint32_t    actual_data_value = 0U;
     uint16_t    expected_used_length = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T    expected_ec = PRA_LIFO_EC_NONE;
-    PRA_EC_T    actual_ec = PRA_LIFO_EC_NONE;
+    PRA_EC_T    expected_ec = PRA_EC_NONE;
+    PRA_EC_T    actual_ec = PRA_EC_NONE;
 
     expected_result = PRA_BOOL_TRUE;
     if (expected_result != pra_lifo_init(
@@ -40,7 +40,7 @@ int test_lifo_pop_u32(
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_NULL_PTR;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pop(
                                PRA_LIFO_NULL,
                                &actual_data_value,
@@ -54,7 +54,7 @@ int test_lifo_pop_u32(
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_NULL_PTR;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pop(
                                &lifo,
                                &actual_data_value,
@@ -68,7 +68,7 @@ int test_lifo_pop_u32(
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIFO_EC_DATA_NOT_ENOUGH;
-    actual_ec = PRA_LIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pop(
                                &lifo,
                                &actual_data_value,
@@ -92,8 +92,8 @@ int test_lifo_pop_u32(
     actual_data_value = 0U;
     expected_used_length = 0U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIFO_EC_NONE;
-    actual_ec = PRA_LIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pop(
                                &lifo,
                                &actual_data_value,
@@ -116,10 +116,10 @@ int test_lifo_pop_u32(
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
     for (uint32_t i = PRA_NUM_ZERO_U; i < (DATA_LENGTH / PRA_NUM_BYTE_SIZE_U32); i++)
     {
-        actual_ec = PRA_LIFO_EC_NONE;
+        actual_ec = PRA_EC_NONE;
         if (expected_result != push(
                                    &lifo,
                                    i,
@@ -131,11 +131,11 @@ int test_lifo_pop_u32(
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
     for (uint32_t i = (DATA_LENGTH / PRA_NUM_BYTE_SIZE_U32); i > PRA_NUM_ZERO_U; i--)
     {
         expected_data_value = i - 1;
-        actual_ec = PRA_LIFO_EC_NONE;
+        actual_ec = PRA_EC_NONE;
         if (expected_result != pop(
                                    &lifo,
                                    &actual_data_value,
