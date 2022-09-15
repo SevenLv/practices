@@ -38,7 +38,7 @@ int main(void)
     expected_ec = PRA_TIMER_EC_NONE;
     for (uint32_t i = PRA_NUM_ZERO_U; i < PRA_NUM_MAX_VALUE_U32; i++)
     {
-        expected_ec = i;
+        expected_time = i;
         actual_ec = PRA_NUM_ZERO_U;
         actual_time = PRA_NUM_ZERO_U;
         if (expected_result != pra_timer_get_time(
