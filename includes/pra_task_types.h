@@ -35,7 +35,7 @@ typedef pra_boolean (*pra_task_execute_func)(
 /* task struct */
 typedef struct _pra_task
 {
-    uint32_t              priority;       /* task priority */
+    uint32_t              priority;       /* task priority, larger value means higher priority */
     pra_task_execute_func execute_func;   /* task execute function */
     pra_boolean           execute_result; /* task execute function return value */
     PRA_EC_T              execute_ec;     /* task execute function error code */

@@ -15,7 +15,10 @@
 #include "pra_num_defs.h"
 
 /* macros */
-#define PRA_TASK_EC_NULL_PTR PRA_NUM_BIT_MASK_00
+#define PRA_TASK_EC_NULL_PTR             PRA_NUM_BIT_MASK_00
+#define PRA_TASK_EC_INVALID_EXECUTE_FUNC PRA_NUM_BIT_MASK_01
+#define PRA_TASK_EC_TASK_LIST_FULL       PRA_NUM_BIT_MASK_02
+#define PRA_TASK_EC_ALREADY_ADDED        PRA_NUM_BIT_MASK_03
 
 /* types */
 
