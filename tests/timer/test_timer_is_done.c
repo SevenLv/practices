@@ -14,7 +14,7 @@ int main(void)
     PRA_EC_T       actual_ec = PRA_TIMER_EC_NONE;
     pra_boolean    expected_done = PRA_BOOL_UNKNOWN;
     pra_boolean    actual_done = PRA_BOOL_UNKNOWN;
-    const uint32_t interval = 100U;
+    const uint32_t interval = PRA_NUM_MAX_VALUE_U32;
 
     expected_result = PRA_BOOL_TRUE;
     if (expected_result != pra_timer_init(
@@ -84,25 +84,33 @@ int main(void)
     expected_done = PRA_BOOL_FALSE;
     expected_ec = PRA_TIMER_EC_NONE;
 
-    for (uint32_t i = PRA_NUM_ZERO_U; i < interval; i++)
+    for (uint32_t i = PRA_NUM_ZERO_U; i < interval - 1U; i++)
     {
-        actual_ec = PRA_TIMER_EC_NONE;
-        if (expected_result != pra_timer_is_done(
-                                   &timer,
-                                   &actual_done,
-                                   &actual_ec) ||
-            expected_ec != actual_ec ||
-            expected_done != actual_done)
+        if (expected_result != pra_timer_execute())
         {
             result |= err_error7;
             break;
         }
+    }
 
-        if (expected_result != pra_timer_execute())
-        {
-            result |= err_error8;
-            break;
-        }
+    expected_result = PRA_BOOL_TRUE;
+    expected_done = PRA_BOOL_FALSE;
+    expected_ec = PRA_TIMER_EC_NONE;
+    actual_ec = PRA_TIMER_EC_NONE;
+    if (expected_result != pra_timer_is_done(
+                               &timer,
+                               &actual_done,
+                               &actual_ec) ||
+        expected_ec != actual_ec ||
+        expected_done != actual_done)
+    {
+        result |= err_error8;
+    }
+
+    expected_result = PRA_BOOL_TRUE;
+    if (expected_result != pra_timer_execute())
+    {
+        result |= err_error9;
     }
 
     expected_result = PRA_BOOL_TRUE;
@@ -118,8 +126,6 @@ int main(void)
     {
         result |= err_error9;
     }
-
-    // TODO:
 
     return result;
 }
