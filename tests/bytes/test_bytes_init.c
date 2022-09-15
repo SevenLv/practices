@@ -19,7 +19,7 @@ int main(void)
     };
 
     pra_bytes  *p_bytes = PRA_BYTES_NULL;
-    uint32_t    actual_ec = PRA_BYTES_EC_NONE;
+    uint32_t    actual_ec = PRA_EC_NONE;
     uint32_t    expected_ec = PRA_BYTES_EC_NULL_PTR;
     pra_boolean expected = PRA_BOOL_FALSE;
 
@@ -30,8 +30,8 @@ int main(void)
     }
 
     p_bytes = &bytes;
-    actual_ec = PRA_BYTES_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NONE;
+    actual_ec = PRA_EC_NONE;
+    expected_ec = PRA_EC_NONE;
     expected = PRA_BOOL_TRUE;
     if (expected != pra_bytes_init(p_bytes, &actual_ec) ||
         expected_ec != actual_ec)
@@ -51,7 +51,7 @@ int main(void)
     }
 
     bytes.length = 0U;
-    actual_ec = PRA_BYTES_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     expected_ec = PRA_BYTES_EC_DATA_LENGTH_ZERO;
     expected = PRA_BOOL_FALSE;
     if (expected != pra_bytes_init(p_bytes, &actual_ec) ||
@@ -61,7 +61,7 @@ int main(void)
     }
 
     bytes.data = PRA_UINT8_NULL;
-    actual_ec = PRA_BYTES_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
     expected = PRA_BOOL_FALSE;
     if (expected != pra_bytes_init(p_bytes, &actual_ec) ||

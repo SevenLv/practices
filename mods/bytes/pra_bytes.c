@@ -3,16 +3,18 @@
  * created on Wed Aug 24 2022
  * created by Seven Lv
  * comments:    definitions and functions of the bytes type
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Wed Aug 24 2022     created
  *          0.2     Wed Sep 14 2022     include pra_bytes_ec.h
+ *          0.3     Thu Sep 15 2022     replace PRA_BYTES_EC_NONE with PRA_EC_NONE
  */
 
 /* includes */
 #include "pra_bytes.h"
 #include "pra_bytes_ec.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "pra_num_defs.h"
 
 
@@ -42,7 +44,7 @@ pra_boolean pra_bytes_not_null_ptr(
     }
     else
     {
-        *p_ec = PRA_BYTES_EC_NONE;
+        *p_ec = PRA_EC_NONE;
         result = PRA_BOOL_TRUE;
     }
 
