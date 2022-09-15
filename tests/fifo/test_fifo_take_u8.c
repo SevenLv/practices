@@ -19,8 +19,8 @@ int main(void)
     uint8_t     actual_data_value = 0U;
     uint16_t    expected_used_length = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T    expected_ec = PRA_FIFO_EC_NONE;
-    PRA_EC_T    actual_ec = PRA_FIFO_EC_NONE;
+    PRA_EC_T    expected_ec = PRA_EC_NONE;
+    PRA_EC_T    actual_ec = PRA_EC_NONE;
 
     expected_result = PRA_BOOL_TRUE;
     if (expected_result != pra_fifo_init(
@@ -45,7 +45,7 @@ int main(void)
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_FIFO_EC_NULL_PTR;
-    actual_ec = PRA_FIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_take_u8(
                                &fifo,
                                &actual_data_value,
@@ -59,7 +59,7 @@ int main(void)
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_FIFO_EC_DATA_NOT_ENOUGH;
-    actual_ec = PRA_FIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_take_u8(
                                &fifo,
                                &actual_data_value,
@@ -83,8 +83,8 @@ int main(void)
     actual_data_value = 0U;
     expected_used_length = 0U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_FIFO_EC_NONE;
-    actual_ec = PRA_FIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_take_u8(
                                &fifo,
                                &actual_data_value,

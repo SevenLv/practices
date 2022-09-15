@@ -19,8 +19,8 @@ int main(void)
     uint8_t     expected_data = 0U;
     uint16_t    expected_used_length = 0U;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    uint32_t    expected_ec = PRA_FIFO_EC_NONE;
-    uint32_t    actual_ec = PRA_FIFO_EC_NONE;
+    uint32_t    expected_ec = PRA_EC_NONE;
+    uint32_t    actual_ec = PRA_EC_NONE;
 
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_fifo_append_u8(
@@ -33,7 +33,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_FIFO_EC_NULL_PTR;
-    actual_ec = PRA_FIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_append_u8(
                                PRA_FIFO_NULL,
                                data_to_append,
@@ -55,7 +55,7 @@ int main(void)
     fifo.p_data = PRA_UINT8_NULL;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_FIFO_EC_NULL_PTR;
-    actual_ec = PRA_FIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_append_u8(
                                &fifo,
                                data_to_append,
@@ -69,7 +69,7 @@ int main(void)
     fifo.initialized = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_FIFO_EC_NOT_INIT;
-    actual_ec = PRA_FIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_append_u8(
                                &fifo,
                                data_to_append,
@@ -83,7 +83,7 @@ int main(void)
     fifo.used_length = fifo.data_length;
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_FIFO_EC_DATA_FULL;
-    actual_ec = PRA_FIFO_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_append_u8(
                                &fifo,
                                data_to_append,
@@ -98,8 +98,8 @@ int main(void)
     expected_data = 0xFFU;
     expected_used_length = 1U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_FIFO_EC_NONE;
-    actual_ec = PRA_FIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_append_u8(
                                &fifo,
                                data_to_append,
@@ -118,8 +118,8 @@ int main(void)
     expected_data = 0xFFU;
     expected_used_length = 1U;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_FIFO_EC_NONE;
-    actual_ec = PRA_FIFO_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_append_u8(
                                &fifo,
                                data_to_append,
