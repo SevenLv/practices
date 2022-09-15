@@ -13,16 +13,16 @@ int main(void)
     pra_list_node current_node;
     pra_list_node next_node;
     pra_boolean   expected_result = PRA_BOOL_UNKNOWN;
-    PRA_EC_T      expected_ec = PRA_LIST_EC_NONE;
-    PRA_EC_T      actual_ec = PRA_LIST_EC_NONE;
+    PRA_EC_T      expected_ec = PRA_EC_NONE;
+    PRA_EC_T      actual_ec = PRA_EC_NONE;
 
     const struct _pra_list_node *const expected_current_next = (struct _pra_list_node *)(&next_node);
     const struct _pra_list_node *const expected_next_previous = (struct _pra_list_node *)(&current_node);
     const struct _pra_list_node *const expected_next_next = (struct _pra_list_node *)(&temp_node);
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIST_EC_NONE;
-    actual_ec = PRA_LIST_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_init(
                                &current_node,
                                &actual_ec) ||
@@ -32,8 +32,8 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIST_EC_NONE;
-    actual_ec = PRA_LIST_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_init(
                                &next_node,
                                &actual_ec) ||
@@ -53,7 +53,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIST_EC_NULL_PTR;
-    actual_ec = PRA_LIST_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_append(
                                PRA_LIST_NODE_NULL,
                                &next_node,
@@ -65,7 +65,7 @@ int main(void)
 
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIST_EC_NULL_PTR;
-    actual_ec = PRA_LIST_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_append(
                                &current_node,
                                PRA_LIST_NODE_NULL,
@@ -79,7 +79,7 @@ int main(void)
     next_node.p_previous = (struct _pra_list_node *)(&temp_node);
     expected_result = PRA_BOOL_FALSE;
     expected_ec = PRA_LIST_EC_PREVIOUS_NOT_NULL;
-    actual_ec = PRA_LIST_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_append(
                                &current_node,
                                &next_node,
@@ -92,8 +92,8 @@ int main(void)
     current_node.p_next = (struct _pra_list_node *)(&temp_node);
     next_node.p_previous = PRA_LIST_ST_NODE_NULL;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIST_EC_NONE;
-    actual_ec = PRA_LIST_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_append(
                                &current_node,
                                &next_node,
@@ -106,8 +106,8 @@ int main(void)
 
     next_node.p_previous = PRA_LIST_ST_NODE_NULL;
     expected_result = PRA_BOOL_TRUE;
-    expected_ec = PRA_LIST_EC_NONE;
-    actual_ec = PRA_LIST_EC_NONE;
+    expected_ec = PRA_EC_NONE;
+    actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_append(
                                &current_node,
                                &next_node,
