@@ -3,11 +3,12 @@
  * created on Thu Sep 15 2022
  * created by Seven Lv
  * comments:    internal functions of pra_task
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Thu Sep 15 2022     created
  *          0.2     Thu Sep 15 2022     add pra_task_remove_args_check function
  *                                      add pra_task_find_node function
+ *          0.3     Fri Sep 16 2022     changed parameter type of pra_task_find_node function
  */
 
 /* includes */
@@ -168,7 +169,7 @@ pra_boolean pra_task_find_node(
     pra_list_node *const  p_list,
     const uint32_t        used_count,
     const pra_task *const p_task,
-    pra_list_node        *p_node)
+    pra_list_node       **p_node)
 {
     pra_boolean result;
 
@@ -187,7 +188,7 @@ pra_boolean pra_task_find_node(
         {
             if (p_task == p_current_node->p_data)
             {
-                p_node = p_current_node;
+                *p_node = p_current_node;
                 result = PRA_BOOL_TRUE;
                 break;
             }
