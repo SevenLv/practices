@@ -3,10 +3,11 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_fifo
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_fifo_ec.h
+ *          0.3     Thu Sep 22 2022     use PRA_NUM_BIT_MAX_OFFSET_U16 macro in pra_fifo_position_move function
  * */
 
 /* includes */
@@ -55,7 +56,7 @@ void pra_fifo_position_move(
     {
         /* NOTE do nothing */
     }
-    if ((PRA_NUM_MAX_VALUE_U16 - 1U) == *p_position)
+    if (PRA_NUM_BIT_MAX_OFFSET_U16 == *p_position)
     {
         *p_position = PRA_NUM_ZERO_U;
     }

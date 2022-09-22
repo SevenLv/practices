@@ -3,11 +3,12 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_crc16
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_crc_ec.h
  *                                      include pra_boolean.h
+ *          0.3     Thu Sep 22 2022     remove pra_boolean_is_true invocation in pra_crc16_compute_args_check function
  */
 
 /* includes */
@@ -72,7 +73,7 @@ pra_boolean pra_crc16_compute_args_check(
         *p_ec |= PRA_CRC_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BOOL_TRUE != pra_boolean_is_true(p_crc->initialized))
+    else if (PRA_BOOL_TRUE != p_crc->initialized)
     {
         *p_ec |= PRA_CRC_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;

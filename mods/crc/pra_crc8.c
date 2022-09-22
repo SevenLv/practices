@@ -3,13 +3,14 @@
  * created on Thu Sep 01 2022
  * created by Seven Lv
  * comments:    functions of crc8
- * version: 0.4
+ * version: 0.5
  * history: #       date                modification
  *          0.1     Thu Sep 01 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
  *          0.3     Wed Sep 14 2022     include pra_crc_ec.h
  *                                      include pra_boolean.h
  *          0.4     Thu Sep 15 2022     move MASK_H1 macro to pra_crc8_internal.h
+ *          0.5     Thu Sep 22 2022     remove pra_boolean_is_true invocation in pra_crc8_init function
  */
 
 /* includes */
@@ -39,7 +40,7 @@ pra_boolean pra_crc8_init(
     {
         result = PRA_BOOL_FALSE;
     }
-    else if (PRA_BOOL_TRUE == pra_boolean_is_true(p_crc->initialized))
+    else if (PRA_BOOL_TRUE == p_crc->initialized)
     {
         result = PRA_BOOL_TRUE;
     }
