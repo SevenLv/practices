@@ -8,7 +8,7 @@ int main(void)
     int result = err_none;
 
     const uint8_t expected_major = 0U;
-    const uint8_t expected_minor = 6U;
+    const uint8_t expected_minor = 7U;
     const uint8_t expected_reversion = 25U;
 
     pra_version actual_version;
