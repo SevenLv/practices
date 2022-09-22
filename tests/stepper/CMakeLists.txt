@@ -8,6 +8,22 @@ add_executable(test_stp_cycle_u8 test_stp_cycle_u8.c)
 target_link_libraries(test_stp_cycle_u8 practices)
 add_test(NAME test_stp_cycle_u8 COMMAND test_stp_cycle_u8)
 
-add_executable(test_stp_cycle_max_u8 test_stp_cycle_max_u8.c)
-target_link_libraries(test_stp_cycle_max_u8 practices)
-add_test(NAME test_stp_cycle_max_u8 COMMAND test_stp_cycle_max_u8)
+add_executable(test_stp_cycle_default_u8 test_stp_cycle_default_u8.c)
+target_link_libraries(test_stp_cycle_default_u8 practices)
+add_test(NAME test_stp_cycle_default_u8 COMMAND test_stp_cycle_default_u8)
+
+add_executable(test_stp_cycle_u16 test_stp_cycle_u16.c)
+target_link_libraries(test_stp_cycle_u16 practices)
+add_test(NAME test_stp_cycle_u16 COMMAND test_stp_cycle_u16)
+
+add_executable(test_stp_cycle_default_u16 test_stp_cycle_default_u16.c)
+target_link_libraries(test_stp_cycle_default_u16 practices)
+add_test(NAME test_stp_cycle_default_u16 COMMAND test_stp_cycle_default_u16)
+
+add_executable(test_stp_cycle_u32 test_stp_cycle_u32.c)
+target_link_libraries(test_stp_cycle_u32 practices)
+add_test(NAME test_stp_cycle_u32 COMMAND test_stp_cycle_u32)
+
+add_executable(test_stp_cycle_default_u32 test_stp_cycle_default_u32.c)
+target_link_libraries(test_stp_cycle_default_u32 practices)
+add_test(NAME test_stp_cycle_default_u32 COMMAND test_stp_cycle_default_u32)
