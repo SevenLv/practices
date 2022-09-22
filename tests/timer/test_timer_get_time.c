@@ -10,7 +10,6 @@ int main(void)
     int result = err_none;
 
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
-    uint32_t    expected_time;
     uint32_t    actual_time;
     PRA_EC_T    expected_ec;
     PRA_EC_T    actual_ec;
@@ -38,7 +37,7 @@ int main(void)
     expected_ec = PRA_EC_NONE;
     for (uint32_t i = PRA_NUM_ZERO_U; i < PRA_NUM_MAX_VALUE_U32; i++)
     {
-        expected_time = i;
+        uint32_t expected_time = i;
         actual_ec = PRA_NUM_ZERO_U;
         actual_time = PRA_NUM_ZERO_U;
         if (expected_result != pra_timer_get_time(
@@ -47,14 +46,14 @@ int main(void)
             expected_ec != actual_ec ||
             expected_time != actual_time)
         {
-            break;
             result |= err_error3;
+            break;
         }
 
         if (expected_result != pra_timer_execute())
         {
-            break;
             result |= err_error4;
+            break;
         }
 
         expected_time = i + 1U;
@@ -66,8 +65,8 @@ int main(void)
             expected_ec != actual_ec ||
             expected_time != actual_time)
         {
-            break;
             result |= err_error5;
+            break;
         }
     }
 
