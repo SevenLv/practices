@@ -45,4 +45,16 @@ pra_boolean pra_stp_cycle_u8_args_check(
     const uint8_t        step,
     PRA_EC_T *const      p_ec);
 
+/**
+ * @brief           arguments validation for pra_stp_cycle_max_u8 function
+ * @note
+ * @param  p_value: the 8-bits value
+ * @param  p_ec:    output error code:
+ *                  PRA_STP_CYCLE_EC_NULL_PTR
+ * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
+ */
+pra_boolean pra_stp_cycle_max_u8_args_check(
+    const uint8_t *const p_value,
+    PRA_EC_T *const      p_ec);
+
 #endif

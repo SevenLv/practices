@@ -66,3 +66,26 @@ pra_boolean pra_stp_cycle_u8_args_check(
 
     return result;
 }
+
+pra_boolean pra_stp_cycle_max_u8_args_check(
+    const uint8_t *const p_value,
+    PRA_EC_T *const      p_ec)
+{
+    pra_boolean result;
+
+    if (PRA_EC_T_NULL == p_ec)
+    {
+        result = PRA_BOOL_FALSE;
+    }
+    else if (PRA_UINT8_NULL == p_value)
+    {
+        *p_ec |= PRA_STP_CYCLE_EC_NULL_PTR;
+        result = PRA_BOOL_FALSE;
+    }
+    else
+    {
+        result = PRA_BOOL_TRUE;
+    }
+
+    return result;
+}
