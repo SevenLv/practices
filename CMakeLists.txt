@@ -11,9 +11,9 @@ configure_file(
     ${PROJECT_SOURCE_DIR}/includes/pra_version.h)
 
 if(CMAKE_BUILD_TYPE MATCHES "Debug")
-    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/${VERSION}/debug)
+    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/${CPACK_PROJECT_VERSION}/debug)
 else()
-    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/${VERSION}/release)
+    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/${CPACK_PROJECT_VERSION}/release)
 endif()
 
 set(CMAKE_STATIC_LIBRARY_PREFIX)
