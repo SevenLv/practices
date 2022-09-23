@@ -3,7 +3,7 @@
  * created on Wed Sep 14 2022
  * created by Seven Lv
  * comments:    internal function definitions of pra_timer
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Wed Sep 14 2022     created
  *          0.2     Wed Sep 14 2022     add pra_timer_is_done_args_check function declaration
@@ -12,6 +12,7 @@
  *                                      add pra_timer_stop_args_check function declaration
  *                                      add pra_timer_init_args_check function declaration
  *          0.3     Thu Sep 15 2022     include pra_ec.h
+ *          0.4     Fri Sep 23 2022     remove pra_timer_increase function declaration
  */
 
 #ifndef INC_PRA_TIMER_INTERNAL_H_
@@ -36,17 +37,6 @@
 /* variables */
 
 /* functions */
-
-/**
- * @brief               increase current value with the step
- * @note                start from 0 when reach max value
- * @param  p_value:     pointer of the value
- * @param  step:        the step
- * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
- */
-pra_boolean pra_timer_increase(
-    uint32_t *const p_value,
-    const uint32_t  step);
 
 /**
  * @brief           arguments validation for pra_timer_init function

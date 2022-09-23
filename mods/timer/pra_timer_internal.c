@@ -3,13 +3,14 @@
  * created on Wed Sep 14 2022
  * created by Seven Lv
  * comments:    internal functions of pra_timer
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Wed Sep 14 2022     created
  *          0.2     Wed Sep 14 2022     add pra_timer_is_done_args_check function
  *                                      add pra_timer_increase function
  *                                      add pra_timer_stop_args_check function
  *                                      add pra_timer_init_args_check function
+ *          0.3     Fri Sep 23 2022     remove pra_timer_increase function
  */
 
 /* includes */
@@ -20,50 +21,6 @@
 /* variables */
 
 /* functions */
-
-pra_boolean pra_timer_increase(
-    uint32_t *const p_value,
-    const uint32_t  step)
-{
-    pra_boolean result;
-
-    if (PRA_UINT32_NULL == p_value)
-    {
-        result = PRA_BOOL_FALSE;
-    }
-    else if (PRA_NUM_ZERO_U == step)
-    {
-        /* NOTE do not change anything */
-        result = PRA_BOOL_TRUE;
-    }
-    else
-    {
-        uint32_t temp_value = PRA_TIME_MAX - *p_value;
-
-        if (PRA_NUM_ZERO_U == temp_value)
-        {
-            *p_value = step - 1U;
-            result = PRA_BOOL_TRUE;
-        }
-        else if (step == temp_value)
-        {
-            *p_value = PRA_TIME_MAX;
-            result = PRA_BOOL_TRUE;
-        }
-        else if (step > temp_value)
-        {
-            *p_value = (step - temp_value - 1U);
-            result = PRA_BOOL_TRUE;
-        }
-        else
-        {
-            *p_value += step;
-            result = PRA_BOOL_TRUE;
-        }
-    }
-
-    return result;
-}
 
 pra_boolean pra_timer_init_args_check(
     const pra_timer *const p_timer,
