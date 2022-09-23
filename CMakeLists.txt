@@ -1,16 +1,19 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(practices VERSION 0.1.0)
+project(practices VERSION 0.7.28)
 
 include(CTest)
 enable_testing()
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+configure_file(
+    ${PROJECT_SOURCE_DIR}/pra_version.h.in
+    ${PROJECT_SOURCE_DIR}/includes/pra_version.h)
 
 if(CMAKE_BUILD_TYPE MATCHES "Debug")
-    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/debug)
+    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/${VERSION}/debug)
 else()
-    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/release)
+    set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/.output/${VERSION}/release)
 endif()
 
 set(CMAKE_STATIC_LIBRARY_PREFIX)
@@ -36,3 +39,7 @@ aux_source_directory(./mods/stepper ALL_SOURCE)
 add_library(practices STATIC ${ALL_SOURCE})
 
 add_subdirectory(tests)
+
+install(
+    DIRECTORY "${PROJECT_SOURCE_DIR}/includes/"
+    DESTINATION "${LIBRARY_OUTPUT_PATH}/includes/")

@@ -16,9 +16,9 @@
 #include "pra_version_types.h"
 
 /* macros */
-#define PRA_VERSION_MAJOR     0
-#define PRA_VERSION_MINOR     7
-#define PRA_VERSION_REVERSION 28
+#define PRA_VERSION_MAJOR     @practices_VERSION_MAJOR@
+#define PRA_VERSION_MINOR     @practices_VERSION_MINOR@
+#define PRA_VERSION_REVERSION @practices_VERSION_PATCH@
 
 /* variables */
 
