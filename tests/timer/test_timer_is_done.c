@@ -14,7 +14,7 @@ int main(void)
     PRA_EC_T       actual_ec = PRA_EC_NONE;
     pra_boolean    expected_done = PRA_BOOL_UNKNOWN;
     pra_boolean    actual_done = PRA_BOOL_UNKNOWN;
-    const uint32_t interval = PRA_NUM_MAX_VALUE_U32;
+    const uint32_t interval = PRA_NUM_MAX_VALUE_U32 - 1U;
 
     expected_result = PRA_BOOL_TRUE;
     if (expected_result != pra_timer_init(

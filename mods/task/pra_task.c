@@ -81,7 +81,7 @@ pra_boolean pra_task_execute(void)
     else
     {
         pra_list_node *p_current_node = p_task_list;
-        pra_task      *p_current_task = p_current_node->p_data;
+        pra_task      *p_current_task = (pra_task *)p_current_node->p_data;
         pra_boolean    failed = PRA_BOOL_FALSE;
 
         for (uint32_t i = PRA_NUM_ZERO_U; i < task_list_used_count; i++)
@@ -100,7 +100,7 @@ pra_boolean pra_task_execute(void)
                 p_current_node = p_current_node->p_next;
                 if (PRA_LIST_NODE_NULL != p_current_node)
                 {
-                    p_current_task = p_current_node->p_data;
+                    p_current_task = (pra_task *)p_current_node->p_data;
                 }
                 else
                 {
@@ -119,7 +119,7 @@ pra_boolean pra_task_add(
     pra_task *const p_task,
     PRA_EC_T *const p_ec)
 {
-    pra_boolean result;
+    pra_boolean result = PRA_BOOL_FALSE;
 
     if (PRA_BOOL_TRUE != pra_task_add_args_check(
                              p_task,
@@ -178,7 +178,7 @@ pra_boolean pra_task_add(
                 p_unused_node->p_data = p_task;
 
                 pra_list_node *p_current_node = p_task_list;
-                pra_task      *p_current_task = p_current_node->p_data;
+                pra_task      *p_current_task = (pra_task *)p_current_node->p_data;
 
                 /* find the position to add node */
                 for (uint32_t i = PRA_NUM_ZERO_U; i < task_list_used_count; i++)
@@ -229,7 +229,7 @@ pra_boolean pra_task_add(
                     else
                     {
                         p_current_node = p_current_node->p_next;
-                        p_current_task = p_current_node->p_data;
+                        p_current_task = (pra_task *)p_current_node->p_data;
                     }
                 }
             }

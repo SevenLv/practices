@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(practices VERSION 0.7.28)
+project(practices VERSION 0.7.29)
 
 include(CTest)
 enable_testing()

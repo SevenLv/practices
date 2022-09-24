@@ -18,7 +18,7 @@
 /* macros */
 #define PRA_VERSION_MAJOR     0
 #define PRA_VERSION_MINOR     7
-#define PRA_VERSION_REVERSION 28
+#define PRA_VERSION_REVERSION 29
 
 /* variables */
 
