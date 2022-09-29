@@ -3,7 +3,7 @@
  * created on Wed Sep 14 2022
  * created by Seven Lv
  * comments:    internal function definitions of pra_timer
- * version: 0.4
+ * version: 0.5
  * history: #       date                modification
  *          0.1     Wed Sep 14 2022     created
  *          0.2     Wed Sep 14 2022     add pra_timer_is_done_args_check function declaration
@@ -13,6 +13,7 @@
  *                                      add pra_timer_init_args_check function declaration
  *          0.3     Thu Sep 15 2022     include pra_ec.h
  *          0.4     Fri Sep 23 2022     remove pra_timer_increase function declaration
+ *          0.5     Thu Sep 29 2022     reorganize error codes
  */
 
 #ifndef INC_PRA_TIMER_INTERNAL_H_
@@ -43,7 +44,7 @@
  * @note
  * @param  p_timer: pointer of the pra_timer struct
  * @param  p_ec:    output error code:
- *                  PRA_TIMER_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_timer_init_args_check(
@@ -55,7 +56,7 @@ pra_boolean pra_timer_init_args_check(
  * @note
  * @param  p_time:  pointer of pra_timer struct
  * @param  p_ec:    output error code:
- *                  PRA_TIMER_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_timer_get_time_args_check(
@@ -67,9 +68,9 @@ pra_boolean pra_timer_get_time_args_check(
  * @note
  * @param  p_timer: pointer of the pra_timer struct
  * @param  p_ec:    output error code:
- *                  PRA_TIMER_EC_NULL_PTR
- *                  PRA_TIMER_EC_INVALID_INTERVAL - 0U == interval
- *                  PRA_TIMER_EC_ALREADY_STARTED - PRA_BOOL_TRUE == actived
+ *                  PRA_EC_NULL_PTR
+ *                  PRA_EC_INVALID_INTERVAL - 0U == interval
+ *                  PRA_EC_ALREADY_STARTED - PRA_BOOL_TRUE == actived
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_timer_start_args_check(
@@ -82,8 +83,8 @@ pra_boolean pra_timer_start_args_check(
  * @param  p_timer: pointer of the pra_timer struct
  * @param  p_done:  output the result, PRA_TRUE_BOOL for done, or not
  * @param  p_ec:    output error code:
- *                  PRA_TIMER_EC_NULL_PTR
- *                  PRA_TIMER_EC_NOT_STARTED
+ *                  PRA_EC_NULL_PTR
+ *                  PRA_EC_NOT_STARTED
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_timer_is_done_args_check(
@@ -96,8 +97,8 @@ pra_boolean pra_timer_is_done_args_check(
  * @note
  * @param  p_timer: pointer of the pra_timer struct
  * @param  p_ec:    output error code:
- *                  PRA_TIMER_EC_NULL_PTR
- *                  PRA_TIMER_EC_NOT_STARTED
+ *                  PRA_EC_NULL_PTR
+ *                  PRA_EC_NOT_STARTED
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_timer_stop_args_check(

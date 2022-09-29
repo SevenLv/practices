@@ -46,6 +46,10 @@
 #define PRA_EC_APPEND_NODE_FAILED      PRA_NUM_BIT_MASK_23 /* failed to append node */
 #define PRA_EC_NEVER_ADDED             PRA_NUM_BIT_MASK_24 /* the task is never added */
 #define PRA_EC_REMOVE_NODE_FAILED      PRA_NUM_BIT_MASK_25 /* failed to remove node */
+#define PRA_EC_INVALID_INTERVAL        PRA_NUM_BIT_MASK_26 /* invalid interval */
+#define PRA_EC_ALREADY_STARTED         PRA_NUM_BIT_MASK_27 /* the timer is already started */
+#define PRA_EC_NOT_STARTED             PRA_NUM_BIT_MASK_28 /* the timer is not started */
+#define PRA_EC_CALCULATION_FAILED      PRA_NUM_BIT_MASK_29 /* failed to calculate */
 
 /* types */
 

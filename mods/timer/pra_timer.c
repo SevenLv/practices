@@ -3,7 +3,7 @@
  * created on Wed Sep 14 2022
  * created by Seven Lv
  * comments:    functions of pra_timer
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Wed Sep 14 2022     created
  *          0.2     Wed Sep 14 2022     modify pra_timer_execute function to use pra_timer_increase function
@@ -12,13 +12,14 @@
  *                                      add pra_timer_init function
  *          0.3     Fri Sep 23 2022     include pra_stp_cycle.h
  *                                      replace pra_timer_increase with pra_stp_cycle_default_u32 and pra_stp_cycle_u32
+ *          0.4     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
+#include "pra_ec.h"
 #include "pra_num_defs.h"
 #include "pra_stp_cycle.h"
 #include "pra_timer.h"
-#include "pra_timer_ec.h"
 #include "pra_timer_internal.h"
 
 /* variables */
@@ -135,7 +136,7 @@ pra_boolean pra_timer_is_done(
 
         if (PRA_BOOL_TRUE != result)
         {
-            *p_ec |= PRA_TIMER_EC_CALCULATION_FAILED;
+            *p_ec |= PRA_EC_CALCULATION_FAILED;
         }
         else
         {

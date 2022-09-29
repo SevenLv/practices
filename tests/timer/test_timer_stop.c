@@ -1,5 +1,5 @@
+#include "pra_ec.h"
 #include "pra_timer.h"
-#include "pra_timer_ec.h"
 #include "test.h"
 
 int main(void);
@@ -40,7 +40,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TIMER_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_stop(
                                PRA_TIMER_NULL,
@@ -52,7 +52,7 @@ int main(void)
 
     timer.actived = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TIMER_EC_NOT_STARTED;
+    expected_ec = PRA_EC_NOT_STARTED;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_stop(
                                &timer,
@@ -64,7 +64,7 @@ int main(void)
 
     timer.actived = PRA_BOOL_UNKNOWN;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TIMER_EC_NOT_STARTED;
+    expected_ec = PRA_EC_NOT_STARTED;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_timer_stop(
                                &timer,
