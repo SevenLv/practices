@@ -1,5 +1,5 @@
+#include "pra_ec.h"
 #include "pra_task.h"
-#include "pra_task_ec.h"
 #include "pra_timer.h"
 #include "test.h"
 
@@ -51,7 +51,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TASK_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_task_remove(
                                PRA_TASK_NULL,
@@ -62,7 +62,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TASK_EC_NEVER_ADDED;
+    expected_ec = PRA_EC_NEVER_ADDED;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_task_remove(
                                &task,

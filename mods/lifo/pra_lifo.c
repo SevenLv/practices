@@ -3,17 +3,18 @@
  * created on Thu Sep 08 2022
  * created by Seven Lv
  * comments:    definitions and functions of lifo
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Thu Sep 08 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
  *          0.3     Wed Sep 14 2022     include pra_lifo_ec.h
  *                                      include pra_lifo.h
+ *          0.4     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
+#include "pra_ec.h"
 #include "pra_lifo.h"
-#include "pra_lifo_ec.h"
 #include "pra_lifo_internal.h"
 
 

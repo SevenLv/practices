@@ -1,6 +1,6 @@
 #include "pra_bits.h"
 #include "pra_defs.h"
-#include "pra_lifo_ec.h"
+#include "pra_ec.h"
 #include "test.h"
 #include "test_lifo_push_u32.h"
 
@@ -34,7 +34,7 @@ int test_lifo_push_u32(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                PRA_LIFO_NULL,
@@ -56,7 +56,7 @@ int test_lifo_push_u32(
 
     lifo.p_data = PRA_UINT8_NULL;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                &lifo,
@@ -70,7 +70,7 @@ int test_lifo_push_u32(
     lifo.p_data = data;
     lifo.initialized = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_NOT_INIT;
+    expected_ec = PRA_EC_NOT_INIT;
     actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                &lifo,
@@ -84,7 +84,7 @@ int test_lifo_push_u32(
     lifo.initialized = PRA_BOOL_TRUE;
     lifo.used_length = lifo.data_length - 1U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_DATA_FULL;
+    expected_ec = PRA_EC_DATA_FULL;
     actual_ec = PRA_EC_NONE;
     if (expected_result != push(
                                &lifo,

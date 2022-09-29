@@ -3,15 +3,16 @@
  * created on Thu Sep 22 2022
  * created by Seven Lv
  * comments:    internal functions of pra_bytes
- * version: 0.1
+ * version: 0.2
  * history: #       date                modification
  *          0.1     Thu Sep 22 2022     created
+ *          0.2     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
 #include "pra_boolean.h"
-#include "pra_bytes_ec.h"
 #include "pra_bytes_internal.h"
+#include "pra_ec.h"
 
 /* variables */
 
@@ -29,12 +30,12 @@ pra_boolean pra_bytes_not_null_ptr_args_check(
     }
     else if (PRA_BYTES_NULL == p_bytes)
     {
-        *p_ec |= PRA_BYTES_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_bytes->data)
     {
-        *p_ec |= PRA_BYTES_EC_NULL_DATA_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -59,7 +60,7 @@ pra_boolean pra_bytes_init_args_check(
     }
     else if (PRA_NUM_ZERO_U == p_bytes->length)
     {
-        *p_ec |= PRA_BYTES_EC_DATA_LENGTH_ZERO;
+        *p_ec |= PRA_EC_INVALID_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -89,12 +90,12 @@ pra_boolean pra_bytes_copy_args_check(
     else if (PRA_NUM_ZERO_U == p_src->length ||
              PRA_NUM_ZERO_U == p_dst->length)
     {
-        *p_ec |= PRA_BYTES_EC_DATA_LENGTH_ZERO;
+        *p_ec |= PRA_EC_INVALID_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else if (p_dst->length != p_src->length)
     {
-        *p_ec |= PRA_BYTES_EC_DIFFERENT_LENGTH;
+        *p_ec |= PRA_EC_DIFFERENT_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -121,12 +122,12 @@ pra_boolean pra_bytes_append_u8_array_args_check(
     }
     else if (PRA_UINT8_NULL == data)
     {
-        *p_ec |= PRA_BYTES_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (p_bytes->length < (p_bytes->used_length + data_length))
     {
-        *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -155,7 +156,7 @@ pra_boolean pra_bytes_append_args_check(
     }
     else if (p_bytes->length < (p_bytes->used_length + p_data->used_length))
     {
-        *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -180,7 +181,7 @@ pra_boolean pra_bytes_append_uxx_args_check(
     }
     else if (p_bytes->length < (p_bytes->used_length + data_length))
     {
-        *p_ec |= PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else

@@ -1,6 +1,6 @@
 #include "pra_bits.h"
-#include "pra_bits_ec.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "test.h"
 
 
@@ -32,7 +32,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_BITS_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     if (expected_result != pra_bits_u8_get(
                                value,
                                bit_offset,
@@ -45,7 +45,7 @@ int main(void)
 
     bit_offset = 8;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_BITS_EC_INVALID_OFFSET;
+    expected_ec = PRA_EC_INVALID_OFFSET;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_bits_u8_get(
                                value,

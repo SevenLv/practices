@@ -1,5 +1,5 @@
-#include "pra_crc_ec.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "test.h"
 #include "test_crc8.h"
 
@@ -8,7 +8,7 @@ int test_get(get_func get)
 {
     int result = err_none;
 
-    pra_crc8    crc = { 0 };
+    pra_crc8    crc;
     uint32_t    expected_ec = PRA_EC_NONE;
     uint32_t    actual_ec = PRA_EC_NONE;
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
@@ -20,7 +20,7 @@ int test_get(get_func get)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != get(PRA_CRC8_NULL, &actual_ec) ||
         expected_ec != actual_ec)
@@ -44,7 +44,7 @@ int test_init(get_func get)
 {
     int result = err_none;
 
-    pra_crc8 crc = { 0 };
+    pra_crc8 crc;
     uint32_t expected_ec = PRA_EC_NONE;
     uint32_t actual_ec = PRA_EC_NONE;
 
@@ -57,7 +57,7 @@ int test_init(get_func get)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc8_init(
                                PRA_CRC8_NULL,
@@ -95,7 +95,7 @@ int test_compute(
 {
     int result = err_none;
 
-    pra_crc8    crc = { 0 };
+    pra_crc8    crc;
     uint8_t     bytes[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
     uint32_t    offset = 0U;
     uint32_t    length = 9U;
@@ -117,7 +117,7 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc8_compute(
                                PRA_CRC8_NULL,
@@ -142,7 +142,7 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc8_compute(
                                &crc,
@@ -157,7 +157,7 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc8_compute(
                                &crc,
@@ -173,7 +173,7 @@ int test_compute(
 
     crc.initialized = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NOT_INIT;
+    expected_ec = PRA_EC_NOT_INIT;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc8_compute(
                                &crc,
@@ -190,7 +190,7 @@ int test_compute(
     crc.initialized = PRA_BOOL_TRUE;
     offset = length;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_INVALID_OFFSET;
+    expected_ec = PRA_EC_INVALID_OFFSET;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc8_compute(
                                &crc,
@@ -207,7 +207,7 @@ int test_compute(
     offset = 0;
     length = 0;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_INVALID_LENGTH;
+    expected_ec = PRA_EC_INVALID_LENGTH;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc8_compute(
                                &crc,

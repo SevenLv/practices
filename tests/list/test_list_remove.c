@@ -1,5 +1,5 @@
+#include "pra_ec.h"
 #include "pra_list.h"
-#include "pra_list_ec.h"
 #include "test.h"
 
 
@@ -26,7 +26,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIST_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_remove(
                                PRA_LIST_NODE_NULL,
@@ -95,7 +95,7 @@ int main(void)
 
     previous_node.p_next = PRA_LIST_ST_NODE_NULL;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIST_EC_INVALID_NEXT;
+    expected_ec = PRA_EC_INVALID_NEXT;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_remove(
                                &current_node,
@@ -108,7 +108,7 @@ int main(void)
     previous_node.p_next = &current_node;
     next_node.p_previous = PRA_LIST_ST_NODE_NULL;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIST_EC_INVALID_PREVIOUS;
+    expected_ec = PRA_EC_INVALID_PREVIOUS;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_remove(
                                &current_node,
@@ -122,7 +122,7 @@ int main(void)
     current_node.p_previous = PRA_LIST_ST_NODE_NULL;
     current_node.p_next = PRA_LIST_ST_NODE_NULL;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIST_EC_INVALID_CURRENT;
+    expected_ec = PRA_EC_INVALID_CURRENT;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_list_remove(
                                &current_node,

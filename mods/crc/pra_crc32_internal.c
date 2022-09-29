@@ -3,17 +3,18 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_crc32
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_crc_ec.h
  *                                      include pra_boolean.h
+ *          0.3     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
 #include "pra_boolean.h"
 #include "pra_crc32_internal.h"
-#include "pra_crc_ec.h"
+#include "pra_ec.h"
 
 
 /* variables */
@@ -32,7 +33,7 @@ pra_boolean pra_crc32_init_args_check(
     }
     else if (PRA_CRC32_NULL == p_crc)
     {
-        *p_ec |= PRA_CRC_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -59,32 +60,32 @@ pra_boolean pra_crc32_compute_args_check(
     }
     else if (PRA_CRC32_NULL == p_crc)
     {
-        *p_ec |= PRA_CRC_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == bytes)
     {
-        *p_ec |= PRA_CRC_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT32_NULL == p_result)
     {
-        *p_ec |= PRA_CRC_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != pra_boolean_is_true(p_crc->initialized))
     {
-        *p_ec |= PRA_CRC_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_ZERO_U == length)
     {
-        *p_ec |= PRA_CRC_EC_INVALID_LENGTH;
+        *p_ec |= PRA_EC_INVALID_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else if (length <= offset)
     {
-        *p_ec |= PRA_CRC_EC_INVALID_OFFSET;
+        *p_ec |= PRA_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -109,19 +110,19 @@ pra_boolean pra_crc32_get_args_check(
     }
     else if (PRA_CRC32_NULL == p_crc)
     {
-        *p_ec |= PRA_CRC_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != ref_in &&
              PRA_BOOL_FALSE != ref_in)
     {
-        *p_ec |= PRA_CRC_EC_INVALID_REF_IN;
+        *p_ec |= PRA_EC_INVALID_REF_IN;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != ref_out &&
              PRA_BOOL_FALSE != ref_out)
     {
-        *p_ec |= PRA_CRC_EC_INVALID_REF_OUT;
+        *p_ec |= PRA_EC_INVALID_REF_OUT;
         result = PRA_BOOL_FALSE;
     }
     else

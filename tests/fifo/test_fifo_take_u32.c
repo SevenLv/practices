@@ -1,4 +1,4 @@
-#include "pra_fifo_ec.h"
+#include "pra_ec.h"
 #include "test.h"
 #include "test_fifo_take_u32.h"
 
@@ -9,7 +9,7 @@ int test_fifo_take_u32(
 {
     int result = err_none;
 
-    pra_fifo    fifo = { 0 };
+    pra_fifo    fifo;
     uint8_t     data[DATA_LENGTH] = { 0 };
     uint32_t    data_length = DATA_LENGTH;
     uint32_t    expected_data_value = 0U;
@@ -41,7 +41,7 @@ int test_fifo_take_u32(
     fifo.p_data = PRA_UINT8_NULL;
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_FIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != take(
                                &fifo,
@@ -55,7 +55,7 @@ int test_fifo_take_u32(
     fifo.p_data = data;
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_FIFO_EC_DATA_NOT_ENOUGH;
+    expected_ec = PRA_EC_NOT_ENOUGH_LENGTH;
     actual_ec = PRA_EC_NONE;
     if (expected_result != take(
                                &fifo,

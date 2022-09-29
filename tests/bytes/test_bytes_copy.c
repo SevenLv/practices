@@ -1,6 +1,6 @@
 #include "pra_bytes.h"
-#include "pra_bytes_ec.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "test.h"
 
 
@@ -27,7 +27,7 @@ int main(void)
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_copy(
                                PRA_BYTES_NULL,
@@ -39,7 +39,7 @@ int main(void)
     }
 
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_copy(
                                &src_bytes,
@@ -51,7 +51,7 @@ int main(void)
     }
 
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_copy(
                                &src_bytes,
@@ -64,7 +64,7 @@ int main(void)
     src_bytes.data = PRA_UINT8_NULL;
     dst_bytes.data = PRA_UINT8_NULL;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_copy(
                                &src_bytes,
@@ -80,7 +80,7 @@ int main(void)
     src_bytes.length = 0;
     dst_bytes.length = 0;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_DATA_LENGTH_ZERO;
+    expected_ec = PRA_EC_INVALID_LENGTH;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_copy(
                                &src_bytes,
@@ -96,7 +96,7 @@ int main(void)
     src_bytes.length = 1;
     dst_bytes.length = 2;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_DIFFERENT_LENGTH;
+    expected_ec = PRA_EC_DIFFERENT_LENGTH;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_copy(
                                &src_bytes,

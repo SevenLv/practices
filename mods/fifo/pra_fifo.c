@@ -3,17 +3,18 @@
  * created on Tue Sep 06 2022
  * created by Seven Lv
  * comments:    definitions and functions of fifo
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Tue Sep 06 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
  *          0.3     Wed Sep 14 2022     include pra_fifo_ec.h
  *                                      include pra_fifo.h
+ *          0.4     Thu Sep 29 2022     reorganize error codes
  * */
 
 /* includes */
+#include "pra_ec.h"
 #include "pra_fifo.h"
-#include "pra_fifo_ec.h"
 #include "pra_fifo_internal.h"
 
 

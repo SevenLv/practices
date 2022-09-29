@@ -3,15 +3,16 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_fifo
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_fifo_ec.h
  *          0.3     Thu Sep 22 2022     use PRA_NUM_BIT_MAX_OFFSET_U16 macro in pra_fifo_position_move function
+ *          0.4     Thu Sep 29 2022     reorganize error codes
  * */
 
 /* includes */
-#include "pra_fifo_ec.h"
+#include "pra_ec.h"
 #include "pra_fifo_internal.h"
 
 
@@ -32,12 +33,12 @@ pra_boolean pra_fifo_init_args_check(
     }
     else if (PRA_FIFO_NULL == p_fifo)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_ZERO_U == data_length)
     {
-        *p_ec |= PRA_FIFO_EC_INVALID_LENGTH;
+        *p_ec |= PRA_EC_INVALID_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -83,27 +84,27 @@ pra_boolean pra_fifo_append_args_check(
     }
     else if (PRA_FIFO_NULL == p_fifo)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_fifo->p_data)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != p_fifo->initialized)
     {
-        *p_ec |= PRA_FIFO_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_MAX_VALUE_U16 == p_fifo->used_length)
     {
-        *p_ec |= PRA_FIFO_EC_DATA_FULL;
+        *p_ec |= PRA_EC_DATA_FULL;
         result = PRA_BOOL_FALSE;
     }
     else if (p_fifo->data_length < p_fifo->used_length + data_length)
     {
-        *p_ec |= PRA_FIFO_EC_DATA_FULL;
+        *p_ec |= PRA_EC_DATA_FULL;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -127,27 +128,27 @@ pra_boolean pra_fifo_take_u8_args_check(
     }
     else if (PRA_FIFO_NULL == p_fifo)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_fifo->p_data)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_data)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != p_fifo->initialized)
     {
-        *p_ec |= PRA_FIFO_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BYTE_SIZE_U8 > p_fifo->used_length)
     {
-        *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -171,27 +172,27 @@ pra_boolean pra_fifo_take_u16_args_check(
     }
     else if (PRA_FIFO_NULL == p_fifo)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_fifo->p_data)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT16_NULL == p_data)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != p_fifo->initialized)
     {
-        *p_ec |= PRA_FIFO_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BYTE_SIZE_U16 > p_fifo->used_length)
     {
-        *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -215,27 +216,27 @@ pra_boolean pra_fifo_take_u32_args_check(
     }
     else if (PRA_FIFO_NULL == p_fifo)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_fifo->p_data)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT32_NULL == p_data)
     {
-        *p_ec |= PRA_FIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != p_fifo->initialized)
     {
-        *p_ec |= PRA_FIFO_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BYTE_SIZE_U32 > p_fifo->used_length)
     {
-        *p_ec |= PRA_FIFO_EC_DATA_NOT_ENOUGH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else

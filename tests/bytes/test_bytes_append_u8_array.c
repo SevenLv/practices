@@ -1,6 +1,6 @@
 #include "pra_bytes.h"
-#include "pra_bytes_ec.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "test.h"
 
 
@@ -24,7 +24,7 @@ int main(void)
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append_u8_array(
                                PRA_BYTES_NULL,
@@ -39,7 +39,7 @@ int main(void)
     bytes.data = PRA_UINT8_NULL;
     p_bytes = &bytes;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append_u8_array(
                                p_bytes,
@@ -53,7 +53,7 @@ int main(void)
 
     bytes.data = data;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append_u8_array(
                                p_bytes,
@@ -67,7 +67,7 @@ int main(void)
 
     data_to_append_length = 6;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+    expected_ec = PRA_EC_NOT_ENOUGH_LENGTH;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append_u8_array(
                                p_bytes,

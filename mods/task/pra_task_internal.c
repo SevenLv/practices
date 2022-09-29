@@ -3,18 +3,18 @@
  * created on Thu Sep 15 2022
  * created by Seven Lv
  * comments:    internal functions of pra_task
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Thu Sep 15 2022     created
  *          0.2     Thu Sep 15 2022     add pra_task_remove_args_check function
  *                                      add pra_task_find_node function
  *          0.3     Fri Sep 16 2022     changed parameter type of pra_task_find_node function
+ *          0.4     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
 #include "pra_ec.h"
 #include "pra_list.h"
-#include "pra_task_ec.h"
 #include "pra_task_internal.h"
 
 
@@ -34,7 +34,7 @@ pra_boolean pra_task_init_args_check(
     }
     else if (PRA_TASK_NULL == p_task)
     {
-        *p_ec |= PRA_TASK_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -57,12 +57,12 @@ pra_boolean pra_task_add_args_check(
     }
     else if (PRA_TASK_NULL == p_task)
     {
-        *p_ec |= PRA_TASK_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_TASK_EXECUTE_FUNC_NULL == p_task->execute_func)
     {
-        *p_ec |= PRA_TASK_EC_INVALID_EXECUTE_FUNC;
+        *p_ec |= PRA_EC_INVALID_EXECUTE_FUNC;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -85,7 +85,7 @@ pra_boolean pra_task_remove_args_check(
     }
     else if (PRA_TASK_NULL == p_task)
     {
-        *p_ec |= PRA_TASK_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else

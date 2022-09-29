@@ -1,5 +1,5 @@
+#include "pra_ec.h"
 #include "pra_stp_cycle.h"
-#include "pra_stp_cycle_ec.h"
 #include "test.h"
 
 int main(void);
@@ -30,7 +30,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_STP_CYCLE_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_stp_cycle_u8(
                                PRA_UINT8_NULL,
@@ -46,7 +46,7 @@ int main(void)
     min_value = PRA_NUM_MAX_VALUE_U8;
     max_value = PRA_NUM_MAX_VALUE_U8;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_STP_CYCLE_EC_INVALID_RANGE;
+    expected_ec = PRA_EC_INVALID_RANGE;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_stp_cycle_u8(
                                p_value,
@@ -62,7 +62,7 @@ int main(void)
     min_value = PRA_NUM_MAX_VALUE_U8;
     max_value = PRA_NUM_MAX_VALUE_U8 - 1U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_STP_CYCLE_EC_INVALID_RANGE;
+    expected_ec = PRA_EC_INVALID_RANGE;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_stp_cycle_u8(
                                p_value,
@@ -79,7 +79,7 @@ int main(void)
     min_value = 1U;
     max_value = PRA_NUM_MAX_VALUE_U8;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_STP_CYCLE_EC_VALUE_OUT_OF_RANGE;
+    expected_ec = PRA_EC_VALUE_OUT_OF_RANGE;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_stp_cycle_u8(
                                p_value,
@@ -96,7 +96,7 @@ int main(void)
     min_value = PRA_NUM_ZERO_U;
     max_value = 9U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_STP_CYCLE_EC_VALUE_OUT_OF_RANGE;
+    expected_ec = PRA_EC_VALUE_OUT_OF_RANGE;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_stp_cycle_u8(
                                p_value,
@@ -114,7 +114,7 @@ int main(void)
     max_value = PRA_NUM_MAX_VALUE_U8;
     step = PRA_NUM_ZERO_U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_STP_CYCLE_EC_INVALID_STEP;
+    expected_ec = PRA_EC_INVALID_STEP;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_stp_cycle_u8(
                                p_value,
@@ -132,7 +132,7 @@ int main(void)
     max_value = 10U;
     step = PRA_NUM_MAX_VALUE_U8;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_STP_CYCLE_EC_INVALID_STEP;
+    expected_ec = PRA_EC_INVALID_STEP;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_stp_cycle_u8(
                                p_value,

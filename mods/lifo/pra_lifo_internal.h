@@ -3,16 +3,18 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_lifo
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_lifo_types.h
+ *          0.3     Thu Sep 29 2022     reorganize error codes
  */
 
 #ifndef INC_PRA_LIFO_INTERNAL_H_
 #define INC_PRA_LIFO_INTERNAL_H_
 
 /* includes */
+#include "pra_ec.h"
 #include "pra_lifo_types.h"
 
 /* macros */
@@ -30,8 +32,8 @@
  * @param  data[]:      data array
  * @param  data_length: data array length
  * @param  p_ec:        output error code:
- *                      PRA_LIFO_EC_NULL_PTR
- *                      PRA_LIFO_EC_INVALID_LENGTH
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_INVALID_LENGTH
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_lifo_init_args_check(
@@ -45,9 +47,9 @@ pra_boolean pra_lifo_init_args_check(
  * @param  p_lifo:      pra_lifo struct pointer
  * @param  data_length: length of the data to push
  * @param  p_ec:        output error code:
- *                      PRA_LIFO_EC_NULL_PTR
- *                      PRA_LIFO_EC_NOT_INIT
- *                      PRA_LIFO_EC_DATA_FULL
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_NOT_INIT
+ *                      PRA_EC_DATA_FULL
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_lifo_push_args_check(
@@ -83,9 +85,9 @@ void pra_lifo_position_back(
  * @param  p_lifo:  pra_lifo struct pointer
  * @param  p_data:  output data
  * @param  p_ec:    output error code:
- *                  PRA_LIFO_EC_NULL_PTR
- *                  PRA_LIFO_EC_NOT_INIT
- *                  PRA_LIFO_EC_DATA_FULL
+ *                  PRA_EC_NULL_PTR
+ *                  PRA_EC_NOT_INIT
+ *                  PRA_EC_DATA_FULL
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_lifo_pop_u8_args_check(
@@ -99,9 +101,9 @@ pra_boolean pra_lifo_pop_u8_args_check(
  * @param  p_lifo:  pra_lifo struct pointer
  * @param  p_data:  output data
  * @param  p_ec:    output error code:
- *                  PRA_LIFO_EC_NULL_PTR
- *                  PRA_LIFO_EC_NOT_INIT
- *                  PRA_LIFO_EC_DATA_FULL
+ *                  PRA_EC_NULL_PTR
+ *                  PRA_EC_NOT_INIT
+ *                  PRA_EC_DATA_FULL
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_lifo_pop_u16_args_check(
@@ -115,9 +117,9 @@ pra_boolean pra_lifo_pop_u16_args_check(
  * @param  p_lifo:  pra_lifo struct pointer
  * @param  p_data:  output data
  * @param  p_ec:    output error code:
- *                  PRA_LIFO_EC_NULL_PTR
- *                  PRA_LIFO_EC_NOT_INIT
- *                  PRA_LIFO_EC_DATA_FULL
+ *                  PRA_EC_NULL_PTR
+ *                  PRA_EC_NOT_INIT
+ *                  PRA_EC_DATA_FULL
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_lifo_pop_u32_args_check(

@@ -1,6 +1,6 @@
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "pra_lifo.h"
-#include "pra_lifo_ec.h"
 #include "test.h"
 
 
@@ -12,7 +12,7 @@ int main(void)
 {
     int result = err_none;
 
-    pra_lifo    fifo = { 0U };
+    pra_lifo    fifo;
     uint8_t     data[DATA_LENGTH] = { 0U };
     uint16_t    data_length = DATA_LENGTH;
     uint8_t     data_to_append = 0U;
@@ -32,7 +32,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_push_u8(
                                PRA_LIFO_NULL,
@@ -54,7 +54,7 @@ int main(void)
 
     fifo.p_data = PRA_UINT8_NULL;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_push_u8(
                                &fifo,
@@ -68,7 +68,7 @@ int main(void)
     fifo.p_data = data;
     fifo.initialized = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_NOT_INIT;
+    expected_ec = PRA_EC_NOT_INIT;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_push_u8(
                                &fifo,
@@ -82,7 +82,7 @@ int main(void)
     fifo.initialized = PRA_BOOL_TRUE;
     fifo.used_length = fifo.data_length;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_DATA_FULL;
+    expected_ec = PRA_EC_DATA_FULL;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_push_u8(
                                &fifo,

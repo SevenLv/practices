@@ -3,16 +3,17 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_lifo
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_lifo_ec.h
  *                                      include pra_lifo.h
+ *          0.3     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
+#include "pra_ec.h"
 #include "pra_lifo.h"
-#include "pra_lifo_ec.h"
 #include "pra_lifo_internal.h"
 
 
@@ -33,12 +34,12 @@ pra_boolean pra_lifo_init_args_check(
     }
     else if (PRA_LIFO_NULL == p_lifo)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_ZERO_U == data_length)
     {
-        *p_ec |= PRA_LIFO_EC_INVALID_LENGTH;
+        *p_ec |= PRA_EC_INVALID_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -62,27 +63,27 @@ pra_boolean pra_lifo_push_args_check(
     }
     else if (PRA_LIFO_NULL == p_lifo)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_lifo->p_data)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != p_lifo->initialized)
     {
-        *p_ec |= PRA_LIFO_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_MAX_VALUE_U16 == p_lifo->used_length)
     {
-        *p_ec |= PRA_LIFO_EC_DATA_FULL;
+        *p_ec |= PRA_EC_DATA_FULL;
         result = PRA_BOOL_FALSE;
     }
     else if (p_lifo->data_length < p_lifo->used_length + data_length)
     {
-        *p_ec |= PRA_LIFO_EC_DATA_FULL;
+        *p_ec |= PRA_EC_DATA_FULL;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -146,27 +147,27 @@ pra_boolean pra_lifo_pop_u8_args_check(
     }
     else if (PRA_LIFO_NULL == p_lifo)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_lifo->p_data)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_data)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != p_lifo->initialized)
     {
-        *p_ec |= PRA_LIFO_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BYTE_SIZE_U8 > p_lifo->used_length)
     {
-        *p_ec |= PRA_LIFO_EC_DATA_NOT_ENOUGH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -190,27 +191,27 @@ pra_boolean pra_lifo_pop_u16_args_check(
     }
     else if (PRA_LIFO_NULL == p_lifo)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_lifo->p_data)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT16_NULL == p_data)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != p_lifo->initialized)
     {
-        *p_ec |= PRA_LIFO_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BYTE_SIZE_U16 > p_lifo->used_length)
     {
-        *p_ec |= PRA_LIFO_EC_DATA_NOT_ENOUGH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -234,27 +235,27 @@ pra_boolean pra_lifo_pop_u32_args_check(
     }
     else if (PRA_LIFO_NULL == p_lifo)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT8_NULL == p_lifo->p_data)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_UINT32_NULL == p_data)
     {
-        *p_ec |= PRA_LIFO_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE != p_lifo->initialized)
     {
-        *p_ec |= PRA_LIFO_EC_NOT_INIT;
+        *p_ec |= PRA_EC_NOT_INIT;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BYTE_SIZE_U32 > p_lifo->used_length)
     {
-        *p_ec |= PRA_LIFO_EC_DATA_NOT_ENOUGH;
+        *p_ec |= PRA_EC_NOT_ENOUGH_LENGTH;
         result = PRA_BOOL_FALSE;
     }
     else

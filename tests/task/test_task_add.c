@@ -1,6 +1,5 @@
 #include "pra_ec.h"
 #include "pra_task.h"
-#include "pra_task_ec.h"
 #include "pra_timer.h"
 #include "stdint.h"
 #include "test.h"
@@ -55,7 +54,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TASK_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_task_add(
                                PRA_TASK_NULL,
@@ -67,7 +66,7 @@ int main(void)
 
     task.execute_func = PRA_TASK_EXECUTE_FUNC_NULL;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TASK_EC_INVALID_EXECUTE_FUNC;
+    expected_ec = PRA_EC_INVALID_EXECUTE_FUNC;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_task_add(
                                &task,
@@ -121,9 +120,9 @@ int main(void)
         }
     }
 
-    /* PRA_TASK_EC_ALREADY_ADDED */
+    /* PRA_EC_ALREADY_ADDED */
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TASK_EC_ALREADY_ADDED;
+    expected_ec = PRA_EC_ALREADY_ADDED;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_task_add(
                                &task,
@@ -133,7 +132,7 @@ int main(void)
         result |= err_error10;
     }
 
-    /* PRA_TASK_EC_TASK_LIST_FULL */
+    /* PRA_EC_TASK_LIST_FULL */
     expected_result = PRA_BOOL_TRUE;
     for (uint32_t i = PRA_NUM_ZERO_U; i < TASKS_COUNT; i++)
     {
@@ -166,7 +165,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TASK_EC_TASK_LIST_FULL;
+    expected_ec = PRA_EC_TASK_LIST_FULL;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_task_add(
                                &tasks[TASKS_COUNT - 1U],

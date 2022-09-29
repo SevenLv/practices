@@ -1,5 +1,5 @@
+#include "pra_ec.h"
 #include "pra_task.h"
-#include "pra_task_ec.h"
 #include "test.h"
 
 
@@ -24,7 +24,7 @@ int main(void)
         .priority = PRA_NUM_MAX_VALUE_U32,
         .execute_func = *test_task_execute,
         .execute_result = PRA_BOOL_TRUE,
-        .execute_ec = PRA_TASK_EC_NULL_PTR
+        .execute_ec = PRA_EC_NULL_PTR
     };
     const uint32_t              expected_priority = PRA_NUM_ZERO_U;
     const pra_task_execute_func expected_execute_func = PRA_TASK_EXECUTE_FUNC_NULL;
@@ -43,7 +43,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_TASK_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_task_init(
                                PRA_TASK_NULL,

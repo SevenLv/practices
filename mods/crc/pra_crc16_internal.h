@@ -3,13 +3,14 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_crc16
- * version: 0.4
+ * version: 0.5
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     include pra_crc16_types.h
  *          0.3     Thu Sep 15 2022     include pra_ec.h
  *          0.4     Thu Sep 15 2022     include pra_num_defs.h
  *                                      modify MASK_H1 macro
+ *          0.5     Thu Sep 29 2022     reorganize error codes
  */
 
 #ifndef INC_PRA_CRC16_INTERNAL_H_
@@ -34,7 +35,7 @@
  * @note
  * @param  p_crc:   the crc struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_init_args_check(
@@ -50,10 +51,10 @@ pra_boolean pra_crc16_init_args_check(
  * @param  length:      length of the bytes
  * @param  p_result:    the crc result
  * @param  p_ec:        output error code:
- *                      PRA_CRC_EC_NULL_PTR
- *                      PRA_CRC_EC_NOT_INIT
- *                      PRA_CRC_EC_INVALID_OFFSET
- *                      PRA_CRC_EC_INVALID_LENGTH
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_NOT_INIT
+ *                      PRA_EC_INVALID_OFFSET
+ *                      PRA_EC_INVALID_LENGTH
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_compute_args_check(
@@ -71,7 +72,7 @@ pra_boolean pra_crc16_compute_args_check(
  * @param  ref_in:          ref in
  * @param  ref_out:         ref out
  * @param  p_ec:            output error code:
- *                          PRA_CRC_EC_NULL_PTR
+ *                          PRA_EC_NULL_PTR
  * @retval                  PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_args_check(

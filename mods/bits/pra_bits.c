@@ -3,21 +3,22 @@
  * created on Mon Aug 29 2022
  * created by Seven Lv
  * comments:    functions of bit functions
- * version: 0.4
+ * version: 0.5
  * history: #       date                modification
  *          0.1     Mon Aug 29 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
  *          0.3     Wed Sep 14 2022     include pra_bits_ec.h
  *                                      include pra_boolean.h
  *          0.4     Thu Sep 15 2022     replace PRA_BITS_EC_NONE with PRA_EC_NONE
+ *          0.5     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
 #include "pra_bits.h"
-#include "pra_bits_ec.h"
 #include "pra_bits_internal.h"
 #include "pra_boolean.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "pra_num_defs.h"
 
 /* macros */

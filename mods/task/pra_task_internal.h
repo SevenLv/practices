@@ -3,18 +3,20 @@
  * created on Thu Sep 15 2022
  * created by Seven Lv
  * comments:    internal function definitions of pra_task
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Thu Sep 15 2022     created
  *          0.2     Thu Sep 15 2022     add pra_task_remove_args_check function declaration
  *                                      add pra_task_find_node function declaration
  *          0.3     Fri Sep 16 2022     changed parameter type of pra_task_find_node function
+ *          0.4     Thu Sep 29 2022     reorganize error codes
  */
 
 #ifndef INC_PRA_TASK_INTERNAL_H_
 #define INC_PRA_TASK_INTERNAL_H_
 
 /* includes */
+#include "pra_ec.h"
 #include "pra_list_types.h"
 #include "pra_task_types.h"
 
@@ -33,7 +35,7 @@
  * @note
  * @param  p_task:  pointer of the pra_task struct
  * @param  p_ec:    output error code:
- *                  PRA_TASK_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_task_init_args_check(
@@ -45,8 +47,8 @@ pra_boolean pra_task_init_args_check(
  * @note
  * @param  p_task:  pointer of the pra_task struct
  * @param  p_ec:    output error code:
- *                  PRA_TASK_EC_NULL_PTR
- *                  PRA_TASK_EC_INVALID_EXECUTE_FUNC
+ *                  PRA_EC_NULL_PTR
+ *                  PRA_EC_INVALID_EXECUTE_FUNC
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_task_add_args_check(
@@ -58,7 +60,7 @@ pra_boolean pra_task_add_args_check(
  * @note
  * @param  p_task:  pointer of the pra_task struct
  * @param  p_ec:    output error code:
- *                  PRA_TASK_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_task_remove_args_check(

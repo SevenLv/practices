@@ -3,7 +3,7 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    function definitions of linked list
- * version: 0.5
+ * version: 0.6
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Tue Sep 13 2022     add pra_list_remove function
@@ -12,6 +12,7 @@
  *                                      move error code definitions to pra_list_ec.h
  *          0.4     Wed Sep 14 2022     update file header comments
  *          0.5     Thu Sep 15 2022     include pra_ec.h
+ *          0.6     Thu Sep 29 2022     reorganize error codes
  */
 
 #ifndef INC_PRA_LIST_H_
@@ -37,7 +38,7 @@
  * @note
  * @param  p_node:  pointer of the node
  * @param  p_ec:    output error code:
- *                  PRA_LIST_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_list_init(
@@ -50,8 +51,8 @@ pra_boolean pra_list_init(
  * @param  p_cur_node:  pointer of current node
  * @param  p_next_node: pointer of next node
  * @param  p_ec:        output error code:
- *                      PRA_LIST_EC_NULL_PTR
- *                      PRA_LIST_EC_PREVIOUS_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_next_node.p_previous
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_PREVIOUS_NOT_NULL - PRA_LIST_ST_NODE_NULL != p_next_node.p_previous
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_list_append(
@@ -65,8 +66,8 @@ pra_boolean pra_list_append(
  * @param  p_cur_node:  pointer of current node
  * @param  p_pre_node:  poitner of next node
  * @param  p_ec:        output error code:
- *                      PRA_LIST_EC_NULL_PTR
- *                      PRA_LIST_EC_NEXT_NOT_NULL -- PRA_LIST_ST_NODE_NULL != p_pre_node.p_next
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_NEXT_NOT_NULL -- PRA_LIST_ST_NODE_NULL != p_pre_node.p_next
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_list_insert(
@@ -79,10 +80,10 @@ pra_boolean pra_list_insert(
  * @note
  * @param  p_node:  pointer of node
  * @param  p_ec:    output error code:
- *                  PRA_LIST_EC_NULL_PTR
- *                  PRA_LIST_EC_INVALID_NEXT - next node of previous node is not current node
- *                  PRA_LIST_EC_INVALID_PREVIOUS - previous node of next node is not current node
- *                  PRA_LIST_EC_INVALID_CURRENT - previous node and next node of current node is null
+ *                  PRA_EC_NULL_PTR
+ *                  PRA_EC_INVALID_NEXT - next node of previous node is not current node
+ *                  PRA_EC_INVALID_PREVIOUS - previous node of next node is not current node
+ *                  PRA_EC_INVALID_CURRENT - previous node and next node of current node is null
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_list_remove(

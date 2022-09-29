@@ -1,6 +1,6 @@
 #include "pra_bytes.h"
-#include "pra_bytes_ec.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "test.h"
 
 
@@ -29,7 +29,7 @@ int main(void)
     pra_boolean expected_result = PRA_BOOL_UNKNOWN;
 
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append(
                                PRA_BYTES_NULL,
@@ -41,7 +41,7 @@ int main(void)
     }
 
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append(
                                p_bytes1,
@@ -54,7 +54,7 @@ int main(void)
 
     p_bytes1->data = PRA_UINT8_NULL;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append(
                                p_bytes1,
@@ -68,7 +68,7 @@ int main(void)
     p_bytes1->data = data1;
     p_bytes2->data = PRA_UINT8_NULL;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NULL_DATA_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append(
                                p_bytes1,
@@ -82,7 +82,7 @@ int main(void)
     p_bytes2->data = data2;
     p_bytes2->used_length = 10;
     actual_ec = PRA_EC_NONE;
-    expected_ec = PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+    expected_ec = PRA_EC_NOT_ENOUGH_LENGTH;
     expected_result = PRA_BOOL_FALSE;
     if (expected_result != pra_bytes_append(
                                p_bytes1,

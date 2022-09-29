@@ -1,5 +1,5 @@
-#include "pra_crc_ec.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "test.h"
 #include "test_crc32.h"
 
@@ -20,7 +20,7 @@ int test_get(get_func get)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != get(PRA_CRC32_NULL, &actual_ec) ||
         expected_ec != actual_ec)
@@ -57,7 +57,7 @@ int test_init(get_func get)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc32_init(
                                PRA_CRC32_NULL,
@@ -117,7 +117,7 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc32_compute(
                                PRA_CRC32_NULL,
@@ -142,7 +142,7 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc32_compute(
                                &crc,
@@ -157,7 +157,7 @@ int test_compute(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc32_compute(
                                &crc,
@@ -173,7 +173,7 @@ int test_compute(
 
     crc.initialized = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_NOT_INIT;
+    expected_ec = PRA_EC_NOT_INIT;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc32_compute(
                                &crc,
@@ -190,7 +190,7 @@ int test_compute(
     crc.initialized = PRA_BOOL_TRUE;
     offset = length;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_INVALID_OFFSET;
+    expected_ec = PRA_EC_INVALID_OFFSET;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc32_compute(
                                &crc,
@@ -207,7 +207,7 @@ int test_compute(
     offset = 0;
     length = 0;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_CRC_EC_INVALID_LENGTH;
+    expected_ec = PRA_EC_INVALID_LENGTH;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_crc32_compute(
                                &crc,

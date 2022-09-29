@@ -11,6 +11,7 @@
  *                                      optimize pra_task_execute function
  *          0.3     Thu Sep 15 2022     add pra_task_remove function
  *          0.4     Fri Sep 16 2022     fixed bugs in pra_task_execute and pra_task_remove
+ *          0.4     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
@@ -18,7 +19,6 @@
 #include "pra_list.h"
 #include "pra_num_defs.h"
 #include "pra_task.h"
-#include "pra_task_ec.h"
 #include "pra_task_internal.h"
 #include "pra_timer.h"
 
@@ -129,7 +129,7 @@ pra_boolean pra_task_add(
     }
     else if (PRA_TASK_LIST_MAX_COUNT <= task_list_used_count)
     {
-        *p_ec |= PRA_TASK_EC_TASK_LIST_FULL;
+        *p_ec |= PRA_EC_TASK_LIST_FULL;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_BOOL_TRUE == pra_task_exists(
@@ -137,7 +137,7 @@ pra_boolean pra_task_add(
                                   task_list_used_count,
                                   p_task))
     {
-        *p_ec |= PRA_TASK_EC_ALREADY_ADDED;
+        *p_ec |= PRA_EC_ALREADY_ADDED;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -153,7 +153,7 @@ pra_boolean pra_task_add(
 
         if (PRA_BOOL_TRUE != find_unused_result)
         {
-            *p_ec |= PRA_TASK_EC_FIND_UNUSED_NODE_FAILED;
+            *p_ec |= PRA_EC_FIND_UNUSED_NODE_FAILED;
             result = PRA_BOOL_FALSE;
         }
         else
@@ -199,7 +199,7 @@ pra_boolean pra_task_add(
                         }
                         else
                         {
-                            *p_ec |= PRA_TASK_EC_INSERT_NODE_FAILED;
+                            *p_ec |= PRA_EC_INSERT_NODE_FAILED;
                             result = PRA_BOOL_FALSE;
                         }
                         break;
@@ -220,7 +220,7 @@ pra_boolean pra_task_add(
                         }
                         else
                         {
-                            *p_ec |= PRA_TASK_EC_APPEND_NODE_FAILED;
+                            *p_ec |= PRA_EC_APPEND_NODE_FAILED;
                             result = PRA_BOOL_FALSE;
                         }
                         break;
@@ -259,7 +259,7 @@ pra_boolean pra_task_remove(
                                   p_task,
                                   &p_node))
     {
-        *p_ec |= PRA_TASK_EC_NEVER_ADDED;
+        *p_ec |= PRA_EC_NEVER_ADDED;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -268,7 +268,7 @@ pra_boolean pra_task_remove(
 
         if (PRA_NUM_ZERO_U == task_list_used_count)
         {
-            *p_ec |= PRA_TASK_EC_NEVER_ADDED;
+            *p_ec |= PRA_EC_NEVER_ADDED;
             result = PRA_BOOL_FALSE;
         }
         else if (1U == task_list_used_count)
@@ -287,7 +287,7 @@ pra_boolean pra_task_remove(
             }
             else
             {
-                *p_ec |= PRA_TASK_EC_NEVER_ADDED;
+                *p_ec |= PRA_EC_NEVER_ADDED;
                 result = PRA_BOOL_FALSE;
             }
         }
@@ -297,7 +297,7 @@ pra_boolean pra_task_remove(
                                      p_node,
                                      &temp_ec))
             {
-                *p_ec |= PRA_TASK_EC_REMOVE_NODE_FAILED;
+                *p_ec |= PRA_EC_REMOVE_NODE_FAILED;
                 result = PRA_BOOL_FALSE;
             }
             else

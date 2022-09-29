@@ -3,18 +3,19 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    definitions and functions of linked list
- * version: 0.4
+ * version: 0.5
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
  *          0.3     Tue Sep 13 2022     add pra_list_remove function
  *          0.4     Wed Sep 14 2022     include pra_list_ec.h
  *                                      include pra_list.h
+ *          0.5     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
+#include "pra_ec.h"
 #include "pra_list.h"
-#include "pra_list_ec.h"
 #include "pra_list_internal.h"
 
 
@@ -141,7 +142,7 @@ pra_boolean pra_list_remove(
         }
         else
         {
-            *p_ec |= PRA_LIST_EC_INVALID_CURRENT;
+            *p_ec |= PRA_EC_INVALID_CURRENT;
             result = PRA_BOOL_FALSE;
         }
     }

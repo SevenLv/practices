@@ -3,20 +3,20 @@
  * created on Fri Sep 02 2022
  * created by Seven Lv
  * comments:    functions of crc32
- * version: 0.3
+ * version: 0.4
  * history: #       date                modification
  *          0.1     Fri Sep 02 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
  *          0.3     Wed Sep 14 2022     include pra_crc_ec.h
  *                                      include pra_boolean.h
+ *          0.4     Thu Sep 29 2022     reorganize error codes
  * */
 
 /* includes */
 #include "pra_bits.h"
 #include "pra_boolean.h"
 #include "pra_crc32_internal.h"
-#include "pra_crc_ec.h"
-
+#include "pra_ec.h"
 
 
 /* macros */
@@ -109,7 +109,7 @@ pra_boolean pra_crc32_compute(
                     }
                     else
                     {
-                        *p_ec |= PRA_CRC_EC_REVERSE_FAILED;
+                        *p_ec |= PRA_EC_REVERSE_FAILED;
                         failed = PRA_BOOL_TRUE;
                     }
                 }
@@ -136,7 +136,7 @@ pra_boolean pra_crc32_compute(
                 }
                 else
                 {
-                    *p_ec |= PRA_CRC_EC_REVERSE_FAILED;
+                    *p_ec |= PRA_EC_REVERSE_FAILED;
                     failed = PRA_BOOL_TRUE;
                 }
             }

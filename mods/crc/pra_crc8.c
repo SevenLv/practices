@@ -3,7 +3,7 @@
  * created on Thu Sep 01 2022
  * created by Seven Lv
  * comments:    functions of crc8
- * version: 0.5
+ * version: 0.6
  * history: #       date                modification
  *          0.1     Thu Sep 01 2022     created
  *          0.2     Tue Sep 13 2022     move static functions to internal files
@@ -11,13 +11,14 @@
  *                                      include pra_boolean.h
  *          0.4     Thu Sep 15 2022     move MASK_H1 macro to pra_crc8_internal.h
  *          0.5     Thu Sep 22 2022     remove pra_boolean_is_true invocation in pra_crc8_init function
+ *          0.6     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
 #include "pra_bits.h"
 #include "pra_boolean.h"
 #include "pra_crc8_internal.h"
-#include "pra_crc_ec.h"
+#include "pra_ec.h"
 
 /* macros */
 
@@ -108,7 +109,7 @@ pra_boolean pra_crc8_compute(
                     }
                     else
                     {
-                        *p_ec |= PRA_CRC_EC_REVERSE_FAILED;
+                        *p_ec |= PRA_EC_REVERSE_FAILED;
                         failed = PRA_BOOL_TRUE;
                     }
                 }
@@ -135,7 +136,7 @@ pra_boolean pra_crc8_compute(
                 }
                 else
                 {
-                    *p_ec |= PRA_CRC_EC_REVERSE_FAILED;
+                    *p_ec |= PRA_EC_REVERSE_FAILED;
                     failed = PRA_BOOL_TRUE;
                 }
             }

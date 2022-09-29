@@ -1,6 +1,6 @@
 #include "pra_bits.h"
 #include "pra_defs.h"
-#include "pra_fifo_ec.h"
+#include "pra_ec.h"
 #include "test.h"
 #include "test_fifo_append_u16.h"
 
@@ -32,7 +32,7 @@ int test_fifo_append_u16(
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_FIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != append(
                                PRA_FIFO_NULL,
@@ -54,7 +54,7 @@ int test_fifo_append_u16(
 
     fifo.p_data = PRA_UINT8_NULL;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_FIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != append(
                                &fifo,
@@ -68,7 +68,7 @@ int test_fifo_append_u16(
     fifo.p_data = data;
     fifo.initialized = PRA_BOOL_FALSE;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_FIFO_EC_NOT_INIT;
+    expected_ec = PRA_EC_NOT_INIT;
     actual_ec = PRA_EC_NONE;
     if (expected_result != append(
                                &fifo,
@@ -82,7 +82,7 @@ int test_fifo_append_u16(
     fifo.initialized = PRA_BOOL_TRUE;
     fifo.used_length = fifo.data_length - 1U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_FIFO_EC_DATA_FULL;
+    expected_ec = PRA_EC_DATA_FULL;
     actual_ec = PRA_EC_NONE;
     if (expected_result != append(
                                &fifo,

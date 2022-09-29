@@ -1,5 +1,5 @@
+#include "pra_ec.h"
 #include "pra_stp_cycle.h"
-#include "pra_stp_cycle_ec.h"
 #include "test.h"
 
 int main(void);
@@ -24,7 +24,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_STP_CYCLE_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_stp_cycle_default_u32(
                                PRA_UINT32_NULL,

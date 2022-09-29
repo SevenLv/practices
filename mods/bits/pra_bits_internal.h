@@ -3,10 +3,11 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_bits
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
  *          0.2     Wed Sep 14 2022     change include file
+ *          0.3     Thu Sep 29 2022     reorganize error codes
  */
 
 #ifndef INC_PRA_BITS_INTERNAL_H_
@@ -16,6 +17,7 @@
 
 #include "pra_boolean_types.h"
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "stdint.h"
 
 /* macros */
@@ -32,8 +34,8 @@
  * @param  bit_offset:  the offset of the bit
  * @param  p_actived:   output the bit is actived or not
  * @param  p_ec:        output error code:
- *                      PRA_BITS_EC_NULL_PTR
- *                      PRA_BITS_EC_INVALID_OFFSET
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_INVALID_OFFSET
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u8_get_args_check(
@@ -47,8 +49,8 @@ pra_boolean pra_bits_u8_get_args_check(
  * @param  *p_value:    the pointer of the 8-bit value
  * @param  bit_offset:  the offset of the bit
  * @param  p_ec:        output error code:
- *                      PRA_BITS_EC_NULL_PTR
- *                      PRA_BITS_EC_INVALID_OFFSET
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_INVALID_OFFSET
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u8_set_args_check(
@@ -61,8 +63,8 @@ pra_boolean pra_bits_u8_set_args_check(
  * @note
  * @param  bit_offset:  the offset of the bit
  * @param  p_ec:        output error code:
- *                      PRA_BITS_EC_NULL_PTR
- *                      PRA_BITS_EC_INVALID_OFFSET
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_INVALID_OFFSET
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u16_get_args_check(
@@ -76,8 +78,8 @@ pra_boolean pra_bits_u16_get_args_check(
  * @param  *p_value:    the pointer of the 16-bit value
  * @param  bit_offset:  the offset of the bit
  * @param  p_ec:        output error code:
- *                      PRA_BITS_EC_NULL_PTR
- *                      PRA_BITS_EC_INVALID_OFFSET
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_INVALID_OFFSET
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u16_set_args_check(
@@ -91,8 +93,8 @@ pra_boolean pra_bits_u16_set_args_check(
  * @param  bit_offset:  the offset of the bit
  * @param  p_actived:   output the bit is actived or not
  * @param  p_ec:        output error code:
- *                      PRA_BITS_EC_NULL_PTR
- *                      PRA_BITS_EC_INVALID_OFFSET
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_INVALID_OFFSET
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u32_get_args_check(
@@ -106,8 +108,8 @@ pra_boolean pra_bits_u32_get_args_check(
  * @param  *p_value:    the pointer of the 32-bit value
  * @param  bit_offset:  the offset of the bit
  * @param  p_ec:        output error code:
- *                      PRA_BITS_EC_NULL_PTR
- *                      PRA_BITS_EC_INVALID_OFFSET
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_INVALID_OFFSET
  * @retval              PRA_BOOL_TRUE - success;PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bits_u32_set_args_check(

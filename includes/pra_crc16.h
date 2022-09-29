@@ -3,13 +3,14 @@
  * created on Fri Sep 02 2022
  * created by Seven Lv
  * comments:    function definitions of crc16
- * version: 0.4
+ * version: 0.5
  * history: #       date                modification
  *          0.1     Fri Sep 02 2022     created
  *          0.2     Wed Sep 14 2022     include pra_boolean_types.h
  *                                      move type definitions to pra_crc16_types.h
  *          0.3     Wed Sep 14 2022     update file header comments
  *          0.4     Thu Sep 15 2022     include pra_ec.h
+ *          0.5     Thu Sep 29 2022     reorganize error codes
  */
 
 #ifndef INC_PRA_CRC16_H_
@@ -37,7 +38,7 @@
  * @note
  * @param  p_crc:   the crc struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_init(
@@ -53,10 +54,10 @@ pra_boolean pra_crc16_init(
  * @param  length:      length of the bytes
  * @param  p_result:    the crc result
  * @param  p_ec:        output error code:
- *                      PRA_CRC_EC_NULL_PTR
- *                      PRA_CRC_EC_NOT_INIT
- *                      PRA_CRC_EC_INVALID_OFFSET
- *                      PRA_CRC_EC_INVALID_LENGTH
+ *                      PRA_EC_NULL_PTR
+ *                      PRA_EC_NOT_INIT
+ *                      PRA_EC_INVALID_OFFSET
+ *                      PRA_EC_INVALID_LENGTH
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_compute(
@@ -77,7 +78,7 @@ pra_boolean pra_crc16_compute(
  * @param  ref_in:          ref in
  * @param  ref_out:         ref out
  * @param  p_ec:            output error code:
- *                          PRA_CRC_EC_NULL_PTR
+ *                          PRA_EC_NULL_PTR
  * @retval                  PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get(
@@ -94,7 +95,7 @@ pra_boolean pra_crc16_get(
  * @note
  * @param  p_crc:   the crc-16 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_arc(
@@ -106,7 +107,7 @@ pra_boolean pra_crc16_get_arc(
  * @note
  * @param  p_crc:   the crc-16 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_maxim(
@@ -118,7 +119,7 @@ pra_boolean pra_crc16_get_maxim(
  * @note
  * @param  p_crc:   the crc-16 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_usb(
@@ -130,7 +131,7 @@ pra_boolean pra_crc16_get_usb(
  * @note
  * @param  p_crc:   the crc-16 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_modbus(
@@ -142,7 +143,7 @@ pra_boolean pra_crc16_get_modbus(
  * @note
  * @param  p_crc:   the crc-16 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_ccitt_false(
@@ -154,7 +155,7 @@ pra_boolean pra_crc16_get_ccitt_false(
  * @note
  * @param  p_crc:   the crc-16 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_x25(
@@ -166,7 +167,7 @@ pra_boolean pra_crc16_get_x25(
  * @note
  * @param  p_crc:   the crc-16 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_xmodem(
@@ -178,7 +179,7 @@ pra_boolean pra_crc16_get_xmodem(
  * @note
  * @param  p_crc:   the crc-16 struct pointer
  * @param  p_ec:    output error code:
- *                  PRA_CRC_EC_NULL_PTR
+ *                  PRA_EC_NULL_PTR
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_crc16_get_dnp(

@@ -3,7 +3,7 @@
  * created on Thu Sep 22 2022
  * created by Seven Lv
  * comments:    internal functions of cycle stepper
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Thu Sep 22 2022     created
  *          0.2     Thu Sep 22 2022     add pra_stp_cycle_u16_args_check function
@@ -11,10 +11,11 @@
  *                                      add pra_stp_cycle_default_u16_args_check function
  *                                      add pra_stp_cycle_u32_args_check function
  *                                      add pra_stp_cycle_default_u32_args_check function
+ *          0.3     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
-#include "pra_stp_cycle_ec.h"
+#include "pra_ec.h"
 #include "pra_stp_cycle_internal.h"
 
 /* variables */
@@ -36,32 +37,32 @@ pra_boolean pra_stp_cycle_u8_args_check(
     }
     else if (PRA_UINT8_NULL == p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (min_value >= max_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_RANGE;
+        *p_ec |= PRA_EC_INVALID_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (min_value > *p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_VALUE_OUT_OF_RANGE;
+        *p_ec |= PRA_EC_VALUE_OUT_OF_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (max_value < *p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_VALUE_OUT_OF_RANGE;
+        *p_ec |= PRA_EC_VALUE_OUT_OF_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_ZERO_U == step)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_STEP;
+        *p_ec |= PRA_EC_INVALID_STEP;
         result = PRA_BOOL_FALSE;
     }
     else if (max_value < step)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_STEP;
+        *p_ec |= PRA_EC_INVALID_STEP;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -84,7 +85,7 @@ pra_boolean pra_stp_cycle_default_u8_args_check(
     }
     else if (PRA_UINT8_NULL == p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -110,32 +111,32 @@ pra_boolean pra_stp_cycle_u16_args_check(
     }
     else if (PRA_UINT16_NULL == p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (min_value >= max_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_RANGE;
+        *p_ec |= PRA_EC_INVALID_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (min_value > *p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_VALUE_OUT_OF_RANGE;
+        *p_ec |= PRA_EC_VALUE_OUT_OF_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (max_value < *p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_VALUE_OUT_OF_RANGE;
+        *p_ec |= PRA_EC_VALUE_OUT_OF_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_ZERO_U == step)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_STEP;
+        *p_ec |= PRA_EC_INVALID_STEP;
         result = PRA_BOOL_FALSE;
     }
     else if (max_value < step)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_STEP;
+        *p_ec |= PRA_EC_INVALID_STEP;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -158,7 +159,7 @@ pra_boolean pra_stp_cycle_default_u16_args_check(
     }
     else if (PRA_UINT16_NULL == p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -184,32 +185,32 @@ pra_boolean pra_stp_cycle_u32_args_check(
     }
     else if (PRA_UINT32_NULL == p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (min_value >= max_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_RANGE;
+        *p_ec |= PRA_EC_INVALID_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (min_value > *p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_VALUE_OUT_OF_RANGE;
+        *p_ec |= PRA_EC_VALUE_OUT_OF_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (max_value < *p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_VALUE_OUT_OF_RANGE;
+        *p_ec |= PRA_EC_VALUE_OUT_OF_RANGE;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_ZERO_U == step)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_STEP;
+        *p_ec |= PRA_EC_INVALID_STEP;
         result = PRA_BOOL_FALSE;
     }
     else if (max_value < step)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_INVALID_STEP;
+        *p_ec |= PRA_EC_INVALID_STEP;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -232,7 +233,7 @@ pra_boolean pra_stp_cycle_default_u32_args_check(
     }
     else if (PRA_UINT32_NULL == p_value)
     {
-        *p_ec |= PRA_STP_CYCLE_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else

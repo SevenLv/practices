@@ -3,17 +3,18 @@
  * created on Tue Sep 13 2022
  * created by Seven Lv
  * comments:    internal functions of pra_bits
- * version: 0.2
+ * version: 0.3
  * history: #       date                modification
  *          0.1     Tue Sep 13 2022     created
- *          02.     Wed Sep 14 2022     include pra_bits_ec.h
+ *          0.2     Wed Sep 14 2022     include pra_bits_ec.h
+ *          0.3     Thu Sep 29 2022     reorganize error codes
  */
 
 /* includes */
 
 #include "pra_bits.h"
-#include "pra_bits_ec.h"
 #include "pra_bits_internal.h"
+#include "pra_ec.h"
 
 
 /* variables */
@@ -33,12 +34,12 @@ pra_boolean pra_bits_u8_get_args_check(
     }
     else if (PRA_BOOL_NULL == p_actived)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BIT_MAX_OFFSET_U8 < bit_offset)
     {
-        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
+        *p_ec |= PRA_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -62,12 +63,12 @@ pra_boolean pra_bits_u8_set_args_check(
     }
     else if (PRA_UINT8_NULL == p_value)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BIT_MAX_OFFSET_U8 < bit_offset)
     {
-        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
+        *p_ec |= PRA_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -91,12 +92,12 @@ pra_boolean pra_bits_u16_get_args_check(
     }
     else if (PRA_BOOL_NULL == p_actived)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BIT_MAX_OFFSET_U16 < bit_offset)
     {
-        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
+        *p_ec |= PRA_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -120,12 +121,12 @@ pra_boolean pra_bits_u16_set_args_check(
     }
     else if (PRA_UINT16_NULL == p_value)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BIT_MAX_OFFSET_U16 < bit_offset)
     {
-        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
+        *p_ec |= PRA_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -149,12 +150,12 @@ pra_boolean pra_bits_u32_get_args_check(
     }
     else if (PRA_BOOL_NULL == p_actived)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BIT_MAX_OFFSET_U32 < bit_offset)
     {
-        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
+        *p_ec |= PRA_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else
@@ -178,12 +179,12 @@ pra_boolean pra_bits_u32_set_args_check(
     }
     else if (PRA_UINT32_NULL == p_value)
     {
-        *p_ec |= PRA_BITS_EC_NULL_PTR;
+        *p_ec |= PRA_EC_NULL_PTR;
         result = PRA_BOOL_FALSE;
     }
     else if (PRA_NUM_BIT_MAX_OFFSET_U32 < bit_offset)
     {
-        *p_ec |= PRA_BITS_EC_INVALID_OFFSET;
+        *p_ec |= PRA_EC_INVALID_OFFSET;
         result = PRA_BOOL_FALSE;
     }
     else

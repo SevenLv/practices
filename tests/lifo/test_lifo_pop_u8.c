@@ -1,6 +1,6 @@
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "pra_lifo.h"
-#include "pra_lifo_ec.h"
 #include "test.h"
 
 
@@ -35,7 +35,7 @@ int main(void)
     lifo.p_data = PRA_UINT8_NULL;
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_pop_u8(
                                &lifo,
@@ -49,7 +49,7 @@ int main(void)
     lifo.p_data = data;
     actual_data_value = 0U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_LIFO_EC_DATA_NOT_ENOUGH;
+    expected_ec = PRA_EC_NOT_ENOUGH_LENGTH;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_lifo_pop_u8(
                                &lifo,

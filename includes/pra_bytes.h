@@ -3,7 +3,7 @@
  * created on Wed Aug 24 2022
  * created by Seven Lv
  * comments:    function definitions of the bytes type
- * version: 0.4
+ * version: 0.5
  * history: #       date                modification
  *          0.1     Wed Aug 24 2022     created
  *          0.2     Wed Sep 14 2022     move type definitions to pra_bytes_types.h
@@ -11,6 +11,7 @@
  *                                      include pra_boolean_types.h
  *          0.3     Wed Sep 14 2022     update file header comments
  *          0.4     Thu Sep 15 2022     include pra_ec.h
+ *          0.5     Thu Sep 29 2022     reorganize error codes
  */
 
 #ifndef INC_PRA_BYTES_H_
@@ -38,8 +39,8 @@
  * @note
  * @param  *p_bytes:    the bytes pointer
  * @param  *p_ec:       output error codes:
- *                      PRA_BYTES_EC_NULL_PTR;
- *                      PRA_BYTES_EC_NULL_DATA_PTR;
+ *                      PRA_EC_NULL_PTR;
+ *                      PRA_EC_NULL_PTR;
  * @retval              PRA_BOOL_TRUE - the bytes pointer is not null and
  * bytes->bytes is not null; PRA_BOOL_FALSE - others
  */
@@ -52,9 +53,9 @@ pra_boolean pra_bytes_not_null_ptr(
  * @note
  * @param  *p_bytes:    the bytes pointer
  * @param  *p_ec:       output error codes:
- *                      PRA_BYTES_EC_NULL_PTR;
- *                      PRA_BYTES_EC_NULL_DATA_PTR;
- *                      PRA_BYTES_EC_DATA_LENGTH_ZERO;
+ *                      PRA_EC_NULL_PTR;
+ *                      PRA_EC_NULL_PTR;
+ *                      PRA_EC_INVALID_LENGTH;
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_init(
@@ -67,10 +68,10 @@ pra_boolean pra_bytes_init(
  * @param  p_src:   the source bytes
  * @param  p_dst:   the destination bytes
  * @param  p_ec:    output error codes:
- *                  PRA_BYTES_EC_NULL_PTR;
- *                  PRA_BYTES_EC_NULL_DATA_PTR;
- *                  PRA_BYTES_EC_DATA_LENGTH_ZERO;
- *                  PRA_BYTES_EC_DIFFERENT_LENGTH;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_INVALID_LENGTH;
+ *                  PRA_EC_DIFFERENT_LENGTH;
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_copy(
@@ -85,9 +86,9 @@ pra_boolean pra_bytes_copy(
  * @param  data[]:      the bytes to append
  * @param  data_length: the length of the bytes to append
  * @param  *p_ec:       output error codes:
- *                      PRA_BYTES_EC_NULL_PTR;
- *                      PRA_BYTES_EC_NULL_DATA_PTR;
- *                      PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ *                      PRA_EC_NULL_PTR;
+ *                      PRA_EC_NULL_PTR;
+ *                      PRA_EC_NOT_ENOUGH_LENGTH;
  * @retval              PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_append_u8_array(
@@ -102,9 +103,9 @@ pra_boolean pra_bytes_append_u8_array(
  * @param  p_bytes: the bytes
  * @param  p_data:  the bytes to append
  * @param  p_ec:    output error codes:
- *                  PRA_BYTES_EC_NULL_PTR;
- *                  PRA_BYTES_EC_NULL_DATA_PTR;
- *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NOT_ENOUGH_LENGTH;
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_append(
@@ -118,9 +119,9 @@ pra_boolean pra_bytes_append(
  * @param  p_bytes: the bytes
  * @param  data:    the byte to append
  * @param  p_ec:    output error codes:
- *                  PRA_BYTES_EC_NULL_PTR;
- *                  PRA_BYTES_EC_NULL_DATA_PTR;
- *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NOT_ENOUGH_LENGTH;
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_append_u8(
@@ -134,9 +135,9 @@ pra_boolean pra_bytes_append_u8(
  * @param  p_bytes: the bytes
  * @param  data:    the 16-bits value
  * @param  p_ec:    output error codes:
- *                  PRA_BYTES_EC_NULL_PTR;
- *                  PRA_BYTES_EC_NULL_DATA_PTR;
- *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NOT_ENOUGH_LENGTH;
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_append_u16_be(
@@ -150,9 +151,9 @@ pra_boolean pra_bytes_append_u16_be(
  * @param  p_bytes: the bytes
  * @param  data:    the 16-bits value
  * @param  p_ec:    output error codes:
- *                  PRA_BYTES_EC_NULL_PTR;
- *                  PRA_BYTES_EC_NULL_DATA_PTR;
- *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NOT_ENOUGH_LENGTH;
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_append_u16_le(
@@ -166,9 +167,9 @@ pra_boolean pra_bytes_append_u16_le(
  * @param  p_bytes: the bytes
  * @param  data:    the 32-bits value
  * @param  p_ec:    output error codes:
- *                  PRA_BYTES_EC_NULL_PTR;
- *                  PRA_BYTES_EC_NULL_DATA_PTR;
- *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NOT_ENOUGH_LENGTH;
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_append_u32_be(
@@ -182,9 +183,9 @@ pra_boolean pra_bytes_append_u32_be(
  * @param  p_bytes: the bytes
  * @param  data:    the 32-bits value
  * @param  p_ec:    output error codes:
- *                  PRA_BYTES_EC_NULL_PTR;
- *                  PRA_BYTES_EC_NULL_DATA_PTR;
- *                  PRA_BYTES_EC_NOT_ENOUGH_LENGTH;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NULL_PTR;
+ *                  PRA_EC_NOT_ENOUGH_LENGTH;
  * @retval          PRA_BOOL_TRUE - success; PRA_BOOL_FALSE - failed
  */
 pra_boolean pra_bytes_append_u32_le(

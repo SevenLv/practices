@@ -1,6 +1,6 @@
 #include "pra_defs.h"
+#include "pra_ec.h"
 #include "pra_fifo.h"
-#include "pra_fifo_ec.h"
 #include "test.h"
 
 
@@ -12,7 +12,7 @@ int main(void)
 {
     int result = err_none;
 
-    pra_fifo      fifo = { 0 };
+    pra_fifo      fifo;
     uint8_t       data[DATA_LENGTH] = { 1U, 2U, 3U, 4U, 5U, 6U, 7U, 8U, 9U, 10U };
     uint16_t      data_length = DATA_LENGTH;
     pra_boolean   expected_result = PRA_BOOL_UNKNOWN;
@@ -35,7 +35,7 @@ int main(void)
     }
 
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_FIFO_EC_NULL_PTR;
+    expected_ec = PRA_EC_NULL_PTR;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_init(
                                PRA_FIFO_NULL,
@@ -49,7 +49,7 @@ int main(void)
 
     data_length = 0U;
     expected_result = PRA_BOOL_FALSE;
-    expected_ec = PRA_FIFO_EC_INVALID_LENGTH;
+    expected_ec = PRA_EC_INVALID_LENGTH;
     actual_ec = PRA_EC_NONE;
     if (expected_result != pra_fifo_init(
                                &fifo,
