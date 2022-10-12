@@ -31,3 +31,5 @@ add_subdirectory(timer)
 add_subdirectory(task)
 
 add_subdirectory(stepper)
+
+add_subdirectory(math)
